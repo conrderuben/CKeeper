@@ -8,12 +8,13 @@ const Container = styled.div`
     padding:0 ;
       width: 100vw;
     height:auto  ;
+    overflow-x: hidden ;
     `;
 
 const ImagenContainer = styled.div`
     flex:1 ;
     width: 100%;
-    height:auto;
+    height:100%;
    
    
     `

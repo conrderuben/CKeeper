@@ -12,6 +12,7 @@ const NavBar=()=>{
     padding: 10px 30px ;
     display: flex ;
     justify-content: space-between ;
+    align-items: center ;
     `;
 
     const Izq = styled.div`
@@ -27,6 +28,7 @@ const NavBar=()=>{
     const Der = styled.div`
       flex:1;
       text-align: right ;
+     
     `;
 
     const Menu = styled.div`
@@ -38,6 +40,28 @@ const NavBar=()=>{
 
     const Item = styled.div`
       margin-left: 15px ;
+      display: flex ;
+      align-items: center ;
+      border-radius: 15px ;
+      padding:2px;
+      height: 30px ;
+
+  &:hover{
+    background-color: grey;
+    opacity: 0.5 ;
+  }
+     
+    `;
+
+    const Boton = styled.button`
+      border: 1px solid black ;
+      border-radius: 15px;
+      background-color: #5292f1 ;
+      height: 30px ;
+      color:white;
+      font-size: bold ;
+
+     
     `;
 
     
@@ -47,13 +71,15 @@ const NavBar=()=>{
     return (
       <Contenedor>
         <Wrapper>
-          <Izq>Izq</Izq>
-          <Cen>Centro</Cen>
+          <Izq>LOGO</Izq>
+          <Cen>CKEEPER</Cen>
           <Der>
             <Menu>
               <Item>Home</Item>
               <Item>Contacto</Item>
-              <Item>Iniciar Sesion</Item>
+              <Item>Registrarse</Item>
+              <Item><Boton>Iniciar Sesion</Boton></Item>
+              <Item></Item>
             </Menu>
           </Der>
 
