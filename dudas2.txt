@@ -1,0 +1,6 @@
+vehicuko añadir alquiler
+factura alquiler
+cp ubicaicon
+vehicuko descripcion y plaza
+electrico
+quitar anuncio y meter boolean de publicada
