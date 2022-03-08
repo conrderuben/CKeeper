@@ -2,17 +2,65 @@ import React from "react";
 import styled from "styled-components"
 
 const NavBar=()=>{
-    const MyH3 = styled.div`
-    color: red;
-    margin-left: 20px;
-    background-color: black;
+    const Contenedor = styled.div`
+    height: 60px ;
+    width: 100vw;
+    
     `;
+
+    const Wrapper = styled.div`
+    padding: 10px 30px ;
+    display: flex ;
+    justify-content: space-between ;
+    `;
+
+    const Izq = styled.div`
+      flex:1;
+      justify-content: flex-start ;
+    `;
+
+    const Cen = styled.div`
+      flex:1;
+      text-align: center ;
+    `;
+
+    const Der = styled.div`
+      flex:1;
+      text-align: right ;
+    `;
+
+    const Menu = styled.div`
+
+      display: flex;
+      justify-content: flex-end ;
+      
+    `;
+
+    const Item = styled.div`
+      margin-left: 15px ;
+    `;
+
+    
+   
+    
     
     return (
-    <>
-      <h2>Componentes Estilo</h2>
-      <MyH3>Hola soy un H3 Con componentes con Estilo</MyH3>
-    </>
+      <Contenedor>
+        <Wrapper>
+          <Izq>Izq</Izq>
+          <Cen>Centro</Cen>
+          <Der>
+            <Menu>
+              <Item>Home</Item>
+              <Item>Contacto</Item>
+              <Item>Iniciar Sesion</Item>
+            </Menu>
+          </Der>
+
+
+        </Wrapper>
+      </Contenedor>
+      
     );
     
 }

@@ -2,10 +2,12 @@
 
 import React from 'react'
 import NavBar from "../components/NavBar"
+import Principal from '../components/Principal'
 const Home=()=> {
   return (
-    <div>Home
+    <div>
         <NavBar/>
+        <Principal/>
     </div>
     
   )
