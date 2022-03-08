@@ -3,16 +3,23 @@ import styled from "styled-components"
 
 const NavBar=()=>{
     const Contenedor = styled.div`
-    height: 60px ;
+    height: 45px ;
     width: 100vw;
+    position:fixed ;
+    z-index:1 ;    
     
     `;
 
     const Wrapper = styled.div`
-    padding: 10px 30px ;
+    padding: 10px 20px ;
     display: flex ;
     justify-content: space-between ;
     align-items: center ;
+    font-weight: bold ;
+    //background-color: #d1e3fa94 ;
+    background-color: #ffffff94 ;
+
+  
     `;
 
     const Izq = styled.div`
@@ -39,16 +46,18 @@ const NavBar=()=>{
     `;
 
     const Item = styled.div`
-      margin-left: 15px ;
+      
+      margin-left: 5px ;
       display: flex ;
       align-items: center ;
       border-radius: 15px ;
-      padding:2px;
-      height: 30px ;
+      padding:2px 10px;
+      height: 20px ;
 
   &:hover{
-    background-color: grey;
-    opacity: 0.5 ;
+    background-color: #f9fdff6c;
+    text-decoration: underline ;
+  
   }
      
     `;
@@ -56,10 +65,11 @@ const NavBar=()=>{
     const Boton = styled.button`
       border: 1px solid black ;
       border-radius: 15px;
-      background-color: #5292f1 ;
-      height: 30px ;
-      color:white;
-      font-size: bold ;
+      background-color: #5292f1a2 ;
+      font-weight: bold ;
+      padding:2px 10px;
+      height: 20px ;
+      line-height: 100% ;
 
      
     `;
@@ -79,7 +89,7 @@ const NavBar=()=>{
               <Item>Contacto</Item>
               <Item>Registrarse</Item>
               <Item><Boton>Iniciar Sesion</Boton></Item>
-              <Item></Item>
+              
             </Menu>
           </Der>
 

@@ -14,7 +14,7 @@ const Home=()=> {
   return (
     <Contenedor>
         <NavBar/>
-        <Principal/>
+        <Principal texto="Protegelo como si fuese tu hijo..."/>
     </Contenedor>
     
   )
