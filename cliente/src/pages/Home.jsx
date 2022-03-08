@@ -3,12 +3,19 @@
 import React from 'react'
 import NavBar from "../components/NavBar"
 import Principal from '../components/Principal'
+import styled from 'styled-components'
+
+const Contenedor=styled.div`
+padding:0 ;
+
+`
+
 const Home=()=> {
   return (
-    <div>
+    <Contenedor>
         <NavBar/>
         <Principal/>
-    </div>
+    </Contenedor>
     
   )
 }
