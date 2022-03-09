@@ -45,7 +45,7 @@ const NavBar=()=>{
       
     `;
 
-    const Item = styled.div`
+    const Item = styled.a`
       
       margin-left: 5px ;
       display: flex ;
@@ -53,23 +53,32 @@ const NavBar=()=>{
       border-radius: 15px ;
       padding:2px 10px;
       height: 20px ;
+      cursor: pointer ;
+      text-decoration: none ;
+      font-style: none ;
+      color:black;
 
   &:hover{
     background-color: #f9fdff6c;
     text-decoration: underline ;
   
   }
+
+  
      
     `;
 
     const Boton = styled.button`
+      margin-left: 5px ;
+      margin-right: 5px ;
       border: 1px solid black ;
       border-radius: 15px;
-      background-color: #5292f1a2 ;
+      background-color: #5e9bf8 ;
       font-weight: bold ;
       padding:2px 10px;
-      height: 20px ;
+      height: 22px ;
       line-height: 100% ;
+      cursor:pointer;
 
      
     `;
@@ -85,10 +94,11 @@ const NavBar=()=>{
           <Cen>CKEEPER</Cen>
           <Der>
             <Menu>
-              <Item>Home</Item>
+              <Item href="#home">Home</Item>
+              <Item href="#sobre-nosotros">Sobre Nosotros</Item>
               <Item>Contacto</Item>
-              <Item>Registrarse</Item>
-              <Item><Boton>Iniciar Sesion</Boton></Item>
+              <Item href="/registro">Registrarse</Item>
+              <Boton>Iniciar Sesion</Boton>
               
             </Menu>
           </Der>

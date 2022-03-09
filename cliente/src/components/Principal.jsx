@@ -15,6 +15,7 @@ const Container = styled.div`
     padding:0 ;
       width: 100vw;
     height:100vh;
+    max-width: 100% ;
     `;
 
 const ImagenContainer = styled.div`
@@ -22,12 +23,14 @@ const ImagenContainer = styled.div`
     width: 100%;
     height:100%;
     position: relative ;
+    
    
    
     `
 const Imagen = styled.img`
  width:100% ;
- height:auto  ;
+ height:100% ;
+ object-fit: cover ;
      
 `
 
@@ -42,6 +45,7 @@ const Eslogan = styled.h2`
 const Principal = (props) => {
   return (
     <Container>
+      <a name="home"></a>
        <ImagenContainer><Eslogan>{props.texto}</Eslogan><Imagen src={fondo1}/></ImagenContainer>
         
     </Container>
