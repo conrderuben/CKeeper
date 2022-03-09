@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components"
+import IniciarSesion from "./IniciarSesion";
 
 const NavBar=()=>{
     const Contenedor = styled.div`
@@ -55,7 +56,7 @@ const NavBar=()=>{
       height: 20px ;
       cursor: pointer ;
       text-decoration: none ;
-      font-style: none ;
+      
       color:black;
 
   &:hover{
@@ -94,11 +95,12 @@ const NavBar=()=>{
           <Cen>CKEEPER</Cen>
           <Der>
             <Menu>
-              <Item href="#home">Home</Item>
-              <Item href="#sobre-nosotros">Sobre Nosotros</Item>
+              <Item href="/#home">Home</Item>
+              <Item href="/#sobre-nosotros">Sobre Nosotros</Item>
               <Item>Contacto</Item>
               <Item href="/registro">Registrarse</Item>
-              <Boton>Iniciar Sesion</Boton>
+              {/* <Boton>Iniciar Sesion</Boton> */}
+              <IniciarSesion/>
               
             </Menu>
           </Der>

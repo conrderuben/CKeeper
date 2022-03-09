@@ -9,14 +9,14 @@ import Formulario from '../components/Formulario'
 
 const Contenedor=styled.div`
 padding:0 ;
-background-color: #00a7f5;
+
 
 `
 
 const Registro=()=> {
   return (
     <Contenedor>
-        <NavBar/>
+      <NavBar/>
         <Formulario/>
     </Contenedor>
     
