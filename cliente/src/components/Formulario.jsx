@@ -5,6 +5,8 @@ import fondo1 from "../assets/img/fondo1.jpg"
 import fondo3 from "../assets/img/fondo3.jpg"
 import fondo4 from "../assets/img/fondo4.jpg"
 import fondo5 from "../assets/img/fondo5.jpg"
+import validador from '../validadorFormulario'
+
 
 
 const Container = styled.div`
@@ -36,7 +38,7 @@ width: 32vw ;
 position: relative ;
 margin-left:5vw;
 margin-right:5vw;
-margin-top: 14vh ;
+margin-top: 10vh ;
 margin-bottom: 7vh ;
 padding: 15px ;
 
@@ -66,70 +68,73 @@ const Form = styled.div`
   width:30vw;
 `;
 
-const Formulario = () => {
-  return (
+
+const manejar = (e, exp)=>{
+  
+  validador(exp, e.target)
+}
+const Formulario = () => (
 
 
-    <Container>
-        <ImagenContainer>
-            <a name="sobre-nosotros"></a>
-            <Imagen src={fondo3}/>
-        </ImagenContainer>
-        <DescripcionContainer>
-            <Titulo>Registrate</Titulo>
-            <Descripcion>
-              <Form>
-                <form>
-          
-                <div class="mb-3 form-floating">
-                <input type="text" class="form-control is-valid" id="validationServer01" placeholder="name@example.com" required/>
-                <label for="validationServer01" class="form-label">First name</label>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-                <div class="invalid-feedback">
-                  maaaaal
-                </div>
-                </div>
-                  
-                  <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Contraseña</label>
-                  </div>
+  <Container>
+    <ImagenContainer>
+      <a name="sobre-nosotros"></a>
+      <Imagen src={fondo3} />
+    </ImagenContainer>
+    <DescripcionContainer>
+      <Titulo>Registrate</Titulo>
+      <Descripcion>
+        <Form>
+          <form>
+            <div className="mb-3 form-floating">
+              <input  onKeyUp={(e)=>manejar(e,/^[a-z]{8,10}$/)} type="text" className="form-control " id="validationServer01" placeholder="name@example.com" required />
+              <label htmlFor="validationServer01" className="form-label">Usuario</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                maaaaal
+              </div>
+            </div>
 
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Nombre</label>
-                  </div>
+            <div className="form-floating mb-3">
+              <input type="password" className="form-control " id="password" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Contraseña</label>
+            </div>
 
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Apellidos</label>
-                  </div>
-                  
-                  <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Fecha de Nacimiento</label>
-                  </div>
+            <div className="form-floating mb-3">
+              <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Nombre</label>
+            </div>
 
-                  <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Email</label>
-                  </div>
+            <div className="form-floating mb-3">
+              <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Apellidos</label>
+            </div>
 
-                  <div class="form-floating mb-3">
-                    <input type="tel" class="form-control" id="floatingInput" placeholder="name@example.com"/>
-                    <label for="floatingInput">Telefono</label>
-                  </div>
-                 
-                
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </form>
-              </Form>
-            </Descripcion>
-        </DescripcionContainer>
-    </Container>
-    
-  )}
+            <div className="form-floating mb-3">
+              <input type="date" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Fecha de Nacimiento</label>
+            </div>
+
+            <div className="form-floating mb-3">
+              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Email</label>
+            </div>
+
+            <div className="form-floating mb-3">
+              <input type="tel" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput">Telefono</label>
+            </div>
+
+
+            <button type="submit" className="btn btn-primary">Sign in</button>
+          </form>
+        </Form>
+      </Descripcion>
+    </DescripcionContainer>
+  </Container>
+
+)
 
 export default Formulario
