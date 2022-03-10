@@ -87,29 +87,47 @@ const Formulario = () => (
         <Form>
           <form>
             <div className="mb-3 form-floating">
-              <input  onKeyUp={(e)=>manejar(e,/^[a-z]{8,10}$/)} type="text" className="form-control " id="validationServer01" placeholder="name@example.com" required />
+              <input  onKeyUp={(e)=>manejar(e,/^[A-Za-z0-9_\.-]{8,20}$/)} type="text" className="form-control " id="validationServer01" placeholder="name@example.com" required />
               <label htmlFor="validationServer01" className="form-label">Usuario</label>
               <div className="valid-feedback">
                 Looks good!
               </div>
               <div className="invalid-feedback">
-                maaaaal
+                Incorrecto
               </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="password" className="form-control " id="password" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Contraseña</label>
+              <input  onKeyUp={(e)=>manejar(e,/^[A-Za-z0-9_\.-]{8,20}$/)} type="password" className="form-control " id="password" placeholder="name@example.com" required />
+              <label htmlFor="password" className="form-label">Contraseña</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                Incorrecto
+              </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Nombre</label>
+              <input onKeyUp={(e)=>manejar(e,/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,17}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/)} type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput" className="form-label">Nombre</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                Incorrecto
+              </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Apellidos</label>
+              <input onKeyUp={(e)=>manejar(e,/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{3,20}$/)} type="text" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput" className="form-label">Apellidos</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                Incorrecto
+              </div>
             </div>
 
             <div className="form-floating mb-3">
@@ -118,13 +136,25 @@ const Formulario = () => (
             </div>
 
             <div className="form-floating mb-3">
-              <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Email</label>
+              <input onKeyUp={(e)=>manejar(e,/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)} type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput" className="form-label">Email</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                Incorrecto
+              </div>
             </div>
 
             <div className="form-floating mb-3">
-              <input type="tel" className="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label htmlFor="floatingInput">Telefono</label>
+              <input onKeyUp={(e)=>manejar(e,/^[6-9]\d\d{3}\d{2}\d{2}$/)} type="tel" className="form-control" id="floatingInput" placeholder="name@example.com" />
+              <label htmlFor="floatingInput" className="form-label">Telefono</label>
+              <div className="valid-feedback">
+                Looks good!
+              </div>
+              <div className="invalid-feedback">
+                Incorrecto
+              </div>
             </div>
 
 
