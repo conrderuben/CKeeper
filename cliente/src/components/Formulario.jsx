@@ -98,7 +98,7 @@ const Formulario = () => (
             </div>
 
             <div className="form-floating mb-3">
-              <input  onKeyUp={(e)=>manejar(e,/^[A-Za-z0-9_\.-]{8,20}$/)} type="password" className="form-control " id="password" placeholder="name@example.com" required />
+              <input  onKeyUp={(e)=>manejar(e,/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/)} type="password" className="form-control " id="password" placeholder="name@example.com" required />
               <label htmlFor="password" className="form-label">Contraseña</label>
               <div className="valid-feedback">
                 Looks good!
