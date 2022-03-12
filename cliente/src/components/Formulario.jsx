@@ -69,6 +69,10 @@ const Form = styled.div`
 `;
 
 
+const hacer = ()=>{
+  
+} 
+
 const manejar = (e, exp)=>{
   
   validador(exp, e.target)
@@ -85,9 +89,9 @@ const Formulario = () => (
       <Titulo>Registrate</Titulo>
       <Descripcion>
         <Form>
-          <form>
+          <form action='/sign-in' method='post'>
             <div className="mb-3 form-floating">
-              <input  onKeyUp={(e)=>manejar(e,/^[A-Za-z0-9_\.-]{8,20}$/)} type="text" className="form-control " id="validationServer01" placeholder="name@example.com" required />
+              <input  onKeyUp={(e)=>manejar(e,/^[A-Za-z0-9_\.-]{8,20}$/)} type="text" className="form-control " name='hola' id="validationServer01" placeholder="name@example.com" required />
               <label htmlFor="validationServer01" className="form-label">Usuario</label>
               <div className="valid-feedback">
                 Looks good!
@@ -158,12 +162,15 @@ const Formulario = () => (
             </div>
 
 
-            <button type="submit" className="btn btn-primary">Sign in</button>
+            <button type="submit" onSubmit={hacer} className="btn btn-primary">Sign in</button>
           </form>
         </Form>
       </Descripcion>
     </DescripcionContainer>
   </Container>
+
+
+
 
 )
 

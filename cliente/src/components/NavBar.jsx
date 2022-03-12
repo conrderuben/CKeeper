@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import IniciarSesion from "./IniciarSesion";
+import logo from "../assets/img/Logo.png"
 
 const NavBar=()=>{
     const Contenedor = styled.div`
@@ -23,9 +24,9 @@ const NavBar=()=>{
   
     `;
 
-    const Izq = styled.div`
-      flex:1;
-      justify-content: flex-start ;
+    const Izq = styled.img`
+      height: 40px ;
+      margin: 0px ;
     `;
 
     const Cen = styled.div`
@@ -91,7 +92,7 @@ const NavBar=()=>{
     return (
       <Contenedor>
         <Wrapper>
-          <Izq>LOGO</Izq>
+          <Izq src={logo}/>
           <Cen>CKEEPER</Cen>
           <Der>
             <Menu>

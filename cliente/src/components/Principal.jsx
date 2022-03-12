@@ -13,7 +13,7 @@ import fondo5 from "../assets/img/fondo5.jpg"
 const Container = styled.div`
     display: flex ;
     padding:0 ;
-      width: 100vw;
+    width: 100vw;
     height:100vh;
     max-width: 100% ;
     `;
