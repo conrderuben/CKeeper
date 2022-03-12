@@ -8,6 +8,6 @@ const app = express.Router();
 app.get('/', public.inicio);
 
 // Página sign-in
-app.post('/sign-in', public.inicio);
+app.post('/api/registro', public.registro);
 
 module.exports = app;
