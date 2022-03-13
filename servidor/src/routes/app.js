@@ -1,13 +1,9 @@
 const express = require('express');
-const public = require('../controllers/control')
+const registro = require('../controllers/registroController')
 const app = express.Router();
 
 
-
-// Página inicial
-app.get('/', public.inicio);
-
 // Página sign-in
-app.post('/api/registro', public.registro);
+app.post('/api/registro', registro.registro);
 
 module.exports = app;

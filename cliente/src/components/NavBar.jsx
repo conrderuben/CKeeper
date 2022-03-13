@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components"
-import IniciarSesion from "./IniciarSesion";
+import BotonSesion from "./BotonSesion";
 import logo from "../assets/img/Logo.png"
 
 const NavBar=()=>{
@@ -100,8 +100,10 @@ const NavBar=()=>{
               <Item href="/#sobre-nosotros">Sobre Nosotros</Item>
               <Item>Contacto</Item>
               <Item href="/registro">Registrarse</Item>
+              <Item href="/login">Login</Item>
               {/* <Boton>Iniciar Sesion</Boton> */}
-              <IniciarSesion/>
+              <BotonSesion onClick={(e)=>{window.location.href = "/login";}}/>
+              
               
             </Menu>
           </Der>
