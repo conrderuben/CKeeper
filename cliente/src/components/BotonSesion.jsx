@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const IniciarSesion = () => {
   return (
-    <button type="button" className="btn btn-primary">Iniciar Sesion</button>
-  )
-}
+    <button type="button" className="btn btn-primary">
+      Iniciar Sesion
+    </button>
+  );
+};
 
-export default IniciarSesion
+export default IniciarSesion;
