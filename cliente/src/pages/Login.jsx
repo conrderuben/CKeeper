@@ -1,11 +1,11 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-import Principal from '../components/Principal';
+import Principal from '../components/Main';
 import styled from 'styled-components';
-import SobreNosotros from '../components/SobreNosotros';
-import Contacto from '../components/Contacto';
-import Formulario from '../components/Formulario';
-import InicioSesion from '../components/InicioSesion';
+import SobreNosotros from '../components/AboutUs';
+import Contacto from '../components/Contact';
+import Form from '../components/RegisterForm';
+import InicioSesion from '../components/LoginForm';
 
 const Contenedor = styled.div`
   padding: 0;

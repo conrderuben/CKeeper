@@ -1,4 +1,4 @@
-const validador = (val, campo) => {
+export const validator = (val, campo) => {
   const vali = (val, campo) => {
     if (val.test(campo.value)) {
       campo.classList.remove('is-invalid');
@@ -12,4 +12,3 @@ const validador = (val, campo) => {
   };
   vali(val, campo);
 };
-export default validador;

@@ -5,7 +5,7 @@ import fondo1 from '../assets/img/fondo1.jpg';
 import fondo3 from '../assets/img/fondo3.jpg';
 import fondo4 from '../assets/img/fondo4.jpg';
 import fondo5 from '../assets/img/fondo5.jpg';
-import validador from '../validadorFormulario';
+import { validator } from '../formValidator';
 
 import Axios from 'axios';
 import IniciarSesion from './BotonSesion';
@@ -56,8 +56,8 @@ const Form = styled.div`
   width: 30vw;
 `;
 
-const manejar = (e, exp) => {
-  validador(exp, e.target);
+const validation = (e, exp) => {
+  validator(exp, e.target);
 };
 
 const InicioSesion = () => {

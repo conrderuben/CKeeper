@@ -1,9 +1,9 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-import { Principal } from '../components/Principal';
+import { Principal } from '../components/Main';
 import styled from 'styled-components';
-import SobreNosotros from '../components/SobreNosotros';
-import Contacto from '../components/Contacto';
+import SobreNosotros from '../components/AboutUs';
+import Contacto from '../components/Contact';
 
 const Contenedor = styled.div`
   padding: 0;
