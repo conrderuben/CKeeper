@@ -1,17 +1,3 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import fondo2 from '../assets/img/fondo2.jpg';
-import fondo1 from '../assets/img/fondo1.jpg';
-import fondo3 from '../assets/img/fondo3.jpg';
-import fondo4 from '../assets/img/fondo4.jpg';
-import fondo5 from '../assets/img/fondo5.jpg';
-import { validator } from '../formValidator';
-
-import Axios from 'axios';
-import { httpClient } from '../utils/httpClient';
-import { useNavigate } from 'react-router-dom';
-import Input from './Input';
-
 const Container = styled.div`
   display: flex;
   padding: 0;
@@ -58,11 +44,9 @@ const FormContainer = styled.div`
   width: 30vw;
 `;
 
-const validation = (e, exp) => {
-  validator(exp, e.target);
-};
 
-export const Form = () => {
+
+export const AddPlaza = () => {
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
@@ -86,21 +70,19 @@ export const Form = () => {
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>
-        <Title>Registrate</Title>
+        <Title>Add plaza</Title>
         <Description>
           <FormContainer>
             <form onSubmit={handleSubmit}>
               <Input
-                exp={/^[A-Za-z0-9_\.-]{8,20}$/}
-                type="text"
-                name="user"
-                id="user"
-                label="User"
+                type="number"
+                name="prize"
+                id="prize"
+                label="Prize"
                 onChange={handleChange}
               ></Input>
               <Input
-                exp={/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/}
-                type="password"
+                type=""
                 name="password"
                 id="password"
                 label="Password"
@@ -158,5 +140,3 @@ export const Form = () => {
         </Description>
       </DescriptionContainer>
     </Container>
-  );
-};

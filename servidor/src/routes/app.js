@@ -1,9 +1,12 @@
 const express = require('express');
-const registro = require('../controllers/registroController')
+const register = require('../controllers/registerController')
+const parking = require('../controllers/parkingController')
 const app = express.Router();
 
 
 // Página sign-in
-app.post('/api/registro', registro.registro);
+app.post('/api/registro', register.register);
+
+app.post('/api/add-parking', parking.addParking);
 
 module.exports = app;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { validator } from '../formValidator';
+import * as bootstrap from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const validation = (e, exp) => {
   validator(exp, e.target);
@@ -11,7 +13,7 @@ const Input = props => {
       <input
         onKeyUp={e => validation(e, props.exp)}
         onChange={e => {
-          props.handleChange(e);
+          props.onChange(e);
         }}
         type={props.type}
         className="form-control "
