@@ -34,7 +34,7 @@ const Eslogan = styled.h2`
   top: 15vh;
 `;
 
-const Principal = props => {
+export const Principal = props => {
   return (
     <Container>
       <a name="home"></a>
@@ -45,5 +45,3 @@ const Principal = props => {
     </Container>
   );
 };
-
-export default Principal;

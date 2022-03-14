@@ -8,6 +8,8 @@ import fondo5 from '../assets/img/fondo5.jpg';
 import validador from '../validadorFormulario';
 
 import Axios from 'axios';
+import { httpClient } from '../utils/httpClient';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -60,6 +62,7 @@ const manejar = (e, exp) => {
 };
 
 const Formulario = () => {
+  const navigate = useNavigate();
   const handleChange = e => {
     setForm({
       ...form,
@@ -71,9 +74,8 @@ const Formulario = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(form);
-    Axios.post('http://localhost:4000/api/registro', { form: form }).then(texto => {
-      window.location.href = '/login';
+    httpClient.post('/registro', { form }).then(() => {
+      navigate('/login');
     });
   };
 
