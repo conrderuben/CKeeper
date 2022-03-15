@@ -18,15 +18,18 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
+  box-sizing: border-box;
 `;
 
 const ImgContainer = styled.div`
   flex:2;
-  position: relative;
+  padding: 0;
+  margin: 0;
 `;
 const Image = styled.img`
   width: 100%;
   height: 100%;
+  
   object-fit: cover;
 `;
 
@@ -35,22 +38,28 @@ const DescriptionContainer = styled.div`
   flex-direction: column;
   flex:1;
   /* background-color: #ffffff; */
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 10vh;
-  margin-bottom: 7vh;
+  height:100%;
+  max-height: 100vh;
+  box-sizing: border-box;
+ 
+  
   
 `;
 
 const Title = styled.h1`
-  
+  margin-top: 15%;
+  flex:1;
   font-size: 60px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
+  
+  
 `;
 
 const FormContainer = styled.div`
-  margin: 10px;
+  flex:1;
+  margin: 3% 10% 10% 10%;
+  
 `;
 
 const validation = (e, exp) => {
