@@ -21,8 +21,7 @@ const Container = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  width: 60%;
-  height: 100%;
+  flex:2;
   position: relative;
 `;
 const Image = styled.img`
@@ -32,7 +31,8 @@ const Image = styled.img`
 `;
 
 const DescriptionContainer = styled.div`
-  width: 32vw;
+  display: flex;
+  flex:1;
   /* background-color: #ffffff; */
   position: relative;
   margin-left: 5vw;
