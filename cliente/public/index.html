@@ -29,18 +29,35 @@
     />
     <!--estilo mainPage-->
 
+    <!--estilo global-->
+    <link rel="stylesheet" href="style.css">
 
     <style>
       * {
         font-family: 'Quicksand', sans-serif;
         box-sizing: border-box;
         scroll-behavior: smooth;
+        margin: 0 auto;
+        padding: 0;
       }
       body {
         margin: 0 auto;
         padding: 0;
         width: 100vw;
-        /* overflow-x: hidden; */
+        overflow-x: hidden; 
+      }
+
+      body::-webkit-scrollbar {
+        width: 8px;
+        background: rgba(133, 131, 131, 0.514);
+        height: 0px;
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background: #54555581;
+        border-radius: 10px;
+        border: #6b6c6d9f 2px solid;
+        
       }
     </style>
 
