@@ -1,0 +1,41 @@
+module.exports=(sequelize,DataTypes)=>{
+const Persona=sequelize.define("Persona",{
+id_usuario:{
+    type:DataTypes.INTEGER,
+    primaryKey:true,
+    autoIncrement:true
+},
+usuario:{
+    type:DataTypes.STRING(25),
+    unique:true,
+    allowNull:false
+},
+nombre:{
+    type:DataTypes.STRING(25),
+    allowNull:false
+},
+apellido:{
+    type:DataTypes.STRING(25),
+    allowNull:false
+},
+contraseña:{
+    type:DataTypes.STRING(30),
+    allowNull:false
+},
+fechaNacimiento:{
+    type:DataTypes.DATE,
+    allowNull:false
+},
+correo:{
+    type:DataTypes.STRING(40),
+    unique:true,
+    allowNull:false
+},
+telefono:{
+    type:DataTypes.STRING(9),
+    allowNull:false
+}
+//id_ubicacion
+})
+return Persona
+}

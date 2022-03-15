@@ -1,0 +1,29 @@
+module.exports=(sequelize,DataTypes)=>{
+    const Plaza=sequelize.define("Plaza",{
+    id_plaza:{
+        type:DataTypes.INTEGER,
+        primaryKey:true,
+        autoIncrement:true
+    },
+    precio:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+    alquilada:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+    },
+    publicada:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
+    },
+    descripcion:{
+        type:DataTypes.STRING(400),
+        allowNull:false
+    },
+   //id_usuario
+   //id_dimension
+   //id_ubicacion
+    })
+    return Plaza
+    }
