@@ -44,8 +44,6 @@ const FormContainer = styled.div`
   width: 30vw;
 `;
 
-
-
 export const AddPlaza = () => {
   const [form, setForm] = useState({});
 
@@ -140,3 +138,5 @@ export const AddPlaza = () => {
         </Description>
       </DescriptionContainer>
     </Container>
+  );
+};
