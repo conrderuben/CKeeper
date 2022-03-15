@@ -32,30 +32,25 @@ const Image = styled.img`
 
 const DescriptionContainer = styled.div`
   display: flex;
+  flex-direction: column;
   flex:1;
   /* background-color: #ffffff; */
-  position: relative;
   margin-left: 5vw;
   margin-right: 5vw;
   margin-top: 10vh;
   margin-bottom: 7vh;
-  padding: 15px;
+  
 `;
 
 const Title = styled.h1`
+  
   font-size: 60px;
-  position: absolute;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 `;
 
-const Description = styled.div`
-  position: absolute;
-  top: 140px;
-`;
-
 const FormContainer = styled.div`
-  width: 30vw;
+  margin: 10px;
 `;
 
 const validation = (e, exp) => {
@@ -87,7 +82,6 @@ export const Form = () => {
       </ImgContainer>
       <DescriptionContainer>
         <Title>Registrate</Title>
-        <Description>
           <FormContainer>
             <form onSubmit={handleSubmit}>
               <Input
@@ -155,7 +149,6 @@ export const Form = () => {
               </button>
             </form>
           </FormContainer>
-        </Description>
       </DescriptionContainer>
     </Container>
   );
