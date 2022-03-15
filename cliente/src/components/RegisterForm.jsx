@@ -41,7 +41,7 @@ const DescriptionContainer = styled.div`
   height:100%;
   max-height: 100vh;
   box-sizing: border-box;
- 
+  border: 3px solid black;
   
   
 `;
@@ -49,16 +49,20 @@ const DescriptionContainer = styled.div`
 const Title = styled.h1`
   margin-top: 15%;
   flex:1;
-  font-size: 60px;
+  font-size: 5vh;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
+  border: 3px solid black;
   
   
 `;
 
 const FormContainer = styled.div`
+height: 100vh;
   flex:1;
   margin: 3% 10% 10% 10%;
+  border: 3px solid black;
+  
   
 `;
 
