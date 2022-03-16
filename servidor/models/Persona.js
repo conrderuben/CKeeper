@@ -1,41 +1,45 @@
-module.exports=(sequelize,DataTypes)=>{
-const Persona=sequelize.define("Persona",{
-id_usuario:{
-    type:DataTypes.INTEGER,
-    primaryKey:true,
-    autoIncrement:true
-},
-usuario:{
-    type:DataTypes.STRING(25),
-    unique:true,
-    allowNull:false
-},
-nombre:{
-    type:DataTypes.STRING(25),
-    allowNull:false
-},
-apellido:{
-    type:DataTypes.STRING(25),
-    allowNull:false
-},
-contraseña:{
-    type:DataTypes.STRING(30),
-    allowNull:false
-},
-fechaNacimiento:{
-    type:DataTypes.DATE,
-    allowNull:false
-},
-correo:{
-    type:DataTypes.STRING(40),
-    unique:true,
-    allowNull:false
-},
-telefono:{
-    type:DataTypes.STRING(9),
-    allowNull:false
-}
-//id_ubicacion
-})
-return Persona
-}
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Persona extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      Persona.hasMany(models.Vehiculo,{
+        foreignKey:'idUsuario'
+
+      })
+      Persona.hasMany(models.Alquiler,{
+        foreignKey:'arrendador'
+
+      })
+      Persona.hasMany(models.Alquiler,{
+        foreignKey:'arrendatario'
+
+      })
+      Persona.hasMany(models.Plaza,{
+        foreignKey:'idUsuario'
+
+      })
+
+    }
+  }
+  Persona.init({
+    usuario: DataTypes.STRING,
+    nombre: DataTypes.STRING,
+    apellido: DataTypes.STRING,
+    contraseña: DataTypes.STRING,
+    fechaNacimiento: DataTypes.DATE,
+    correo: DataTypes.STRING,
+    telefono: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Persona',
+  });
+  return Persona;
+};

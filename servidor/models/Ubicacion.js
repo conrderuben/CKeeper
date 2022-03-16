@@ -1,23 +1,34 @@
-module.exports=(sequelize,DataTypes)=>{
-    const Ubicacion=sequelize.define("Ubicacion",{
-    id_ubicacion:{
-        type:DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    },
-    calle:{
-        type:DataTypes.STRING(25),
-        allowNull:false
-    },
-    codigoPostal:{
-        type:DataTypes.STRING(5),
-        allowNull:false
-    },
-    numero:{
-        type:DataTypes.INTEGER,
-        allowNull:false
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Ubicacion extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      
+      Ubicacion.hasMany(models.Plaza,{
+        foreignKey:'idUbicacion'
+      })
+
+      Ubicacion.belongsTo(models.Municipio,{
+        foreignKey:'id',
+        target_key:'idMunicipio'
+      })
     }
-    //id_municipio
-    })
-    return Ubicacion
-    }
+  }
+  Ubicacion.init({
+    calle: DataTypes.STRING,
+    codigoPostal: DataTypes.STRING,
+    numero: DataTypes.INTEGER,
+    idMunicipio: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Ubicacion',
+  });
+  return Ubicacion;
+};

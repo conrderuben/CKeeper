@@ -1,28 +1,40 @@
-module.exports=(sequelize,DataTypes)=>{
-    const Alquiler=sequelize.define("Alquiler",{
-    id_alquiler:{
-        type:DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true
-    },
-    fechaInicio:{
-        type:DataTypes.DATE,
-        allowNull:false
-    },
-    fechaFin:{
-        type:DataTypes.DATE,
-        allowNull:false
-    },
-    arrendador:{
-        type:DataTypes.INTEGER,
-        unique:true,
-        allowNull:false
-    },
-    arrendatario:{
-        type:DataTypes.INTEGER,
-        unique:true,
-        allowNull:false
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Alquiler extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+
+      Alquiler.hasMany(models.Factura,{
+        foreignKey:'idAlquiler'
+
+      })
+
+      Alquiler.belongsTo(models.Persona,{
+        foreignKey:'id',
+        target_key:'arrendador'
+      })
+
+      Alquiler.belongsTo(models.Persona,{
+        foreignKey:'id',
+        target_key:'arrendatario'
+      })
     }
-    })
-    return Alquiler
-    }
+  }
+  Alquiler.init({
+    fechaInicio: DataTypes.DATE,
+    fechaFin: DataTypes.DATE,
+    arrendador: DataTypes.INTEGER,
+    arrendatario: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Alquiler',
+  });
+  return Alquiler;
+};
