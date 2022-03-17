@@ -108,7 +108,7 @@ function SideMenu() {
             
             <div className="group" >
         
-             <Link to="/" className="links"><Item icon={<HomeRounded />} name="Home"/></Link>
+             <Link to="/main" className="links"><Item icon={<HomeRounded />} name="Home"/></Link>
 
              
             </div>
@@ -128,7 +128,7 @@ function SideMenu() {
               PERSONAL PROPERTY
             </motion.h3>
             
-            <Link to="/" className="links">  <Item icon={<DirectionsCarIconRounded/>} name="My Vehicles" /></Link>
+            <Link to="/cars" className="links">  <Item icon={<DirectionsCarIconRounded/>} name="My Vehicles" /></Link>
             <Link to="/" className="links">  <Item icon={<LocalParkingRounded />} name="Parking Places" /></Link>
             <Link to="/" className="links">  <Item icon={<ReceiptLongIcon />} name="Bills" /></Link>
 

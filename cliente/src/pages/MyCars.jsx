@@ -10,6 +10,7 @@ const ContentContainer = styled.div`
     align-items: center;
     flex:1;
     margin: 0 auto;
+   height: auto;
 `;
 
 const AddButton = styled.button`
@@ -20,15 +21,19 @@ const AddButton = styled.button`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    
     width: 85%;
     position: absolute;
     margin-right: 15px;
     margin-top: 40px;
     
+    height: 100%;
 `;
 const Card = styled.div`
-margin: 10px 10px;
+margin-top: 10px ;
+margin-right: 10px;
+margin-left: 10px;
     border-radius: 15px;
     border: 2px solid black;
     height: 300px;
@@ -38,9 +43,11 @@ margin: 10px 10px;
     
 `;
 const Container=styled.div`
-width:100vw;
+width:100%;
 display:flex;
-background-color: #CCCCFF;
+
+height: 100%;
+
 `;
 
 export const MyCars = () => {

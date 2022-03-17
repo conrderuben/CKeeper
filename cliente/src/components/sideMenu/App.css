@@ -1,4 +1,6 @@
-
+body{
+  background-color: #CCCCFF;
+}
 .sidebar_container {
   margin-left: 0;
   height: 100vh;
