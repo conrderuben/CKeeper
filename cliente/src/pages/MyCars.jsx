@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import SideMenu from '../components/sideMenu/SideMenu'
 
 
-const Container = styled.div`
+const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content:space-between;
     align-items: center;
+    flex:1;
+    margin: 0 auto;
 `;
 
 const AddButton = styled.button`
@@ -19,7 +22,8 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 85%;
-    margin: auto;
+    position: absolute;
+   float: right;
     margin-right: 0;
     margin-top: 20px;
 `;
@@ -32,12 +36,17 @@ margin: 10px 10px;
     box-shadow: 4px 4px 5px 0px;
     
 `;
+const Container=styled.div`
+width:100vw;
+display:flex;
+background-color: #CCCCFF;
+`;
 
 export const MyCars = () => {
   return (
-      <>
-    <SideMenu></SideMenu>
       <Container>
+    <SideMenu/>
+      <ContentContainer>
       <AddButton>+Add Car</AddButton>
       <CardContainer>
     <Card>CarCard</Card>
@@ -46,8 +55,8 @@ export const MyCars = () => {
     <Card>CarCard</Card>
     <Card>CarCard</Card>
     </CardContainer>
+    </ContentContainer>
     </Container>
-    </>
 
   )
 }

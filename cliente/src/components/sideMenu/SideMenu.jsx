@@ -24,13 +24,15 @@ function SideMenu() {
 
   const sideContainerVariants = {
     true: {
-      width: "15rem",
+      width: "16%",
+      
     },
     false: {
       transition: {
         delay: 0.6,
+        
       },
-     
+      width: "10%",
     },
   };
 
@@ -39,7 +41,7 @@ function SideMenu() {
     
     },
     false: {
-      width: "100px",
+      width: "100%",
       transition: {
         delay: 0.4,
       },
