@@ -20,12 +20,12 @@ const AddButton = styled.button`
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 85%;
     position: absolute;
-   float: right;
-    margin-right: 0;
-    margin-top: 20px;
+    margin-right: 15px;
+    margin-top: 40px;
+    
 `;
 const Card = styled.div`
 margin: 10px 10px;
@@ -34,6 +34,7 @@ margin: 10px 10px;
     height: 300px;
     width: 300px;
     box-shadow: 4px 4px 5px 0px;
+    
     
 `;
 const Container=styled.div`
