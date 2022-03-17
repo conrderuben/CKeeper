@@ -86,7 +86,6 @@ const InicioSesion = () => {
         <Descripcion>
           <Form>
             <form onSubmit={handleSubmit}>
-              <input type="text" name="u" id="u" onChange={handleChange} />
 
               <div className="mb-3 form-floating">
                 <input

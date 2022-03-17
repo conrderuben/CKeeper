@@ -10,7 +10,7 @@ const Contenedor = styled.div`
   padding: 0;
 `;
 
-const Registro = () => {
+const Register = () => {
   return (
     <Contenedor>
       <NavBar />
@@ -19,4 +19,4 @@ const Registro = () => {
   );
 };
 
-export default Registro;
+export default Register;

@@ -12,7 +12,7 @@ const NavBar = () => {
   `;
 
   const Wrapper = styled.div`
-    padding: 10px 20px;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,8 +21,8 @@ const NavBar = () => {
     background-color: #ffffff94;
   `;
 
-  const Izq = styled.img`
-    height: 40px;
+  const Izq = styled.div`
+   flex: 1;
     margin: 0px;
   `;
 
@@ -49,9 +49,8 @@ const NavBar = () => {
     padding: 2px 10px;
     height: 20px;
     cursor: pointer;
+    color:inherit;
     text-decoration: none;
-
-    color: black;
 
     &:hover {
       background-color: #f9fdff6c;
@@ -75,22 +74,25 @@ const NavBar = () => {
   return (
     <Contenedor>
       <Wrapper>
-        <Izq src={logo} />
-        <Cen>CKEEPER</Cen>
-        <Der>
+        <Izq><img src={logo} width='40' height='40'/></Izq>
+        <Cen>
           <Menu>
             <Item href="/#home">Home</Item>
-            <Item href="/#sobre-nosotros">Sobre Nosotros</Item>
+            <Item href="/#sobre-nosotros">About us</Item>
             <Item>Contacto</Item>
             <Item href="/registro">Registrarse</Item>
-            <Item href="/login">Login</Item>
-            {/* <Boton>Iniciar Sesion</Boton> */}
-            <BotonSesion
+            {/* <Boton>Login</Boton> */}
+            {/* <BotonSesion
               onClick={e => {
                 window.location.href = '/login';
               }}
-            />
-          </Menu>
+            /> */}
+          </Menu></Cen>
+        <Der>
+        <BotonSesion
+              onClick={e => {
+                window.location.href = '/login';
+              }}/> 
         </Der>
       </Wrapper>
     </Contenedor>

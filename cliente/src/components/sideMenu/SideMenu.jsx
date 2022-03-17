@@ -1,46 +1,165 @@
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
-import './Navbar.css';
-import { IconContext } from 'react-icons';
+import "./App.css";
+import { motion } from "framer-motion";
+import {
+  LocalParkingRounded,
+  HomeRounded,
+  SettingsRemoteRounded,
+  TocRounded,
+  
+} from "@material-ui/icons";
+import DirectionsCarIconRounded from '@mui/icons-material/DirectionsCar';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import Item from "./Item";
+import { useState } from "react";
+import {Link} from "react-router-dom"
+import LogoutIcon from '@mui/icons-material/Logout';
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+function SideMenu() {
+  const [open, setOpen] = useState(true);
 
-function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
+  // for collpsing sidebar
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const sideContainerVariants = {
+    true: {
+      width: "15rem",
+    },
+    false: {
+      transition: {
+        delay: 0.6,
+      },
+     
+    },
+  };
 
+  const sidebarVariants = {
+    true: {
+    
+    },
+    false: {
+      width: "100px",
+      transition: {
+        delay: 0.4,
+      },
+      
+    },
+  };
+
+  const end = {
+    true: {
+      marginRight:0,
+      transition: {
+        
+      },
+     
+    },
+    false:{
+      margin: "0 auto",
+      transition: {
+        delay: 0.4,
+      },
+    }
+  };
+  
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </IconContext.Provider>
-    </>
+      <motion.div
+        data-Open={open}
+        variants={sideContainerVariants}
+        initial={`${open}`}
+        animate={`${open}`}
+        className="sidebar_container"
+      >
+        {/* sidebar div */}
+        <motion.div
+          className="sidebar"
+          initial={`${open}`}
+          animate={`${open}`}
+          variants={sidebarVariants}
+        >
+          {/* lines_icon */}
+          <motion.div
+            whileHover={{
+              scale: 1.2,
+              rotate: 180,
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              backdropFilter: "blur(3.5px)",
+              WebkitBackdropFilter: "blur(3.5px)",
+              border: "1px solid rgba( 255, 255, 255, 0.18 )",
+              transition: {
+                delay: 0.2,
+                duration: 0.4,
+              },
+            }}
+            onClick={handleToggle}
+            variants={end}
+            end={`${open}`}
+            className="lines_icon"
+          >
+            <TocRounded />
+          </motion.div>
+         <br/>
+  <br/>
+            {/* group 1 */}
+            
+            <div className="group" >
+        
+             <Link to="/" className="links"><Item icon={<HomeRounded />} name="Home"/></Link>
+
+             
+            </div>
+          {/* group 2 */}
+          
+          <div className="group">
+          <motion.h2
+              animate={{ opacity: open ? 0 : 1, height: open ? "auto" : 0 }}
+              
+            >
+             <div className="line"></div>
+            </motion.h2>
+            <motion.h3
+              animate={{ opacity: open ? 1 : 0, height: open ? "auto" : 0 }}
+              
+            >
+              PERSONAL PROPERTY
+            </motion.h3>
+            
+            <Link to="/" className="links">  <Item icon={<DirectionsCarIconRounded/>} name="My Vehicles" /></Link>
+            <Link to="/" className="links">  <Item icon={<LocalParkingRounded />} name="Parking Places" /></Link>
+            <Link to="/" className="links">  <Item icon={<ReceiptLongIcon />} name="Bills" /></Link>
+
+           
+          </div>
+          
+          {/* group 3 */}
+          <div className="group">
+          <motion.h2
+              animate={{ opacity: open ? 0 : 1, height: open ? "auto" : 0 }}
+              
+            >
+             <div className="line"></div>
+            </motion.h2>
+            <motion.h3
+              animate={{ opacity: open ? 1 : 0, height: open ? "auto" : 0 }}
+            >
+              PROFILE
+            </motion.h3>
+            <Link to="/" className="links"><Item icon={<ManageAccountsRoundedIcon />} name="Edit"/></Link>
+            <Link to="/" className="links"><Item icon={<LogoutIcon />} name="Log Out"/></Link>
+           
+          </div>
+       
+        </motion.div>
+      </motion.div>
+
+      <div className="body_container">
+        
+      </div>
+      </>
+  
   );
 }
 
-export default Navbar;
+export default SideMenu;

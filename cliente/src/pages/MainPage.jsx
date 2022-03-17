@@ -8,7 +8,7 @@ const FormContainer = Styled.div`
   width: 50px;
   
 `;
-const Registro = () => {
+const MainPage = () => {
   return (
     <div>
       <SideMenu />
@@ -19,4 +19,4 @@ const Registro = () => {
   );
 };
 
-export default Registro;
+export default MainPage;
