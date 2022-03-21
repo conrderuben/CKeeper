@@ -1,11 +1,11 @@
 import React from 'react';
 
-const IniciarSesion = () => {
+const Button = ({ children }) => {
   return (
     <button type="button" className="btn btn-primary">
-      Iniciar Sesion
+      {children}
     </button>
   );
 };
 
-export default IniciarSesion;
+export default Button;

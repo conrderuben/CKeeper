@@ -8,7 +8,6 @@ import fondo5 from '../assets/img/fondo5.jpg';
 import { validator } from '../formValidator';
 
 import Axios from 'axios';
-import IniciarSesion from './BotonSesion';
 
 const Container = styled.div`
   display: flex;
@@ -86,7 +85,6 @@ const InicioSesion = () => {
         <Descripcion>
           <Form>
             <form onSubmit={handleSubmit}>
-
               <div className="mb-3 form-floating">
                 <input
                   type="text"

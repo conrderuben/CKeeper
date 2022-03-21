@@ -1,6 +1,10 @@
 const bd = require("../settings/db")
 const modeloPersona = require('../../models').Persona;
 
+//Bcrytp for the hashing
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
+
 
 exports.register = (req, res) => {
     // const id = 0;
@@ -11,12 +15,41 @@ exports.register = (req, res) => {
     // const date = req.body.form.date;
     // const email = req.body.form.email;
     // const telephone = req.body.form.telephone;
-    modeloPersona.create(req.body.form)
+
+    const form =req.body.form;
+    bcrypt.hash(form.contraseña, saltRounds, (err, hash)=>{
+        if(err){
+            console.log('error with the hash')
+        }
+            const data = {...form, contraseña:hash }
+
+            modeloPersona.create(data)
         .then((data)=>{
             res.json({datos:data})
          }).catch((err)=>{
-             res.json({errpr:err})
+             res.json({error:err})
          })
+        
+    }
+    )
+    
+   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const sql = `INSERT INTO persona(id_usuario, usuario, nombre, apellido, contraseña, fechaNacimiento, correo, telefono) VALUES (?,?,?,?,?,?,?,?)`
 //     bd.query(sql,[id,user,password,name,surname,date,email,telephone] ,(err, result)=>{
 //         if(err){

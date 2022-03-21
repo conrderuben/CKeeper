@@ -1,71 +1,73 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SideMenu from '../components/sideMenu/SideMenu'
-
+import { CarCard } from '../components/CarCard';
+import { CardAdd } from '../components/CardAdd';
+import SideMenu from '../components/sideMenu/SideMenu';
 
 const ContentContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
-    align-items: center;
-    flex:1;
-    margin: 0 auto;
-   height: auto;
-`;
-
-const AddButton = styled.button`
-    width: 80px;
-    border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin: 0 auto;
+  height: auto;
 `;
 
 const CardContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-    width: 85%;
-    position: absolute;
-    margin-right: 15px;
-    margin-top: 40px;
-    
-    height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 85%;
+  margin-right: 15px;
+  margin-top: 40px;
+  height: 100%;
 `;
 const Card = styled.div`
-margin-top: 10px ;
-margin-right: 10px;
-margin-left: 10px;
-    border-radius: 15px;
-    border: 2px solid black;
-    height: 300px;
-    width: 300px;
-    box-shadow: 4px 4px 5px 0px;
-    
-    
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 15px;
+  border: 2px solid black;
+  height: 300px;
+  width: 300px;
+  box-shadow: 4px 4px 5px 0px;
 `;
-const Container=styled.div`
-width:100%;
-display:flex;
-
-height: 100%;
-
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  background-color: purple;
+  height: 100%;
 `;
 
 export const MyCars = () => {
+  const [listOfVehicles, setListOfVehicles] = useState([]);
+  const [listOfUsers, setListOfUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:4000/api/get-vehicles').then(resp => {
+      setListOfVehicles(resp.data);
+    });
+    listOfVehicles.map((value, key) => {
+      axios.get(`http://localhost:4000/api/get-user-by-id${value.idUsuario}`).then(response => {
+        setListOfUsers(...listOfUsers, response.data);
+      });
+    });
+  }, []);
+
   return (
-      <Container>
-    <SideMenu/>
+    <Container>
+      <SideMenu />
       <ContentContainer>
-      <AddButton>+Add Car</AddButton>
-      <CardContainer>
-    <Card>CarCard</Card>
-    <Card>CarCard</Card>
-    <Card>CarCard</Card>
-    <Card>CarCard</Card>
-    <Card>CarCard</Card>
-    </CardContainer>
-    </ContentContainer>
+        <CardContainer>
+          {listOfVehicles.map((value, key) => {
+            console.log(listOfUsers);
+            return <CarCard tipo={value.tipo}></CarCard>;
+          })}
+          {/* usuario={listOfUsers[0].usuario} */}
+          <CardAdd />
+        </CardContainer>
+      </ContentContainer>
     </Container>
-
-  )
-}
-
+  );
+};

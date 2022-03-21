@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BotonSesion from './BotonSesion';
+import Button from './PrimaryButton';
 import logo from '../assets/img/Logo.png';
 
 const NavBar = () => {
@@ -22,7 +22,7 @@ const NavBar = () => {
   `;
 
   const Izq = styled.div`
-   flex: 1;
+    flex: 1;
     margin: 0px;
   `;
 
@@ -49,7 +49,7 @@ const NavBar = () => {
     padding: 2px 10px;
     height: 20px;
     cursor: pointer;
-    color:inherit;
+    color: inherit;
     text-decoration: none;
 
     &:hover {
@@ -74,7 +74,9 @@ const NavBar = () => {
   return (
     <Contenedor>
       <Wrapper>
-        <Izq><img src={logo} width='40' height='40'/></Izq>
+        <Izq>
+          <img src={logo} width="40" height="40" />
+        </Izq>
         <Cen>
           <Menu>
             <Item href="/#home">Home</Item>
@@ -87,12 +89,16 @@ const NavBar = () => {
                 window.location.href = '/login';
               }}
             /> */}
-          </Menu></Cen>
+          </Menu>
+        </Cen>
         <Der>
-        <BotonSesion
-              onClick={e => {
-                window.location.href = '/login';
-              }}/> 
+          <Button
+            onClick={e => {
+              window.location.href = '/login';
+            }}
+          >
+            Iniciar Sesion
+          </Button>
         </Der>
       </Wrapper>
     </Contenedor>
