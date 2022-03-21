@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import fondo2 from '../assets/img/fondo2.jpg';
-import fondo1 from '../assets/img/fondo1.jpg';
-import fondo3 from '../assets/img/fondo3.jpg';
-import fondo4 from '../assets/img/fondo4.jpg';
+
 import fondo5 from '../assets/img/fondo5.jpg';
 import { validator } from '../formValidator';
 
 import Axios from 'axios';
+import { httpClient } from '../utils/httpClient';
+import { useNavigate } from 'react-router-dom';
+import Input from './Input';
 
 const Container = styled.div`
   display: flex;
@@ -15,55 +15,54 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: #ffffff;
+  box-sizing: border-box;
 `;
 
-const ImagenContainer = styled.div`
-  width: 60%;
-  height: 100%;
-  position: relative;
+const ImgContainer = styled.div`
+  flex: 2;
+  padding: 0;
+  margin: 0;
 `;
-const Imagen = styled.img`
+const Image = styled.img`
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 `;
 
-const DescripcionContainer = styled.div`
-  width: 32vw;
+const DescriptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   /* background-color: #ffffff; */
-  position: relative;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 10vh;
-  margin-bottom: 7vh;
-  padding: 15px;
+  height: 100%;
+  max-height: 100vh;
+  box-sizing: border-box;
 `;
 
-const Titulo = styled.h1`
-  font-size: 60px;
-  position: absolute;
+const Title = styled.h1`
+  margin-top: 15%;
+  flex: 1;
+  font-size: 5vh;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 `;
 
-const Descripcion = styled.div`
-  position: absolute;
-  top: 140px;
-`;
-
-const Form = styled.div`
-  width: 30vw;
+const FormContainer = styled.div`
+  height: 100vh;
+  flex: 1;
+  margin: 3% 10% 10% 10%;
 `;
 
 const validation = (e, exp) => {
   validator(exp, e.target);
 };
 
-const InicioSesion = () => {
+export const LoginForm = () => {
   const [form, setForm] = useState({});
 
+  const navigate = useNavigate();
   const handleChange = e => {
-    console.log('hola');
     setForm({
       ...form,
       [e.target.name]: e.target.value
@@ -72,60 +71,48 @@ const InicioSesion = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    httpClient.post('/login', { form }).then(res => {
+      console.log(res.data);
+      if (res.data.usuario != null) {
+        navigate('/main');
+      } else {
+        navigate('/login');
+      }
+    });
   };
-
   return (
     <Container>
-      <ImagenContainer>
-        <a name="sobre-nosotros"></a>
-        <Imagen src={fondo5} />
-      </ImagenContainer>
-      <DescripcionContainer>
-        <Titulo>Iniciar Sesion</Titulo>
-        <Descripcion>
-          <Form>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3 form-floating">
-                <input
-                  type="text"
-                  className="form-control "
-                  name="usuario"
-                  id="usuario"
-                  placeholder="name@example.com"
-                  onChange={handleChange}
-                />
-                <label htmlFor="usuario" className="form-label">
-                  Usuario
-                </label>
-                <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Incorrecto</div>
-              </div>
+      <ImgContainer>
+        <a name="about-us"></a>
+        <Image src={fondo5} />
+      </ImgContainer>
+      <DescriptionContainer>
+        <Title>Login</Title>
+        <FormContainer>
+          <form onSubmit={handleSubmit}>
+            <Input
+              exp={/^[A-Za-z0-9_\.-]{8,20}$/}
+              type="text"
+              name="user"
+              id="user"
+              label="User"
+              onChange={handleChange}
+            ></Input>
+            <Input
+              exp={/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/}
+              type="password"
+              name="password"
+              id="password"
+              label="Password"
+              onChange={handleChange}
+            ></Input>
 
-              <div className="form-floating mb-3">
-                <input
-                  onChange={handleChange}
-                  type="password"
-                  className="form-control "
-                  id="password"
-                  placeholder="name@example.com"
-                  required
-                />
-                <label htmlFor="password" className="form-label">
-                  Contraseña
-                </label>
-                <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Incorrecto</div>
-              </div>
-
-              <button type="submit" className="btn btn-primary">
-                Sign in
-              </button>
-            </form>
-          </Form>
-        </Descripcion>
-      </DescripcionContainer>
+            <button type="submit" className="btn btn-primary">
+              Sign in
+            </button>
+          </form>
+        </FormContainer>
+      </DescriptionContainer>
     </Container>
   );
 };
-
-export default InicioSesion;

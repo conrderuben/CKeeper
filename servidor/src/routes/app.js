@@ -10,7 +10,7 @@ const app = express.Router();
 // Página sign-in
 app.post('/api/registro', register.register);
 
-app.get('/api/login', login.login )
+app.post('/api/login', login.login);
 
 app.post('/api/add-parking', parking.addParking);
 

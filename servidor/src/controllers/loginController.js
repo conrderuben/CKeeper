@@ -5,27 +5,39 @@ const bcrypt = require('bcrypt')
 
 exports.login = (req, res) => {
 
-    const user = req.body.user;
-    const password = req.body.password;
+    const user = req.body.form.user;
+    const password = req.body.form.password;
 
-    db.query(
-        "SELECT * FROM users WHERE usuario = ?",
+    bd.query(
+        "SELECT * FROM Personas WHERE usuario = ?",
         [user],
         (err, result) =>{
             if(err){
-                res.send({err:err});
+                res.send({
+                    usuario:null,
+                    mensaje:"query error"
+                })
             }
-
-            if(result>0){
+            if(result.length==1){
                 bcrypt.compare(password, result[0].contraseña, (err, response)=>{
                     if(response){
-                        res.send(result);
+                        res.send({
+                            usuario:result[0].usuario,
+                            mensaje:"Its correct"
+                        })
                     }else{
-                        res.send({message: "Wrong username/password combination!"})
+                        res.send({
+                            usuario:null,
+                            mensaje:"Its invalid password"
+                        })
                     }
                 })
             }else{
-                res.send({message: "User doesn´t exist"})
+                res.send({
+                    usuario:null,
+                    mensaje:"result !>0"
+                })
+                
             }
         }
     )

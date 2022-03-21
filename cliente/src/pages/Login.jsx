@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import SobreNosotros from '../components/AboutUs';
 import Contacto from '../components/Contact';
 import Form from '../components/RegisterForm';
-import LoginForm from '../components/LoginForm';
+import { LoginForm } from '../components/LoginForm';
 
 const Contenedor = styled.div`
   padding: 0;
