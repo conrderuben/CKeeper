@@ -7,7 +7,6 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const NavBar = () => {
   const Contenedor = styled.div`
-    height: 45px;
     width: 100vw;
     position: fixed;
     z-index: 1;
@@ -76,9 +75,7 @@ const NavBar = () => {
           </Menu>
         </Cen>
         <Der>
-          <PrimaryButton>
-            <Link to="/login">Login</Link>
-          </PrimaryButton>
+          <PrimaryButton>Login</PrimaryButton>
         </Der>
       </Wrapper>
     </Contenedor>

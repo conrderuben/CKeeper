@@ -8,17 +8,13 @@ import fondo5 from '../assets/img/fondo5.jpg';
 
 const Container = styled.div`
   display: flex;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
 `;
 
 const ImagenContainer = styled.div`
+  display: flex;
   flex: 1;
-  width: 100%;
-  height: 100%;
   position: relative;
+  justify-content: center;
 `;
 const Imagen = styled.img`
   width: 100%;
@@ -27,8 +23,8 @@ const Imagen = styled.img`
 `;
 
 const Eslogan = styled.h2`
+  font-family: 'Quicksand', sans-serif;
   position: absolute;
-  width: 100%;
   text-align: center;
   color: white;
   top: 15vh;

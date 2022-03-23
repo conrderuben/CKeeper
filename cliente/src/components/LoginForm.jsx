@@ -13,46 +13,37 @@ import Cookies from 'universal-cookie';
 const Container = styled.div`
   display: flex;
   padding: 0;
-  width: 100vw;
   height: 100vh;
   background-color: #ffffff;
   box-sizing: border-box;
 `;
 
 const ImgContainer = styled.div`
-  flex: 2;
-  padding: 0;
-  margin: 0;
+  flex: 3;
 `;
 const Image = styled.img`
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 `;
 
 const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 2;
   /* background-color: #ffffff; */
-  height: 100%;
-  max-height: 100vh;
-  box-sizing: border-box;
 `;
 
 const Title = styled.h1`
-  margin-top: 15%;
-  flex: 1;
-  font-size: 5vh;
+  margin: 5rem 1rem 1rem 2rem;
+  font-size: 45px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 `;
 
 const FormContainer = styled.div`
-  height: 100vh;
   flex: 1;
-  margin: 3% 10% 10% 10%;
+  margin: 1rem 2rem;
 `;
 
 const validation = (e, exp) => {

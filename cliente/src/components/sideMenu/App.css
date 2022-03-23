@@ -31,14 +31,6 @@ body {
   border-radius: 5px;
 }
 
-.links {
-  text-decoration: none;
-  color: inherit;
-}
-.links:hover {
-  color: rgb(27, 96, 245);
-}
-
 .group {
   margin-top: 5px;
   display: flex;

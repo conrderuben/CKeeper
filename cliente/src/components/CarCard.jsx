@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin: 10px 10px;
   border-radius: 15px;
   border: 2px solid black;
-  height: 300px;
-  width: 300px;
   box-shadow: 4px 4px 5px 0px;
   background-color: white;
+  height: 300px;
+  width: 300px;
+  margin-left: 20px;
+  margin-top: 20px;
 `;
 
 export const CarCard = props => {

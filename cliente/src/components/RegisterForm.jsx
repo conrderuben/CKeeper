@@ -10,26 +10,21 @@ import { validator } from '../formValidator';
 import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
-import Input from './Input';
+import InputValidated from './InputValidated';
 
 const Container = styled.div`
   display: flex;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
   background-color: #ffffff;
   box-sizing: border-box;
+  height: 100%;
 `;
 
 const ImgContainer = styled.div`
   flex: 2;
-  padding: 0;
-  margin: 0;
 `;
 const Image = styled.img`
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 `;
 
@@ -37,27 +32,21 @@ const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* background-color: #ffffff; */
-  height: 100%;
-  max-height: 100vh;
   box-sizing: border-box;
-  border: 3px solid black;
 `;
 
 const Title = styled.h1`
-  margin-top: 15%;
-  flex: 1;
-  font-size: 5vh;
+  margin: 5rem 1rem 1rem 2rem;
+  font-size: 45px;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
-  border: 3px solid black;
 `;
 
 const FormContainer = styled.div`
-  height: 100vh;
   flex: 1;
-  margin: 3% 10% 10% 10%;
-  border: 3px solid black;
+  padding-bottom: 143px;
+  height: 100%;
+  margin: 1rem 2rem;
 `;
 
 const validation = (e, exp) => {
@@ -84,30 +73,29 @@ export const Form = () => {
   return (
     <Container>
       <ImgContainer>
-        <a name="about-us"></a>
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>
         <Title>Registrate</Title>
         <FormContainer>
           <form onSubmit={handleSubmit}>
-            <Input
+            <InputValidated
               exp={/^[A-Za-z0-9_\.-]{8,20}$/}
               type="text"
               name="usuario"
               id="user"
               label="User"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               exp={/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/}
               type="password"
               name="contraseña"
               id="password"
               label="Password"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               exp={
                 /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,17}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/
               }
@@ -116,23 +104,23 @@ export const Form = () => {
               id="name"
               label="Name"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{3,20}$/}
               type="text"
               name="apellido"
               id="surname"
               label="Surname"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               type="date"
               name="fechaNacimiento"
               id="date"
               label="Born date"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               exp={
                 /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
               }
@@ -141,15 +129,15 @@ export const Form = () => {
               id="email"
               label="Email"
               onChange={handleChange}
-            ></Input>
-            <Input
+            ></InputValidated>
+            <InputValidated
               exp={/^[6-9]\d\d{3}\d{2}\d{2}$/}
               type="tel"
               name="telefono"
               id="telephone"
               label="Telephone"
               onChange={handleChange}
-            ></Input>
+            ></InputValidated>
 
             <button type="submit" className="btn btn-primary">
               Sign in

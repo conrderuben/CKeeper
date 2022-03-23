@@ -3,7 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 const PrimaryButton = ({ children }) => {
   return (
     <button type="button" className="btn btn-primary">
-      {children}
+      <Link to="/login" className="links">
+        {children}
+      </Link>
     </button>
   );
 };

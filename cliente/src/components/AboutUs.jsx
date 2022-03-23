@@ -8,15 +8,12 @@ import fondo5 from '../assets/img/fondo5.jpg';
 
 const Container = styled.div`
   display: flex;
-  padding: 0;
-  width: 100vw;
   height: 100vh;
   background-color: #ffffff;
 `;
 
 const ImagenContainer = styled.div`
-  width: 60%;
-  height: 100%;
+  flex: 3;
   position: relative;
 `;
 const Imagen = styled.img`
@@ -26,24 +23,22 @@ const Imagen = styled.img`
 `;
 
 const DescripcionContainer = styled.div`
-  flex: 1;
+  flex: 2;
   background-color: #ebf4f7;
-  position: relative;
 `;
 
 const Titulo = styled.h1`
   font-size: 60px;
-  position: absolute;
-  left: 20%;
-  margin-top: 60px;
+  margin: 5rem 1rem 1rem 2rem;
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 `;
 
 const Descripcion = styled.div`
-  position: absolute;
-  left: 20%;
-  top: 140px;
+  margin: 1rem 2rem;
+  font-weight: 500;
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
 `;
 const SobreNosotros = () => {
   return (

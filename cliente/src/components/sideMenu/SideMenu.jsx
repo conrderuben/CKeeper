@@ -6,6 +6,7 @@ import {
   SettingsRemoteRounded,
   TocRounded
 } from '@material-ui/icons';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarIconRounded from '@mui/icons-material/DirectionsCar';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import Item from './Item';
@@ -28,14 +29,12 @@ function SideMenu() {
   };
 
   const sideContainerVariants = {
-    true: {
-      width: '16%'
-    },
+    true: {},
     false: {
       transition: {
         delay: 0.6
       },
-      width: '4%'
+      width: '70px'
     }
   };
 
@@ -106,6 +105,10 @@ function SideMenu() {
           <div className="group">
             <Link to="/main" className="links">
               <Item icon={<HomeRounded />} name="Home" />
+            </Link>
+
+            <Link to="" className="links">
+              <Item icon={<SearchRoundedIcon />} name="Search" />
             </Link>
           </div>
           {/* group 2 */}

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin: 10px 10px;
   border-radius: 15px;
   border: 2px solid black;
   height: 300px;
@@ -13,6 +12,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: black;
+  margin-left: 20px;
+  margin-top: 20px;
 
   &:hover {
     background-color: black;

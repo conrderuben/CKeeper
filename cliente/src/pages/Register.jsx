@@ -8,6 +8,7 @@ import { Form } from '../components/RegisterForm';
 
 const Contenedor = styled.div`
   padding: 0;
+  height: 100%;
 `;
 
 const Register = () => {
