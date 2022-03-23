@@ -1,6 +1,6 @@
 import React from 'react';
-
-const Button = ({ children }) => {
+import { useNavigate, Link } from 'react-router-dom';
+const PrimaryButton = ({ children }) => {
   return (
     <button type="button" className="btn btn-primary">
       {children}
@@ -8,4 +8,4 @@ const Button = ({ children }) => {
   );
 };
 
-export default Button;
+export default PrimaryButton;

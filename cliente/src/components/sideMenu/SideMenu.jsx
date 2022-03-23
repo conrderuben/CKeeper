@@ -13,12 +13,18 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
+import Cookies from 'universal-cookie';
+
 function SideMenu() {
+  const cookies = new Cookies();
   const [open, setOpen] = useState(true);
 
   // for collpsing sidebar
   const handleToggle = () => {
     setOpen(!open);
+  };
+  const handleLogOut = () => {
+    cookies.remove('user');
   };
 
   const sideContainerVariants = {
@@ -120,7 +126,7 @@ function SideMenu() {
               {' '}
               <Item icon={<LocalParkingRounded />} name="Parking Places" />
             </Link>
-            <Link to="/" className="links">
+            <Link to="/" onClick={handleLogOut} className="links">
               {' '}
               <Item icon={<ReceiptLongIcon />} name="Bills" />
             </Link>
@@ -137,7 +143,7 @@ function SideMenu() {
             <Link to="/" className="links">
               <Item icon={<ManageAccountsRoundedIcon />} name="Edit" />
             </Link>
-            <Link to="/" className="links">
+            <Link to="/" onClick={handleLogOut} className="links">
               <Item icon={<LogoutIcon />} name="Log Out" />
             </Link>
           </div>

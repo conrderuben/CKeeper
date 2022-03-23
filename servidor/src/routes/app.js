@@ -16,6 +16,8 @@ app.post('/api/add-parking', parking.addParking);
 
 app.get('/api/get-vehicles', vehicle.getAll);
 
+app.get('/api/get-vehicles/:id', vehicle.getById);
+
 app.get('/api/get-user-by-id:id', user.getById);
 
 module.exports = app;

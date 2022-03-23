@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './PrimaryButton';
 import logo from '../assets/img/Logo.png';
+import PrimaryButton from './PrimaryButton';
+import { useNavigate, Link } from 'react-router-dom';
 
 const NavBar = () => {
   const Contenedor = styled.div`
@@ -17,7 +19,6 @@ const NavBar = () => {
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    //background-color: #d1e3fa94 ;
     background-color: #ffffff94;
   `;
 
@@ -38,7 +39,9 @@ const NavBar = () => {
 
   const Menu = styled.div`
     display: flex;
-    justify-content: flex-end;
+    padding: 0 60px;
+    justify-content: space-between;
+    font-family: 'Quicksand', sans-serif;
   `;
 
   const Item = styled.a`
@@ -47,7 +50,6 @@ const NavBar = () => {
     align-items: center;
     border-radius: 15px;
     padding: 2px 10px;
-    height: 20px;
     cursor: pointer;
     color: inherit;
     text-decoration: none;
@@ -58,19 +60,7 @@ const NavBar = () => {
     }
   `;
 
-  const Boton = styled.button`
-    margin-left: 5px;
-    margin-right: 5px;
-    border: 1px solid black;
-    border-radius: 15px;
-    background-color: #5e9bf8;
-    font-weight: bold;
-    padding: 2px 10px;
-    height: 22px;
-    line-height: 100%;
-    cursor: pointer;
-  `;
-
+  const navigate = useNavigate();
   return (
     <Contenedor>
       <Wrapper>
@@ -83,22 +73,12 @@ const NavBar = () => {
             <Item href="/#sobre-nosotros">About us</Item>
             <Item>Contacto</Item>
             <Item href="/registro">Registrarse</Item>
-            {/* <Boton>Login</Boton> */}
-            {/* <BotonSesion
-              onClick={e => {
-                window.location.href = '/login';
-              }}
-            /> */}
           </Menu>
         </Cen>
         <Der>
-          <Button
-            onClick={e => {
-              window.location.href = '/login';
-            }}
-          >
-            Iniciar Sesion
-          </Button>
+          <PrimaryButton>
+            <Link to="/login">Login</Link>
+          </PrimaryButton>
         </Der>
       </Wrapper>
     </Contenedor>

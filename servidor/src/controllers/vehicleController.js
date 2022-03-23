@@ -6,3 +6,11 @@ exports.getAll = async (req, res) => {
    
     res.json(listVehicles);
 }
+
+exports.getById = async (req, res) => {
+    const listVehicles =  await modeloVehiculo.findAll({
+        where:{idUsuario:req.params.id}
+    });
+   
+    res.json(listVehicles);
+}

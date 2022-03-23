@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
+import Cookies from 'universal-cookie';
 
 const Container = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const validation = (e, exp) => {
 };
 
 export const LoginForm = () => {
+  Axios.defaults.withCredentials = true;
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
@@ -72,8 +74,9 @@ export const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     httpClient.post('/login', { form }).then(res => {
-      console.log(res.data);
-      if (res.data.usuario != null) {
+      if (res.data.auth === true) {
+        const cookies = new Cookies();
+        cookies.set('user', res.data.obj, { path: '/' });
         navigate('/main');
       } else {
         navigate('/login');
