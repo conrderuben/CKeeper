@@ -1,16 +1,10 @@
-.item{
-    display: flex;
-    
-    align-items: center;
-    justify-content: flex-start;
-    border-radius: 10px;
-    margin-bottom: 10px;
-   
-  
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
-.icon{
-    margin-right: 0.5rem;
-   
-     
-  
+.icon {
+  margin-right: 0.5rem;
 }

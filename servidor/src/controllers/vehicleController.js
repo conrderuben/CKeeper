@@ -1,5 +1,7 @@
 const bd = require("../settings/db")
 const modeloVehiculo = require('../../models').Vehiculo;
+const modeloMarca = require('../../models').Marca;
+
 
 exports.getAll = async (req, res) => {
     const listVehicles =  await modeloVehiculo.findAll();
@@ -13,4 +15,18 @@ exports.getById = async (req, res) => {
     });
    
     res.json(listVehicles);
+}
+
+exports.getBrandById = async (req, res)=>{
+    // const sql = "SELECT * FROM Marcas WHERE id = ?";
+    // const brand = await bd.query(sql,[req.params.idMarca], (err, result)=>{
+    //         if(err){
+    //             console.log(err);
+    //         }else{
+    //             return result
+    //         }
+    //     } )
+    const brand = await modeloMarca.findByPk(req.params.idMarca
+    )
+    res.json(brand.nombre);
 }

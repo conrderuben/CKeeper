@@ -6,12 +6,25 @@ import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
 import Cookies from 'universal-cookie';
 
+function createVehicle({ id, tipo, fechaMatriculacion, idUsuario, idMarca, createdAt, updatedAt }) {
+  return {
+    id,
+    tipo,
+    fechaMatriculacion,
+    idUsuario,
+    idMarca,
+    createdAt: new Date(createdAt),
+    updatedAt
+  };
+}
+
 const Container = styled.div`
   display: flex;
-  background-color: purple;
+  background-color: #b5e5f8;
 `;
 
 const ContentContainer = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -20,18 +33,34 @@ const ContentContainer = styled.div`
 export const MyCars = () => {
   const [listOfVehicles, setListOfVehicles] = useState([]);
   const [listOfUsers, setListOfUsers] = useState([]);
+  const [vehiclesWithBrand, setVehiclesWithBrand] = useState([]);
 
   const cookies = new Cookies();
-
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/get-vehicles/${cookies.get('user').id}`).then(resp => {
-      setListOfVehicles(resp.data);
-    });
-    // listOfVehicles.map((value, key) => {
-    //   axios.get(`http://localhost:4000/api/get-user-by-id${value.idUsuario}`).then(response => {
-    //     setListOfUsers(...listOfUsers, response.data);
-    //   });
-    // });
+    async function getData() {
+      const vehicles = await axios
+        .get(`http://localhost:4000/api/get-vehicles/${cookies.get('user').id}`)
+        .then(x => x.data);
+
+      let vehiclesWB = Promise.all(
+        vehicles.map(vehicle => {
+          return axios
+            .get(`http://localhost:4000/api/get-brand-by-id/${vehicle.idMarca}`)
+            .then(brand => {
+              const obj = {
+                id: vehicle.id,
+                tipo: vehicle.tipo,
+                fechaMatriculacion: vehicle.fechaMatriculacion,
+                marca: brand.data
+              };
+              console.log(obj);
+              return obj;
+            });
+        })
+      ).then(console.log(vehiclesWB));
+    }
+
+    getData();
   }, []);
 
   if (cookies.get('user') == undefined) {
@@ -41,10 +70,17 @@ export const MyCars = () => {
       <Container>
         <SideMenu />
         <ContentContainer>
-          {listOfVehicles.map((value, key) => {
-            return <CarCard tipo={value.tipo}></CarCard>;
+          {vehiclesWithBrand.map(value => {
+            return (
+              <CarCard
+                type={value.tipo}
+                date={value.fechaMatriculacion}
+                brand={value.marca}
+              ></CarCard>
+            );
           })}
           {/* usuario={listOfUsers[0].usuario} */}
+
           <CardAdd />
         </ContentContainer>
       </Container>

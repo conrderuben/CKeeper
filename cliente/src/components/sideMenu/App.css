@@ -3,6 +3,7 @@ body {
 }
 .sidebar_container {
   margin-left: 0;
+  margin-right: 100px;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -14,7 +15,7 @@ body {
 .sidebar {
   display: flex;
   width: 14rem;
-  height: 90%;
+  height: 700px;
   justify-content: start;
   align-items: start;
   flex-direction: column;
@@ -27,7 +28,6 @@ body {
 }
 .lines_icon {
   display: flex;
-
   border-radius: 5px;
 }
 

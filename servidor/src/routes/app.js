@@ -1,6 +1,6 @@
 const express = require('express');
 const register = require('../controllers/registerController')
-const parking = require('../controllers/parkingController')
+const parking = require('../controllers/placeController')
 const vehicle = require('../controllers/vehicleController')
 const user = require('../controllers/userController')
 const login = require('../controllers/loginController')
@@ -19,5 +19,7 @@ app.get('/api/get-vehicles', vehicle.getAll);
 app.get('/api/get-vehicles/:id', vehicle.getById);
 
 app.get('/api/get-user-by-id:id', user.getById);
+
+app.get('/api/get-brand-by-id/:idMarca', vehicle.getBrandById);
 
 module.exports = app;

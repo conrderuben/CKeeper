@@ -8,6 +8,7 @@ import fondo5 from '../assets/img/fondo5.jpg';
 
 const Container = styled.div`
   display: flex;
+  height: 100vh;
 `;
 
 const ImagenContainer = styled.div`

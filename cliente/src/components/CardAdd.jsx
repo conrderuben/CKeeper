@@ -2,22 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  width: 270px;
+  height: 450px;
+  margin: 10px;
   border-radius: 15px;
-  border: 2px solid black;
-  height: 300px;
-  width: 300px;
-  box-shadow: 4px 4px 5px 0px;
   font-size: 90px;
   justify-content: center;
   display: flex;
   align-items: center;
-  background-color: black;
-  margin-left: 20px;
-  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
 
   &:hover {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
+
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 0.7s ease;
   }
 `;
 

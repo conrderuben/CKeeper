@@ -69,7 +69,7 @@ const NavBar = () => {
         <Cen>
           <Menu>
             <Item href="/#home">Home</Item>
-            <Item href="/#sobre-nosotros">About us</Item>
+            <Item href="/#sobre-nosotros">About&nbsp;us</Item>
             <Item>Contacto</Item>
             <Item href="/registro">Registrarse</Item>
           </Menu>
