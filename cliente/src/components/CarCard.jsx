@@ -88,7 +88,7 @@ export const CarCard = props => {
       </DateGroup>
       <Group>
         <Title>Brand:</Title>
-        <Text>Hola</Text>
+        <Text>{props.brand}</Text>
       </Group>
       {/* <h4>Tipo:{props.tipo}</h4>
       <h4>Fecha Matriculacion:{props.fecha}</h4>

@@ -57,7 +57,9 @@ export const MyCars = () => {
               return obj;
             });
         })
-      ).then(console.log(vehiclesWB));
+      ).then(x => {
+        setVehiclesWithBrand(x);
+      });
     }
 
     getData();
@@ -73,6 +75,7 @@ export const MyCars = () => {
           {vehiclesWithBrand.map(value => {
             return (
               <CarCard
+                key={value.id}
                 type={value.tipo}
                 date={value.fechaMatriculacion}
                 brand={value.marca}
