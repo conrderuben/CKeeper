@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import fondo5 from '../assets/img/fondo5.jpg';
 import { validator } from '../formValidator';
-
 import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';

@@ -6,18 +6,6 @@ import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
 import Cookies from 'universal-cookie';
 
-function createVehicle({ id, tipo, fechaMatriculacion, idUsuario, idMarca, createdAt, updatedAt }) {
-  return {
-    id,
-    tipo,
-    fechaMatriculacion,
-    idUsuario,
-    idMarca,
-    createdAt: new Date(createdAt),
-    updatedAt
-  };
-}
-
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
@@ -26,13 +14,13 @@ const Container = styled.div`
 const ContentContainer = styled.div`
   margin-top: 30px;
   display: flex;
+  flex: 1;
+  justify-content: center;
   flex-wrap: wrap;
   justify-content: flex-start;
 `;
 
 export const MyCars = () => {
-  const [listOfVehicles, setListOfVehicles] = useState([]);
-  const [listOfUsers, setListOfUsers] = useState([]);
   const [vehiclesWithBrand, setVehiclesWithBrand] = useState([]);
 
   const cookies = new Cookies();
@@ -82,7 +70,6 @@ export const MyCars = () => {
               ></CarCard>
             );
           })}
-          {/* usuario={listOfUsers[0].usuario} */}
 
           <CardAdd />
         </ContentContainer>

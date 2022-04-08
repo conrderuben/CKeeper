@@ -90,11 +90,6 @@ export const CarCard = props => {
         <Title>Brand:</Title>
         <Text>{props.brand}</Text>
       </Group>
-      {/* <h4>Tipo:{props.tipo}</h4>
-      <h4>Fecha Matriculacion:{props.fecha}</h4>
-      <h4>Marca:{props.marca}</h4>
-      <h4>Modelo:{props.modelo}</h4>
-      <h4>{props.usuario}</h4> */}
       <Button>Edit</Button>
     </Card>
   );
