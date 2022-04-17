@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { CarCard } from '../components/CarCard';
 import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
-import Cookies from 'universal-cookie';
+
+import { httpClient } from '../utils/httpClient';
 
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
+  height: 100%;
 `;
 
 const ContentContainer = styled.div`
@@ -18,21 +20,24 @@ const ContentContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   justify-content: flex-start;
+  overflow-y: scroll;
 `;
 
 export const MyCars = () => {
   const [vehiclesWithBrand, setVehiclesWithBrand] = useState([]);
 
-  const cookies = new Cookies();
   useEffect(() => {
     async function getData() {
-      const vehicles = await axios
-        .get(`http://localhost:4000/api/get-vehicles/${cookies.get('user').id}`)
+      const vehicles = await httpClient
+        .get(`http://localhost:4000/api/get-vehicles/13`)
         .then(x => x.data);
+
+      await httpClient.get(`http://google.com`).then(x => x.data);
+      console.log('hola');
 
       let vehiclesWB = Promise.all(
         vehicles.map(vehicle => {
-          return axios
+          return httpClient
             .get(`http://localhost:4000/api/get-brand-by-id/${vehicle.idMarca}`)
             .then(brand => {
               const obj = {
@@ -53,11 +58,9 @@ export const MyCars = () => {
     getData();
   }, []);
 
-  if (cookies.get('user') == undefined) {
-    return <h1>No autorizado</h1>;
-  } else {
-    return (
-      <Container>
+  return (
+    <>
+      {/* <Container>
         <SideMenu />
         <ContentContainer>
           {vehiclesWithBrand.map(value => {
@@ -73,7 +76,8 @@ export const MyCars = () => {
 
           <CardAdd />
         </ContentContainer>
-      </Container>
-    );
-  }
+      </Container> */}
+      <h1>Hola</h1>
+    </>
+  );
 };

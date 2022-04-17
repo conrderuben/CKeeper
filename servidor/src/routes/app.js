@@ -4,6 +4,7 @@ const parking = require('../controllers/placeController')
 const vehicle = require('../controllers/vehicleController')
 const user = require('../controllers/userController')
 const login = require('../controllers/loginController')
+const place = require('../controllers/placeController')
 const app = express.Router();
 
 
@@ -21,5 +22,7 @@ app.get('/api/get-vehicles/:id', vehicle.getById);
 app.get('/api/get-user-by-id:id', user.getById);
 
 app.get('/api/get-brand-by-id/:idMarca', vehicle.getBrandById);
+
+app.get('/api/get-posts', place.getAllPublic);
 
 module.exports = app;

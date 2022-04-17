@@ -30,3 +30,7 @@ body::-webkit-scrollbar-thumb {
 .links:hover {
   color: inherit;
 }
+
+#root {
+  height: 100%;
+}

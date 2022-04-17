@@ -1,4 +1,5 @@
 const bd = require("../settings/db")
+const modeloPlaza = require('../../models').Plaza;
 
 
 exports.addParking = (req, res) => {
@@ -25,6 +26,12 @@ const sql = `INSERT INTO plaza(id_usuario, usuario, nombre, apellido, contraseñ
     })
     res.send("K paisa")
 
-    
+}
 
+exports.getAllPublic = async (req, res) => {
+    const rentPlace =  await modeloPlaza.findAll({
+        where:{publicada: true}
+    });
+   
+    res.json(rentPlace);
 }

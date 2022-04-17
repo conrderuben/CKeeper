@@ -4,11 +4,19 @@ const modeloPersona = require('../../models').Persona;
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-function generateToken(obj, res) {
-    const token = jwt.sign({obj}, 'Ckeeper', {
+function generateToken(obj) {
+    const data = {
+        datos : obj,
+        auth : true,
+        type : 'user'
+    }
+    const token = jwt.sign({data}, 'Ckeeper', {
         expiresIn: '1h'
     });
-    res.cookie('jwt', token, { expire: new Date() + 60000 });
+    console.log("hola")
+    // res.cookie('jwt', token, { expire: new Date() + 60000 });
+    
+    return token;
 }
 
 exports.validateToken = (req, res, next) => {
@@ -40,33 +48,30 @@ exports.login = (req, res) => {
         [user],
         (err, result) =>{
             if(err){
-                res.send({
-                    auth:false,
-                    message:"query error"
-                })
+              res.status(401).json({
+                error: 'invalid user or password'
+              })
             }
-            if(result.length==1){
+            if(result.length==1){ 
                 bcrypt.compare(password, result[0].contraseña, (err, response)=>{
                     if(response){
-                        // generateToken(result[0], res);
-                        res.send({
-                            auth:true,
-                            message:"Its valid password",
-                            obj:result[0]
-                        })
+                        const token = generateToken(result[0]);
+                        // res.send({
+                        //     auth:true,
+                        //     message:"Its valid password",
+                        //     obj:result[0]
+                        // })
+                        res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                        // res.status(200).cookie('jwt', token, { expire: new Date() + 60000 });
 
                     }else{
-                        res.send({
-                            auth:false,
-                            message:"Its invalid password"
-                        })
+                        res.status(401).json({
+                            error: 'invalid user or password'})
                     }
                 })
             }else{
-                res.send({
-                    auth:false,
-                    message:"result !>0"
-                })
+                res.status(401).json({
+                    error: 'invalid user or password'}) 
                 
             }
         }

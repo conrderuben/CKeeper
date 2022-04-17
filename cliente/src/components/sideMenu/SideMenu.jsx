@@ -20,50 +20,12 @@ function SideMenu() {
   const cookies = new Cookies();
   const [open, setOpen] = useState(true);
 
-  // for collpsing sidebar
-  const handleToggle = () => {
-    setOpen(!open);
-  };
   const handleLogOut = () => {
     cookies.remove('user');
   };
 
-  const sideContainerVariants = {
-    true: {},
-    false: {
-      transition: {
-        delay: 0.6
-      },
-      width: '70px'
-    }
-  };
-
-  const sidebarVariants = {
-    true: {},
-    false: {
-      width: '100%',
-      transition: {
-        delay: 0.4
-      }
-    }
-  };
-
-  const end = {
-    true: {
-      marginRight: 0,
-      transition: {}
-    },
-    false: {
-      margin: '0 auto',
-      transition: {
-        delay: 0.4
-      }
-    }
-  };
-
   return (
-    // <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
-    <div class="fixed flex flex-col top-0 left-0 w-1/7 bg-gray-900 h-full shadow-lg">
+    <div class="flex flex-col top-0 left-0 w-1/7 bg-gray-900 h-full shadow-lg">
       <div class="flex items-center pl-6 h-20 border-b border-gray-800">
         <img
           src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t1.0-9/117334168_2606581056324669_4951020710334194218_o.jpg?_nc_cat=101&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFo4bRKc5SfTQvzhwotnTaOfj1P6rO41HF-PU_qs7jUcU1pCerqu3HUsOB0yKyJQwnrgz8Au7GZADcpedo6WgM4&_nc_ohc=DWpkI3p4RSUAX_hKF_Y&_nc_ht=scontent.fmnl13-1.fna&oh=c13c63ee952123b14f0da72b99ccecc8&oe=6087FEC5"
@@ -72,7 +34,7 @@ function SideMenu() {
         />
         <div class="ml-1">
           <p class="ml-1 text-md font-medium tracking-wide truncate text-gray-100 font-sans">
-            JED DYLAN LEE
+            {cookies.get('user').usuario}
           </p>
           <div class="badge">
             <span class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-800 bg-blue-100 rounded-full">
@@ -86,60 +48,77 @@ function SideMenu() {
           <li class="px-5">
             <div class="flex flex-row items-center h-8">
               <div class="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                Dashboard
+                dashboard
               </div>
             </div>
           </li>
           <li>
-            <a
-              href="#"
-              class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
+            <Link
+              to="/main"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
               <span class="inline-flex justify-center items-center ml-4">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  ></path>
-                </svg>
+                <HomeRounded />
               </span>
               <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">Home</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
-              class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
+            <Link
+              to="/search"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
               <span class="inline-flex justify-center items-center ml-4">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                  ></path>
-                </svg>
+                <SearchRoundedIcon />
               </span>
-              <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">Inbox</span>
-              <span class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-500 bg-blue-100 rounded-full">
-                New
+              <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
+                Search
               </span>
-            </a>
+            </Link>
+          </li>
+          <li class="px-5">
+            <div class="flex flex-row items-center h-8">
+              <div class="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
+                personal property
+              </div>
+            </div>
+          </li>
+          <li>
+            <Link
+              to="/cars"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
+            >
+              <span class="inline-flex justify-center items-center ml-4">
+                <DirectionsCarIconRounded />
+              </span>
+              <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
+                Vehicles
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
+            >
+              <span class="inline-flex justify-center items-center ml-4">
+                <LocalParkingRounded />
+              </span>
+              <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
+                Parking Places
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
+            >
+              <span class="inline-flex justify-center items-center ml-4">
+                <ReceiptLongIcon />
+              </span>
+              <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">Bills</span>
+            </Link>
           </li>
           <li class="px-5">
             <div class="flex flex-row items-center h-8">
@@ -206,36 +185,26 @@ function SideMenu() {
               </span>
             </a>
           </li>
+
           <li>
-            <a
-              href="#"
-              class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-red-500 pr-6"
+            <Link
+              onClick={handleLogOut}
+              to="/"
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span class="inline-flex justify-center items-center ml-4 text-red-400">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  ></path>
-                </svg>
+              <span class="inline-flex justify-center items-center ml-4">
+                <LogoutIcon />
               </span>
               <span class="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                Logout
+                Log Out
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
     </div>
-    // </div>
+    //{' '}
+
     // <>
     //   <motion.div
     //     data-Open={open}
