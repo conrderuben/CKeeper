@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import ReactDOM from "react-dom";
 import fondo2 from '../assets/img/fondo2.jpg';
 import fondo1 from '../assets/img/fondo1.jpg';
 import fondo3 from '../assets/img/fondo3.jpg';
@@ -12,8 +12,9 @@ import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
+import axios from 'axios';
 import File from './File';
-
+import Select from './Select';
 const Container = styled.div`
   display: flex;
   padding: 0;
@@ -60,7 +61,7 @@ const FormContainer = styled.div`
   height: 100vh;
   flex: 1;
   margin: 3% 10% 10% 10%;
-  
+
 `;
 const SubTitle = styled.h2`
 
@@ -69,59 +70,22 @@ const SubTitle = styled.h2`
 
  `;
 const InputContainer = styled.div`
- 
+
     display: inline-flex;
- 
+
     justify-content: space-around;
 
-    
+
     width: 100%;
-    
+
+
     `;
 const validation = (e, exp) => {
   validator(exp, e.target);
 };
 
 export const Form = () => {
-  // const [cities, setCities] = useState([]);
-
-  // useEffect(() => {
-  //   async function getData() {
-
-  //     let cities = Promise.all(
-  //       cities.map(citie => {
-  //         return axios
-  //           .get(`http://localhost:4000/api/get-brand-by-id/`)
-          
-  //             const obj = {
-  //               nombre: citie.nombre
-
-               
-  //             };
-  //             console.log(obj);
-  //             return obj;
-           
-  //       })
-  //     )
-  //   }
-
-  //   getData();
-  // }, []);
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    Axios({
-      url: "http://localhost:4000/api/parking/",
-    })
-      .then((response) => {
-        setList(response.data);
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [setList]);
-
-
+  
 
   const [form, setForm] = useState({});
 
@@ -135,7 +99,7 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    httpClient.post('/registro', { form }).then(() => {
+    httpClient.post('/parking', { form }).then(() => {
       navigate('/login');
     });
   };
@@ -155,7 +119,7 @@ export const Form = () => {
               name="street"
               id="street"
               label="Street"
-             
+
      />
 
 <InputContainer>
@@ -166,34 +130,32 @@ export const Form = () => {
               name="pc"
               id="pc"
               label="Postal Code"
-             
+
      />
      <Input
               type="number"
               name="number"
               id="number"
               label="Number"
-             
-     /><select name='cities'
-    
->
-  <option value={list.nombre}>s{list.nombre}</option>
-  </select>
+
+     />
+ <Select/>
             </InputContainer>
+           
             <SubTitle>About Parking</SubTitle>
             <Input
-              type="number"
+              type="text"
               name="price"
               id="price"
               label="Price"
-             
+
      />
-     
-     
-     
+
+
+
      <File/>
 
-<TextArea  
+<TextArea
      className="description"
      name="description"
      cols="10"

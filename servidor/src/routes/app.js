@@ -10,12 +10,16 @@ const app = express.Router();
 // Página sign-in
 app.post('/api/registro', register.register);
 
+app.post('/api/parking', parking.parking);
+
 app.get('/api/login', login.login )
 
-app.post('/api/add-parking', parking.addParking);
+//app.post('/api/add-parking', parking.addParking);
 
 app.get('/api/get-vehicles', vehicle.getAll);
 
 app.get('/api/get-user-by-id:id', user.getById);
+
+app.get('/api/list-cities',parking.getAll);
 
 module.exports = app;
