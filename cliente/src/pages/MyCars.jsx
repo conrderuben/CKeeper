@@ -32,9 +32,6 @@ export const MyCars = () => {
         .get(`http://localhost:4000/api/get-vehicles/13`)
         .then(x => x.data);
 
-      await httpClient.get(`http://google.com`).then(x => x.data);
-      console.log('hola');
-
       let vehiclesWB = Promise.all(
         vehicles.map(vehicle => {
           return httpClient
@@ -59,25 +56,22 @@ export const MyCars = () => {
   }, []);
 
   return (
-    <>
-      {/* <Container>
-        <SideMenu />
-        <ContentContainer>
-          {vehiclesWithBrand.map(value => {
-            return (
-              <CarCard
-                key={value.id}
-                type={value.tipo}
-                date={value.fechaMatriculacion}
-                brand={value.marca}
-              ></CarCard>
-            );
-          })}
+    <Container>
+      <SideMenu />
+      <ContentContainer>
+        {vehiclesWithBrand.map(value => {
+          return (
+            <CarCard
+              key={value.id}
+              type={value.tipo}
+              date={value.fechaMatriculacion}
+              brand={value.marca}
+            ></CarCard>
+          );
+        })}
 
-          <CardAdd />
-        </ContentContainer>
-      </Container> */}
-      <h1>Hola</h1>
-    </>
+        <CardAdd />
+      </ContentContainer>
+    </Container>
   );
 };

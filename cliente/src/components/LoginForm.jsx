@@ -6,7 +6,6 @@ import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
-import Cookies from 'universal-cookie';
 
 const Container = styled.div`
   display: flex;

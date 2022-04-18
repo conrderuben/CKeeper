@@ -6,6 +6,7 @@ import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
 import Cookies from 'universal-cookie';
 import { PublicPlace } from '../components/PublicPlace';
+import { httpClient } from '../utils/httpClient';
 
 const Container = styled.div`
   display: flex;
@@ -29,34 +30,29 @@ export const SearchPage = () => {
 
   useEffect(() => {
     async function getData() {
-      await axios.get(`http://localhost:4000/api/get-posts`).then(x => setRentPosts(x.data));
+      await httpClient.get(`http://localhost:4000/api/get-posts`).then(x => setRentPosts(x.data));
     }
 
     getData();
   }, []);
-  const cookies = new Cookies();
 
-  if (cookies.get('user') == undefined) {
-    return <h1>No autorizado</h1>;
-  } else {
-    return (
-      <Container>
-        <SideMenu />
-        <Content>
-          <Column>
-            {rentPosts.map(value => {
-              return (
-                <PublicPlace
-                  key={value.id}
-                  type={value.tipo}
-                  date={value.fechaMatriculacion}
-                  brand={value.marca}
-                ></PublicPlace>
-              );
-            })}
-          </Column>
-        </Content>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <SideMenu />
+      <Content>
+        <Column>
+          {rentPosts.map(value => {
+            return (
+              <PublicPlace
+                key={value.id}
+                type={value.tipo}
+                date={value.fechaMatriculacion}
+                brand={value.marca}
+              ></PublicPlace>
+            );
+          })}
+        </Column>
+      </Content>
+    </Container>
+  );
 };
