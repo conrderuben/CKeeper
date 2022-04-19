@@ -13,7 +13,6 @@ function generateToken(obj) {
     const token = jwt.sign({data}, 'Ckeeper', {
         expiresIn: '1h'
     });
-    console.log("hola")
     // res.cookie('jwt', token, { expire: new Date() + 60000 });
     
     return token;

@@ -4,6 +4,8 @@ import InputValidated from '../components/InputValidated';
 import SideMenu from '../components/sideMenu/SideMenu';
 import Cookies from 'universal-cookie';
 import Cookie from 'js-cookie';
+import { useEffect, useState} from 'react';
+import { httpClient } from '../utils/httpClient';
 
 const Container = Styled.div`
   display: flex;
@@ -24,14 +26,25 @@ const Content = Styled.div`
 `;
 
 const MainPage = () => {
-  // const cookies = new Cookies();
-  // console.log(cookies.get('jwt'));
-  // if (Cookie.get('jwt')) {
+
+  const [user, setUser] = useState();
+  useEffect(()=>{
+    async function getData() {
+       await httpClient
+        .get(`http://localhost:4000/api/user`)
+        .then(x =>{
+        setUser(x.data.data.datos.usuario)
+        });
+    }
+
+    getData();
+  }, []);
+
+  
   return (
     <Container>
-      <SideMenu />
+      <SideMenu user={user}/>
       <ContentContainer>
-        {/* <Content>{cookies.get('user').usuario}</Content> */}
         <Content></Content>
       </ContentContainer>
     </Container>

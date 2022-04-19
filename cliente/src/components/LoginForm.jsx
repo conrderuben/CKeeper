@@ -63,8 +63,6 @@ export const LoginForm = () => {
     e.preventDefault();
     httpClient.post('/login', { form }).then(res => {
       if (!res.data.error) {
-        //   const cookies = new Cookies();
-        //   cookies.set('user', res.data.obj, { path: '/' });
         navigate('/main');
       } else {
         navigate('/login');
