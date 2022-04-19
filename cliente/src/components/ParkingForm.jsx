@@ -89,14 +89,29 @@ export const Form = () => {
 
   const [form, setForm] = useState({});
 
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const city = await axios
+        .get(`http://localhost:4000/api/list-cities`)
+        .then(x => {
+          setCities(x.data);
+        });
+    }
+        getData();
+      },
+
+       []);
   const navigate = useNavigate();
   const handleChange = e => {
     setForm({
+      
       ...form,
       [e.target.name]: e.target.value
     });
+    console.log(e.target.name)
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     httpClient.post('/parking', { form }).then(() => {
@@ -119,7 +134,7 @@ export const Form = () => {
               name="street"
               id="street"
               label="Street"
-
+              onChange={handleChange}
      />
 
 <InputContainer>
@@ -130,16 +145,27 @@ export const Form = () => {
               name="pc"
               id="pc"
               label="Postal Code"
-
+              onChange={handleChange}
      />
      <Input
               type="number"
               name="number"
               id="number"
               label="Number"
-
+              onChange={handleChange}
      />
- <Select/>
+ <select name='cities'
+    className="form-control "
+    onChange={handleChange}
+    >
+       {cities.map((cit) =>
+        <option
+        
+        value={cit.id} key={cit.id}>{cit.nombre} 
+                  
+        </option> 
+      )}
+       </select>
             </InputContainer>
            
             <SubTitle>About Parking</SubTitle>
@@ -148,7 +174,7 @@ export const Form = () => {
               name="price"
               id="price"
               label="Price"
-
+              onChange={handleChange}
      />
 
 

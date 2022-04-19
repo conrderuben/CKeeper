@@ -30,21 +30,22 @@ const Select = props => {
 
        []);
   return (
-    <SelectContainer>
+    <>
     <select name='cities'
     className="form-control "
     style={style}
-     >
+    >
        {cities.map((cit) =>
         <option
         
-                  value={cit.id} key={cit.id}>{cit.nombre} 
+        value={cit.id} key={cit.id}>{cit.nombre} 
                   
         </option> 
       )}
        </select>
      
-       </SelectContainer>
+     </>
+       
   );
 };
 

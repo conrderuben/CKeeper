@@ -15,9 +15,10 @@ exports.getAll = async (req, res) => {
 
 
 
-exports.parking = (req, res) => {
-    const id = 0;
-    const street = req.body.form.street;
+exports.parking = async (req, res) => {
+    const form =req.body.form;
+    console.log(form);
+        const street = form.street;
     const pc = req.body.form.pc;
     const number = req.body.form.number;
     const cities = req.body.form.cities;
@@ -25,16 +26,22 @@ exports.parking = (req, res) => {
     // const email = req.body.form.email;
     // const telephone = req.body.form.telephone;
 
-    const form =req.body.form;
-   
-        if(err){
-            console.log('error')
-            console.log(form)
-        }
+    const data={
+        id:0,
+        calle:street,
+        codigoPostal:pc,
+        numero:number,
+        idMunicipio:cities,
+        
+    }
+    
+        
           
-            modeloUbicacion.create(id,street,pc,number,cities,'2022-03-21 18:20:11','2022-03-21 18:20:11')
+            modeloUbicacion.create(data)
+            const id= await modeloUbicacion.max('id');
+        console.log(id);
         
-        
+       
     }
     
 

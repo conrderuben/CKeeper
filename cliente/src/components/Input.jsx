@@ -18,6 +18,9 @@ const Input = props => {
         id={props.id}
         placeholder="name@example.com"
         required
+        onChange={e => {
+          props.onChange(e);
+        }}
       />
       <label htmlFor={props.id} className="form-label">
         {props.label}
