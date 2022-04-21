@@ -10,14 +10,30 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DirectionsCarIconRounded from '@mui/icons-material/DirectionsCar';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import Item from './Item';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 import Cookies from 'universal-cookie';
+import { httpClient } from '../../utils/httpClient';
 
 function SideMenu(props) {
   const [open, setOpen] = useState(true);
+
+  const [user, setUser] = useState();
+  const [type, setType] = useState();
+  useEffect(()=>{
+    async function getData() {
+       await httpClient
+        .get(`http://localhost:4000/api/user`)
+        .then(x =>{
+        setUser(x.data.data.datos.usuario)
+        setType(x.data.data.type)
+        });
+    }
+
+    getData();
+  }, []);
 
   const handleLogOut = () => {
     
@@ -33,11 +49,11 @@ function SideMenu(props) {
         />
         <div className="ml-1">
           <p className="ml-1 text-md font-medium tracking-wide truncate text-gray-100 font-sans">
-            {props.user}
+            {user}
           </p>
           <div className="badge">
             <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-800 bg-blue-100 rounded-full">
-              Admin
+              {type}
             </span>
           </div>
         </div>

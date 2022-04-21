@@ -27,23 +27,10 @@ const Content = Styled.div`
 
 const MainPage = () => {
 
-  const [user, setUser] = useState();
-  useEffect(()=>{
-    async function getData() {
-       await httpClient
-        .get(`http://localhost:4000/api/user`)
-        .then(x =>{
-        setUser(x.data.data.datos.usuario)
-        });
-    }
-
-    getData();
-  }, []);
-
   
   return (
     <Container>
-      <SideMenu user={user}/>
+      <SideMenu/>
       <ContentContainer>
         <Content></Content>
       </ContentContainer>

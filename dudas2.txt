@@ -1,6 +1,26 @@
-vehicuko añadir alquiler
-factura alquiler
-cp ubicaicon
-vehicuko descripcion y plaza
-electrico
-quitar anuncio y meter boolean de publicada
+CASOS DE USO----
+
+Usuario sin registrar
+
+    -Visitar la pagina principal
+    -Registrarse
+    -Contactar con el asistente al cliente
+
+
+Usuario registrado
+
+    -Todo lo del usuario sin Registrarse
+    -Hacer login y logout
+    -Visitar el home de la aplicacion
+    -Ver las plazas de garaje en alquiler (añadir a favoritos) y alquilarlas
+    -Añadir tus vehiculos y editar los ya creados
+    -Crear anuncios de plazas de garaje, publicarlos o despublicarlos, editarlos
+    -Consultar tus facturas
+    -Editar tus datos de perfil (salvo el nombre de usuario)
+
+Admin
+
+    -Hacer login como administrador
+    -Eliminar, editar o crear publicaciones
+    -Eliminar o crear usuarios
+    
