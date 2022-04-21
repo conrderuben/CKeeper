@@ -54,7 +54,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      foto: {
+        type: Sequelize.String
+      },
     });
   },
   async down(queryInterface, Sequelize) {

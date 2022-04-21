@@ -178,6 +178,31 @@ export const Form = () => {
      />
 
 
+<InputContainer>
+
+
+<Input
+              type="number"
+              name="height"
+              id="height"
+              label="Height"
+              onChange={handleChange}
+     />
+     <Input
+              type="number"
+              name="width"
+              id="width"
+              label="Width"
+              onChange={handleChange}
+     />
+  <Input
+              type="number"
+              name="long"
+              id="long"
+              label="Long"
+              onChange={handleChange}
+     />
+            </InputContainer>
 
      <File/>
 

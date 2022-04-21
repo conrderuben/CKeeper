@@ -20,7 +20,7 @@ const onImageChange = (event) => {
       <Container>
           <h3>Add new Photo</h3>
           <label htmlFor="filetype" style={{cursor:"pointer"}}>   <AddBoxIcon  style={{fontSize:60}} /> </label>
-          <input type="file" onChange={onImageChange} id="filetype"className="filetype" style={{display:"none",visibility:"none"}} />
+          <input type="file" onChange={onImageChange} id="foto" name="foto" style={{display:"none",visibility:"none"}} />
           
           <div id="image" hidden={hide} ><img src={image} width="500px" height="300px" alt="preview image" /></div>
          
