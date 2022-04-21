@@ -23,8 +23,7 @@
     "mysql": "2.18.1",
     "mysql2": "2.3.3",
     "sequelize": "6.17.0",
-    "sequelize-cli": "6.4.1",
-    "universal-cookie": "^4.0.4"
+    "sequelize-cli": "6.4.1"
   },
   "devDependencies": {
     "nodemon": "2.0.15",

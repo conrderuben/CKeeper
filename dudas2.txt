@@ -5,22 +5,26 @@ Usuario sin registrar
     -Visitar la pagina principal
     -Registrarse
     -Contactar con el asistente al cliente
+    -Hacer login
 
 
 Usuario registrado
 
     -Todo lo del usuario sin Registrarse
-    -Hacer login y logout
+    -Hacer logout
     -Visitar el home de la aplicacion
-    -Ver las plazas de garaje en alquiler (añadir a favoritos) y alquilarlas
-    -Añadir tus vehiculos y editar los ya creados
-    -Crear anuncios de plazas de garaje, publicarlos o despublicarlos, editarlos
+    -Ver las plazas de garaje en alquiler
+    -Añadir la plaza a favoritos
+    -Alquilar una plaza
+    -Añadir tus vehiculos
+    -editar behiculos ya creados
+    -Crear anuncios de plazas de garaje
+    -Publicarlos o despublicarlos
+    -Editar las plazas
     -Consultar tus facturas
     -Editar tus datos de perfil (salvo el nombre de usuario)
 
 Admin
 
-    -Hacer login como administrador
-    -Eliminar, editar o crear publicaciones
-    -Eliminar o crear usuarios
-    
+    -Publicar o despublicar
+    -Habilitar o deshabilitar usuarios
