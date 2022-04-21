@@ -4,7 +4,6 @@ import { Principal } from '../components/Main';
 import styled from 'styled-components';
 import SobreNosotros from '../components/AboutUs';
 import Contacto from '../components/Contact';
-import Cookies from 'universal-cookie';
 
 const Contenedor = styled.div`
   padding: 0;

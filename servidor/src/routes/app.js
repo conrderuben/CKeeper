@@ -5,6 +5,7 @@ const vehicle = require('../controllers/vehicleController')
 const user = require('../controllers/userController')
 const login = require('../controllers/loginController')
 const place = require('../controllers/placeController')
+const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
 
 
@@ -15,9 +16,9 @@ app.post('/api/login', login.login);
 
 app.post('/api/add-parking', parking.addParking);
 
-app.get('/api/get-vehicles', vehicle.getAll);
+// app.get('/api/get-vehicles', vehicle.getAll);
 
-app.get('/api/get-vehicles/:id', vehicle.getById);
+app.get('/api/get-vehicles',middleware.validateToken, vehicle.getById);
 
 app.get('/api/get-user-by-id:id', user.getById);
 

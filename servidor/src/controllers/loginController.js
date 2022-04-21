@@ -6,8 +6,7 @@ const jwt = require('jsonwebtoken')
 
 function generateToken(obj) {
     const data = {
-        datos : obj,
-        auth : true,
+        id : obj.id,
         type : 'user'
     }
     const token = jwt.sign({data}, 'Ckeeper', {

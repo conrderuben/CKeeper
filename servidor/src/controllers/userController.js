@@ -10,11 +10,15 @@ exports.getById = async (req, res) => {
     res.json(user);
 }
 
-exports.getUser = (req, res) => {
+exports.getUser = async (req, res) => {
      const token = req.cookies.jwt;
 
      const data = jwt.decode(token, 'Ckeeper')
-     res.send(data)
+
+     const user=  await modeloPersona.findOne({
+        where:{id: data.data.id}
+    });
+     res.send(user)
     
     
 }

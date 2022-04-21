@@ -2,9 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import InputValidated from '../components/InputValidated';
 import SideMenu from '../components/sideMenu/SideMenu';
-import Cookies from 'universal-cookie';
-import Cookie from 'js-cookie';
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { httpClient } from '../utils/httpClient';
 
 const Container = Styled.div`
@@ -26,11 +24,9 @@ const Content = Styled.div`
 `;
 
 const MainPage = () => {
-
-  
   return (
     <Container>
-      <SideMenu/>
+      <SideMenu />
       <ContentContainer>
         <Content></Content>
       </ContentContainer>

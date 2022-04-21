@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { CarCard } from '../components/CarCard';
 import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
-import Cookies from 'universal-cookie';
 import { PublicPlace } from '../components/PublicPlace';
 import { httpClient } from '../utils/httpClient';
 

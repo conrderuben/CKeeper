@@ -1,43 +1,23 @@
-import './App.css';
-import { motion } from 'framer-motion';
-import {
-  LocalParkingRounded,
-  HomeRounded,
-  SettingsRemoteRounded,
-  TocRounded
-} from '@material-ui/icons';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import DirectionsCarIconRounded from '@mui/icons-material/DirectionsCar';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import Item from './Item';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import LogoutIcon from '@mui/icons-material/Logout';
-import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
-import Cookies from 'universal-cookie';
 import { httpClient } from '../../utils/httpClient';
 
 function SideMenu(props) {
   const [open, setOpen] = useState(true);
 
   const [user, setUser] = useState();
-  const [type, setType] = useState();
-  useEffect(()=>{
+  useEffect(() => {
     async function getData() {
-       await httpClient
-        .get(`http://localhost:4000/api/user`)
-        .then(x =>{
-        setUser(x.data.data.datos.usuario)
-        setType(x.data.data.type)
-        });
+      await httpClient.get(`http://localhost:4000/api/user`).then(x => {
+        console.log(x);
+        setUser(x.data.usuario);
+      });
     }
 
     getData();
   }, []);
 
-  const handleLogOut = () => {
-    
-  };
+  const handleLogOut = () => {};
 
   return (
     <div className="flex flex-col top-0 left-0 w-1/7 bg-gray-900 h-full shadow-lg">
@@ -53,7 +33,7 @@ function SideMenu(props) {
           </p>
           <div className="badge">
             <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-800 bg-blue-100 rounded-full">
-              {type}
+              user
             </span>
           </div>
         </div>
@@ -72,10 +52,10 @@ function SideMenu(props) {
               to="/main"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <HomeRounded />
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
+                Home
               </span>
-              <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">Home</span>
             </Link>
           </li>
           <li>
@@ -83,9 +63,7 @@ function SideMenu(props) {
               to="/search"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <SearchRoundedIcon />
-              </span>
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Search
               </span>
@@ -103,9 +81,7 @@ function SideMenu(props) {
               to="/cars"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <DirectionsCarIconRounded />
-              </span>
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Vehicles
               </span>
@@ -116,9 +92,7 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <LocalParkingRounded />
-              </span>
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Parking Places
               </span>
@@ -129,10 +103,10 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <ReceiptLongIcon />
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
+                Bills
               </span>
-              <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">Bills</span>
             </Link>
           </li>
           <li className="px-5">
@@ -207,9 +181,7 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">
-                <LogoutIcon />
-              </span>
+              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Log Out
               </span>
@@ -218,102 +190,6 @@ function SideMenu(props) {
         </ul>
       </div>
     </div>
-    //{' '}
-
-    // <>
-    //   <motion.div
-    //     data-Open={open}
-    //     variants={sideContainerVariants}
-    //     initial={`${open}`}
-    //     animate={`${open}`}
-    //     className="sidebar_container"
-    //   >
-    //     {/* sidebar div */}
-    //     <motion.div
-    //       className="sidebar"
-    //       initial={`${open}`}
-    //       animate={`${open}`}
-    //       s
-    //       variants={sidebarVariants}
-    //     >
-    //       {/* lines_icon */}
-    //       <motion.div
-    //         whileHover={{
-    //           scale: 1.2,
-    //           rotate: 180,
-    //           backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    //           backdropFilter: 'blur(3.5px)',
-    //           WebkitBackdropFilter: 'blur(3.5px)',
-    //           border: '1px solid rgba( 255, 255, 255, 0.18 )',
-    //           transition: {
-    //             delay: 0.2,
-    //             duration: 0.4
-    //           }
-    //         }}
-    //         onClick={handleToggle}
-    //         variants={end}
-    //         end={`${open}`}
-    //         className="lines_icon"
-    //       >
-    //         <TocRounded />
-    //       </motion.div>
-    //       <br />
-    //       <br />
-    //       {/* group 1 */}
-
-    //       <div className="group">
-    //         <Link to="/main" className="links">
-    //           <Item icon={<HomeRounded />} name="Home" />
-    //         </Link>
-
-    //         <Link to="" className="links">
-    //           <Item icon={<SearchRoundedIcon />} name="Search" />
-    //         </Link>
-    //       </div>
-    //       {/* group 2 */}
-
-    //       <div className="group">
-    //         <motion.h2 animate={{ opacity: open ? 0 : 1, height: open ? 'auto' : 0 }}>
-    //           <div className="line"></div>
-    //         </motion.h2>
-    //         <motion.h3 animate={{ opacity: open ? 1 : 0, height: open ? 'auto' : 0 }}>
-    //           PERSONAL PROPERTY
-    //         </motion.h3>
-
-    //         <Link to="/cars" className="links">
-    //           {' '}
-    //           <Item icon={<DirectionsCarIconRounded />} name="My Vehicles" />
-    //         </Link>
-    //         <Link to="/" className="links">
-    //           {' '}
-    //           <Item icon={<LocalParkingRounded />} name="Parking Places" />
-    //         </Link>
-    //         <Link to="/" onClick={handleLogOut} className="links">
-    //           {' '}
-    //           <Item icon={<ReceiptLongIcon />} name="Bills" />
-    //         </Link>
-    //       </div>
-
-    //       {/* group 3 */}
-    //       <div className="group">
-    //         <motion.h2 animate={{ opacity: open ? 0 : 1, height: open ? 'auto' : 0 }}>
-    //           <div className="line"></div>
-    //         </motion.h2>
-    //         <motion.h3 animate={{ opacity: open ? 1 : 0, height: open ? 'auto' : 0 }}>
-    //           PROFILE
-    //         </motion.h3>
-    //         <Link to="/" className="links">
-    //           <Item icon={<ManageAccountsRoundedIcon />} name="Edit" />
-    //         </Link>
-    //         <Link to="/" onClick={handleLogOut} className="links">
-    //           <Item icon={<LogoutIcon />} name="Log Out" />
-    //         </Link>
-    //       </div>
-    //     </motion.div>
-    //   </motion.div>
-
-    //   <div className="body_container"></div>
-    // </>
   );
 }
 

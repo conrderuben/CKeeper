@@ -29,7 +29,7 @@ export const MyCars = () => {
   useEffect(() => {
     async function getData() {
       const vehicles = await httpClient
-        .get(`http://localhost:4000/api/get-vehicles/`)
+        .get(`http://localhost:4000/api/get-vehicles`)
         .then(x => x.data);
 
       let vehiclesWB = Promise.all(

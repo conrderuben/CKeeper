@@ -1,6 +1,7 @@
 const bd = require("../settings/db")
 const modeloVehiculo = require('../../models').Vehiculo;
 const modeloMarca = require('../../models').Marca;
+const jwt = require('jsonwebtoken');
 
 
 exports.getAll = async (req, res) => {
@@ -10,8 +11,10 @@ exports.getAll = async (req, res) => {
 }
 
 exports.getById = async (req, res) => {
+    const token = req.cookies.jwt;
+    const data = jwt.decode(token, 'Ckeeper')
     const listVehicles =  await modeloVehiculo.findAll({
-        where:{idUsuario:req.params.id}
+        where:{idUsuario:data.data.id}
     });
    
     res.json(listVehicles);
