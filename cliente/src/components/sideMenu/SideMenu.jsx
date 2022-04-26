@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
+import Cookie from 'js-cookie';
 
 function SideMenu(props) {
   const [open, setOpen] = useState(true);
@@ -17,7 +18,9 @@ function SideMenu(props) {
     getData();
   }, []);
 
-  const handleLogOut = () => {};
+  const handleLogOut = () => {
+    document.cookie = 'name=Alexander; expires=Sat, 20 Jan 1980 12:00:00 UTC';
+  };
 
   return (
     <div className="flex flex-col top-0 left-0 w-1/7 bg-gray-900 h-full shadow-lg">

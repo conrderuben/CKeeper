@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './PrimaryButton';
 import logo from '../assets/img/Logo.png';
+import ckeeper from '../assets/Ckeeper.svg';
 import PrimaryButton from './PrimaryButton';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -64,7 +65,7 @@ const NavBar = () => {
     <Contenedor>
       <Wrapper>
         <Izq>
-          <img src={logo} width="40" height="40" />
+          <img src={ckeeper} width="40" height="40" />
         </Izq>
         <Cen>
           <Menu>

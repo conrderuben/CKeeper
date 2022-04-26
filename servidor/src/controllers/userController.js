@@ -22,3 +22,26 @@ exports.getUser = async (req, res) => {
     
     
 }
+
+exports.validateToken = (req, res) => {
+    let token = req.cookies.jwt;
+    if (typeof token != "undefined") {
+
+        jwt.verify(token, 'Ckeeper', (err, data) => {
+            if (!err) {
+                res.send({isAuth: true})
+            } else {
+                console.log(err)
+                // Token expirado
+                res.send({error: "Token expirado o erróneo",
+                isAuth: false});
+            }
+        })
+    } else {
+        // No hay token
+        res.status(401).send(
+            {error: 'No autorizado',
+            isAuth: false}
+            );
+    }
+}
