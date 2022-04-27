@@ -6,7 +6,8 @@ import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
 import { PublicPlace } from '../components/PublicPlace';
 import { httpClient } from '../utils/httpClient';
-
+import Place from '../components/Place/Place';
+import style from '../components/Place/style.scss';
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
@@ -15,6 +16,8 @@ const Container = styled.div`
 
 const Content = styled.div`
   margin-right: 0;
+  width: 100%;
+  overflow-y: scroll;
 `;
 
 const Column = styled.div`
@@ -38,16 +41,18 @@ export const SearchPage = () => {
   return (
     <Container>
       <SideMenu />
-      <Content>
+      <Content className=" py-4 dark">
         <Column>
           {rentPosts.map(value => {
             return (
-              <PublicPlace
+              <Place
                 key={value.id}
-                type={value.tipo}
-                date={value.fechaMatriculacion}
-                brand={value.marca}
-              ></PublicPlace>
+                desc={value.descripcion}
+                alto={value.alto}
+                largo={value.largo}
+                precio={value.true}
+                user={value.idUsuario}
+              ></Place>
             );
           })}
         </Column>

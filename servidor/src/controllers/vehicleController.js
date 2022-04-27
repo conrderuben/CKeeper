@@ -33,3 +33,13 @@ exports.getBrandById = async (req, res)=>{
     )
     res.json(brand.nombre);
 }
+
+exports.addCar = async (req, res)=>{
+    const form =req.body.form;
+            modeloVehiculo.create(data)
+        .then((data)=>{
+            res.json({datos:data})
+         }).catch((err)=>{
+             res.json({error:err})
+         })
+}

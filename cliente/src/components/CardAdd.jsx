@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 270px;
@@ -22,6 +23,10 @@ const Container = styled.div`
   }
 `;
 
-export const CardAdd = () => {
-  return <Container>+</Container>;
+export const CardAdd = props => {
+  const navigate = useNavigate();
+  const handleCarAdd = () => {
+    navigate('/add-car');
+  };
+  return <Container onClick={handleCarAdd}>+</Container>;
 };

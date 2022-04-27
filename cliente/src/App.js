@@ -41,7 +41,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/add-cars"
+          path="/add-car"
           element={
             <ProtectedRoute>
               <AddCars />

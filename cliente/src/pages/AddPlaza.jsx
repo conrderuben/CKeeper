@@ -57,8 +57,8 @@ export const AddPlaza = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    httpClient.post('/registro', { form }).then(() => {
-      navigate('/login');
+    httpClient.post('/addCar', { form }).then(() => {
+      navigate('/cars');
     });
   };
   return (
