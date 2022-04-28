@@ -16,16 +16,11 @@ const Container = styled.div`
 
 const Content = styled.div`
   margin-right: 0;
-  width: 100%;
+  flex:1;
   overflow-y: scroll;
 `;
 
-const Column = styled.div`
-  display: flex;
-  flex: 4;
-  margin: 0 auto;
-  flex-direction: column;
-`;
+
 
 export const SearchPage = () => {
   const [rentPosts, setRentPosts] = useState([]);
@@ -42,7 +37,6 @@ export const SearchPage = () => {
     <Container>
       <SideMenu />
       <Content className=" py-4 dark">
-        <Column>
           {rentPosts.map(value => {
             return (
               <Place
@@ -55,7 +49,6 @@ export const SearchPage = () => {
               ></Place>
             );
           })}
-        </Column>
       </Content>
     </Container>
   );
