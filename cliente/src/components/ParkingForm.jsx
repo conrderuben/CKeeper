@@ -104,13 +104,13 @@ const [userInfo,setuserInfo]=useState()
 
        []);
   const navigate = useNavigate();
-   var sum = 0;
+
   const handleInputChange = e =>{
-sum=sum+1;
+
     setuserInfo({
      
       ...userInfo,
-      [sum]:e.target.files[0]
+      [e.target.files[0].name]:e.target.files[0]
 
     });
   }
