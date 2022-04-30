@@ -88,7 +88,7 @@ export const Form = () => {
   
 
   const [form, setForm] = useState({});
-
+const [userInfo,setuserInfo]=useState()
   const [cities, setCities] = useState([]);
 
   useEffect(() => {
@@ -104,20 +104,79 @@ export const Form = () => {
 
        []);
   const navigate = useNavigate();
+   var sum = 0;
+  const handleInputChange = e =>{
+sum=sum+1;
+    setuserInfo({
+     
+      ...userInfo,
+      [sum]:e.target.files[0]
+
+    });
+  }
+
   const handleChange = e => {
     setForm({
       
       ...form,
       [e.target.name]: e.target.value
     });
-    console.log(e.target.name)
+    console.log(e.target.value)
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    httpClient.post('/parking', { form }).then(() => {
-      navigate('/login');
-    });
-  };
+  // const handleSubmit = e => {
+  //   console.log(userInfo.file);
+  //   const FormData = require('form-data');
+  //   const formdata=new FormData();
+  //   formdata.append('photo',userInfo.file);
+  //   console.log(formdata);
+  //   e.preventDefault();
+  //   httpClient.post('/parking', { formdata }).then(() => {
+  //     navigate('/parking');
+  //   });
+  // };
+
+// function handleSubmit (e){
+//   const FormData = require('form-data');
+//   const formdata=new FormData();
+//   formdata.append('photo',userInfo.file);
+
+//   axios({
+//     method: "POST",
+//     url: "localhost:3000/parking",
+//     data: formdata,
+//     headers: {
+//         "Content-Type": "multipart/form-data"
+//     }
+// })
+//     .then(response => {
+//             if (response.status === 200) {
+//                 console.log("Success, firm added")
+//             } else {
+//                 console.log("Error occurred")
+//             }
+//         }
+//     ).catch(e => {
+//     console.log(e)
+// })
+
+
+
+// }
+
+
+const send = event => {
+  const data=new FormData();
+console.log(userInfo)
+  for(var i in userInfo){
+    data.append("photos",userInfo[i])
+    
+   }
+console.log(data)
+axios.post("http://localhost:4000/api/parking",data).then(res=>console.log(res)).catch(err=>console.log(err));
+
+}
+
+
   return (
     <Container>
       <ImgContainer>
@@ -127,7 +186,7 @@ export const Form = () => {
       <DescriptionContainer>
         <Title>New Parking</Title>
         <FormContainer>
-          <form onSubmit={handleSubmit}>
+          <form action='#' >
           <SubTitle>Location</SubTitle>
           <Input
               type="text"
@@ -204,7 +263,7 @@ export const Form = () => {
      />
             </InputContainer>
 
-     <File/>
+     <File onChange={handleInputChange}/>
 
 <TextArea
      className="description"
@@ -213,11 +272,11 @@ export const Form = () => {
      rows="10"
      id="description"
      placeholder="Description"
-
+     onChange={handleChange}
 />
 
 
-            <button type="submit" className="btn btn-primary">
+            <button onClick={send} className="btn btn-primary">
               Sign in
             </button>
           </form>

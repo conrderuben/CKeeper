@@ -14,7 +14,7 @@ const TextArea = props => {
     
      
       <textarea
-         onKeyUp={e => validation(e, props.exp)}
+        //  onKeyUp={e => validation(e, props.exp)}
          
         
         className="form-control "
@@ -23,7 +23,7 @@ const TextArea = props => {
         rows={props.rows}
         id={props.id}
         placeholder={props.placeholder}
-        
+        onChange={(e) => {props.onChange(e);}}
       />
       
    

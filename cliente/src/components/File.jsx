@@ -1,35 +1,69 @@
-import React,{useState} from "react";
+import React,{Component, useState} from "react";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import styled from "styled-components";
+import * as bootstrap from 'bootstrap';
 
 const Container =styled.div`
 
 margin-bottom: 10px;
 `
 
-const File = () => {  
-     const [hide, setHide] = useState(true)
-    const [image, setImage] = useState(null)
-const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
-      setHide(false);
+
+export default class File extends Component {
+
+    fileObj = [];
+    fileArray = [];
+
+    constructor(props) {
+        super(props);
+        this.state = 
+            {file: [],}
+        
+        this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this);
+        this.uploadFiles = this.uploadFiles.bind(this);
     }
-   }
+
+    uploadMultipleFiles(e) {
+        this.fileObj.push(e.target.files);
+       
+        for (let i = 0; i <= this.fileObj.length-1; i++) {
+
+          this.fileArray[i]=(URL.createObjectURL(this.fileObj[i][0]));
+        this.setState({ file: this.fileArray });
+        
+        }
+    }
+    uploadFiles(e) {
+        e.preventDefault();
+        console.log(this.state.file);
+    }
+
+   render(){
     return (
-      <Container>
-          <h3>Add new Photo</h3>
-          <label htmlFor="filetype" style={{cursor:"pointer"}}>   <AddBoxIcon  style={{fontSize:60}} /> </label>
-          <input type="file" onChange={onImageChange} id="foto" name="foto" style={{display:"none",visibility:"none"}} />
-          
-          <div id="image" hidden={hide} ><img src={image} width="500px" height="300px" alt="preview image" /></div>
-         
-          
+  <div>
+    
+       <h3>Add new Photo</h3>
+     <label htmlFor="foto" style={{cursor:"pointer"}} >   <AddBoxIcon style={{fontSize:60}} /> </label>
+     <input type="file" onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
+        
+     
+<div className="form-group multi-preview">
+         { this.fileArray.map( (url,index) => (
+             <img src={url} key={index} alt="..." width="400px" height="300px"/>
+         ))}
+       </div>
+  </div>
+ )}
 
 
-                </Container>
-   
-   );
-  };
-  
-  export default File;
+
+
+
+
+
+}
+
+
+
+
+
