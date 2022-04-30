@@ -1,15 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
-import Cookie from 'js-cookie';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHouse,
+  faMagnifyingGlass,
+  faCar,
+  faSquareParking,
+  faFileInvoice,
+  faUser,
+  faGear,
+  faArrowRightFromBracket
+} from '@fortawesome/free-solid-svg-icons';
 
 function SideMenu(props) {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(true);
 
   const [user, setUser] = useState();
   useEffect(() => {
     async function getData() {
-      await httpClient.get(`http://localhost:4000/api/user`).then(x => {
+      await httpClient.get('user').then(x => {
         console.log(x);
         setUser(x.data.usuario);
       });
@@ -19,7 +30,13 @@ function SideMenu(props) {
   }, []);
 
   const handleLogOut = () => {
-    document.cookie = 'name=Alexander; expires=Sat, 20 Jan 1980 12:00:00 UTC';
+    httpClient.get('logout').then(res => {
+      if (!res.data.error) {
+        alert(res.data.error);
+      } else {
+        navigate('/');
+      }
+    });
   };
 
   return (
@@ -55,7 +72,9 @@ function SideMenu(props) {
               to="/main"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faHouse} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Home
               </span>
@@ -66,7 +85,9 @@ function SideMenu(props) {
               to="/search"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Search
               </span>
@@ -84,7 +105,9 @@ function SideMenu(props) {
               to="/cars"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faCar} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Vehicles
               </span>
@@ -95,7 +118,9 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faSquareParking} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Parking Places
               </span>
@@ -106,7 +131,9 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faFileInvoice} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Bills
               </span>
@@ -125,20 +152,7 @@ function SideMenu(props) {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  ></path>
-                </svg>
+                <FontAwesomeIcon icon={faUser} />
               </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Profile
@@ -151,26 +165,7 @@ function SideMenu(props) {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  ></path>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
+                <FontAwesomeIcon icon={faGear} />
               </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Settings
@@ -184,7 +179,9 @@ function SideMenu(props) {
               to="/"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
             >
-              <span className="inline-flex justify-center items-center ml-4">{/* icono */}</span>
+              <span className="inline-flex justify-center items-center ml-4">
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+              </span>
               <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
                 Log Out
               </span>

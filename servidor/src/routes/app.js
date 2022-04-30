@@ -3,7 +3,7 @@ const register = require('../controllers/registerController')
 const parking = require('../controllers/placeController')
 const vehicle = require('../controllers/vehicleController')
 const user = require('../controllers/userController')
-const login = require('../controllers/loginController')
+const session = require('../controllers/sessionController')
 const place = require('../controllers/placeController')
 const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
@@ -12,7 +12,9 @@ const app = express.Router();
 // Página sign-in
 app.post('/api/registro', register.register);
 
-app.post('/api/login', login.login);
+app.post('/api/login', session.login);
+
+app.get('/api/logout', session.logout);
 
 app.post('/api/add-parking', parking.addParking);
 

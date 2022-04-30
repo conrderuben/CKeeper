@@ -11,7 +11,7 @@ import { httpClient } from '../utils/httpClient';
 
 const Container = styled.div`
   display: flex;
-  background-color: #b5e5f8;
+  background: #110f16;
   height: 100%;
 `;
 
@@ -21,7 +21,7 @@ const ContentContainer = styled.div`
   flex: 1;
   justify-content: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   overflow-y: scroll;
 `;
 

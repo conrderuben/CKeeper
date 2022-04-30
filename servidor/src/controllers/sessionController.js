@@ -78,3 +78,7 @@ exports.login = (req, res) => {
 
 
 };
+
+exports.logout = (req, res) => {
+        res.status(202).clearCookie('jwt').send('logout')
+};
