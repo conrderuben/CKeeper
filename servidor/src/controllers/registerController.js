@@ -7,14 +7,6 @@ const saltRounds = 10;
 
 
 exports.register = (req, res) => {
-    // const id = 0;
-    // const user = req.body.form.user;
-    // const password = req.body.form.password;
-    // const name = req.body.form.name;
-    // const surname = req.body.form.surname;
-    // const date = req.body.form.date;
-    // const email = req.body.form.email;
-    // const telephone = req.body.form.telephone;
 
     const form =req.body.form;
     bcrypt.hash(form.contraseña, saltRounds, (err, hash)=>{

@@ -18,6 +18,8 @@ app.get('/api/logout', session.logout);
 
 app.post('/api/add-parking', parking.addParking);
 
+app.get('/api/get-my-places', place.getPlacesById);
+
 // app.get('/api/get-vehicles', vehicle.getAll);
 
 app.get('/api/get-vehicles',middleware.validateToken, vehicle.getById);
@@ -31,5 +33,10 @@ app.get('/api/isAuth', user.validateToken);
 app.get('/api/get-brand-by-id/:idMarca', vehicle.getBrandById);
 
 app.get('/api/get-posts', place.getAllPublic);
+
+//Admin
+app.get('/api/getAllUsers', user.getAllUsers);
+
+app.get('/api/isAdmin', user.isAdmin);
 
 module.exports = app;

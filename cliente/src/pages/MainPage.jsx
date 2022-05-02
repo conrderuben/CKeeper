@@ -10,6 +10,7 @@ const Container = Styled.div`
   display: flex;
   background: #110f16;
   height:100%;
+  margin: auto;
 `;
 
 const ContentContainer = Styled.div`
@@ -38,9 +39,6 @@ const MainPage = () => {
       </ContentContainer>
     </Container>
   );
-  // } else {
-  //   return <h1>No autorizado</h1>;
-  // }
 };
 
 export default MainPage;

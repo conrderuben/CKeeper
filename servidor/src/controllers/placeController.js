@@ -24,7 +24,7 @@ const sql = `INSERT INTO plaza(id_usuario, usuario, nombre, apellido, contraseñ
         }
         
     })
-    res.send("K paisa")
+    res.send("ok")
 
 }
 
@@ -34,4 +34,14 @@ exports.getAllPublic = async (req, res) => {
     });
    
     res.json(rentPlace);
+}
+
+exports.getPlacesById = async (req, res) => {
+    const token = req.cookies.jwt;
+    const data = jwt.decode(token, 'Ckeeper')
+    const listPlaces =  await modeloPlaza.findAll({
+        where:{idUsuario:data.data.id}
+    });
+   
+    res.json(listPlaces);
 }

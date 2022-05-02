@@ -4,15 +4,15 @@ const modeloPersona = require('../../models').Persona;
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-function generateToken(obj) {
+function generateToken(obj, tipo) {
     const data = {
         id : obj.id,
-        type : 'user'
+        type : tipo
     }
     const token = jwt.sign({data}, 'Ckeeper', {
         expiresIn: '1h'
     });
-    // res.cookie('jwt', token, { expire: new Date() + 60000 });
+    
     
     return token;
 }
@@ -53,14 +53,15 @@ exports.login = (req, res) => {
             if(result.length==1){ 
                 bcrypt.compare(password, result[0].contraseña, (err, response)=>{
                     if(response){
-                        const token = generateToken(result[0]);
-                        // res.send({
-                        //     auth:true,
-                        //     message:"Its valid password",
-                        //     obj:result[0]
-                        // })
-                        res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
-                        // res.status(200).cookie('jwt', token, { expire: new Date() + 60000 });
+                        if(result[0].usuario ==='Admin123'){
+                            const token = generateToken(result[0], 'admin');
+                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                        }else{
+                            const token = generateToken(result[0], 'user');
+                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                        }
+                        
+    
 
                     }else{
                         res.status(401).json({

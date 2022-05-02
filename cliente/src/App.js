@@ -1,5 +1,6 @@
 import Home from './pages/Home';
 import Register from './pages/Register';
+import AdminRoute from './components/AdminRoute';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
@@ -8,6 +9,9 @@ import { MyCars } from './pages/MyCars';
 import { SearchPage } from './pages/SearchPage';
 import AddCars from './pages/AddCars';
 import ProtectedRoute from './components/ProtectedRoute';
+import MyPlaces from './pages/MyPlaces';
+import BuyPlace from './pages/BuyPlace';
+import AdminUsers from './pages/AdminUsers';
 
 function App() {
   return (
@@ -46,6 +50,32 @@ function App() {
             <ProtectedRoute>
               <AddCars />
             </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/places"
+          element={
+            <ProtectedRoute>
+              <MyPlaces />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/buy-place"
+          element={
+            <ProtectedRoute>
+              <BuyPlace />
+            </ProtectedRoute>
+          }
+        ></Route>
+        {/* Admin */}
+
+        <Route
+          path="/users"
+          element={
+            <AdminRoute>
+              <AdminUsers />
+            </AdminRoute>
           }
         ></Route>
       </Routes>

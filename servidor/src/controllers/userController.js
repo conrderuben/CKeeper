@@ -1,4 +1,4 @@
-const bd = require("../settings/db")
+
 const modeloPersona = require('../../models').Persona;
 const jwt = require('jsonwebtoken');
 
@@ -22,9 +22,22 @@ exports.getUser = async (req, res) => {
     
     
 }
+exports.getAllUsers = async (req, res) => {
+    const token = req.cookies.jwt;
+     const data = jwt.decode(token, 'Ckeeper')
+     if(data.data.type === 'admin'){
+        const users=  await modeloPersona.findAll();
+        res.send(users);
+     }else{
+        res.send({error: 'No autorizado'})
+     }
+
+
+   
+}
 
 exports.validateToken = (req, res) => {
-    let token = req.cookies.jwt;
+    const token = req.cookies.jwt;
     if (typeof token != "undefined") {
 
         jwt.verify(token, 'Ckeeper', (err, data) => {
@@ -44,4 +57,28 @@ exports.validateToken = (req, res) => {
             isAuth: false}
             );
     }
+}
+
+    exports.isAdmin = (req, res) => {
+        const token = req.cookies.jwt;
+        if (typeof token != "undefined") {
+    
+            jwt.verify(token, 'Ckeeper', (err, data) => {
+                const info = jwt.decode(token, 'Ckeeper')
+                if (!err && info.data.type ==='admin') {
+                    res.send({isAdmin: true})
+                } else {
+                    console.log(err)
+                    // Token expirado
+                    res.send({error: "Token expirado o erróneo",
+                    isAdmin: false});
+                }
+            })
+        } else {
+            // No hay token
+            res.status(401).send(
+                {error: 'No autorizado',
+                isAdmin: false}
+                );
+        }
 }
