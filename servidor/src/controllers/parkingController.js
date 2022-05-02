@@ -19,17 +19,14 @@ exports.getAll = async (req, res) => {
 exports.parking = function (req,res,next) {
 
 const usu="Ruben"
-const sum=0;
-
 
 
     const storage = multer.diskStorage({
         destination:path.join( "C:/CkeeperImgs/"+usu+"/Parking/"),
         filename: function (req, file, cb) {
-          console.log(file)
           cb(
             null,
-            "parking"+file.name + path.extname(file.originalname),
+            "parking"+req.files.length + path.extname(file.originalname),
           );
         },
       });
