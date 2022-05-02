@@ -187,7 +187,7 @@ httpClient.post('/add-parking', { form }).then(() => {
        {cities.map((cit) =>
         <option
         
-        value={cit.id} key={cit.id}>{cit.nombre} 
+        value={cit.id} key={cit.id}>{cit.name} 
                   
         </option> 
       )}

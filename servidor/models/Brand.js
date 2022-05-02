@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'brandId'
       })
 
-      Marca.belongsTo(models.Model,{
+      Brand.belongsTo(models.Modol,{
         foreignKey:'id',
         target_key:'idModel'
       })

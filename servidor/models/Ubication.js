@@ -5,11 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Ubication extends Model {
     static associate(models) {
-      Ubication.hasMany(models.Plaza,{
+      Ubication.hasMany(models.Parking,{
         foreignKey:'ubicationId'
       })
 
-      Ubicacion.belongsTo(models.Municipio,{
+      Ubication.belongsTo(models.City,{
         foreignKey:'id',
         target_key:'idCity'
       })

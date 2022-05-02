@@ -37,10 +37,10 @@ exports.addParking =  async (req,res) => {
 
     const dataUbication={
         id:0,
-        calle:street,
-        codigoPostal:pc,
-        numero:number,
-        idMunicipio:cities,
+        street:street,
+        postalCode:pc,
+        number:number,
+        idCity:cities,
         
     }
     
@@ -51,16 +51,16 @@ exports.addParking =  async (req,res) => {
 
             //DATA PARKING
           const dataParking={
-          precio:price,
-          alquilada:false,
-          publicada:false,
-          descripcion:description,
-          alto:height,
-          largo:long,
-          ancho:width,
+          prize:price,
+          rented:false,
+          published:false,
+          description:description,
+          height:height,
+          long:long,
+          width:width,
           photo:3,
-          idUsuario:15,
-          idUbicacion:id,
+          userId:1,
+          ubicationId:id,
           created:null,
           updated:null,
           

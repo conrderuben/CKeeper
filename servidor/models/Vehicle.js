@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         target_key:'userId'
       })
 
-      Vehiculo.belongsTo(models.Brand,{
+      Vehicle.belongsTo(models.Brand,{
         foreignKey:'id',
         target_key:'brandId'
       })
