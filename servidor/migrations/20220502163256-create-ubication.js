@@ -1,32 +1,26 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Vehiculo', {
+    await queryInterface.createTable('Ubications', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tipo: {
+      street: {
         type: Sequelize.STRING
       },
-      fechaMatriculacion: {
-        type: Sequelize.DATE
+      postalCode: {
+        type: Sequelize.STRING
       },
-      idUsuario: {
+      number: {
+        type: Sequelize.INTEGER
+      },
+      idCity: {
         type: Sequelize.INTEGER,
         references:{
-          model:'Persona',
-          key:'id'
-        },
-        onDelete:'CASCADE',
-        onUpdate:'CASCADE'
-      },
-      idMarca: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'Marca',
+          model:'Cities',
           key:'id'
         },
         onDelete:'CASCADE',
@@ -43,6 +37,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Vehiculo');
+    await queryInterface.dropTable('Ubications');
   }
 };

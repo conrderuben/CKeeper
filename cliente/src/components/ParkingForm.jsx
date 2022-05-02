@@ -121,48 +121,8 @@ const [userInfo,setuserInfo]=useState()
       ...form,
       [e.target.name]: e.target.value
     });
-    console.log(e.target.value)
   };
-  // const handleSubmit = e => {
-  //   console.log(userInfo.file);
-  //   const FormData = require('form-data');
-  //   const formdata=new FormData();
-  //   formdata.append('photo',userInfo.file);
-  //   console.log(formdata);
-  //   e.preventDefault();
-  //   httpClient.post('/parking', { formdata }).then(() => {
-  //     navigate('/parking');
-  //   });
-  // };
-
-// function handleSubmit (e){
-//   const FormData = require('form-data');
-//   const formdata=new FormData();
-//   formdata.append('photo',userInfo.file);
-
-//   axios({
-//     method: "POST",
-//     url: "localhost:3000/parking",
-//     data: formdata,
-//     headers: {
-//         "Content-Type": "multipart/form-data"
-//     }
-// })
-//     .then(response => {
-//             if (response.status === 200) {
-//                 console.log("Success, firm added")
-//             } else {
-//                 console.log("Error occurred")
-//             }
-//         }
-//     ).catch(e => {
-//     console.log(e)
-// })
-
-
-
-// }
-
+  
 
 const send = event => {
   const data=new FormData();
@@ -171,9 +131,16 @@ console.log(userInfo)
     data.append("photos",userInfo[i])
     
    }
-console.log(data)
-axios.post("http://localhost:4000/api/parking",data).then(res=>console.log(res)).catch(err=>console.log(err));
+ 
 
+axios.post("http://localhost:4000/api/photos",data)
+.then(res=>console.log(res))
+.catch(err=>console.log(err));
+
+
+httpClient.post('/add-parking', { form }).then(() => {
+  navigate('/login');
+});
 }
 
 

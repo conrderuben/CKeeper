@@ -1,36 +1,32 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Alquiler', {
+    await queryInterface.createTable('Vehicles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fechaInicio: {
+      type: {
+        type: Sequelize.STRING
+      },
+      matriculationDate: {
         type: Sequelize.DATE
       },
-      fechaFin: {
-        type: Sequelize.DATE
-      },
-      arrendador: {
+      userId: {
         type: Sequelize.INTEGER,
-        unique:true,
-        allowNull: false,
         references:{
-          model:'Persona',
+          model:'People',
           key:'id'
         },
         onDelete:'CASCADE',
         onUpdate:'CASCADE'
       },
-      arrendatario: {
+      brandId: {
         type: Sequelize.INTEGER,
-        unique:true,
-        allowNull: false,
         references:{
-          model:'Persona',
+          model:'Brands',
           key:'id'
         },
         onDelete:'CASCADE',
@@ -47,6 +43,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Alquiler');
+    await queryInterface.dropTable('Vehicles');
   }
 };

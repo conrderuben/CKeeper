@@ -1,23 +1,36 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Factura', {
+    await queryInterface.createTable('Rents', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fechaEmision: {
+      startDate: {
         type: Sequelize.DATE
       },
-      tipo: {
-        type: Sequelize.STRING
+      endDate: {
+        type: Sequelize.DATE
       },
-      idAlquiler: {
+      renter: {
         type: Sequelize.INTEGER,
+        unique:true,
+        allowNull: false,
         references:{
-          model:'Alquiler',
+          model:'People',
+          key:'id'
+        },
+        onDelete:'CASCADE',
+        onUpdate:'CASCADE'
+      },
+      tenant: {
+        type: Sequelize.INTEGER,
+        unique:true,
+        allowNull: false,
+        references:{
+          model:'People',
           key:'id'
         },
         onDelete:'CASCADE',
@@ -34,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Factura');
+    await queryInterface.dropTable('Rents');
   }
 };

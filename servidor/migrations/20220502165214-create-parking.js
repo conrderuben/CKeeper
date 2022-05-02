@@ -1,47 +1,50 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Plaza', {
+    await queryInterface.createTable('Parkings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      precio: {
+      prize: {
         type: Sequelize.INTEGER
       },
-      alquilada: {
+      rented: {
         type: Sequelize.BOOLEAN
       },
-      publicada: {
+      published: {
         type: Sequelize.BOOLEAN
       },
-      descripcion: {
+      description: {
         type: Sequelize.STRING
       },
-      alto: {
+      height: {
         type: Sequelize.INTEGER
       },
-      largo: {
+      long: {
         type: Sequelize.INTEGER
       },
-      ancho: {
+      width: {
         type: Sequelize.INTEGER
       },
-      idUsuario: {
+      photo: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
         type: Sequelize.INTEGER,
         references:{
-          model:'Persona',
+          model:'People',
           key:'id'
         },
         onDelete:'CASCADE',
         onUpdate:'CASCADE'
       },
-      idUbicacion: {
+      ubicationId: {
         type: Sequelize.INTEGER,
         references:{
-          model:'Ubicacion',
+          model:'Ubications',
           key:'id'
         },
         onDelete:'CASCADE',
@@ -54,13 +57,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      foto: {
-        type: Sequelize.String
-      },
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Plaza');
+    await queryInterface.dropTable('Parkings');
   }
 };
