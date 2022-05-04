@@ -1,9 +1,9 @@
 
-const modeloPersona = require('../../models').Persona;
+const peopleModel = require('../../models').People;
 const jwt = require('jsonwebtoken');
 
 exports.getById = async (req, res) => {
-    const user=  await modeloPersona.findOne({
+    const user=  await peopleModel.findOne({
         where:{id: req.params.id}
     });
    
@@ -15,7 +15,7 @@ exports.getUser = async (req, res) => {
 
      const data = jwt.decode(token, 'Ckeeper')
 
-     const user=  await modeloPersona.findOne({
+     const user=  await peopleModel.findOne({
         where:{id: data.data.id}
     });
      res.send(user)
@@ -26,10 +26,10 @@ exports.getAllUsers = async (req, res) => {
     const token = req.cookies.jwt;
      const data = jwt.decode(token, 'Ckeeper')
      if(data.data.type === 'admin'){
-        const users=  await modeloPersona.findAll();
+        const users=  await peopleModel.findAll();
         res.send(users);
      }else{
-        res.send({error: 'No autorizado'})
+        res.send({error: 'ForGiven'})
      }
 
 
@@ -46,14 +46,14 @@ exports.validateToken = (req, res) => {
             } else {
                 console.log(err)
                 // Token expirado
-                res.send({error: "Token expirado o erróneo",
+                res.send({error: "Token expired or wrong",
                 isAuth: false});
             }
         })
     } else {
         // No hay token
         res.status(401).send(
-            {error: 'No autorizado',
+            {error: 'ForGiven',
             isAuth: false}
             );
     }
@@ -70,14 +70,14 @@ exports.validateToken = (req, res) => {
                 } else {
                     console.log(err)
                     // Token expirado
-                    res.send({error: "Token expirado o erróneo",
+                    res.send({error: "Token expired or wrong",
                     isAdmin: false});
                 }
             })
         } else {
             // No hay token
             res.status(401).send(
-                {error: 'No autorizado',
+                {error: 'ForGiven',
                 isAdmin: false}
                 );
         }

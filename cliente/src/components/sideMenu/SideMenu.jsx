@@ -21,7 +21,7 @@ function SideMenu(props) {
   useEffect(() => {
     async function getData() {
       await httpClient.get('user').then(x => {
-        setUser(x.data.usuario);
+        setUser(x.data.user);
       });
     }
 

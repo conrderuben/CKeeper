@@ -35,7 +35,7 @@ app.get('/api/user', user.getUser);
 
 app.get('/api/isAuth', user.validateToken);
 
-app.get('/api/get-brand-by-id/:idMarca', vehicle.getBrandById);
+app.get('/api/get-brand-by-id/:brandId', vehicle.getBrandById);
 
 app.get('/api/get-posts', place.getAllPublic);
 

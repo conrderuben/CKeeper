@@ -1,5 +1,8 @@
 const bd = require("../settings/db")
-const modeloPersona = require('../../models').Persona;
+const peopleModel = require('../../models').People;
+
+
+
 
 //Bcrytp for the hashing
 const bcrypt = require('bcrypt')
@@ -9,15 +12,15 @@ const saltRounds = 10;
 exports.register = (req, res) => {
 
     const form =req.body.form;
-    bcrypt.hash(form.contraseña, saltRounds, (err, hash)=>{
+    bcrypt.hash(form.password, saltRounds, (err, hash)=>{
         if(err){
             console.log('error with the hash')
         }
-            const data = {...form, contraseña:hash }
+            const data = {...form, password:hash,active:1 }
             console.log(data);
-            modeloPersona.create(data)
+            peopleModel.create(data)
         .then((data)=>{
-            res.json({datos:data})
+            res.json({info:data})
          }).catch((err)=>{
              res.json({error:err})
          })

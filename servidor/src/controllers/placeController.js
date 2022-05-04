@@ -1,11 +1,12 @@
 const bd = require("../settings/db")
-const modeloPlaza = require('../../models').Plaza;
+// const modeloPlaza = require('../../models').Plaza;
 const cityModel = require('../../models').City;
 const ubicationModel = require('../../models').Ubication;
 const parkingModel = require('../../models').Parking;
 const multer = require('multer');
 const path = require('path');
 const cors = require ("cors");
+const jwt = require ("jsonwebtoken")
 
 exports.getAll = async (req, res) => {
     const listCities =  await cityModel.findAll();
@@ -13,8 +14,8 @@ exports.getAll = async (req, res) => {
     res.json(listCities);
 }
 exports.getAllPublic = async (req, res) => {
-    const rentPlace =  await modeloPlaza.findAll({
-        where:{publicada: true}
+    const rentPlace =  await parkingModel.findAll({
+        where:{published: true}
     });
    
     res.json(rentPlace);
@@ -23,8 +24,8 @@ exports.getAllPublic = async (req, res) => {
 exports.getPlacesById = async (req, res) => {
     const token = req.cookies.jwt;
     const data = jwt.decode(token, 'Ckeeper')
-    const listPlaces =  await modeloPlaza.findAll({
-        where:{idUsuario:data.data.id}
+    const listPlaces =  await parkingModel.findAll({
+        where:{userId:data.data.id}
     });
    
     res.json(listPlaces);

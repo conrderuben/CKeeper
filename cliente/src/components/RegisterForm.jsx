@@ -109,13 +109,13 @@ export const Form = () => {
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>
-        <Title>New Parking</Title>
+        <Title>Register</Title>
         <FormContainer>
           <form onSubmit={handleSubmit}>
             <InputValidated
               exp={/^[A-Za-z0-9_\.-]{8,20}$/}
               type="text"
-              name="usuario"
+              name="user"
               id="user"
               label="User"
               onChange={handleChange}
@@ -123,7 +123,7 @@ export const Form = () => {
             <InputValidated
               exp={/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}$/}
               type="password"
-              name="contraseña"
+              name="password"
               id="password"
               label="Password"
               onChange={handleChange}
@@ -133,7 +133,7 @@ export const Form = () => {
                 /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,17}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/
               }
               type="text"
-              name="nombre"
+              name="name"
               id="name"
               label="Name"
               onChange={handleChange}
@@ -141,14 +141,14 @@ export const Form = () => {
             <InputValidated
               exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{3,20}$/}
               type="text"
-              name="apellido"
+              name="surname"
               id="surname"
               label="Surname"
               onChange={handleChange}
             ></InputValidated>
             <InputValidated
               type="date"
-              name="fechaNacimiento"
+              name="bornDate"
               id="date"
               label="Born date"
               onChange={handleChange}
@@ -158,7 +158,7 @@ export const Form = () => {
                 /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
               }
               type="email"
-              name="correo"
+              name="mail"
               id="email"
               label="Email"
               onChange={handleChange}
@@ -166,7 +166,7 @@ export const Form = () => {
             <InputValidated
               exp={/^[6-9]\d\d{3}\d{2}\d{2}$/}
               type="tel"
-              name="telefono"
+              name="phone"
               id="telephone"
               label="Telephone"
               onChange={handleChange}

@@ -1,11 +1,11 @@
 const bd = require("../settings/db")
-const modeloVehiculo = require('../../models').Vehiculo;
-const modeloMarca = require('../../models').Marca;
+const vehicleModel = require('../../models').Vehicle;
+const brandModel = require('../../models').Brand;
 const jwt = require('jsonwebtoken');
 
 
 exports.getAll = async (req, res) => {
-    const listVehicles =  await modeloVehiculo.findAll();
+    const listVehicles =  await vehicleModel.findAll();
    
     res.json(listVehicles);
 }
@@ -13,32 +13,35 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
     const token = req.cookies.jwt;
     const data = jwt.decode(token, 'Ckeeper')
-    const listVehicles =  await modeloVehiculo.findAll({
-        where:{idUsuario:data.data.id}
+    const listVehicles =  await vehicleModel.findAll({
+        where:{userId:data.data.id}
     });
    
     res.json(listVehicles);
 }
 
 exports.getBrandById = async (req, res)=>{
-    // const sql = "SELECT * FROM Marcas WHERE id = ?";
-    // const brand = await bd.query(sql,[req.params.idMarca], (err, result)=>{
+    // const sql = "SELECT * FROM Brand WHERE id = ?";
+    // const brand = await bd.query(sql,[req.params.brandId], (err, result)=>{
     //         if(err){
     //             console.log(err);
     //         }else{
     //             return result
     //         }
     //     } )
-    const brand = await modeloMarca.findByPk(req.params.idMarca
+    // console.log(req)
+    console.log(req.params)
+    const brand = await brandModel.findByPk(req.params.brandId
     )
-    res.json(brand.nombre);
+
+    res.json(brand.name);
 }
 
 exports.addCar = async (req, res)=>{
     const form =req.body.form;
-            modeloVehiculo.create(data)
+            vehicleModel.create(data)
         .then((data)=>{
-            res.json({datos:data})
+            res.json({info:data})
          }).catch((err)=>{
              res.json({error:err})
          })

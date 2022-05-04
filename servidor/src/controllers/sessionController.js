@@ -1,13 +1,12 @@
 const db = require("../../models");
 const bd = require("../settings/db")
-const modeloPersona = require('../../models').Persona;
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-function generateToken(obj, tipo) {
+function generateToken(obj, t) {
     const data = {
         id : obj.id,
-        type : tipo
+        type : t
     }
     const token = jwt.sign({data}, 'Ckeeper', {
         expiresIn: '1h'
@@ -42,7 +41,7 @@ exports.login = (req, res) => {
     const password = req.body.form.password;
 
     bd.query(
-        "SELECT * FROM Personas WHERE usuario = ?",
+        "SELECT * FROM People WHERE user = ?",
         [user],
         (err, result) =>{
             if(err){
@@ -51,9 +50,9 @@ exports.login = (req, res) => {
               })
             }
             if(result.length==1){ 
-                bcrypt.compare(password, result[0].contraseña, (err, response)=>{
+                bcrypt.compare(password, result[0].password, (err, response)=>{
                     if(response){
-                        if(result[0].usuario ==='Admin123'){
+                        if(result[0].user ==='Admin123'){
                             const token = generateToken(result[0], 'admin');
                             res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
                         }else{
