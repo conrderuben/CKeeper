@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import fondo2 from '../assets/img/fondo2.jpg';
 import fondo1 from '../assets/img/fondo1.jpg';
@@ -6,7 +7,7 @@ import fondo3 from '../assets/img/fondo3.jpg';
 import fondo4 from '../assets/img/fondo4.jpg';
 import fondo5 from '../assets/img/fondo5.jpg';
 import { validator } from '../formValidator';
-
+import TextArea from './TextArea';
 import Axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
@@ -48,12 +49,44 @@ const FormContainer = styled.div`
   height: 100%;
   margin: 1rem 2rem;
 `;
+const SubTitle = styled.h2`
 
+ color: black;
+ font-size:30px;
+
+ `;
+const InputContainer = styled.div`
+ 
+    display: inline-flex;
+ 
+    justify-content: space-around;
+
+    
+    width: 100%;
+    
+    `;
 const validation = (e, exp) => {
   validator(exp, e.target);
 };
 
 export const Form = () => {
+
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    Axios({
+      url: "http://localhost:4000/api/parking/",
+    })
+      .then((response) => {
+        setList(response.data);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [setList]);
+
+
+
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
@@ -76,7 +109,7 @@ export const Form = () => {
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>
-        <Title>Registrate</Title>
+        <Title>New Parking</Title>
         <FormContainer>
           <form onSubmit={handleSubmit}>
             <InputValidated

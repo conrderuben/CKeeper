@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import MyPlaces from './pages/MyPlaces';
 import BuyPlace from './pages/BuyPlace';
 import AdminUsers from './pages/AdminUsers';
+import { Parking } from './pages/Parking';
 
 function App() {
   return (
@@ -78,6 +79,8 @@ function App() {
             </AdminRoute>
           }
         ></Route>
+
+        {/* <Route path="/parking" element={<Parking />} /> */}
       </Routes>
     </Router>
   );

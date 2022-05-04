@@ -1,33 +1,17 @@
 const bd = require("../settings/db")
 const modeloPlaza = require('../../models').Plaza;
+const cityModel = require('../../models').City;
+const ubicationModel = require('../../models').Ubication;
+const parkingModel = require('../../models').Parking;
+const multer = require('multer');
+const path = require('path');
+const cors = require ("cors");
 
-
-exports.addParking = (req, res) => {
-    const id = 0;
-    const prize = req.body.form.prize;
-    const rented = req.body.form.rented;
-    const public = req.body.form.public;
-    const description = req.body.form.description;
-    const userId = req.body.form.userId;
-    const dimensions = req.body.form.dimensions;
-    const ubiId = req.body.form.ubiId;
-
-    
-const sql = `INSERT INTO plaza(id_usuario, usuario, nombre, apellido, contraseña, fechaNacimiento, correo, telefono) VALUES (?,?,?,?,?,?,?,?)`
-    bd.query(sql,[id,prize,rented,public,description,userId,dimensions,ubiId] ,(err, result)=>{
-        if(err){
-            
-            console.log(err);
-        }else{
-            console.log('Se ha registrado la plaza');
-            
-        }
-        
-    })
-    res.send("ok")
-
+exports.getAll = async (req, res) => {
+    const listCities =  await cityModel.findAll();
+   
+    res.json(listCities);
 }
-
 exports.getAllPublic = async (req, res) => {
     const rentPlace =  await modeloPlaza.findAll({
         where:{publicada: true}
@@ -45,3 +29,111 @@ exports.getPlacesById = async (req, res) => {
    
     res.json(listPlaces);
 }
+
+    
+
+exports.addParking =  async (req,res) => {
+
+
+
+
+
+    const form =req.body.form;
+    console.log(form);
+    const street = form.street;
+    const pc = req.body.form.pc;
+    const number = req.body.form.number;
+    const cities = req.body.form.cities;
+
+    //PARKING DATA
+
+    const price = req.body.form.price;
+    const height = req.body.form.height;
+    const width = req.body.form.width;
+    const long = req.body.form.long;
+    const description = req.body.form.description;
+
+
+    const dataUbication={
+        id:0,
+        street:street,
+        postalCode:pc,
+        number:number,
+        idCity:cities,
+        
+
+   
+
+}
+
+
+    
+        
+          //INSERT UBICATION
+             await ubicationModel.create(dataUbication)
+            const id= await ubicationModel.max('id');
+
+            //DATA PARKING
+          const dataParking={
+          prize:price,
+          rented:false,
+          published:false,
+          description:description,
+          height:height,
+          long:long,
+          width:width,
+          photo:3,
+          userId:1,
+          ubicationId:id,
+          created:null,
+          updated:null,
+          
+        }
+        //INSERT PARKING
+        await parkingModel.create(dataParking)
+
+
+
+
+
+
+  
+}
+exports.photos = function (req,res,next) {
+
+const usu="Ruben"
+
+
+
+
+
+    const storage = multer.diskStorage({
+        destination:path.join( "C:/CkeeperImgs/"+usu+"/Parking/"),
+        filename: function (req, file, cb) {
+          cb(
+            null,
+            "parking"+req.files.length + path.extname(file.originalname),
+          );
+        },
+      });
+
+      const upload = multer({
+        storage: storage,
+        limits:{fileSize: 1000000},
+     }).any("photos");
+
+     upload(req, res, (err) => {
+        if(!err)
+           return res.send(200).end();
+     });
+
+
+}
+
+
+
+  
+   
+
+
+

@@ -17,6 +17,7 @@ const Input = props => {
         id={props.id}
         placeholder="name@example.com"
         required
+       
       />
       <label htmlFor={props.id} className="form-label">
         {props.label}

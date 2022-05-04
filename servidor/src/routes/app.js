@@ -9,6 +9,7 @@ const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
 
 
+
 // Página sign-in
 app.post('/api/registro', register.register);
 
@@ -17,6 +18,13 @@ app.post('/api/login', session.login);
 app.get('/api/logout', session.logout);
 
 app.post('/api/add-parking', parking.addParking);
+app.post('/api/photos', parking.photos);
+
+
+
+app.get('/api/login', login.login )
+
+//app.post('/api/add-parking', parking.addParking);
 
 app.get('/api/get-my-places', place.getPlacesById);
 
@@ -38,5 +46,6 @@ app.get('/api/get-posts', place.getAllPublic);
 app.get('/api/getAllUsers', user.getAllUsers);
 
 app.get('/api/isAdmin', user.isAdmin);
+app.get('/api/list-cities',parking.getAll);
 
 module.exports = app;
