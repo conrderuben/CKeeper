@@ -21,9 +21,6 @@ app.post('/api/add-parking', parking.addParking);
 app.post('/api/photos', parking.photos);
 
 
-
-app.get('/api/login', login.login )
-
 //app.post('/api/add-parking', parking.addParking);
 
 app.get('/api/get-my-places', place.getPlacesById);

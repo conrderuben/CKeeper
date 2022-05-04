@@ -80,7 +80,7 @@ function App() {
           }
         ></Route>
 
-        {/* <Route path="/parking" element={<Parking />} /> */}
+        <Route path="/parking" element={<Parking />} />
       </Routes>
     </Router>
   );

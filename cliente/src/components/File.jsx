@@ -1,8 +1,11 @@
 import React,{Component, useState} from "react";
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import styled from "styled-components";
 import * as bootstrap from 'bootstrap';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+   faPlus,
+  } from '@fortawesome/free-solid-svg-icons';
+  
 const Container =styled.div`
 
 margin-bottom: 10px;
@@ -43,7 +46,7 @@ export default class File extends Component {
   <div>
     
        <h3>Add new Photo</h3>
-     <label htmlFor="foto" style={{cursor:"pointer"}} >   <AddBoxIcon style={{fontSize:60}} /> </label>
+     <label htmlFor="foto" style={{cursor:"pointer"}} > <FontAwesomeIcon icon={faPlus} style={{fontSize:60}}/> </label>
      <input type="file" onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
         
      
