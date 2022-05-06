@@ -82,7 +82,6 @@ export const Form = () => {
   const [form, setForm] = useState({});
   const [fileData,setFileData]=useState()
   const [cities, setCities] = useState([]);
-  const [fileCont, setFileCont] = useState({});
 
   useEffect(() => {
     async function getData() {
@@ -107,12 +106,6 @@ export const Form = () => {
 
     });
 
-    // setFileCont({
-      
-    //   ...fileCont,
-    //   [e.target.files[0].name]: fileData.length
-    // });
-    // console.log(fileCont)
   }
 
   const handleChange = e => {

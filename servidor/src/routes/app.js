@@ -44,5 +44,9 @@ app.get('/api/getAllUsers', user.getAllUsers);
 
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/list-cities',parking.getAll);
+app.get('/api/list-brands',vehicle.getAllBrands);
+app.get('/api/typeById/:brandId',vehicle.getTypeById);
+
+
 
 module.exports = app;

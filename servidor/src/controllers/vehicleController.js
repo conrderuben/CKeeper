@@ -1,6 +1,8 @@
 const bd = require("../settings/db")
 const vehicleModel = require('../../models').Vehicle;
 const brandModel = require('../../models').Brand;
+const typeModel = require('../../models').Type;
+
 const jwt = require('jsonwebtoken');
 
 
@@ -18,6 +20,24 @@ exports.getById = async (req, res) => {
     });
    
     res.json(listVehicles);
+}
+exports.getAllBrands= async (req, res)=>{
+
+
+
+    const listBrands=  await brandModel.findAll();
+   
+    res.json(listBrands);
+
+
+
+}
+exports.getTypeById= async (req, res)=>{
+
+    const type = await typeModel.findAll({
+        where: {idBrand:req.params.brandId}
+      });
+      res.json(type);
 }
 
 exports.getBrandById = async (req, res)=>{

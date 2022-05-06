@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import fondo6 from '../assets/img/fondo6.jpg';
-import { validator } from '../formValidator';
 
-import Axios from 'axios';
+import axios from 'axios';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input';
@@ -65,30 +64,64 @@ const MarcaContainer = styled.div`
 const ModeloContainer = styled.div`
   flex: 1;
   float: right;
-  padding: 0% 30% 4% 10%;
+ 
 `;
 
-const validation = (e, exp) => {
-  validator(exp, e.target);
-};
+
 
 export const CarForm = () => {
   const [form, setForm] = useState({});
+  const [brands, setBrands] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState([52]);
 
-  const navigate = useNavigate();
+  
   const handleChange = e => {
+    
+
     setForm({
       ...form,
       [e.target.name]: e.target.value
     });
+    if (e.target.name=="brand"){
+    setSelectedBrand(
+      e.target.value
+    );
+
+      }
   };
 
+
+
+
+
+
+  useEffect(() => {
+    async function getData() {
+      const brand = await axios
+        .get(`http://localhost:4000/api/list-brands`)
+        .then(x => {
+          setBrands(x.data);
+        });
+    }
+        getData();
+      },
+  
+       []);
+      
+  useEffect(() => {
+
+    async function getData() {
+      httpClient.get(`http://localhost:4000/api/typeById/${selectedBrand}`).then(x => {
+        setTypes(x.data);
+      });
+    }
+   getData();
+      },
+  
+      [selectedBrand]);
   const handleSubmit = e => {
-    e.preventDefault();
-    httpClient.post('/', { form }).then(() => {
-      navigate('/login');
-    });
-  };
+  }
   return (
     <Container>
       <ImgContainer>
@@ -96,89 +129,63 @@ export const CarForm = () => {
         <Image src={fondo6} />
       </ImgContainer>
       <DescriptionContainer>
-        <Title>Registrar vehículos</Title>
+        <Title>Register Vehicle</Title>
         <FormContainer>
           <form onSubmit={handleSubmit}>
-            <Input
-              exp={/^[A-Za-z0-9_\.-]{8,20}$/}
-              type="text"
-              name="tipo"
-              id="type"
-              label="Type"
-              onChange={handleChange}
-            ></Input>
+        <MarcaContainer>
+          <label for="type">
+                <b>Type</b>
+              </label>
+              <br />
+              <Select name="type" onChange={handleChange}>
+               
+               
+                 <option
+                    value="car">
+                      Car
+                 </option> 
+                 <option
+                    value="motorcycle">
+                      Motorcycle
+                 </option> 
+                 
+                 <option
+                    value="van">
+                      Van
+                 </option> 
+                
+              </Select>
+              </MarcaContainer>
             <MarcaContainer>
-              <label for="marca">
+              <label for="brand">
                 <b>Brand</b>
               </label>
               <br />
-              <Select name="marca">
-                <option value={'abarth'}>Abarth</option>
-                <option value={'audi'}>Audi</option>
-                <option value={'bmw'}>BMW</option>
-                <option value={'chevrolet'}>Chevrolet</option>
-                <option value={'citroen'}>Citroen</option>
-                <option value={'dacia'}>Dacia</option>
-                <option value={'fiat'}>Fiat</option>
-                <option value={'ford'}>Ford</option>
-                <option value={'honda'}>Honda</option>
-                <option value={'jaguar'}>Jaguar</option>
-                <option value={'jeep'}>Jeep</option>
-                <option value={'kia'}>Kia</option>
-                <option value={'mercedes'}>Mercedes</option>
-                <option value={'mini'}>Mini</option>
-                <option value={'mitsubishi'}>Mitsubishi</option>
-                <option value={'nissan'}>Nissan</option>
-                <option value={'opel'}>Opel</option>
-                <option value={'peugeot'}>Peugeot</option>
-                <option value={'renault'}>Renault</option>
-                <option value={'seat'}>Seat</option>
-                <option value={'skoda'}>Skoda</option>
-                <option value={'smart'}>Smart</option>
-                <option value={'subaru'}>Subaru</option>
-                <option value={'suzuki'}>Suzuki</option>
-                <option value={'tata'}>Tata</option>
-                <option value={'tesla'}>Tesla</option>
-                <option value={'toyota'}>Toyota</option>
-                <option value={'volskwagen'}>Volskwagen</option>
-                <option value={'volvo'}>Volvo</option>
+              <Select name="brand" onChange={handleChange}>
+               
+               {brands.map((brn) =>
+                 <option
+                    value={brn.id} key={brn.id}>{brn.name} 
+                 </option> 
+      )}
+
               </Select>
             </MarcaContainer>
+
+
+
+
             <ModeloContainer>
               <label for="modelo">
                 <b>Model</b>
               </label>
               <br />
-              <Select name="modelo">
-                <option value={'model1'}>Model1</option>
-                <option value={'audi'}>Audi</option>
-                <option value={'bmw'}>BMW</option>
-                <option value={'chevrolet'}>Chevrolet</option>
-                <option value={'citroen'}>Citroen</option>
-                <option value={'dacia'}>Dacia</option>
-                <option value={'fiat'}>Fiat</option>
-                <option value={'ford'}>Ford</option>
-                <option value={'honda'}>Honda</option>
-                <option value={'jaguar'}>Jaguar</option>
-                <option value={'jeep'}>Jeep</option>
-                <option value={'kia'}>Kia</option>
-                <option value={'mercedes'}>Mercedes</option>
-                <option value={'mini'}>Mini</option>
-                <option value={'mitsubishi'}>Mitsubishi</option>
-                <option value={'nissan'}>Nissan</option>
-                <option value={'opel'}>Opel</option>
-                <option value={'peugeot'}>Peugeot</option>
-                <option value={'renault'}>Renault</option>
-                <option value={'seat'}>Seat</option>
-                <option value={'skoda'}>Skoda</option>
-                <option value={'smart'}>Smart</option>
-                <option value={'subaru'}>Subaru</option>
-                <option value={'suzuki'}>Suzuki</option>
-                <option value={'tata'}>Tata</option>
-                <option value={'tesla'}>Tesla</option>
-                <option value={'toyota'}>Toyota</option>
-                <option value={'volskwagen'}>Volskwagen</option>
-                <option value={'volvo'}>Volvo</option>
+              <Select name="typeId">
+              {types.map((typ) =>
+                 <option
+                    value={typ.id} key={typ.id}>{typ.name} 
+                 </option> 
+      )}
               </Select>
             </ModeloContainer>
             <br />
