@@ -69,6 +69,14 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route
+          path="/parking"
+          element={
+            <ProtectedRoute>
+              <Parking />
+            </ProtectedRoute>
+          }
+        ></Route>
         {/* Admin */}
 
         <Route
@@ -79,8 +87,6 @@ function App() {
             </AdminRoute>
           }
         ></Route>
-
-        <Route path="/parking" element={<Parking />} />
       </Routes>
     </Router>
   );

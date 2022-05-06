@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import SideMenu from '../components/sideMenu/SideMenu';
 import { httpClient } from '../utils/httpClient';
 import Place from '../components/Place/Place';
+import { PlaceAdd } from '../components/PlaceAdd';
 
 const Container = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ const MyPlaces = () => {
             ></Place>
           );
         })}
+        <PlaceAdd />
       </Content>
     </Container>
   );
