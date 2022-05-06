@@ -39,20 +39,21 @@ exports.addParking =  async (req,res) => {
 
 
 
-    const form =req.body.form;
-    console.log(form);
+
+    const form =req.body.obj.form;
+
     const street = form.street;
-    const pc = req.body.form.pc;
-    const number = req.body.form.number;
-    const cities = req.body.form.cities;
+    const pc = form.pc;
+    const number = form.number;
+    const cities = form.cities;
 
     //PARKING DATA
 
-    const price = req.body.form.price;
-    const height = req.body.form.height;
-    const width = req.body.form.width;
-    const long = req.body.form.long;
-    const description = req.body.form.description;
+    const price = form.price;
+    const height = form.height;
+    const width =form.width;
+    const long = form.long;
+    const description = form.description;
 
 
     const dataUbication={
@@ -83,7 +84,7 @@ exports.addParking =  async (req,res) => {
           height:height,
           long:long,
           width:width,
-          photo:3,
+          photo:req.body.obj.cont,
           userId:1,
           ubicationId:id,
           created:null,

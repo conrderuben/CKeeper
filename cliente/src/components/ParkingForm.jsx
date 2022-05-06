@@ -2,19 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactDOM from "react-dom";
 import fondo2 from '../assets/img/fondo2.jpg';
-import fondo1 from '../assets/img/fondo1.jpg';
-import fondo3 from '../assets/img/fondo3.jpg';
-import fondo4 from '../assets/img/fondo4.jpg';
-import fondo5 from '../assets/img/fondo5.jpg';
-import { validator } from '../formValidator';
-import TextArea from './TextArea';
-import Axios from 'axios';
-import { httpClient } from '../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
-import Input from './Input';
 import axios from 'axios';
-import File from './File';
-import Select from './Select';
+import Input from "./Input"
+import { httpClient } from '../utils/httpClient';
+import File from "./File"
+import TextArea from "./TextArea"
+
 const Container = styled.div`
   display: flex;
   padding: 0;
@@ -80,16 +74,15 @@ const InputContainer = styled.div`
 
 
     `;
-const validation = (e, exp) => {
-  validator(exp, e.target);
-};
+
 
 export const Form = () => {
   
 
   const [form, setForm] = useState({});
-const [userInfo,setuserInfo]=useState()
+  const [fileData,setFileData]=useState()
   const [cities, setCities] = useState([]);
+  const [fileCont, setFileCont] = useState({});
 
   useEffect(() => {
     async function getData() {
@@ -107,12 +100,19 @@ const [userInfo,setuserInfo]=useState()
 
   const handleInputChange = e =>{
 
-    setuserInfo({
+    setFileData({
      
-      ...userInfo,
+      ...fileData,
       [e.target.files[0].name]:e.target.files[0]
 
     });
+
+    // setFileCont({
+      
+    //   ...fileCont,
+    //   [e.target.files[0].name]: fileData.length
+    // });
+    // console.log(fileCont)
   }
 
   const handleChange = e => {
@@ -126,19 +126,22 @@ const [userInfo,setuserInfo]=useState()
 
 const send = event => {
   const data=new FormData();
-console.log(userInfo)
-  for(var i in userInfo){
-    data.append("photos",userInfo[i])
-    
+console.log(fileData)
+var cont=0
+  for(var i in fileData){
+    data.append("photos",fileData[i])
+    cont++;
    }
- 
+ const obj ={
+   form,
+   cont
+ }
 
 axios.post("http://localhost:4000/api/photos",data)
 .then(res=>console.log(res))
 .catch(err=>console.log(err));
 
-
-httpClient.post('/add-parking', { form }).then(() => {
+httpClient.post('/add-parking', { obj }).then(() => {
   navigate('/login');
 });
 }

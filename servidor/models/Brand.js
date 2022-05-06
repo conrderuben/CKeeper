@@ -5,20 +5,12 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Brand extends Model {
     static associate(models) {
-      Brand.hasMany(models.Vehicle,{
-        foreignKey:'brandId'
-      })
-
-      Brand.belongsTo(models.Modol,{
-        foreignKey:'id',
-        target_key:'idModel'
-      })
-
-    }
+      Brand.hasMany(models.Type,{
+        foreignKey:'idBrand'
+      })    }
   }
   Brand.init({
-    name: DataTypes.STRING,
-    idModel: DataTypes.INTEGER
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Brand',

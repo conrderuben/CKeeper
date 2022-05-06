@@ -22,11 +22,13 @@ module.exports = {
         },
         onDelete:'CASCADE',
         onUpdate:'CASCADE'
+     
       },
-      brandId: {
+      typeId: {
+        type: Sequelize.INTEGER,
         type: Sequelize.INTEGER,
         references:{
-          model:'Brands',
+          model:'Types',
           key:'id'
         },
         onDelete:'CASCADE',

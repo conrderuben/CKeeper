@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         target_key:'userId'
       })
 
-      Vehicle.belongsTo(models.Brand,{
+      Vehicle.belongsTo(models.Type,{
         foreignKey:'id',
-        target_key:'brandId'
+        target_key:'typeId'
       })
     }
   }
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     matriculationDate: DataTypes.DATE,
     userId: DataTypes.INTEGER,
-    brandId: DataTypes.INTEGER
+    typeId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Vehicle',

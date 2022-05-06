@@ -9,18 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        unique:true,
-        allowNull: false
-      },
-      idModel: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:'Models',
-          key:'id'
-        },
-        onDelete:'CASCADE',
-        onUpdate:'CASCADE'
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
