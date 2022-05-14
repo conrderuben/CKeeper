@@ -31,11 +31,11 @@ app.get('/api/get-vehicles',middleware.validateToken, vehicle.getById);
 
 app.get('/api/get-user-by-id:id', user.getById);
 
-app.get('/api/user', user.getUser);
+app.get('/api/user', user.getUser); 
 
 app.get('/api/isAuth', user.validateToken);
 
-app.get('/api/get-brand-by-id/:brandId', vehicle.getBrandById);
+app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
 
 app.get('/api/get-posts', place.getAllPublic);
 
@@ -45,8 +45,12 @@ app.get('/api/getAllUsers', user.getAllUsers);
 app.get('/api/isAdmin', user.isAdmin);
 app.get('/api/list-cities',parking.getAll);
 app.get('/api/list-brands',vehicle.getAllBrands);
+
+
 app.get('/api/typeById/:brandId',vehicle.getTypeById);
 
+//create vehicle
 
+app.post ("/api/add-vehicle",vehicle.addCar);
 
 module.exports = app;

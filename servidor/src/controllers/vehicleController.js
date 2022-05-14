@@ -21,6 +21,8 @@ exports.getById = async (req, res) => {
    
     res.json(listVehicles);
 }
+
+
 exports.getAllBrands= async (req, res)=>{
 
 
@@ -51,18 +53,28 @@ exports.getBrandById = async (req, res)=>{
     //     } )
     // console.log(req)
     console.log(req.params)
-    const brand = await brandModel.findByPk(req.params.brandId
-    )
-
-    res.json(brand.name);
+    const model= await typeModel.findByPk(req.params.typeId);
+    
+    const brand = await brandModel.findByPk(model.idBrand);
+const data = {
+    model : model.name,
+    brand : brand.name
+}
+    res.json(data);
 }
 
 exports.addCar = async (req, res)=>{
-    const form =req.body.form;
+    
+        console.log(req.body.form.type)
+        const data={
+        type:req.body.form.type,
+        matriculationDate:req.body.form.matriculationDate,
+        userId:1,
+        typeId:req.body.form.typeId,
+        
+      }
+         
+            console.log(data);
             vehicleModel.create(data)
-        .then((data)=>{
-            res.json({info:data})
-         }).catch((err)=>{
-             res.json({error:err})
-         })
+       
 }

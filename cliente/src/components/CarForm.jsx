@@ -70,11 +70,12 @@ const ModeloContainer = styled.div`
 
 
 export const CarForm = () => {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({"type":"car","typeId":1});
   const [brands, setBrands] = useState([]);
   const [types, setTypes] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState([52]);
 
+  const navigate = useNavigate();
   
   const handleChange = e => {
     
@@ -83,6 +84,8 @@ export const CarForm = () => {
       ...form,
       [e.target.name]: e.target.value
     });
+
+
     if (e.target.name=="brand"){
     setSelectedBrand(
       e.target.value
@@ -121,11 +124,15 @@ export const CarForm = () => {
   
       [selectedBrand]);
   const handleSubmit = e => {
+    e.preventDefault();
+    httpClient.post(`http://localhost:4000/api/add-vehicle`,{form}).then(() => {
+      navigate('/cars');
+      });
   }
   return (
     <Container>
       <ImgContainer>
-        <a name="add-car"></a>
+        <a className="add-car"></a>
         <Image src={fondo6} />
       </ImgContainer>
       <DescriptionContainer>
@@ -133,7 +140,7 @@ export const CarForm = () => {
         <FormContainer>
           <form onSubmit={handleSubmit}>
         <MarcaContainer>
-          <label for="type">
+          <label htmlFor="type">
                 <b>Type</b>
               </label>
               <br />
@@ -141,7 +148,8 @@ export const CarForm = () => {
                
                
                  <option
-                    value="car">
+                    value="car"
+                    selected>
                       Car
                  </option> 
                  <option
@@ -157,7 +165,7 @@ export const CarForm = () => {
               </Select>
               </MarcaContainer>
             <MarcaContainer>
-              <label for="brand">
+              <label htmlFor="brand">
                 <b>Brand</b>
               </label>
               <br />
@@ -176,11 +184,11 @@ export const CarForm = () => {
 
 
             <ModeloContainer>
-              <label for="modelo">
+              <label htmlFor="model">
                 <b>Model</b>
               </label>
               <br />
-              <Select name="typeId">
+              <Select name="typeId" onChange={handleChange}>
               {types.map((typ) =>
                  <option
                     value={typ.id} key={typ.id}>{typ.name} 
@@ -188,21 +196,14 @@ export const CarForm = () => {
       )}
               </Select>
             </ModeloContainer>
-            <br />
-            <br />
-            <br />
-            <Input
-              type="text"
-              name="modeloVehiculo"
-              id="modelVehicle"
-              label="Model"
-              onChange={handleChange}
-            ></Input>
+
+            <br/>
+            <br/><br/>
             <Input
               type="date"
-              name="fechaMatriculacion"
-              id="registrationDate"
-              label="Registration date"
+              name="matriculationDate"
+              id="matriculationDate"
+              label="Matriculation date"
               onChange={handleChange}
             ></Input>
 
