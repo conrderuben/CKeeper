@@ -16,18 +16,37 @@ const Container = styled.div`
 
 const Content = styled.div`
   margin-right: 0;
-  flex:1;
+  flex: 1;
   overflow-y: scroll;
 `;
-
-
 
 export const SearchPage = () => {
   const [rentPosts, setRentPosts] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      await httpClient.get(`http://localhost:4000/api/get-posts`).then(x => setRentPosts(x.data));
+      const publicPlaces = await httpClient
+        .get(`http://localhost:4000/api/get-posts`)
+        .then(x => x.data);
+
+      let publicPlacesWithData = Promise.all(
+        publicPlaces.map(place => {
+          return httpClient
+            .get(
+              `http://localhost:4000/api/get-place-with-data/${place.ubicationId}/${place.userId}`
+            )
+            .then(data => {
+              const info = data.data;
+              const obj = {
+                ...place,
+                ...info
+              };
+              return obj;
+            });
+        })
+      ).then(x => {
+        setRentPosts(x);
+      });
     }
 
     getData();
@@ -37,18 +56,25 @@ export const SearchPage = () => {
     <Container>
       <SideMenu />
       <Content className=" py-4 dark">
-          {rentPosts.map(value => {
-            return (
-              <Place
-                key={value.id}
-                desc={value.descripcion}
-                alto={value.alto}
-                largo={value.largo}
-                precio={value.true}
-                user={value.idUsuario}
-              ></Place>
-            );
-          })}
+        {rentPosts.map(value => {
+          return (
+            <Place
+              key={value.id}
+              desc={value.description}
+              height={value.height}
+              long={value.long}
+              width={value.width}
+              photo={value.photo}
+              prize={value.prize}
+              user={value.user_name}
+              date={value.updatedAt}
+              city={value.city}
+              pc={value.pc}
+              street={value.street}
+              number={value.number}
+            ></Place>
+          );
+        })}
       </Content>
     </Container>
   );
