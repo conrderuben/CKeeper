@@ -43,17 +43,21 @@ export default class File extends Component {
 
    render(){
     return (
-  <div>
-    
-       <h3>Add new Photo</h3>
-     <label htmlFor="foto" style={{cursor:"pointer"}} > <FontAwesomeIcon icon={faPlus} style={{fontSize:60}}/> </label>
+  <div >
+    <div className="fotoContainer">
+    <h3>Add new Photo</h3>
+     <label htmlFor="foto" style={{cursor:"pointer"}} > <FontAwesomeIcon icon={faPlus} className="addIcon" style={{fontSize:30}}/> </label>
+     </div>
+       <div className="fotoContainer">
+       
      <input type="file" onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
         
      
-<div className="form-group multi-preview">
+    <div className="form-group multi-preview foto" >
          { this.fileArray.map( (url,index) => (
-             <img src={url} key={index} alt="..." width="400px" height="300px"/>
+             <img src={url} key={index} alt="..." width="50px" height="25px"/>
          ))}
+       </div>
        </div>
   </div>
  )}

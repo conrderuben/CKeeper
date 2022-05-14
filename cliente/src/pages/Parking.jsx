@@ -1,19 +1,18 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import Principal from '../components/Main';
+import SideMenu from '../components/sideMenu/SideMenu';
 import styled from 'styled-components';
-import SobreNosotros from '../components/AboutUs';
-import Contacto from '../components/Contact';
-import {Form } from '../components/ParkingForm';
+import {Form} from '../components/ParkingForm/ParkingForm';
 
 const Contenedor = styled.div`
   padding: 0;
+  height: 100%;
+  display: flex;
 `;
 
 export const Parking = () => {
   return (
     <Contenedor>
-      <NavBar />
+      <SideMenu />
       <Form />
     </Contenedor>
   );

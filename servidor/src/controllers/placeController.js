@@ -35,11 +35,6 @@ exports.getPlacesById = async (req, res) => {
 
 exports.addParking =  async (req,res) => {
 
-
-
-
-
-
     const form =req.body.obj.form;
 
     const street = form.street;
@@ -66,11 +61,7 @@ exports.addParking =  async (req,res) => {
 
    
 
-} 
-
-
-    
-        
+}  
           //INSERT UBICATION
              await ubicationModel.create(dataUbication)
             const id= await ubicationModel.max('id');
@@ -110,7 +101,7 @@ const usu="Ruben"
 
 
     const storage = multer.diskStorage({
-        destination:path.join( "C:/CkeeperImgs/"+usu+"/Parking/"),
+        destination:path.join( "../assets/users/"+usu+"/Parking/") ,
         filename: function (req, file, cb) {
           cb(
             null,
