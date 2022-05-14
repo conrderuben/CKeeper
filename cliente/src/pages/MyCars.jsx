@@ -36,17 +36,16 @@ export const MyCars = () => {
         .then(x => x.data);
 
       let vehiclesWB = Promise.all(
-        vehicles.map(vehicle => { 
+        vehicles.map(vehicle => {
           return httpClient
             .get(`http://localhost:4000/api/get-brand-by-id/${vehicle.typeId}`)
             .then(data => {
-              console.log(data)
               const obj = {
                 id: vehicle.id,
                 type: vehicle.type,
                 matriculationDate: vehicle.matriculationDate,
                 brand: data.data.brand,
-                model:data.data.model,
+                model: data.data.model
               };
               console.log(obj);
               return obj;

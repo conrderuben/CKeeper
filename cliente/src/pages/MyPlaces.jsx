@@ -22,9 +22,28 @@ const MyPlaces = () => {
 
   useEffect(() => {
     async function getData() {
-      await httpClient
+      const places = await httpClient
         .get(`http://localhost:4000/api/get-my-places`)
-        .then(x => setMyPlaces(x.data));
+        .then(x => x.data);
+
+      let placesWithData = Promise.all(
+        places.map(place => {
+          return httpClient
+            .get(
+              `http://localhost:4000/api/get-place-with-data/${place.ubicationId}/${place.userId}`
+            )
+            .then(data => {
+              const info = data.data;
+              const obj = {
+                ...place,
+                ...info
+              };
+              return obj;
+            });
+        })
+      ).then(x => {
+        setMyPlaces(x);
+      });
     }
 
     getData();
@@ -37,11 +56,20 @@ const MyPlaces = () => {
           return (
             <Place
               key={value.id}
-              desc={value.descripcion}
-              alto={value.alto}
-              largo={value.largo}
-              precio={value.true}
-              user={value.idUsuario}
+              desc={value.description}
+              height={value.height}
+              long={value.long}
+              width={value.width}
+              photo={value.photo}
+              prize={value.prize}
+              user={value.user_name}
+              date={value.updatedAt}
+              published={value.published}
+              city={value.city}
+              pc={value.pc}
+              street={value.street}
+              number={value.number}
+              rented={value.rented}
             ></Place>
           );
         })}

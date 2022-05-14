@@ -3,6 +3,7 @@ const bd = require("../settings/db")
 const cityModel = require('../../models').City;
 const ubicationModel = require('../../models').Ubication;
 const parkingModel = require('../../models').Parking;
+const peopleModel = require('../../models').People;
 const multer = require('multer');
 const path = require('path');
 const cors = require ("cors");
@@ -15,7 +16,10 @@ exports.getAll = async (req, res) => {
 }
 exports.getAllPublic = async (req, res) => {
     const rentPlace =  await parkingModel.findAll({
-        where:{published: true}
+        where:{
+          published: true,
+          rented: false,
+        }
     });
    
     res.json(rentPlace);
@@ -31,10 +35,29 @@ exports.getPlacesById = async (req, res) => {
     res.json(listPlaces);
 }
 
+exports.getPlacesData = async (req, res) => {
+  const ubi = await ubicationModel.findByPk(req.params.ubicationId)
+  const city= await cityModel.findByPk(ubi.idCity)
+  const user = await peopleModel.findByPk(req.params.userId)
+  const ownPlaceData={
+    street: ubi.street,
+    pc: ubi.postalCode,
+    number: ubi.number,
+    city: city.name,
+    user_name: user.user,
+    user_phone: user.phone,
+    user_mail: user.mail
+  }
+ 
+  res.json(ownPlaceData);
+}
+
+
+
+
     
 
 exports.addParking =  async (req,res) => {
-
     const form =req.body.obj.form;
 
     const street = form.street;
@@ -84,22 +107,10 @@ exports.addParking =  async (req,res) => {
         }
         //INSERT PARKING
         await parkingModel.create(dataParking)
-
-
-
-
-
-
-  
 }
 exports.photos = function (req,res,next) {
 
 const usu="Ruben"
-
-
-
-
-
     const storage = multer.diskStorage({
         destination:path.join( "../assets/users/"+usu+"/Parking/") ,
         filename: function (req, file, cb) {
