@@ -64,17 +64,16 @@ const data = {
 }
 
 exports.addCar = async (req, res)=>{
-    
+        const token = req.cookies.jwt;
+        const user = jwt.decode(token, 'Ckeeper')
         console.log(req.body.form.type)
         const data={
         type:req.body.form.type,
         matriculationDate:req.body.form.matriculationDate,
-        userId:1,
+        userId:user.data.id,
         typeId:req.body.form.typeId,
         
       }
-         
-            console.log(data);
             vehicleModel.create(data)
        
 }

@@ -52,38 +52,28 @@ exports.getPlacesData = async (req, res) => {
   res.json(ownPlaceData);
 }
 
+exports.setPublished = async (req, res) => {
+     parkingModel.update({published:req.params.value},
+         {where:{id:req.params.parkingId}})
+         
+     res.send('Actualizado');
+}
+
 
 
 
     
 
 exports.addParking =  async (req,res) => {
+    const token = req.cookies.jwt;
+    const data = jwt.decode(token, 'Ckeeper')
     const form =req.body.obj.form;
-
-    const street = form.street;
-    const pc = form.pc;
-    const number = form.number;
-    const cities = form.cities;
-
-    //PARKING DATA
-
-    const price = form.price;
-    const height = form.height;
-    const width =form.width;
-    const long = form.long;
-    const description = form.description;
-
-
     const dataUbication={
         id:0,
-        street:street,
-        postalCode:pc,
-        number:number,
-        idCity:cities,
-        
-
-   
-
+        street:form.street,
+        postalCode:form.pc,
+        number:form.number,
+        idCity:form.cities,
 }  
           //INSERT UBICATION
              await ubicationModel.create(dataUbication)
@@ -91,15 +81,15 @@ exports.addParking =  async (req,res) => {
 
             //DATA PARKING
           const dataParking={
-          prize:price,
+          prize:form.price,
           rented:false,
           published:false,
-          description:description,
-          height:height,
-          long:long,
-          width:width,
+          description:form.description,
+          height:form.height,
+          long:form.long,
+          width:form.width,
           photo:req.body.obj.cont,
-          userId:1,
+          userId:data.data.id,
           ubicationId:id,
           created:null,
           updated:null,

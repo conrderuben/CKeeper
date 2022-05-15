@@ -127,6 +127,34 @@ a:hover {
         background: rgba(83, 83, 83, 0.8);
       }
     }
+    .publish__item_private {
+      display: inline-block;
+      background: rgb(248, 93, 93);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: rgba(83, 83, 83, 0.8);
+      }
+    }
+    .publish__item_public {
+      display: inline-block;
+      background: rgb(88, 204, 92);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: rgba(83, 83, 83, 0.8);
+      }
+    }
   }
 
   &:before {

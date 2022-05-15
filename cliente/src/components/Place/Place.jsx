@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.scss';
 import assets from '../../assets/img/fondo1.jpg';
+import { httpClient } from '../../utils/httpClient';
 
 const Place = props => {
   return (
@@ -48,6 +49,29 @@ const Place = props => {
                     {props.city}
                   </a>
                 </li>
+                {props.published !== undefined && (
+                  <li
+                    className={
+                      props.published
+                        ? 'publish__item_public play yellow'
+                        : 'publish__item_private play yellow '
+                    }
+                  >
+                    <div
+                      onClick={() => {
+                        httpClient
+                          .get(
+                            `http://localhost:4000/api/setPublish/${props.id}/${
+                              props.published ? '0' : '1'
+                            }`
+                          )
+                          .then(window.location.reload());
+                      }}
+                    >
+                      {props.published ? 'Public' : 'Private'}
+                    </div>
+                  </li>
+                )}
               </ul>
             </div>
           </article>
