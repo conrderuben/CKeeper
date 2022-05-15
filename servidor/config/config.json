@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "jorge",
-    "password": "Ckeeper123",
+    "username":"root",
+    "password": "root",
     "database": "Ckeeper",
     "host": "34.123.188.135",
     "dialect": "mysql"
   },
   "test": {
-    "username": "jorge",
-    "password": "Ckeeper123",
+    "username": "root",
+    "password": "root",
     "database": "Ckeeper",
     "host": "34.123.188.135",
     "dialect": "mysql"
   },
   "production": {
-    "username": "jorge",
-    "password": "Ckeeper123",
+    "username": "root",
+    "password": "root",
     "database": "Ckeeper",
     "host": "34.123.188.135",
     "dialect": "mysql"

@@ -3,6 +3,7 @@ const register = require('../controllers/registerController')
 const parking = require('../controllers/placeController')
 const vehicle = require('../controllers/vehicleController')
 const user = require('../controllers/userController')
+const admin = require('../controllers/adminController')
 const session = require('../controllers/sessionController')
 const place = require('../controllers/placeController')
 const middleware = require('../middlewares/authMiddleware');
@@ -42,9 +43,12 @@ app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
 app.get('/api/get-posts', place.getAllPublic);
 
 //Admin
-app.get('/api/getAllUsers', user.getAllUsers);
+app.get('/api/getAllUsers', admin.getAllUsers);
+app.get('/api/setActive/:userId/:value', admin.setActive);
+app.get('/api/isAdmin', admin.isAdmin);
 
-app.get('/api/isAdmin', user.isAdmin);
+
+
 app.get('/api/list-cities',parking.getAll);
 app.get('/api/list-brands',vehicle.getAllBrands);
 

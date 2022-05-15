@@ -17,7 +17,6 @@ exports.register = (req, res) => {
             console.log('error with the hash')
         }
             const data = {...form, password:hash,active:1 }
-            console.log(data);
             peopleModel.create(data)
         .then((data)=>{
             res.json({info:data})
