@@ -1,7 +1,7 @@
 import Home from './pages/Home';
 import Register from './pages/Register';
 import AdminRoute from './components/AdminRoute';
-
+import EditCar from './pages/EditCars';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import MainPage from './pages/MainPage';
@@ -50,6 +50,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AddCars />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/editCar"
+          element={
+            <ProtectedRoute>
+              <EditCar />
             </ProtectedRoute>
           }
         ></Route>

@@ -78,3 +78,17 @@ exports.addCar = async (req, res)=>{
             vehicleModel.create(data)
        
 }
+
+
+exports.editCar = async (req, res)=>{
+    const car= await vehicleModel.findByPk(req.params.carId);
+
+    const model= await typeModel.findByPk(car.typeId);
+    
+    const brand = await brandModel.findByPk(model.idBrand);
+
+    const data = {car:car,brand:brand}
+    console.log(data)
+    res.json(data);
+
+}

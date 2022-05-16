@@ -35,6 +35,8 @@ app.get('/api/get-user-by-id:id', user.getById);
 
 app.get('/api/user', user.getUser); 
 
+app.get('/api/edit-car/:carId', vehicle.editCar); 
+
 app.get('/api/isAuth', user.validateToken);
 
 app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
