@@ -53,6 +53,7 @@ const MyPlaces = () => {
       <SideMenu />
       <Content className=" py-4 dark">
         {myPlaces.map(value => {
+          console.log(value);
           return (
             <Place
               key={value.id}
@@ -70,6 +71,7 @@ const MyPlaces = () => {
               street={value.street}
               number={value.number}
               rented={value.rented}
+              id={value.id}
             ></Place>
           );
         })}

@@ -49,7 +49,7 @@ exports.login = (req, res) => {
                 error: 'invalid user or password'
               })
             }
-            if(result.length==1){ 
+            else if(result.length==1){ 
                 bcrypt.compare(password, result[0].password, (err, response)=>{
                     if(response){
                         if(result[0].user ==='Admin123'){
