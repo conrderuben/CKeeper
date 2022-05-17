@@ -67,6 +67,7 @@ export const MyCars = () => {
           return (
             <CarCard
               key={value.id}
+              id={value.id}
               type={value.type}
               date={value.matriculationDate}
               brand={value.brand}

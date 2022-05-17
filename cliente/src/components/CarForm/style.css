@@ -1,73 +1,75 @@
-.parking {
+.addCar {
   height: 100%;
   width: 100%;
-  background: url("../../assets/img/googleMaps.PNG");
+  background: url("../../assets/img/road.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-.parking_box {
-  width: 70vw;
-  height: 80vh;
-  transform: translate(15%, 10%);
+.addCar_box {
+  width: 50vw;
+  height: 60vh;
+  transform: translate(15%, 30%);
   border-radius: 30px;
-  box-shadow: 1px 4px 22px -8px rgba(230, 142, 142, 0.267);
+  box-shadow: 1px 4px 22px -8px rgba(135, 131, 245, 0.267);
 
   
 }
-.parking_box .leftSide {
+.addCar_box .leftPart {
   width: 100%;
   height: 100%;
-
+border-radius: 50px;
+display: flex;
+justify-content: center;
 }
-.parkingForm{
+.addCarForm{
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  
   height: 100%;
   padding-top: 2vw;
-
+padding-left: 8vw;
 }
-.leftSide .topLink a {
+.leftPart .topLink a {
   color: #452a5a;
   font-weight: 400;
 }
-.leftSide .topLink {
+.leftPart .topLink {
   height: 20px;
 }
-.leftSide .contact {
+.leftPart .contact {
   
   height: 100%;
   width: 73%;
   margin: auto;
 }
-.leftSide h2 {
+.leftPart h2 {
   text-align: center;
   margin-bottom: 40px;
   padding-top: 2vw;
+  padding-right: 4vw;
 }
 
-.leftSide {
-  background: linear-gradient(-45deg, #79afd3, rgba(255, 255, 255, 0.925));
+.leftPart {
+  background: linear-gradient(-45deg, #22506e, rgba(229, 229, 233, 0.925));
 }
-.submitParking {
+.submitCar {
   border: none;
  height: 5vh;
  width: 10vw;
   border-radius: 8px;
   margin: auto;
- margin-left: 90%;
- margin-top: 15%;
+ margin-left: 17%;
+ margin-top: 6%;
 
-  background: #469adb;
-  color: #fff;
+  background: #629ac5;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 20px;
   -webkit-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
   -moz-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
   box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
 }
-.leftSide input {
+.leftPart input {
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -80,7 +82,7 @@
   font-size: 14px;
 }
 
-.leftSide input:focus{
+.leftPart input:focus{
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -92,7 +94,7 @@
   font-weight: 600;
   font-size: 14px;
 } 
-.leftSide select:focus{
+.leftPart select:focus{
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -104,7 +106,7 @@
   font-weight: 600;
   font-size: 14px;
 } 
-.leftSide textarea:focus{
+.leftPart date:focus{
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -116,9 +118,8 @@
   font-weight: 600;
   font-size: 14px;
 } 
-.leftSide select {
+.leftPart select {
   border: none;
-  width: 80%;
   margin: 15px 0px;
   border-bottom: 1px solid #4f30677d;
   padding: 7px 9px;
@@ -129,7 +130,7 @@
   font-size: 14px;
   height: calc(3.5rem + 2px);
 }
-.leftSide textarea {
+.leftPart date {
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -143,47 +144,17 @@
 }
 
 .part1{
-width: 30%;
+width: 100%;
 padding-top: 3vw;
 position: absolute;
+display: flex;
 }
-.part2{
-  padding-top: 3vw;
-  padding-left: 1vw;
-}
-.cities{
-  background-color: #e9e6ec !important;
-border-color: #4f30677d !important;
-}
+
 .topLink img {
   width: 28px;
   padding-right: 7px;
   margin-top: -3px;
 }
-.addParking{
-  height: max-content;
-}
-.fotoContainer{
-display: flex;
-}
-.foto{
-  display: flex;
-
-}.foto  > img{
-margin-right: 5%;  
-}
-.description{
-  border-radius: 10px #4f30677d;
-  background-color: #e9e6ec !important;
-}
-.addIcon{
-  padding-top: 0.25vw;
-  padding-left: 0.3vw;
-}
-.fontAwesomeLeft{
-  font-size:2vw;
-color: darkblue;
-
-padding-left: 4vw;
-padding-top: 3vw;
+.carContainer{
+  width: 60%;
 }

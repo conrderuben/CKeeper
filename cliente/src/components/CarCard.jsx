@@ -1,15 +1,13 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import styled from 'styled-components';
-import fondo2 from '../assets/img/fondo2.jpg';
-import fondo1 from '../assets/img/fondo1.jpg';
-import fondo3 from '../assets/img/fondo3.jpg';
-import fondo4 from '../assets/img/fondo4.jpg';
-import fondo5 from '../assets/img/fondo5.jpg';
+import { useNavigate } from 'react-router-dom';
+import { httpClient } from '../utils/httpClient';
+
 
 const Card = styled.div`
   background-color: white;
   width: 270px;
-  height: 450px;
+  height: 500px;
   margin: 10px;
   border-radius: 15px;
   font-family: 'Quicksand', sans-serif;
@@ -53,7 +51,7 @@ const Date = styled.p`
   line-height: 70%;
 `;
 
-const Button = styled.a`
+const Button = styled.button`
   background-color: #4285f4;
   color: white;
   padding: 10px 20px;
@@ -65,7 +63,7 @@ const Button = styled.a`
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
-
+width:100px;
   &:hover {
     color: white;
     background-color: #0d47a1;
@@ -73,6 +71,16 @@ const Button = styled.a`
 `;
 
 export const CarCard = props => {
+
+  const navigate = useNavigate();
+
+
+  const editCars = () => {
+ 
+    (navigate(`/editCar?${props.id}`))
+  }
+ 
+  var fec=props.date.split("-")
   return (
     <Card>
       <CardImg />
@@ -83,14 +91,18 @@ export const CarCard = props => {
       <DateGroup>
         <Title>Registration date:</Title>
         <Text>
-          <Date>{props.date}</Date>
+          <Date>{fec[2].substring(0,2)+ "/" + fec[1] + "/"+fec[0]  }</Date>
         </Text>
       </DateGroup>
       <Group>
         <Title>Brand:</Title>
         <Text>{props.brand}</Text>
       </Group>
-      <Button>Edit</Button>
+      <Group>
+        <Title>Model:</Title>
+        <Text>{props.model}</Text>
+      </Group>
+      <Button onClick={editCars}>Edit</Button>
     </Card>
   );
 };

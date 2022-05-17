@@ -1,9 +1,6 @@
 import React from 'react';
 import Styled from 'styled-components';
-import InputValidated from '../components/InputValidated';
 import SideMenu from '../components/sideMenu/SideMenu';
-import { useEffect, useState } from 'react';
-import { httpClient } from '../utils/httpClient';
 import HomeContent from '../components/HomeContent/HomeContent';
 
 const Container = Styled.div`

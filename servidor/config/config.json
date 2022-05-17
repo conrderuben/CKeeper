@@ -1,6 +1,6 @@
 {
   "development": {
-    "username":"root",
+    "username": "root",
     "password": "root",
     "database": "Ckeeper",
     "host": "34.123.188.135",

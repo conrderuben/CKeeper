@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CarForm } from '../components/CarForm/CarForm';
+import { EditCar } from '../components/EditCar/EditCar';
 import SideMenu from '../components/sideMenu/SideMenu';
 
 
@@ -21,7 +21,7 @@ const AddCars = () => {
     <Container>
       <SideMenu />
       <Content>
-      <CarForm />
+      <EditCar />
       </Content>
     </Container>
   );
