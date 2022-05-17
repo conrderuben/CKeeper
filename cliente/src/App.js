@@ -13,6 +13,7 @@ import MyPlaces from './pages/MyPlaces';
 import BuyPlace from './pages/BuyPlace';
 import AdminUsers from './pages/AdminUsers';
 import { Parking } from './pages/Parking';
+import SinglePlace from './components/SinglePlace';
 
 function App() {
   return (
@@ -74,6 +75,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Parking />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/single-place"
+          element={
+            <ProtectedRoute>
+              <BuyPlace />
             </ProtectedRoute>
           }
         ></Route>

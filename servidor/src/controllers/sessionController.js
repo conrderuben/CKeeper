@@ -2,6 +2,7 @@ const db = require("../../models");
 const bd = require("../settings/db")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const peopleModel = require('../../models').People;
 
 function generateToken(obj, t) {
     const data = {
@@ -55,9 +56,12 @@ exports.login = (req, res) => {
                         if(result[0].user ==='Admin123'){
                             const token = generateToken(result[0], 'admin');
                             res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
-                        }else{
+                        }else if(result[0].active == 1){
                             const token = generateToken(result[0], 'user');
                             res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                        }else{
+                            res.status(401).json({
+                                error: 'this user is not active'}).send('hola')
                         }
                         
     
