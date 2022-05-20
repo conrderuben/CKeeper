@@ -7,12 +7,9 @@ const HomeContent = () => {
         <div class="box">
           <div class="content">
             <h2>01</h2>
-            <h3>Card One</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure
-              nemo labore inventore?
-            </p>
-            <a href="#">Read More</a>
+            <h3>Search</h3>
+            <p>Search among hundreds of places in your area the one that best suits your vehicle</p>
+            <a href="search">Look at it!</a>
           </div>
         </div>
       </div>
@@ -21,12 +18,12 @@ const HomeContent = () => {
         <div class="box">
           <div class="content">
             <h2>02</h2>
-            <h3>Card Two</h3>
+            <h3>Your cars</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure
-              nemo labore inventore?
+              Add your vehicles so that the owner can make sure that it is you who parks in his
+              space
             </p>
-            <a href="#">Read More</a>
+            <a href="/mycars">Look at it!</a>
           </div>
         </div>
       </div>
@@ -35,12 +32,9 @@ const HomeContent = () => {
         <div class="box">
           <div class="content">
             <h2>03</h2>
-            <h3>Card Three</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure
-              nemo labore inventore?
-            </p>
-            <a href="#">Read More</a>
+            <h3>Rent your unused places</h3>
+            <p>Publish the places that you do not use and get benefit from it</p>
+            <a href="places">Look at it!</a>
           </div>
         </div>
       </div>

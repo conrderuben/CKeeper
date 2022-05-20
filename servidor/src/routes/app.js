@@ -6,6 +6,7 @@ const user = require('../controllers/userController')
 const admin = require('../controllers/adminController')
 const session = require('../controllers/sessionController')
 const place = require('../controllers/placeController')
+const city = require('../controllers/cityController')
 const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
 
@@ -29,6 +30,9 @@ app.get('/api/get-my-places', place.getPlacesById);
 app.get('/api/get-place-with-data/:ubicationId/:userId', place.getPlacesData);
 
 app.get('/api/setPublish/:parkingId/:value', place.setPublished);
+
+app.get('/api/getAllCities', city.getAll)
+
 
 // app.get('/api/get-vehicles', vehicle.getAll);
 

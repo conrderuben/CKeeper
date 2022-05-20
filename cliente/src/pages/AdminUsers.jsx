@@ -9,6 +9,7 @@ const handleActive = (value, id) => {
 
 const AdminUsers = () => {
   const [listUsers, setListUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function getData() {
@@ -20,6 +21,14 @@ const AdminUsers = () => {
 
   return (
     <div className="container">
+      <input
+        type="text"
+        className="search"
+        placeholder="Search"
+        onChange={event => {
+          setSearchTerm(event.target.value);
+        }}
+      />
       <table class="table">
         <thead>
           <tr>
@@ -33,33 +42,42 @@ const AdminUsers = () => {
           </tr>
         </thead>
         <tbody>
-          {listUsers.map((value, index) => {
-            return (
-              <tr key={index} className={value.active ? 'table-success' : 'table-danger'}>
-                <td>{value.user}</td>
-                <td>{value.name}</td>
-                <td>{value.surname}</td>
-                <td>{value.bornDate}</td>
-                <td>{value.mail}</td>
-                <td>{value.phone}</td>
-                <td>
-                  <button
-                    onClick={() =>
-                      httpClient
-                        .get(
-                          `http://localhost:4000/api/setActive/${value.id}/${
-                            value.active ? '0' : '1'
-                          }`
-                        )
-                        .then(window.location.reload())
-                    }
-                  >
-                    {value.active ? 'desactive' : 'active'}
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+          {listUsers
+            .filter(val => {
+              if (searchTerm == '') {
+                return val;
+              } else if (val.user.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                return val;
+              }
+            })
+            .map((value, index) => {
+              return (
+                <tr key={index} className={value.active ? 'table-success' : 'table-danger'}>
+                  <td>{value.user}</td>
+                  <td>{value.name}</td>
+                  <td>{value.surname}</td>
+                  <td>{value.bornDate}</td>
+                  <td>{value.mail}</td>
+                  <td>{value.phone}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        console.log('hola');
+                        httpClient
+                          .get(
+                            `http://localhost:4000/api/setActive/${value.id}/${
+                              value.active ? '0' : '1'
+                            }`
+                          )
+                          .then(window.location.reload());
+                      }}
+                    >
+                      {value.active ? 'desactive' : 'active'}
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>
