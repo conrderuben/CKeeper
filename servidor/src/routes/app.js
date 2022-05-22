@@ -50,6 +50,13 @@ app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
 
 app.get('/api/get-posts', place.getAllPublic);
 
+app.post ("/api/add-vehicle",vehicle.addCar);
+
+app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
+
+app.post ("/api/delete-vehicle/:carId",vehicle.deleteVehicle);
+
+app.post ("/api/delete-place/:placeId",parking.deletePlace);
 //Admin
 app.get('/api/getAllUsers', admin.getAllUsers);
 app.get('/api/setActive/:userId/:value', admin.setActive);
@@ -63,8 +70,5 @@ app.get('/api/list-brands',vehicle.getAllBrands);
 
 app.get('/api/typeById/:brandId',vehicle.getTypeById);
 
-//create vehicle
-
-app.post ("/api/add-vehicle",vehicle.addCar);
 
 module.exports = app;
