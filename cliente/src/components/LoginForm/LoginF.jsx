@@ -2,11 +2,13 @@ import { Axios } from 'axios';
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
+
 import style from './style.css';
 import fondo from '../../assets/img/fondo5.jpg';
 
 const Login = () => {
   const [form, setForm] = useState({});
+  const [msg, setMsg] = useState('');
 
   const navigate = useNavigate();
   const handleChange = e => {
@@ -22,6 +24,7 @@ const Login = () => {
       if (!res.data.error) {
         navigate('/main');
       } else {
+        setMsg(res.data.error);
         navigate('/login');
       }
     });
@@ -62,6 +65,17 @@ const Login = () => {
             <div className="right-inductor"></div>
           </div>
         </div>
+        {msg != '' && (
+          <div class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
+            {msg}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+        )}
       </section>
     </>
   );

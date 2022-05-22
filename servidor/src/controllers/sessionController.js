@@ -46,7 +46,7 @@ exports.login = (req, res) => {
         [user],
         (err, result) =>{
             if(err){
-              res.status(401).json({
+              res.json({
                 error: 'invalid user or password'
               })
             }
@@ -60,20 +60,19 @@ exports.login = (req, res) => {
                             const token = generateToken(result[0], 'user');
                             res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
                         }else{
-                            res.status(401).json({
-                                error: 'this user is not active'}).send('hola')
+                            res.json({
+                                error: 'this user is not active'})
                         }
                         
     
 
                     }else{
-                        res.status(401).json({
+                        res.json({
                             error: 'invalid user or password'})
                     }
                 })
             }else{
-                res.status(401).json({
-                    error: 'invalid user or password'}) 
+                console.log('ka pasao')
                 
             }
         }

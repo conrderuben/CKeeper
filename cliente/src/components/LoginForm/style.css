@@ -118,3 +118,10 @@
   padding-right: 7px;
   margin-top: -3px;
 }
+
+.custom-alert {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}

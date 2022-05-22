@@ -22,7 +22,9 @@ export const SearchPage = () => {
   const [cities, setCities] = useState([]);
   const [cityFilter, setCityFilter] = useState('');
   const [userFilter, setUserFilter] = useState('');
-
+  const [prizeFilter, setPrizeFilter] = useState('0');
+  const [help, setHelp] = useState([]);
+  const array = [];
   useEffect(() => {
     async function getData() {
       const publicPlaces = await httpClient
@@ -69,11 +71,20 @@ export const SearchPage = () => {
     setUserFilter(e.target.value);
   };
 
+  const handlePrizeChange = e => {
+    setPrizeFilter(e.target.value);
+  };
+
   return (
     <Container>
       <SideMenu />
       <Content className=" py-4 dark">
-        <Filters data={cities} onChangeCity={handleCityChange} onChangeUser={handleCityChange} />
+        <Filters
+          data={cities}
+          onChangeCity={handleCityChange}
+          onChangeUser={handleUserChange}
+          onChangePrize={handlePrizeChange}
+        />
         {rentPosts
           .filter(valCity => {
             if (cityFilter == '') {
@@ -85,10 +96,33 @@ export const SearchPage = () => {
           .filter(valUser => {
             if (userFilter == '') {
               return valUser;
-            } else if (valUser.user.toLowerCase().includes(userFilter.toLocaleLowerCase())) {
+            } else if (valUser.user_name.toLowerCase().includes(userFilter.toLocaleLowerCase())) {
               return valUser;
             }
           })
+
+          .sort((x, y) => {
+            if (x.prize > y.prize) {
+              if (prizeFilter == '>') {
+                return 1;
+              } else if (prizeFilter == '<') {
+                return -1;
+              } else {
+                return 0;
+              }
+            } else if (x.prize < y.prize) {
+              if (prizeFilter == '<') {
+                return 1;
+              } else if (prizeFilter == '>') {
+                return -1;
+              } else {
+                return 0;
+              }
+            } else {
+              return 0;
+            }
+          })
+
           .map(value => {
             return (
               <Place
