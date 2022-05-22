@@ -25,7 +25,7 @@ exports.getAllPublic = async (req, res) => {
     res.json(rentPlace);
 }
 
-exports.getPlacesById = async (req, res) => {
+exports.getPlacesByUserId = async (req, res) => {
     const token = req.cookies.jwt;
     const data = jwt.decode(token, 'Ckeeper')
     const listPlaces =  await parkingModel.findAll({
@@ -33,6 +33,16 @@ exports.getPlacesById = async (req, res) => {
     });
    
     res.json(listPlaces);
+}
+
+exports.getPlacesById = async (req, res) => {
+  const token = req.cookies.jwt;
+  const data = jwt.decode(token, 'Ckeeper')
+  const listPlaces =  await parkingModel.findAll({
+      where:{userId:data.data.id}
+  });
+ 
+  res.json(listPlaces);
 }
 
 exports.getPlacesData = async (req, res) => {

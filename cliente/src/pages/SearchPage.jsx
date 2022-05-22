@@ -47,6 +47,7 @@ export const SearchPage = () => {
             });
         })
       ).then(x => {
+        console.log(x);
         setRentPosts(x);
       });
     }
@@ -127,6 +128,7 @@ export const SearchPage = () => {
             return (
               <Place
                 key={value.id}
+                placeId={value.id}
                 desc={value.description}
                 height={value.height}
                 long={value.long}

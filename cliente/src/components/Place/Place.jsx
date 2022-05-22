@@ -3,27 +3,28 @@ import style from './style.scss';
 import assets from '../../assets/img/fondo1.jpg';
 import { httpClient } from '../../utils/httpClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-   faTrash,
-  } from '@fortawesome/free-solid-svg-icons';
-  import {
-    faPencil,
-   } from '@fortawesome/free-solid-svg-icons';
-import { left } from '@popperjs/core';
- const Place = props => {
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
+const Place = props => {
   const deletePlace = () => {
-    let confirmAction = window.confirm("Are you sure to delete this Place?");
+    let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
-      httpClient.post(`http://localhost:4000/api/delete-place/${props.id}`).then(window.location.reload())
+      httpClient
+        .post(`http://localhost:4000/api/delete-place/${props.id}`)
+        .then(window.location.reload());
     }
-  }
+  };
   const editPlace = () => {
-    let confirmAction = window.confirm("Are you sure to delete this Place?");
+    let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
-      httpClient.post(`http://localhost:4000/api/delete-place/${props.id}`).then(window.location.reload())
+      httpClient
+        .post(`http://localhost:4000/api/delete-place/${props.id}`)
+        .then(window.location.reload());
     }
-  }
-  var placeDate=props.date.split("T");
+  };
+  var placeDate = props.date.split('T');
   return (
     <>
       <section class="dark">
@@ -38,9 +39,14 @@ import { left } from '@popperjs/core';
             </a>
             <div class="postcard__text">
               <h1 class="postcard__title yellow">
-                <a href="#">
+                <Link
+                  to="/buy-place"
+                  state={{
+                    ...props
+                  }}
+                >
                   {props.street}, {props.number} ({props.pc})
-                </a>
+                </Link>
               </h1>
               <div class="postcard__subtitle small">
                 <time datetime="2020-05-25 12:00:00">
@@ -89,17 +95,28 @@ import { left } from '@popperjs/core';
                       }}
                     >
                       {props.published ? 'Public' : 'Private'}
-                      
                     </div>
                   </li>
-                    
-                    )}
-                    {props.published !== undefined && (
-                    <li><button onClick={deletePlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
+                )}
                 {props.published !== undefined && (
-                <li><button onClick={deletePlace} class='deleteButton'><FontAwesomeIcon icon={faTrash} className="delete" style={{fontSize:17}}/></button></li>)}
+                  <li>
+                    <button onClick={deletePlace} class="editButton">
+                      <FontAwesomeIcon
+                        icon={faPencil}
+                        className="delete"
+                        style={{ fontSize: 17 }}
+                      />
+                    </button>
+                  </li>
+                )}
+                {props.published !== undefined && (
+                  <li>
+                    <button onClick={deletePlace} class="deleteButton">
+                      <FontAwesomeIcon icon={faTrash} className="delete" style={{ fontSize: 17 }} />
+                    </button>
+                  </li>
+                )}
               </ul>
-              
             </div>
           </article>
         </div>
