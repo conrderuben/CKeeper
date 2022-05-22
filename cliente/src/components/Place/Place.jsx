@@ -2,8 +2,28 @@ import React from 'react';
 import style from './style.scss';
 import assets from '../../assets/img/fondo1.jpg';
 import { httpClient } from '../../utils/httpClient';
-
-const Place = props => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+   faTrash,
+  } from '@fortawesome/free-solid-svg-icons';
+  import {
+    faPencil,
+   } from '@fortawesome/free-solid-svg-icons';
+import { left } from '@popperjs/core';
+ const Place = props => {
+  const deletePlace = () => {
+    let confirmAction = window.confirm("Are you sure to delete this Place?");
+    if (confirmAction) {
+      httpClient.post(`http://localhost:4000/api/delete-place/${props.id}`).then(window.location.reload())
+    }
+  }
+  const editPlace = () => {
+    let confirmAction = window.confirm("Are you sure to delete this Place?");
+    if (confirmAction) {
+      httpClient.post(`http://localhost:4000/api/delete-place/${props.id}`).then(window.location.reload())
+    }
+  }
+  var placeDate=props.date.split("T");
   return (
     <>
       <section class="dark">
@@ -25,7 +45,7 @@ const Place = props => {
               <div class="postcard__subtitle small">
                 <time datetime="2020-05-25 12:00:00">
                   <i class="fas fa-calendar-alt mr-2"></i>
-                  {props.date}
+                  {placeDate[0]}
                 </time>
               </div>
               <div class="postcard__bar"></div>
@@ -69,10 +89,17 @@ const Place = props => {
                       }}
                     >
                       {props.published ? 'Public' : 'Private'}
+                      
                     </div>
                   </li>
-                )}
+                    
+                    )}
+                    {props.published !== undefined && (
+                    <li><button onClick={deletePlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
+                {props.published !== undefined && (
+                <li><button onClick={deletePlace} class='deleteButton'><FontAwesomeIcon icon={faTrash} className="delete" style={{fontSize:17}}/></button></li>)}
               </ul>
+              
             </div>
           </article>
         </div>

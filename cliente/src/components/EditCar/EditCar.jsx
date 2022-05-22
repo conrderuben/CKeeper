@@ -31,11 +31,24 @@ brand:{id: 55, name: 'Citroën', createdAt: '2022-03-21T18:20:11.000Z', updatedA
 
   var url=window.location.href;
   url=url.split("?");
+  
+  var carDate = carData.car.matriculationDate;
+
+  carDate = carDate.split("T");
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; 
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+ }
  
-
-
-
-
+ if (mm < 10) {
+    mm = '0' + mm;
+ } 
+     
+ today = yyyy + '-' + mm + '-' + dd;
 
   const handleChange = e => {
     
@@ -47,11 +60,20 @@ brand:{id: 55, name: 'Citroën', createdAt: '2022-03-21T18:20:11.000Z', updatedA
 
 
     if (e.target.name=="brand"){
+      carData.brand.id=e.target.value
     setSelectedBrand(
       e.target.value
     );
 
       }
+
+
+      if (e.target.name=="matriculationDate"){
+        
+        carData.car.matriculationDate=e.target.value;
+        
+        
+          }
   };
 
 
@@ -63,14 +85,17 @@ brand:{id: 55, name: 'Citroën', createdAt: '2022-03-21T18:20:11.000Z', updatedA
         .then(x => {
           setCarData(x.data);
         });
+
+
+
     }
         getData();
+
       },
   
-       []);
+       [])
 
 
-console.log(carData)
   useEffect(() => {
     async function getData() {
       const brand = await axios
@@ -87,17 +112,21 @@ console.log(carData)
   useEffect(() => {
 
     async function getData() {
-      httpClient.get(`http://localhost:4000/api/typeById/${selectedBrand}`).then(x => {
+      httpClient.get(`http://localhost:4000/api/typeById/${carData.brand.id}`).then(x => {
         setTypes(x.data);
+        setForm({
+          typeId:types[0].id
+          })
       });
     }
    getData();
       },
   
-      [selectedBrand]);
+      [carData.brand.id]);
   const handleSubmit = e => {
-    httpClient.post(`http://localhost:4000/api/add-vehicle`,{form}).then(navigate('/cars'))
+    httpClient.post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`,{form}).then( navigate('/cars'))
   }
+  console.log(form)
   return (
     
       <section className="addCar">
@@ -110,7 +139,7 @@ console.log(carData)
               </a>
             </div>
             <div className="contact">
-            <h2>EDIT CAR</h2>
+            <h2>EDIT VEHICLE</h2>
               <form onSubmit={handleSubmit} className="addCarForm">
 
                
@@ -125,16 +154,16 @@ console.log(carData)
                
                  <option
                     value="car"
-                    selected>
+                    selected={carData.car.type=="car"?"selected":''}>
                       Car
                  </option> 
                  <option
-                    value="motorcycle">
+                    value="motorcycle" selected={carData.car.type=="motorcycle"?"selected":''}>
                       Motorcycle
                  </option> 
                  
                  <option
-                    value="van">
+                    value="van" selected={carData.car.type=="van"?"selected":''}>
                       Van
                  </option> 
                 
@@ -167,6 +196,7 @@ console.log(carData)
               </label>
               <br />
               <select name="typeId" onChange={handleChange}>
+                <option>Selecciona...</option>
               {types.map((typ) =>
                  <option
                     value={typ.id} key={typ.id} selected={carData.car.typeId==typ.id?"selected":''}>{typ.name} 
@@ -176,14 +206,16 @@ console.log(carData)
 
             <br/>
             <br/><br/>
-            <Input
+            <input
               type="date"
-              // value={datos.matriculationDate}
+              value={carDate[0]}
+              min='1899-01-01'
               name="matriculationDate"
               id="matriculationDate"
+              max={today}
               label="Matriculation date"
               onChange={handleChange}
-            ></Input>
+            />
 
 
               

@@ -126,6 +126,14 @@ const usu="Ruben"
 
 
 
+exports.deletePlace = async (req, res)=>{
+    
+  return parkingModel.destroy({
+      where: { id: req.params.placeId }
+     })
+  
+
+  }
   
    
 

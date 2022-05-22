@@ -132,6 +132,7 @@ export const CarForm = () => {
               </label>
               <br />
               <select name="typeId" onChange={handleChange}>
+              <option>Selecciona...</option>
               {types.map((typ) =>
                  <option
                     value={typ.id} key={typ.id}>{typ.name} 

@@ -52,12 +52,13 @@ const Date = styled.p`
 `;
 
 const Button = styled.button`
+
   background-color: #4285f4;
   color: white;
   padding: 10px 20px;
   display: block;
   text-align: center;
-  margin: 0px 50px;
+  margin-left: 20px;
   text-decoration: none;
   box-shadow: 2px 2px 5px #545353;
   border-radius: 5px;
@@ -69,6 +70,25 @@ width:100px;
     background-color: #0d47a1;
   }
 `;
+const DeleteButton = styled.button`
+
+background-color: #e22e2e;
+color: white;
+padding: 10px 20px;
+display: block;
+text-align: center;
+margin-left: 20px;
+text-decoration: none;
+box-shadow: 2px 2px 5px #ac4343;
+border-radius: 5px;
+margin-bottom: 10px;
+margin-top: 10px;
+width:100px;
+&:hover {
+  color: white;
+  background-color: #ac3d3d;
+}
+`;
 
 export const CarCard = props => {
 
@@ -79,7 +99,14 @@ export const CarCard = props => {
  
     (navigate(`/editCar?${props.id}`))
   }
- 
+  const deleteVehicle = () => {
+    let confirmAction = window.confirm("Are you sure to delete this vehicle?");
+    if (confirmAction) {
+      httpClient.post(`http://localhost:4000/api/delete-vehicle/${props.id}`).then(window.location.reload())
+    }
+
+    
+  }
   var fec=props.date.split("-")
   return (
     <Card>
@@ -102,7 +129,10 @@ export const CarCard = props => {
         <Title>Model:</Title>
         <Text>{props.model}</Text>
       </Group>
+      <Group>
       <Button onClick={editCars}>Edit</Button>
+      <DeleteButton onClick={deleteVehicle} >Delete</DeleteButton>
+      </Group>
     </Card>
   );
 };
