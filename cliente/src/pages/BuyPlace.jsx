@@ -10,7 +10,10 @@ const Container = styled.div`
   background-color: #b5e5f8;
   height: 100%;
 `;
-
+const DateContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Content = styled.div`
   margin-right: 0;
   overflow-y: scroll;
@@ -20,12 +23,30 @@ const Content = styled.div`
 const BuyPlace = () => {
   const [actualPlace, setActualPlace] = useState();
   const location = useLocation();
+  const [minDate, setMinDate] = useState();
   const params = location.state;
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  today = yyyy + '-' + mm + '-' + dd;
 
   const photos = () => {
-    for (let i = 0; i < params.photo; i++) {
-      return (
-        <div className="carousel-item active">
+    var array = [];
+    for (let i = 0; i < 3; i++) {
+      array.push(
+        <div
+          className={i == 0 ? ' carousel-item active' : 'carousel-item'}
+          style={{ maxHeight: '300px' }}
+        >
           <img
             src={require(`../../../assets/users/Ruben/Parking/parking${i + 1}.jpg`)}
             className="d-block w-100"
@@ -34,6 +55,7 @@ const BuyPlace = () => {
         </div>
       );
     }
+    return array;
   };
 
   return (
@@ -76,7 +98,29 @@ const BuyPlace = () => {
                   {params.street}, {params.number} ({params.pc})
                 </h1>
                 <p className="leading-relaxed">{params.desc}</p>
-
+                <DateContainer>
+                  De
+                  <input
+                    className="date"
+                    type="date"
+                    min={today}
+                    name="matriculationDate"
+                    id="matriculationDate"
+                    label="Matriculation date"
+                    onChange={e => {
+                      setMinDate(e.target.value);
+                    }}
+                  />
+                  A
+                  <input
+                    className="date"
+                    type="date"
+                    min={minDate}
+                    name="matriculationDate"
+                    id="matriculationDate"
+                    label="Matriculation date"
+                  />
+                </DateContainer>
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-white">
                     {params.prize}€

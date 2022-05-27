@@ -1,7 +1,7 @@
 .addCar {
   height: 100vw;
   width: 100vh;
-  background: url("../../assets/img/road.jpg");
+  background: url('../../assets/img/road.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -12,22 +12,20 @@
   transform: translate(15%, 30%);
   border-radius: 30px;
   box-shadow: 1px 4px 22px -8px rgba(135, 131, 245, 0.267);
-
-  
 }
 .addCar_box .leftPart {
   width: 100%;
   height: 100%;
-border-radius: 50px;
-display: flex;
-justify-content: center;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
 }
-.addCarForm{
+.addCarForm {
   width: 100%;
-  
+
   height: 100%;
   padding-top: 2vw;
-padding-left: 8vw;
+  padding-left: 8vw;
 }
 .leftPart .topLink a {
   color: #452a5a;
@@ -37,7 +35,6 @@ padding-left: 8vw;
   height: 20px;
 }
 .leftPart .contact {
-  
   height: 100%;
   width: 73%;
   margin: auto;
@@ -54,12 +51,12 @@ padding-left: 8vw;
 }
 .submitCar {
   border: none;
- height: 5vh;
- width: 10vw;
+  height: 5vh;
+  width: 10vw;
   border-radius: 8px;
   margin: auto;
- margin-left: 17%;
- margin-top: 6%;
+  margin-left: 17%;
+  margin-top: 6%;
 
   background: #629ac5;
   color: rgb(0, 0, 0);
@@ -82,7 +79,7 @@ padding-left: 8vw;
   font-size: 14px;
 }
 
-.leftPart input:focus{
+.leftPart input:focus {
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -93,8 +90,8 @@ padding-left: 8vw;
   background: transparent;
   font-weight: 600;
   font-size: 14px;
-} 
-.leftPart select:focus{
+}
+.leftPart select:focus {
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -105,8 +102,8 @@ padding-left: 8vw;
   background: transparent;
   font-weight: 600;
   font-size: 14px;
-} 
-.leftPart date:focus{
+}
+.leftPart date:focus {
   border: none;
   width: 80%;
   margin: 15px 0px;
@@ -117,7 +114,7 @@ padding-left: 8vw;
   background: transparent;
   font-weight: 600;
   font-size: 14px;
-} 
+}
 .leftPart select {
   border: none;
   margin: 15px 0px;
@@ -132,8 +129,7 @@ padding-left: 8vw;
 }
 .leftPart date {
   border: none;
-  width: 80%;
-  margin: 15px 0px;
+  margin: 15px;
   border-bottom: 1px solid #4f30677d;
   padding: 7px 9px;
   width: 100%;
@@ -143,11 +139,11 @@ padding-left: 8vw;
   font-size: 14px;
 }
 
-.part1{
-width: 100%;
-padding-top: 3vw;
-position: absolute;
-display: flex;
+.part1 {
+  width: 100%;
+  padding-top: 3vw;
+  position: absolute;
+  display: flex;
 }
 
 .topLink img {
@@ -155,6 +151,6 @@ display: flex;
   padding-right: 7px;
   margin-top: -3px;
 }
-.carContainer{
+.carContainer {
   width: 60%;
 }
