@@ -251,3 +251,18 @@ a {
 .foot-lnk {
   text-align: center;
 }
+
+.date {
+  border: none;
+  width: 80%;
+  margin: 15px;
+  border-bottom: 1px solid black;
+  padding: 7px 9px;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  filter: invert(100%);
+  color: black;
+}

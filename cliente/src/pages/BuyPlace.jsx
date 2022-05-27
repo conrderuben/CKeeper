@@ -1,165 +1,138 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
 import SideMenu from '../components/sideMenu/SideMenu';
+import { httpClient } from '../utils/httpClient';
+import { useLocation } from 'react-router-dom';
+import Step from '../components/Steps/Step';
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
   height: 100%;
 `;
-
+const DateContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Content = styled.div`
   margin-right: 0;
-  flex: 1;
   overflow-y: scroll;
+  width: 100%;
 `;
 
 const BuyPlace = () => {
+  const [actualPlace, setActualPlace] = useState();
+  const location = useLocation();
+  const [minDate, setMinDate] = useState();
+  const params = location.state;
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  today = yyyy + '-' + mm + '-' + dd;
+
+  const photos = () => {
+    var array = [];
+    for (let i = 0; i < 3; i++) {
+      array.push(
+        <div
+          className={i == 0 ? ' carousel-item active' : 'carousel-item'}
+          style={{ maxHeight: '300px' }}
+        >
+          <img
+            src={require(`../../../assets/users/Ruben/Parking/parking${i + 1}.jpg`)}
+            className="d-block w-100"
+            alt="..."
+          />
+        </div>
+      );
+    }
+    return array;
+  };
+
   return (
-    <Container>
+    <Container className="dark">
       <SideMenu />
       <Content>
-        <section class="text-gray-400 dark body-font h-100">
-          <div class="container px-5 py-24 mx-auto">
-            <div class="lg:w-4/5 mx-auto flex flex-wrap">
-              <div class="w-1/2 pt-6">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img
-                        src={require('../assets/img/fondo1.jpg')}
-                        class="d-block w-100"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src={require('../assets/img/fondo2.jpg')}
-                        class="d-block w-100"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src={require('../assets/img/fondo3.jpg')}
-                        class="d-block w-100"
-                        alt="..."
-                      />
-                    </div>
-                  </div>
+        <section className="text-gray-400 dark body-font h-100">
+          <div className="container mx-auto py-14 mx-auto">
+            <div className="lg:w-7/8 mx-auto rounded flex flex-wrap p-3">
+              <div className="w-1/2 p-3 ">
+                <div
+                  id="carouselExampleControls"
+                  className="carousel slide "
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner rounded">{photos()}</div>
                   <button
-                    class="carousel-control-prev"
+                    className="carousel-control-prev"
                     type="button"
                     data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev"
                   >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
                   </button>
                   <button
-                    class="carousel-control-next"
+                    className="carousel-control-next"
                     type="button"
                     data-bs-target="#carouselExampleControls"
                     data-bs-slide="next"
                   >
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
                   </button>
                 </div>
               </div>
-              <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                <h1 class="text-white text-3xl title-font font-medium mb-1">
-                  The Catcher in the Rye
+              <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <h2 className="text-sm title-font text-gray-500 tracking-widest">{params.user}</h2>
+                <h1 className="text-white text-3xl title-font font-medium mb-1">
+                  {params.street}, {params.number} ({params.pc})
                 </h1>
-                <div class="flex mb-4">
-                  <span class="flex items-center">
-                    <svg
-                      fill="currentColor"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-4 h-4 text-indigo-400"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg
-                      fill="currentColor"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-4 h-4 text-indigo-400"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg
-                      fill="currentColor"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-4 h-4 text-indigo-400"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg
-                      fill="currentColor"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-4 h-4 text-indigo-400"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <svg
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-4 h-4 text-indigo-400"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <span class="ml-3">4 Reviews</span>
+                <p className="leading-relaxed">{params.desc}</p>
+                <DateContainer>
+                  De
+                  <input
+                    className="date"
+                    type="date"
+                    min={today}
+                    name="matriculationDate"
+                    id="matriculationDate"
+                    label="Matriculation date"
+                    onChange={e => {
+                      setMinDate(e.target.value);
+                    }}
+                  />
+                  A
+                  <input
+                    className="date"
+                    type="date"
+                    min={minDate}
+                    name="matriculationDate"
+                    id="matriculationDate"
+                    label="Matriculation date"
+                  />
+                </DateContainer>
+                <div className="flex">
+                  <span className="title-font font-medium text-2xl text-white">
+                    {params.prize}€
                   </span>
-                  <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2"></span>
-                </div>
-                <p class="leading-relaxed">
-                  Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy
-                  chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage
-                  brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin
-                  listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.
-                </p>
-
-                <div class="flex">
-                  <span class="title-font font-medium text-2xl text-white">$58.00</span>
-                  <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                    Button
-                  </button>
-                  <button class="rounded-full w-10 h-10 bg-gray-800 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                    <svg
-                      fill="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      class="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                    </svg>
+                  <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                    Buy
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          <Step />
         </section>
       </Content>
     </Container>

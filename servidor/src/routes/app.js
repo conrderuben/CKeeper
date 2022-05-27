@@ -25,7 +25,9 @@ app.post('/api/photos', parking.photos);
 
 //app.post('/api/add-parking', parking.addParking);
 
-app.get('/api/get-my-places', place.getPlacesById);
+app.get('/api/get-my-places', place.getPlacesByUserId);
+
+app.get('/api/getPlacesById/:id', place.getPlacesById);
 
 app.get('/api/get-place-with-data/:ubicationId/:userId', place.getPlacesData);
 

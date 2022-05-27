@@ -1,9 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Select = props => {
+const Filters = props => {
   return (
-    <div className="d-flex">
+    <div className="d-flex justify-content-center">
       <div class="form-floating d-flex ml-7">
         <select
           class="form-select "
@@ -39,7 +39,7 @@ const Select = props => {
       </div>
       <div class="form-floating d-flex ml-7">
         <select
-          class="form-select "
+          class="form-select"
           id="floatingSelectGrid"
           aria-label="Floating label select example"
           name="select"
@@ -57,4 +57,4 @@ const Select = props => {
   );
 };
 
-export default Select;
+export default Filters;
