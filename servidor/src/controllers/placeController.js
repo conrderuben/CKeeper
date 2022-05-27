@@ -123,8 +123,27 @@ const usu="Ruben"
 
 
 }
+exports.editPlace = async (req, res)=>{
+  const place= await parkingModel.findByPk(req.params.placeId);
 
+  const ubication= await ubicationModel.findByPk(place.ubicationId);
+  
+  
 
+  const data = {place:place,ubication:ubication}
+  console.log(data)
+  res.json(data);
+
+}
+exports.editParking = async (req, res)=>{
+  await parkingModel.update({prize:req.body.obj.form.price,description:req.body.obj.form.description,height:req.body.obj.form.height,long:req.body.obj.form.long,width:req.body.obj.form.width},
+    {where:{id:req.params.placeId}})
+    console.log(req.params.ubicationId)
+    await ubicationModel.update({street:req.body.obj.form.street,postalCode:req.body.obj.form.pc,number:req.body.obj.form.number,idCity:req.body.obj.form.cities},
+      {where:{id:req.params.ubicationId}})
+   
+
+}
 
 exports.deletePlace = async (req, res)=>{
     

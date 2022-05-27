@@ -13,6 +13,8 @@ import MyPlaces from './pages/MyPlaces';
 import BuyPlace from './pages/BuyPlace';
 import AdminUsers from './pages/AdminUsers';
 import { Parking } from './pages/Parking';
+import { ModifyParking } from './pages/ModifyParking';
+
 import SinglePlace from './components/SinglePlace';
 
 function App() {
@@ -83,6 +85,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Parking />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/editPlace"
+          element={
+            <ProtectedRoute>
+              <ModifyParking />
             </ProtectedRoute>
           }
         ></Route>

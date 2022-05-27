@@ -1,6 +1,8 @@
 import React from 'react';
 import style from './style.scss';
 import assets from '../../assets/img/fondo1.jpg';
+import { useNavigate } from 'react-router-dom';
+
 import { httpClient } from '../../utils/httpClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,6 +13,7 @@ import {
    } from '@fortawesome/free-solid-svg-icons';
 import { left } from '@popperjs/core';
  const Place = props => {
+  const navigate = useNavigate();
   const deletePlace = () => {
     let confirmAction = window.confirm("Are you sure to delete this Place?");
     if (confirmAction) {
@@ -18,10 +21,8 @@ import { left } from '@popperjs/core';
     }
   }
   const editPlace = () => {
-    let confirmAction = window.confirm("Are you sure to delete this Place?");
-    if (confirmAction) {
-      httpClient.post(`http://localhost:4000/api/delete-place/${props.id}`).then(window.location.reload())
-    }
+ 
+    (navigate(`/editPlace?${props.id}`))
   }
   var placeDate=props.date.split("T");
   return (
@@ -95,7 +96,7 @@ import { left } from '@popperjs/core';
                     
                     )}
                     {props.published !== undefined && (
-                    <li><button onClick={deletePlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
+                    <li><button onClick={editPlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
                 {props.published !== undefined && (
                 <li><button onClick={deletePlace} class='deleteButton'><FontAwesomeIcon icon={faTrash} className="delete" style={{fontSize:17}}/></button></li>)}
               </ul>

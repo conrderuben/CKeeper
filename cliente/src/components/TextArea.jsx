@@ -22,6 +22,8 @@ const TextArea = props => {
         cols={props.cols}
         rows={props.rows}
         id={props.id}
+        value={props.value}
+        defaultValue={props.defaultValue}
         placeholder={props.placeholder}
         onChange={(e) => {props.onChange(e);}}
       />

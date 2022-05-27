@@ -56,6 +56,10 @@ app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
 
 app.post ("/api/delete-vehicle/:carId",vehicle.deleteVehicle);
 
+app.post ("/api/edit-place/:placeId",parking.editPlace);
+
+app.post ("/api/edit-parking/:placeId/:ubicationId",parking.editParking);
+
 app.post ("/api/delete-place/:placeId",parking.deletePlace);
 //Admin
 app.get('/api/getAllUsers', admin.getAllUsers);
