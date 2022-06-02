@@ -59,9 +59,9 @@ const BuyPlace = () => {
   };
 
   return (
-    <Container className="dark">
+    <Container>
       <SideMenu />
-      <Content>
+      <Content  className="dark">
         <section className="text-gray-400 dark body-font h-100">
           <div className="container mx-auto py-14 mx-auto">
             <div className="lg:w-7/8 mx-auto rounded flex flex-wrap p-3">
@@ -134,7 +134,7 @@ const BuyPlace = () => {
           </div>
           <Step />
         </section>
-      </Content>
+      </Content >
     </Container>
   );
 };

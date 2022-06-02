@@ -1,13 +1,13 @@
 .cont {
-  width: 1000px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
 }
 
 .cont .card {
+  margin: 20px;
   position: relative;
   cursor: pointer;
 }
