@@ -58,7 +58,7 @@ function SideMenu(props) {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto overflow-x-hidden flex-grow">
+        <div className="overflow-y-hidden overflow-x-hidden flex-grow">
           <ul className="flex flex-col py-6 space-y-1">
             <li className="px-5">
               <div className="flex flex-row items-center h-8">
@@ -165,7 +165,7 @@ function SideMenu(props) {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto overflow-x-hidden flex-grow">
+        <div className="overflow-y-hidden overflow-x-hidden flex-grow">
           <ul className="flex flex-col py-6 space-y-1">
             <li className="px-5">
               <div className="flex flex-row items-center h-8">

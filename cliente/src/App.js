@@ -14,7 +14,7 @@ import BuyPlace from './pages/BuyPlace';
 import AdminUsers from './pages/AdminUsers';
 import { Parking } from './pages/Parking';
 import { ModifyParking } from './pages/ModifyParking';
-
+import ContactPage from './pages/ContactPage';
 import SinglePlace from './components/SinglePlace';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/registro" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contacto" element={<ContactPage />} />
         <Route
           path="/main"
           element={
