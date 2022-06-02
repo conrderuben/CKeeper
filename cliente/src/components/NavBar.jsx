@@ -25,6 +25,7 @@ const NavBar = () => {
   const Izq = styled.div`
     flex: 1;
     margin: 0px;
+    height:40px;
   `;
 
   const Cen = styled.div`
@@ -53,25 +54,29 @@ const NavBar = () => {
     cursor: pointer;
     color: inherit;
     text-decoration: none;
+    transition:0.5s;
 
     &:hover {
       background-color: #f9fdff6c;
-      text-decoration: underline;
+      transition:0.5s;
     }
   `;
-
+  const Image=styled.img`
+  position:relative;
+  bottom:5em;
+  `;
   const navigate = useNavigate();
   return (
     <Contenedor>
       <Wrapper>
         <Izq>
-          <img src={ckeeper} width="40" height="40" />
+        <a href="/#home"><Image id="logo" src={ckeeper} width="140" height="120" /></a>
         </Izq>
         <Cen>
           <Menu>
             <Item href="/#home">Home</Item>
             <Item href="/#sobre-nosotros">About&nbsp;us</Item>
-            <Item>Contacto</Item>
+            <Item href='/contacto'>Contacto</Item>
             <Item href="/registro">Registrarse</Item>
           </Menu>
         </Cen>
