@@ -10,6 +10,7 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Place = props => {
+  const navigate = useNavigate();
   const deletePlace = () => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
@@ -100,17 +101,6 @@ const Place = props => {
                     )}
                     {props.published !== undefined && (
                     <li><button onClick={editPlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
-                {props.published !== undefined && (
-                  <li>
-                    <button onClick={deletePlace} class="editButton">
-                      <FontAwesomeIcon
-                        icon={faPencil}
-                        className="delete"
-                        style={{ fontSize: 17 }}
-                      />
-                    </button>
-                  </li>
-                )}
                 {props.published !== undefined && (
                   <li>
                     <button onClick={deletePlace} class="deleteButton">

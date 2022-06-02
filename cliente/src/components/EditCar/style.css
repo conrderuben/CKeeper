@@ -145,12 +145,7 @@ padding-top: 3vw;
 position: absolute;
 display: flex;
 }
-.part1 {
-  width: 100%;
-  padding-top: 3vw;
-  position: absolute;
-  display: flex;
-}
+
 
 .topLink img {
   width: 28px;
