@@ -119,21 +119,25 @@ console.log(form)
     httpClient.post(`http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj }).then(navigate('/places'));
   };
   return (
-    <section className="parking">
-      <div className="parking_box">
-        <div className="leftSide">
-          <div className="topLink">
+    <section>
+
+        
             <a href="/places">
               <FontAwesomeIcon icon={faArrowLeft} className="fontAwesomeLeft" />
             </a>
-          </div>
-          <div className="contact">
+         
+         
             <h2>EDIT PARKING</h2>
-            <form onSubmit={send} className="parkingForm">
-              <div className="addParking"></div>
-              <div className="part2">
-                <Input type="text" name="price" id="price" label="Price" onChange={handleChange} value={parkingData.place.prize}
- />
+            <form onSubmit={send} className="">
+              
+                <Input
+                  type="text" 
+                  name="price" 
+                  id="price" 
+                  label="Price" 
+                  onChange={handleChange} 
+                  value={parkingData.place.prize}
+                />
                 <Input
                   type="number"
                   name="height"
@@ -150,12 +154,20 @@ console.log(form)
                   label="Width"
                   onChange={handleChange}
                 />
-                <Input type="number" name="long" id="long" value={parkingData.place.long} label="Long" onChange={handleChange} />
-                <br />
-                <br />
-                <File onChange={handleInputChange} />
-              </div>
-              <div className="part1">
+                <Input 
+                  type="number" 
+                  name="long" 
+                  id="long" 
+                  value={parkingData.place.long} 
+                  label="Long" 
+                  onChange={handleChange} 
+                />
+              
+                <File 
+                  onChange={handleInputChange} 
+                />
+            
+            
                 <Input
                   type="text"
                   name="street"
@@ -187,7 +199,7 @@ console.log(form)
                     </option>
                   ))}
                 </select>
-                <br />
+               
                 <TextArea
                   className="description"
                   name="description"
@@ -198,11 +210,9 @@ console.log(form)
                 />
 
                 <button className="submitParking">Send It!</button>
-              </div>
+            
             </form>
-          </div>
-        </div>
-      </div>
+        
     </section>
   );
 };
