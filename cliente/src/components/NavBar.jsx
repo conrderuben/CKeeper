@@ -39,6 +39,7 @@ const NavBar = () => {
   }
 
   @media only screen and (max-width:850px){
+
     .checkbtn{
       display:block;
       font-size: 22px;
@@ -49,32 +50,31 @@ const NavBar = () => {
     .menu{
       position: fixed;
       background: #ffffff94;
-      padding: 0 60px;
+      padding: 0 30px;
   justify-content: space-between;
   font-family: 'Quicksand', sans-serif;
       top:-100%;
       left:0;
       text-align: center;
-      transition: all .5s;
-      border-radius: 10px;
+      transition: 0.5s;
      
     }
     .menu a{
     display: block;
-    margin-top: 25px;
+    margin-top: 15px;
+    margin-bottom:10px;
     line-height: 25px;
    color:inherit;
-    display:inline-block;
     }
     .menu a{
-      font-size: 20px;
+      font-size: 15px;
     }
     a:hover,a.active{
       background: none;
      
     }
     #check:checked ~ .menu{
-     top: 66px;
+     top: 59px;
     }
     #check{
       display:none;
