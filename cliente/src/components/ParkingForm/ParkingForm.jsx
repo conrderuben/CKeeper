@@ -2,7 +2,6 @@ import { axios } from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
-import style from './style.css';
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -62,83 +61,118 @@ export const Form = () => {
     httpClient.post('/add-parking', { obj }).then(navigate('/main'));
   };
   return (
-    <section className="parking">
-      <div className="parking_box">
-        <div className="leftSide">
-          <div className="topLink">
-            <a href="/places">
-              <FontAwesomeIcon icon={faArrowLeft} className="fontAwesomeLeft" />
-            </a>
-          </div>
-          <div className="contact">
-            <h2>ADD NEW PARKING</h2>
-            <form onSubmit={send} className="parkingForm">
-              <div className="addParking"></div>
-              <div className="part2">
-                <Input type="text" name="price" id="price" label="Price" onChange={handleChange} />
-                <Input
-                  type="number"
-                  name="height"
-                  id="height"
-                  label="Height"
-                  onChange={handleChange}
-                />
-                <Input
-                  type="number"
-                  name="width"
-                  id="width"
-                  label="Width"
-                  onChange={handleChange}
-                />
-                <Input type="number" name="long" id="long" label="Long" onChange={handleChange} />
-                <br />
-                <br />
-                <File onChange={handleInputChange} />
-              </div>
-              <div className="part1">
+    <section className='editParkingSection '>
+    <div className='editParkingContainer '>
+
+        
+        <div className='titleContainer'>
+           
+         
+            <h2 className='title'>EDIT PARKING</h2>
+        </div>
+            <form onSubmit={send} className="editForm">
                 <Input
                   type="text"
                   name="street"
+                  className="editInput"
                   id="street"
                   label="Street"
+                  divClass="inputDiv"
                   onChange={handleChange}
                 />
                 <Input
                   type="number"
                   name="pc"
                   id="pc"
+                  className="editInput"
                   label="Postal Code"
+                  divClass="inputDiv"
                   onChange={handleChange}
                 />
                 <Input
                   type="number"
                   name="number"
                   id="number"
+                  className="editInput"
                   label="Number"
+                  divClass="inputDiv"
                   onChange={handleChange}
                 />
-                <select name="cities" className="form-control " onChange={handleChange}>
+  
+             
+                <div className={"mb-3 form-floating selectContainer" }>
+                <select name="cities" className="form-control " id="cities" onChange={handleChange}>
                   {cities.map(cit => (
                     <option value={cit.id} key={cit.id}>
                       {cit.name}
                     </option>
                   ))}
                 </select>
-                <br />
+                <label htmlFor="cities" className={"editInput form-label" }>
+               Cities
+      </label>
+    </div>
+             
                 <TextArea
-                  className="description"
+                  className="textAreaDescription editInput"
+                  label="Description"
                   name="description"
                   id="description"
                   placeholder="Description"
                   onChange={handleChange}
+                  divClass="textAreaContent"
                 />
-
-                <button className="submitParking">Send It!</button>
-              </div>
+                <Input
+                  type="text" 
+                  name="price" 
+                  className="editInput"
+                  id="price" 
+                  label="Price" 
+                  onChange={handleChange} 
+                  divClass="inputDiv"
+                />
+                <Input
+                  type="number"
+                  name="height"
+                  className="editInput"
+                  id="height"
+                  label="Height"
+                  divClass="inputDiv"
+                  onChange={handleChange}
+                />
+                <Input
+                  type="number"
+                  name="width"
+                  id="width"
+                  className="editInput"
+                  label="Width"
+                  divClass="inputDiv"
+                  onChange={handleChange}
+                />
+                <Input 
+                  type="number" 
+                  name="long" 
+                  className="editInput"
+                  id="long" 
+                  label="Long" 
+                  divClass="inputDivLong"
+                  onChange={handleChange} 
+                />
+              
+                <File 
+                  onChange={handleInputChange} 
+                />
+                {/* <button className="">Send It!</button> */}
+                <a onClick={send} className='submitButtonForm'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
             </form>
-          </div>
-        </div>
-      </div>
+        
+    </div>
     </section>
   );
 };
