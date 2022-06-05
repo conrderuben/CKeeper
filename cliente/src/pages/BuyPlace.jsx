@@ -47,7 +47,7 @@ const BuyPlace = () => {
       const user = await httpClient.get('user').then(x => x.data);
 
       const rent = await httpClient
-        .post(`/create-rent`, { form, placeId: params.placeId, user, renter: params.user })
+        .post(`/create-rent`, { form, place: params, user })
         .then(console.log('paso 2'));
     }
 
@@ -125,8 +125,8 @@ const BuyPlace = () => {
                     className="date"
                     type="date"
                     min={today}
-                    name="matriculationDate1"
-                    id="matriculationDate"
+                    name="date1"
+                    id="date1"
                     label="Matriculation date"
                     onChange={e => {
                       setMinDate(e.target.value);
@@ -138,8 +138,8 @@ const BuyPlace = () => {
                     className="date"
                     type="date"
                     min={minDate}
-                    name="matriculationDate2"
-                    id="matriculationDate"
+                    name="date2"
+                    id="date2"
                     label="Matriculation date"
                     onChange={e => {
                       handleChange(e);
@@ -151,7 +151,7 @@ const BuyPlace = () => {
                     {params.prize}€/dia
                   </span>
                   <button
-                    onClick={handleBuy()}
+                    onClick={e => handleBuy()}
                     className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                   >
                     Buy
