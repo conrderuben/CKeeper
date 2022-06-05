@@ -31,25 +31,21 @@ export const MyCars = () => {
 
   useEffect(() => {
     async function getData() {
-      const vehicles = await httpClient
-        .get(`http://localhost:4000/api/get-vehicles`)
-        .then(x => x.data);
+      const vehicles = await httpClient.get(`/get-vehicles`).then(x => x.data);
 
       let vehiclesWB = Promise.all(
         vehicles.map(vehicle => {
-          return httpClient
-            .get(`http://localhost:4000/api/get-brand-by-id/${vehicle.typeId}`)
-            .then(data => {
-              const obj = {
-                id: vehicle.id,
-                type: vehicle.type,
-                matriculationDate: vehicle.matriculationDate,
-                brand: data.data.brand,
-                model: data.data.model
-              };
-              console.log(obj);
-              return obj;
-            });
+          return httpClient.get(`/get-brand-by-id/${vehicle.typeId}`).then(data => {
+            const obj = {
+              id: vehicle.id,
+              type: vehicle.type,
+              matriculationDate: vehicle.matriculationDate,
+              brand: data.data.brand,
+              model: data.data.model
+            };
+            console.log(obj);
+            return obj;
+          });
         })
       ).then(x => {
         setVehiclesWithBrand(x);

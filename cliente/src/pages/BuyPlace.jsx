@@ -5,6 +5,7 @@ import SideMenu from '../components/sideMenu/SideMenu';
 import { httpClient } from '../utils/httpClient';
 import { useLocation } from 'react-router-dom';
 import Step from '../components/Steps/Step';
+import e from 'cors';
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
@@ -22,9 +23,11 @@ const Content = styled.div`
 
 const BuyPlace = () => {
   const [actualPlace, setActualPlace] = useState();
+  const [form, setForm] = useState({});
   const location = useLocation();
   const [minDate, setMinDate] = useState();
   const params = location.state;
+  console.log(params);
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -39,6 +42,22 @@ const BuyPlace = () => {
 
   today = yyyy + '-' + mm + '-' + dd;
 
+  const handleBuy = () => {
+    async function createRent() {
+      const rent = await httpClient
+        .post(`/create-rent`, { form, id: params.placeId })
+        .then(console.log('paso 2'));
+    }
+
+    createRent();
+  };
+
+  const handleChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
   const photos = () => {
     var array = [];
     for (let i = 0; i < 3; i++) {
@@ -61,7 +80,7 @@ const BuyPlace = () => {
   return (
     <Container>
       <SideMenu />
-      <Content  className="dark">
+      <Content className="dark">
         <section className="text-gray-400 dark body-font h-100">
           <div className="container mx-auto py-14 mx-auto">
             <div className="lg:w-7/8 mx-auto rounded flex flex-wrap p-3">
@@ -104,11 +123,12 @@ const BuyPlace = () => {
                     className="date"
                     type="date"
                     min={today}
-                    name="matriculationDate"
+                    name="matriculationDate1"
                     id="matriculationDate"
                     label="Matriculation date"
                     onChange={e => {
                       setMinDate(e.target.value);
+                      handleChange(e);
                     }}
                   />
                   A
@@ -116,16 +136,22 @@ const BuyPlace = () => {
                     className="date"
                     type="date"
                     min={minDate}
-                    name="matriculationDate"
+                    name="matriculationDate2"
                     id="matriculationDate"
                     label="Matriculation date"
+                    onChange={e => {
+                      handleChange(e);
+                    }}
                   />
                 </DateContainer>
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-white">
-                    {params.prize}€
+                    {params.prize}€/dia
                   </span>
-                  <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                  <button
+                    onClick={handleBuy()}
+                    className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                  >
                     Buy
                   </button>
                 </div>
@@ -134,7 +160,7 @@ const BuyPlace = () => {
           </div>
           <Step />
         </section>
-      </Content >
+      </Content>
     </Container>
   );
 };
