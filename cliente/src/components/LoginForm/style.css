@@ -4,6 +4,7 @@
   background: radial-gradient(#54a1d7, #2126b8);
   position: relative;
 }
+
 .login_box {
   width: 1050px;
   height: 600px;
@@ -124,4 +125,19 @@
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
+}
+@media only screen and (max-width:850px) {
+  .login_box {
+    width: 390px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 4px 22px -8px #0004;
+    display: flex;
+    overflow: hidden;
+  }
 }
