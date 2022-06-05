@@ -8,6 +8,7 @@ const admin = require('../controllers/adminController')
 const session = require('../controllers/sessionController')
 const place = require('../controllers/placeController')
 const city = require('../controllers/cityController')
+const bill = require('../controllers/billController')
 const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
 
@@ -56,6 +57,8 @@ app.get('/api/get-posts', place.getAllPublic);
 app.post ("/api/add-vehicle",vehicle.addCar);
 
 app.post ("/api/create-rent",rent.createRent);
+
+app.get("/api/get-rents", rent.getRentsByUserId)
 
 
 app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);

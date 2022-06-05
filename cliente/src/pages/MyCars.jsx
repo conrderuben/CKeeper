@@ -43,7 +43,6 @@ export const MyCars = () => {
               brand: data.data.brand,
               model: data.data.model
             };
-            console.log(obj);
             return obj;
           });
         })

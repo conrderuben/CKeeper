@@ -150,7 +150,7 @@ function SideMenu(props) {
       <div className="flex flex-col top-0 left-0 w-1/7 bg-gray-900 h-full shadow-lg">
         <div className="flex items-center pl-6 h-20 border-b border-gray-800">
           <img
-            src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t1.0-9/117334168_2606581056324669_4951020710334194218_o.jpg?_nc_cat=101&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFo4bRKc5SfTQvzhwotnTaOfj1P6rO41HF-PU_qs7jUcU1pCerqu3HUsOB0yKyJQwnrgz8Au7GZADcpedo6WgM4&_nc_ohc=DWpkI3p4RSUAX_hKF_Y&_nc_ht=scontent.fmnl13-1.fna&oh=c13c63ee952123b14f0da72b99ccecc8&oe=6087FEC5"
+            src={require('../../assets/user.png')}
             alt=""
             className="rounded-full h-10 w-10 flex items-center justify-center mr-3 border-2 border-blue-500"
           />
@@ -235,7 +235,7 @@ function SideMenu(props) {
             </li>
             <li>
               <Link
-                to="/"
+                to="/bills"
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">

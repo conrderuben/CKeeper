@@ -2,6 +2,8 @@ const parkingModel = require('../../models').Parking;
 const rentModel = require('../../models').Rent;
 const peopleModel = require('../../models').People;
 const billModel = require('../../models').Bill;
+const jwt = require ("jsonwebtoken");
+const Op = require('Sequelize').Op
 
 exports.createRent = async (req, res) => {
     parkingModel.update({rented:1},
@@ -27,19 +29,23 @@ exports.createRent = async (req, res) => {
          var date2 = new Date(req.body.form.date2);
          var difference = date2.getTime() - date1.getTime();
          var days = Math.ceil(difference / (1000 * 3600 * 24));
-         console.log(days)
 
-         
          const billData = {
              id: 0,
              issueDate: new Date(),
              type: 'prize/day',
              rentId:rentId,
-             amount:days*req.body.place.price 
+             amount:days*(parseInt(req.body.place.prize))
          }
-         billModel.create(billData);
-
-
-
-    res.send('Actualizado');
+            billModel.create(billData);
+            res.status(200).json({msg : 'Purchase made'});
 }
+
+exports.getRentsByUserId = async (req, res) => {
+    const token = req.cookies.jwt;
+    const data = jwt.decode(token, 'Ckeeper')
+    const listRents =  await rentModel.findAll({
+        [Op.or]: [{renter: data.data.id}, {tenant: data.data.id}]
+   }); 
+   res.json({listRents});
+};

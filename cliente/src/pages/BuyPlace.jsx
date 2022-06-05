@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SideMenu from '../components/sideMenu/SideMenu';
 import { httpClient } from '../utils/httpClient';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Step from '../components/Steps/Step';
 import e from 'cors';
 const Container = styled.div`
@@ -22,12 +22,14 @@ const Content = styled.div`
 `;
 
 const BuyPlace = () => {
+  const [msg, setMsg] = useState('');
   const [actualPlace, setActualPlace] = useState();
   const [form, setForm] = useState({});
   const location = useLocation();
   const [minDate, setMinDate] = useState();
   const params = location.state;
-  console.log(params);
+  const navigate = useNavigate();
+
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -39,22 +41,30 @@ const BuyPlace = () => {
   if (mm < 10) {
     mm = '0' + mm;
   }
-
   today = yyyy + '-' + mm + '-' + dd;
 
   const handleBuy = () => {
     async function createRent() {
       const user = await httpClient.get('user').then(x => x.data);
 
-      const rent = await httpClient
-        .post(`/create-rent`, { form, place: params, user })
-        .then(console.log('paso 2'));
+      const rent = await httpClient.post(`/create-rent`, { form, place: params, user }).then(x => {
+        setMsg(x.data.msg);
+        navigate('/bills');
+      });
     }
-
-    createRent();
+    if (form.date1 == undefined || form.date2 == undefined) {
+      if (form.date1 == undefined) {
+        document.getElementById('date1').style.border = '1px solid #15f6ff';
+      } else if (form.date2 == undefined) {
+        document.getElementById('date2').style.border = '1px solid #15f6ff';
+      }
+    } else {
+      createRent();
+    }
   };
 
   const handleChange = e => {
+    document.getElementById(e.target.id).style.border = '1px solid rgb(255 1 202)';
     setForm({
       ...form,
       [e.target.name]: e.target.value
@@ -146,7 +156,7 @@ const BuyPlace = () => {
                     }}
                   />
                 </DateContainer>
-                <div className="flex">
+                <div className="flex mb-3">
                   <span className="title-font font-medium text-2xl text-white">
                     {params.prize}€/dia
                   </span>
@@ -157,6 +167,17 @@ const BuyPlace = () => {
                     Buy
                   </button>
                 </div>
+                {msg != '' && (
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {msg}
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="alert"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

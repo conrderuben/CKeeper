@@ -266,3 +266,6 @@ a {
   filter: invert(100%);
   color: black;
 }
+.fit-content {
+  height: fit-content;
+}

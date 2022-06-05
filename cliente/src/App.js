@@ -16,6 +16,7 @@ import { Parking } from './pages/Parking';
 import { ModifyParking } from './pages/ModifyParking';
 import ContactPage from './pages/ContactPage';
 import SinglePlace from './components/SinglePlace';
+import BillPage from './pages/BillPage';
 
 function App() {
   return (
@@ -102,6 +103,14 @@ function App() {
           element={
             <ProtectedRoute>
               <BuyPlace />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/bills"
+          element={
+            <ProtectedRoute>
+              <BillPage />
             </ProtectedRoute>
           }
         ></Route>

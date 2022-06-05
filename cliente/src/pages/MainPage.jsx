@@ -19,15 +19,6 @@ const ContentContainer = Styled.div`
   overflow-y: scroll;
 `;
 
-const Content = Styled.div`
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 40px 0; */
-`;
-
 const MainPage = () => {
   return (
     <Container>
