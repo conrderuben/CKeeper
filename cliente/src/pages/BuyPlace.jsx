@@ -44,8 +44,10 @@ const BuyPlace = () => {
 
   const handleBuy = () => {
     async function createRent() {
+      const user = await httpClient.get('user').then(x => x.data);
+
       const rent = await httpClient
-        .post(`/create-rent`, { form, id: params.placeId })
+        .post(`/create-rent`, { form, placeId: params.placeId, user, renter: params.user })
         .then(console.log('paso 2'));
     }
 
