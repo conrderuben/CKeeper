@@ -2,6 +2,7 @@ const express = require('express');
 const register = require('../controllers/registerController')
 const parking = require('../controllers/placeController')
 const vehicle = require('../controllers/vehicleController')
+const rent = require('../controllers/rentController')
 const user = require('../controllers/userController')
 const admin = require('../controllers/adminController')
 const session = require('../controllers/sessionController')
@@ -53,6 +54,9 @@ app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
 app.get('/api/get-posts', place.getAllPublic);
 
 app.post ("/api/add-vehicle",vehicle.addCar);
+
+app.post ("/api/create-rent",rent.createRent);
+
 
 app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
 
