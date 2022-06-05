@@ -119,60 +119,23 @@ console.log(form)
     httpClient.post(`http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj }).then(navigate('/places'));
   };
   return (
-    <section>
+    <section className='editParkingSection '>
+    <div className='editParkingContainer '>
 
         
-            <a href="/places">
-              <FontAwesomeIcon icon={faArrowLeft} className="fontAwesomeLeft" />
-            </a>
+        <div className='titleContainer'>
+           
          
-         
-            <h2>EDIT PARKING</h2>
-            <form onSubmit={send} className="">
-              
-                <Input
-                  type="text" 
-                  name="price" 
-                  id="price" 
-                  label="Price" 
-                  onChange={handleChange} 
-                  value={parkingData.place.prize}
-                />
-                <Input
-                  type="number"
-                  name="height"
-                  value={parkingData.place.height}
-                  id="height"
-                  label="Height"
-                  onChange={handleChange}
-                />
-                <Input
-                  type="number"
-                  name="width"
-                  id="width"
-                  value={parkingData.place.width}
-                  label="Width"
-                  onChange={handleChange}
-                />
-                <Input 
-                  type="number" 
-                  name="long" 
-                  id="long" 
-                  value={parkingData.place.long} 
-                  label="Long" 
-                  onChange={handleChange} 
-                />
-              
-                <File 
-                  onChange={handleInputChange} 
-                />
-            
-            
+            <h2 className='title'>EDIT PARKING</h2>
+        </div>
+            <form onSubmit={send} className="editForm">
                 <Input
                   type="text"
                   name="street"
+                  className="editInput"
                   id="street"
                   label="Street"
+                  divClass="inputDiv"
                   value={parkingData.ubication.street}
                   onChange={handleChange}
                 />
@@ -180,39 +143,102 @@ console.log(form)
                   type="number"
                   name="pc"
                   id="pc"
+                  className="editInput"
                   value={parkingData.ubication.postalCode}
                   label="Postal Code"
+                  divClass="inputDiv"
                   onChange={handleChange}
                 />
                 <Input
                   type="number"
                   name="number"
                   id="number"
+                  className="editInput"
                   value={parkingData.ubication.number}
                   label="Number"
+                  divClass="inputDiv"
                   onChange={handleChange}
                 />
-                <select name="cities" className="form-control " onChange={handleChange}>
+  
+             
+                <div className={"mb-3 form-floating selectContainer" }>
+                <select name="cities" className="form-control " id="cities" onChange={handleChange}>
                   {cities.map(cit => (
                     <option value={cit.id} key={cit.id} selected={parkingData.ubication.idCity==cit.id?"selected":''}>
                       {cit.name}
                     </option>
                   ))}
                 </select>
-               
+                <label htmlFor="cities" className={"editInput form-label" }>
+               Cities
+      </label>
+    </div>
+             
                 <TextArea
-                  className="description"
+                  className="textAreaDescription editInput"
+                  label="Description"
                   name="description"
                   id="description"
                   placeholder="Description"
                   value={parkingData.place.description}
                   onChange={handleChange}
+                  divClass="textAreaContent"
                 />
-
-                <button className="submitParking">Send It!</button>
-            
+                <Input
+                  type="text" 
+                  name="price" 
+                  className="editInput"
+                  id="price" 
+                  label="Price" 
+                  onChange={handleChange} 
+                  value={parkingData.place.prize}
+                  divClass="inputDiv"
+                />
+                <Input
+                  type="number"
+                  name="height"
+                  className="editInput"
+                  value={parkingData.place.height}
+                  id="height"
+                  label="Height"
+                  divClass="inputDiv"
+                  onChange={handleChange}
+                />
+                <Input
+                  type="number"
+                  name="width"
+                  id="width"
+                  className="editInput"
+                  value={parkingData.place.width}
+                  label="Width"
+                  divClass="inputDiv"
+                  onChange={handleChange}
+                />
+                <Input 
+                  type="number" 
+                  name="long" 
+                  className="editInput"
+                  id="long" 
+                  value={parkingData.place.long} 
+                  label="Long" 
+                  divClass="inputDivLong"
+                  onChange={handleChange} 
+                />
+              
+                <File 
+                  onChange={handleInputChange} 
+                />
+                {/* <button className="">Send It!</button> */}
+                <a onClick={send} className='submitButtonForm'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
             </form>
         
+    </div>
     </section>
   );
 };

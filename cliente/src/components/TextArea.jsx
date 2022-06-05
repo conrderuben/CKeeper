@@ -13,11 +13,13 @@ const TextArea = props => {
   return (
     
      
-      <textarea
+    
+      <div className={props.divClass!=undefined ? "mb-3 form-floating "+ props.divClass : "mb-3 form-floating" }>
+        <textarea
         //  onKeyUp={e => validation(e, props.exp)}
          
         
-        className="form-control "
+        className={props.className!=undefined ? "form-control "+ props.className : "form-control" }
         name={props.name}
         cols={props.cols}
         rows={props.rows}
@@ -27,7 +29,10 @@ const TextArea = props => {
         placeholder={props.placeholder}
         onChange={(e) => {props.onChange(e);}}
       />
-      
+      <label htmlFor={props.id} className={props.className!=undefined ? "form-label "+ props.className : "form-label" }>
+        {props.label}
+      </label>
+    </div>
    
   );
 };
