@@ -16,7 +16,6 @@ module.exports = {
       },
       renter: {
         type: Sequelize.INTEGER,
-        unique:true,
         allowNull: false,
         references:{
           model:'People',
@@ -27,7 +26,6 @@ module.exports = {
       },
       tenant: {
         type: Sequelize.INTEGER,
-        unique:true,
         allowNull: false,
         references:{
           model:'People',
