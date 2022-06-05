@@ -18,6 +18,11 @@ const Container = styled.div`
   background-color: #ffffff;
   box-sizing: border-box;
   height: 100%;
+  @media only screen and (max-width:850px) {
+  .imgContainer{
+    display:none;
+  }
+}
 `;
 
 const ImgContainer = styled.div`
@@ -105,7 +110,7 @@ export const Form = () => {
   };
   return (
     <Container>
-      <ImgContainer>
+      <ImgContainer className='imgContainer'>
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>

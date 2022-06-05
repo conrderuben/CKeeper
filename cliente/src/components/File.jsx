@@ -43,10 +43,10 @@ export default class File extends Component {
 
    render(){
     return (
-  <div >
+  <div className="mt-3 fileContainer">
     <div className="fotoContainer">
-    <h3>Add new Photo</h3>
-     <label htmlFor="foto" style={{cursor:"pointer"}} > <FontAwesomeIcon icon={faPlus} className="addIcon" style={{fontSize:30}}/> </label>
+    <h3 style={{color:"white"}}>Add new Photo</h3>
+     <label htmlFor="foto" style={{cursor:"pointer"}} > <FontAwesomeIcon icon={faPlus} className="addIcon" style={{fontSize:30,color:"white"}}/> </label>
      </div>
        <div className="fotoContainer">
        
