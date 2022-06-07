@@ -15,15 +15,14 @@ const Place = props => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
       httpClient
-        .post(`http://localhost:4000/api/delete-place/${props.id}`)
+        .post(`http://localhost:4000/api/delete-place/${props.placeId}`)
         .then(window.location.reload());
     }
   };
   const editPlace = () => {
- 
-    (navigate(`/editPlace?${props.id}`))
-  }
-   
+    navigate(`/editPlace?${props.id}`);
+  };
+
   var placeDate = props.date.split('T');
   return (
     <>
@@ -87,7 +86,7 @@ const Place = props => {
                       onClick={() => {
                         httpClient
                           .get(
-                            `http://localhost:4000/api/setPublish/${props.id}/${
+                            `http://localhost:4000/api/setPublish/${props.placeId}/${
                               props.published ? '0' : '1'
                             }`
                           )
@@ -97,11 +96,27 @@ const Place = props => {
                       {props.published ? 'Public' : 'Private'}
                     </div>
                   </li>
-                    
-                    )}
-                    {props.published !== undefined && (
-                    <li><button onClick={editPlace} class='editButton'><FontAwesomeIcon icon={faPencil} className="delete" style={{fontSize:17}}/></button></li>)}
+                )}
                 {props.published !== undefined && (
+                  <li>
+                    <button onClick={editPlace} class="editButton">
+                      <FontAwesomeIcon
+                        icon={faPencil}
+                        className="delete"
+                        style={{ fontSize: 17 }}
+                      />
+                    </button>
+                  </li>
+                )}
+                {props.published !== undefined && (
+                  <li>
+                    <button onClick={deletePlace} class="deleteButton">
+                      <FontAwesomeIcon icon={faTrash} className="delete" style={{ fontSize: 17 }} />
+                    </button>
+                  </li>
+                )}
+
+                {props.admin === true && (
                   <li>
                     <button onClick={deletePlace} class="deleteButton">
                       <FontAwesomeIcon icon={faTrash} className="delete" style={{ fontSize: 17 }} />

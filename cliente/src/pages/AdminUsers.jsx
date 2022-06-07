@@ -89,7 +89,7 @@ const AdminUsers = () => {
                               .then(window.location.reload());
                           }}
                         >
-                          {value.active ? 'desactive' : 'active'}
+                          {value.active ? 'disable' : 'enable'}
                         </button>
                       </td>
                     </tr>

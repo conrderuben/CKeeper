@@ -135,6 +135,7 @@ const usu="Ruben"
 }
 exports.editPlace = async (req, res)=>{
   const place= await parkingModel.findByPk(req.params.placeId);
+  console.log(place)
 
   const ubication= await ubicationModel.findByPk(place.ubicationId);
   

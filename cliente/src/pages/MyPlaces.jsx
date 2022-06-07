@@ -71,7 +71,7 @@ const MyPlaces = () => {
               street={value.street}
               number={value.number}
               rented={value.rented}
-              id={value.id}
+              placeId={value.id}
             ></Place>
           );
         })}

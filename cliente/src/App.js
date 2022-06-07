@@ -17,6 +17,7 @@ import { ModifyParking } from './pages/ModifyParking';
 import ContactPage from './pages/ContactPage';
 import SinglePlace from './components/SinglePlace';
 import BillPage from './pages/BillPage';
+import { AdminSearch } from './pages/AdminSearch';
 
 function App() {
   return (
@@ -121,6 +122,15 @@ function App() {
           element={
             <AdminRoute>
               <AdminUsers />
+            </AdminRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin-search"
+          element={
+            <AdminRoute>
+              <AdminSearch />
             </AdminRoute>
           }
         ></Route>
