@@ -53,7 +53,7 @@ function SideMenu(props) {
             </p>
             <div className="badge">
               <span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-800 bg-blue-100 rounded-full">
-                user
+                Admin
               </span>
             </div>
           </div>
@@ -69,20 +69,20 @@ function SideMenu(props) {
             </li>
             <li>
               <Link
-                to="/main"
+                to="/users"
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
-                  <FontAwesomeIcon icon={faHouse} />
+                  <FontAwesomeIcon icon={faUser} />
                 </span>
                 <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                  Home
+                  Users
                 </span>
               </Link>
             </li>
             <li>
               <Link
-                to="/search"
+                to="/admin-search"
                 className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
               >
                 <span className="inline-flex justify-center items-center ml-4">
@@ -93,40 +93,6 @@ function SideMenu(props) {
                 </span>
               </Link>
             </li>
-            <li className="px-5">
-              <div className="flex flex-row items-center h-8">
-                <div className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                  Settings
-                </div>
-              </div>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <FontAwesomeIcon icon={faUser} />
-                </span>
-                <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                  Profile
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <FontAwesomeIcon icon={faGear} />
-                </span>
-                <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                  Settings
-                </span>
-              </a>
-            </li>
-
             <li>
               <Link
                 onClick={handleLogOut}

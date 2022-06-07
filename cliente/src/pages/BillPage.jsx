@@ -24,7 +24,7 @@ const BillPage = () => {
   useEffect(() => {
     async function getData() {
       const invoices = await httpClient.get(`/get-rents`).then(x => x.data);
-      setBills(invoices);
+      console.log(invoices);
     }
 
     getData();
@@ -33,9 +33,9 @@ const BillPage = () => {
     <Container>
       <SideMenu />
       <ContentContainer>
-        {bills.map(bill => (
-          <Invoice key={bill.id} bill={bill} />
-        ))}
+        <Invoice />
+        <Invoice />
+        <Invoice />
       </ContentContainer>
     </Container>
   );

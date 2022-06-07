@@ -20,7 +20,7 @@ const Place = props => {
     }
   };
   const editPlace = () => {
-    navigate(`/editPlace?${props.id}`);
+    navigate(`/editPlace?${props.placeId}`);
   };
 
   var placeDate = props.date.split('T');
