@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class Parking extends Model {
 
     static associate(models) {
+      Parking.hasMany(models.Rent,{
+        foreignKey:'parkingId'
+      })
       Parking.belongsTo(models.People,{
         foreignKey:'id',
         target_key:'userId'

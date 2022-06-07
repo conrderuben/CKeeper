@@ -21,8 +21,6 @@ module.exports = {
           model:'People',
           key:'id'
         },
-        onDelete:'CASCADE',
-        onUpdate:'CASCADE'
       },
       tenant: {
         type: Sequelize.INTEGER,
@@ -31,8 +29,13 @@ module.exports = {
           model:'People',
           key:'id'
         },
-        onDelete:'CASCADE',
-        onUpdate:'CASCADE'
+      },
+      parkingId: {
+        type: Sequelize.INTEGER,
+        references:{
+          model:'Parkings',
+          key:'id'
+        }
       },
       createdAt: {
         allowNull: false,
