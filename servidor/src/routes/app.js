@@ -70,6 +70,9 @@ app.post ("/api/edit-place/:placeId",parking.editPlace);
 app.post ("/api/edit-parking/:placeId/:ubicationId",parking.editParking);
 
 app.post ("/api/delete-place/:placeId",parking.deletePlace);
+
+app.post ("/api/edit-user/",user.editUser);
+
 //Admin
 app.get('/api/getAllUsers', admin.getAllUsers);
 app.get('/api/setActive/:userId/:value', admin.setActive);

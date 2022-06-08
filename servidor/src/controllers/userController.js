@@ -60,3 +60,13 @@ exports.validateToken = (req, res) => {
 }
 
    
+exports.editUser = async (req, res) => {
+    // const token = req.cookies.jwt;
+    //  const data = jwt.decode(token, 'Ckeeper')
+     
+     await peopleModel.update({user:req.body.userData.user,name:req.body.userData.name,surname:req.body.userData.surname,password:req.body.userData.password,bornDate:req.body.userData.bornDate,mail:req.body.userData.mail,phone:req.body.userData.phone,},
+        {where:{id:req.body.userData.id}})
+
+
+   
+}

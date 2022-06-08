@@ -36,9 +36,15 @@ export const ProfileEdit = () => {
       },
   
        [])
+       const handleChange = e => {
+        setUserData({
+          ...userData,
+          [e.target.name]: e.target.value
+        });
 
+        console.log(userData)
+      };
 
-  
   const editInputEnter = e => {
     e.preventDefault();
    
@@ -47,9 +53,17 @@ document.getElementById("input-"+e.target.value).disabled=false;
 document.getElementById("input-"+e.target.value).focus();
 
   };
+
+
+
   const editInputExit = e => {
     document.getElementById(e.target.id).disabled=true;
     
+
+
+    httpClient.post(`/edit-user`, { userData })
+
+
     
       };
   return (
@@ -61,7 +75,7 @@ document.getElementById("input-"+e.target.value).focus();
       <div className="container-fluid d-flex align-items-center">
         <div className="row">
           <div className="col-lg-7 col-md-10">
-            <h1 className="display-2 text-white">Hello Jesse</h1>
+            <h1 className="display-2 text-white">Hello {userData.name}</h1>
             <p className="text-white mt-0 mb-2">This is your profile page. You can manage or edit your personal information</p>
           </div>
         </div>
@@ -140,7 +154,7 @@ document.getElementById("input-"+e.target.value).focus();
                       <div className="form-group focused">
                         <label className="form-control-label" for="input-username">Username</label>
                         
-                        <input onBlur={editInputExit} type="text" id="input-username" className="form-control form-control-alternative" disabled placeholder="Username" defaultValue={userData.user}/>
+                        <input name="user" onChange={handleChange} onBlur={editInputExit} type="text" id="input-username" className="form-control form-control-alternative" disabled placeholder="Username" defaultValue={userData.user}/>
                         
                       </div>
                     </div>
@@ -148,7 +162,7 @@ document.getElementById("input-"+e.target.value).focus();
                       <div className="form-group">
                         <label className="form-control-label" for="input-email">Email address</label>
                         <div className='d-flex'>
-                        <input type="email" onBlur={editInputExit} id="input-email" className="form-control form-control-alternative" disabled defaultValue={userData.mail}/>
+                        <input name="mail" onChange={handleChange} type="email" onBlur={editInputExit} id="input-email" className="form-control form-control-alternative" disabled defaultValue={userData.mail}/>
                         <button onClick={editInputEnter} value="email" className='pl-3'>
                       <FontAwesomeIcon
                         icon={faPencil}
@@ -165,7 +179,7 @@ document.getElementById("input-"+e.target.value).focus();
                       <div className="form-group focused">
                         <label className="form-control-label" for="input-first-name">First name</label>
                         <div className='d-flex'>
-                        <input onBlur={editInputExit} type="text" id="input-first-name" className="form-control form-control-alternative" disabled placeholder="First name" defaultValue={userData.name}/>
+                        <input name="name" onChange={handleChange} onBlur={editInputExit} type="text" id="input-first-name" className="form-control form-control-alternative" disabled placeholder="First name" defaultValue={userData.name}/>
                         
                         <button onClick={editInputEnter} value="first-name"  className='pl-3'>
                       <FontAwesomeIcon
@@ -181,7 +195,7 @@ document.getElementById("input-"+e.target.value).focus();
                       <div className="form-group focused">
                         <label className="form-control-label" for="input-last-name">Last name</label>
                         <div className='d-flex'>
-                        <input onBlur={editInputExit} type="text" id="input-last-name" className="form-control form-control-alternative" disabled placeholder="Last name" defaultValue={userData.surname}/>
+                        <input name="surname" onChange={handleChange} onBlur={editInputExit} type="text" id="input-last-name" className="form-control form-control-alternative" disabled placeholder="Last name" defaultValue={userData.surname}/>
                         <button onClick={editInputEnter} value="last-name" className='pl-3'>
                       <FontAwesomeIcon
                         icon={faPencil}
