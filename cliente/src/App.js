@@ -18,6 +18,7 @@ import ContactPage from './pages/ContactPage';
 import SinglePlace from './components/SinglePlace';
 import BillPage from './pages/BillPage';
 import { AdminSearch } from './pages/AdminSearch';
+import  Profile  from './pages/Profile';
 
 function App() {
   return (
@@ -112,6 +113,14 @@ function App() {
           element={
             <ProtectedRoute>
               <BillPage />
+            </ProtectedRoute>
+          }
+        ></Route>
+          <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           }
         ></Route>

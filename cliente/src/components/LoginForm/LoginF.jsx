@@ -46,7 +46,7 @@ const Login = () => {
             <div className="contact">
               <form onSubmit={handleSubmit}>
                 <h3>SIGN IN</h3>
-                <input name="user" onChange={handleChange} type="text" placeholder="USERNAME" />
+                <input name="user" onChange={handleChange} type="text" placeholder="USERNAME OR EMAIL" />
                 <input
                   name="password"
                   onChange={handleChange}
