@@ -1,157 +1,188 @@
-.addCar {
-  height: 100vw;
-  width: 100vh;
-  background: url('../../assets/img/road.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-.addCar_box {
-  width: 50vw;
-  height: 60vw;
-  transform: translate(15%, 30%);
-  border-radius: 30px;
-  box-shadow: 1px 4px 22px -8px rgba(135, 131, 245, 0.267);
-}
-.addCar_box .leftPart {
+.editVehicleSection{
   width: 100%;
   height: 100%;
-  border-radius: 50px;
+  /* background: linear-gradient(#141e30, #243b55); */
+  background: rgba(34, 34, 36, 0.801);
+}
+.editVehicleContainer{
+width: 70%;
+
+position: relative;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+box-shadow: 0 15px 25px rgba(153, 197, 255, 0.6);
+  border-radius: 10px;
+  /* background-color: #212025; */
+  background: linear-gradient(45deg,  #03e9f4 20%, #3c3c3c 20% 50%, #3c3c3c 50% 80%,  #03e9f4 80%);
+
+}
+.titleContainer{
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
+ 
+ 
 }
-.addCarForm {
-  width: 100%;
-
-  height: 100%;
-  padding-top: 2vw;
-  padding-left: 8vw;
-}
-.leftPart .topLink a {
-  color: #452a5a;
-  font-weight: 400;
-}
-.leftPart .topLink {
-  height: 20px;
-}
-.leftPart .contact {
-  height: 100%;
-  width: 73%;
-  margin: auto;
-}
-.leftPart h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-top: 2vw;
-  padding-right: 4vw;
+.title{
+  width: fit-content;
+  height: fit-content;
+  margin-top: 8%;
+  margin-bottom: 5%;
+  color: white;
 }
 
-.leftPart {
-  background: linear-gradient(-45deg, #22506e, rgba(229, 229, 233, 0.925));
-}
-.submitCar {
-  border: none;
-  height: 5vh;
-  width: 10vw;
-  border-radius: 8px;
-  margin: auto;
-  margin-left: 17%;
-  margin-top: 6%;
-
-  background: #629ac5;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  font-size: 20px;
-  -webkit-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
-  -moz-box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
-  box-shadow: 0px 9px 15px -11px rgba(88, 54, 114, 1);
-}
-.leftPart input {
-  border: none;
-  width: 80%;
-  margin: 15px 0px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
+.editVehicleForm{
   width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.leftPart input:focus {
-  border: none;
-  width: 80%;
-  margin: 15px 0px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-}
-.leftPart select:focus {
-  border: none;
-  width: 80%;
-  margin: 15px 0px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-}
-.leftPart date:focus {
-  border: none;
-  width: 80%;
-  margin: 15px 0px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-}
-.leftPart select {
-  border: none;
-  margin: 15px 0px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-  height: calc(3.5rem + 2px);
-}
-.leftPart date {
-  border: none;
-  margin: 15px;
-  border-bottom: 1px solid #4f30677d;
-  padding: 7px 9px;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.parte1{
-width: 100%;
-padding-top: 3vw;
-position: absolute;
 display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.inputVehicleDiv{
+width: 25%;
+min-width: 120px;
+margin-left: 3%;
+margin-top: 3%;
+
+}
+.editVehicleForm select{
+  width: 100%;
+  min-width: 220px;
+  position: relative;
+ text-align: center;
+  background-color: #212025;
+  color: white;
+  border: none;
+  border-radius: inherit;
+  border-bottom: 1px solid white;
+  
+  }
+  .editVehicleInput{
+    border: none;
+    color: white;
+  border-bottom: 1px solid white;
+  border-radius: inherit;
+  background: inherit;
+  }
+
+  .form-control:focus {
+    background-color: #212025;
+    color: white;
+    border-color: white;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem white;
+  }
+ 
+  .selectVehicleContainer{
+    width: 61%;
+    min-width: 220px;
+    height: 58px;
+    margin-top: 3%;
+  }
+  .inputVehicleDivLong{
+    width: 40%;
+    margin-left: 3%;
+    min-width: 171px;
+  }
+
+.dateCar{
+  background-color: #212025;
+  color: white;
 }
 
 
-.topLink img {
-  width: 28px;
-  padding-right: 7px;
-  margin-top: -3px;
+.submitVehicleButtonForm {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px;
+  width:40%;
+  text-align: center;
+  margin-bottom: 8%;
 }
-.carContainer {
-  width: 60%;
+
+.submitVehicleButtonForm:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+
+}
+.submitVehicleButtonForm span {
+  position: absolute;
+  display: block;
+}
+.submitVehicleButtonForm span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+.submitVehicleButtonForm span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+.submitVehicleButtonForm span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+.submitVehicleButtonForm span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
 }
