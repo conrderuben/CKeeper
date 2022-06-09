@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './style.css';
 
 const invoice = () => {
   const style = {
@@ -6,7 +7,7 @@ const invoice = () => {
   };
 
   return (
-    <div className=" p-10 mx-10 mt-10 bg-white rounded-lg fit-content">
+    <div id='invoice' className=" p-10 mx-10 mt-10 bg-white rounded-lg fit-content">
       <h2 className="mb-10 text-xl tracking-widest uppercase">Invoice</h2>
       <span className="ml-2 font-mono text-base text-gray-400">#312</span>
       <span className="block w-16 mt-4 bg-blue-500" style={style}></span>

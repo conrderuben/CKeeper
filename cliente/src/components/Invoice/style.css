@@ -1,0 +1,13 @@
+
+@media only screen and (max-width: 850px) {
+  #invoice {
+    padding: 0;
+  margin-left: 0;
+    width: 80vw;
+    height: 40vh;
+  }
+  body{
+    overflow: scroll;
+    background-color: #110f16;;
+  }
+}
