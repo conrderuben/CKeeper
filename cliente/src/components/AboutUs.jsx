@@ -10,6 +10,11 @@ const Container = styled.div`
   display: flex;
   height: 100vh;
   background-color: #ffffff;
+  @media only screen and (max-width:850px) {
+    .imgContainer{
+      display:none;
+    }
+  }
 `;
 
 const ImagenContainer = styled.div`
@@ -43,7 +48,7 @@ const Descripcion = styled.div`
 const SobreNosotros = () => {
   return (
     <Container>
-      <ImagenContainer>
+      <ImagenContainer className='imgContainer'>
         <a name="sobre-nosotros"></a>
         <Imagen src={fondo4} />
       </ImagenContainer>
