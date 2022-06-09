@@ -3,6 +3,7 @@ import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Input';
+import style from './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -71,7 +72,7 @@ export const CarForm = () => {
   return (
     
     <section className='editVehicleSection '>
-    <div className='editVehicleContainer '>
+    <div id='vehicleContainer' className='editVehicleContainer '>
 
         
         <div className='titleContainer'>
