@@ -105,3 +105,11 @@ body .home-container .card .box .content a:hover {
   background: #fff;
   color: #000;
 }
+@media only screen and (max-width: 850px) {
+  body{
+    overflow: hidden;
+  }
+  body .home-container {
+    margin-top: 50em;
+  }
+}
