@@ -97,10 +97,7 @@ button {
   border-radius: 0;
 }
 
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
+
 
 input,
 button,
@@ -1967,4 +1964,50 @@ path {
   pointer-events: none;
 }
 
+
+	
+.changePasswordButton{
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+  }
+  .changePasswordButton a{
+    font-size: 15px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+    
+  }
+  .changePasswordButton a:before,
+  .changePasswordButton a:after{
+    position: absolute;
+    content: "RESET PASSWORD";
+    height: 50px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgb(127, 168, 255);
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  .changePasswordButton a:before{
+    color: #fff;
+    background: rgb(127, 168, 255);
+    transform: rotateY(0deg) translateZ(25px);
+  }
+  .changePasswordButton a:after{
+    color: rgb(127, 168, 255);
+    transform: rotateX(90deg) translateZ(25px);
+  }
+  .changePasswordButton a:hover{
+    transform: translateZ(-25px) rotateX(-90deg);
+  }
 }
+
+

@@ -7,6 +7,8 @@ const user = require('../controllers/userController')
 const admin = require('../controllers/adminController')
 const session = require('../controllers/sessionController')
 const place = require('../controllers/placeController')
+const mail = require('../controllers/mailController')
+
 const city = require('../controllers/cityController')
 const bill = require('../controllers/billController')
 const middleware = require('../middlewares/authMiddleware');
@@ -72,6 +74,9 @@ app.post ("/api/edit-parking/:placeId/:ubicationId",parking.editParking);
 app.post ("/api/delete-place/:placeId",parking.deletePlace);
 
 app.post ("/api/edit-user/",user.editUser);
+
+
+app.post("/api/reset-password/:verificationCode",mail.resetPasswordCode)
 
 //Admin
 app.get('/api/getAllUsers', admin.getAllUsers);

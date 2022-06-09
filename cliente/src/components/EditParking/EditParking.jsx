@@ -29,7 +29,7 @@ export const Edit = () => {
   useEffect(() => {
     async function getData() {
       await httpClient
-        .post(`http://localhost:4000/api/edit-place/${url[1]}`)
+        .post(`/edit-place/${url[1]}`)
         .then(x => {
           setParkingData(x.data);
         });
@@ -46,7 +46,7 @@ export const Edit = () => {
 
   useEffect(() => {
     async function getData() {
-      const city = await httpClient.get(`http://localhost:4000/api/list-cities`).then(x => {
+      const city = await httpClient.get(`/list-cities`).then(x => {
         setCities(x.data);
       });
     }

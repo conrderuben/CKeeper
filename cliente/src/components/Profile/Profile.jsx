@@ -42,9 +42,9 @@ export const ProfileEdit = () => {
           [e.target.name]: e.target.value
         });
 
-        console.log(userData)
+        
       };
-
+      console.log(userData)
   const editInputEnter = e => {
     e.preventDefault();
    
@@ -53,7 +53,7 @@ document.getElementById("input-"+e.target.value).disabled=false;
 document.getElementById("input-"+e.target.value).focus();
 
   };
-
+  
 
 
   const editInputExit = e => {
@@ -64,6 +64,28 @@ document.getElementById("input-"+e.target.value).focus();
     httpClient.post(`/edit-user`, { userData })
 
 
+    
+      };
+
+
+
+      const showPasswordFields = e => {
+        e.preventDefault();
+        const fiveDigits = 10000 + Math.random() * 90000;
+        const validationNumber = Math.floor(fiveDigits);
+document.getElementById("verificationDiv").style.display="flex"
+document.getElementById("verificationContent").innerHTML="An email has sent to your mail address"
+document.getElementById("understoodButton").style.display="none"
+    
+    //          httpClient.post(`/reset-password/${validationNumber}`);
+
+
+
+// if (window.prompt("Enter the number that we send to your mail")==validationNumber){
+//   document.getElementById("passwordRow").style.display="block";
+// }
+  
+    
     
       };
   return (
@@ -149,12 +171,12 @@ document.getElementById("input-"+e.target.value).focus();
               <form>
                 <h6 className="heading-small text-muted mb-4">User information</h6>
                 <div className="pl-lg-4">
-                  <div className="row">
+                  <div className="row mb-7">
                     <div className="col-lg-6">
                       <div className="form-group focused">
                         <label className="form-control-label" for="input-username">Username</label>
                         
-                        <input name="user" onChange={handleChange} onBlur={editInputExit} type="text" id="input-username" className="form-control form-control-alternative" disabled placeholder="Username" defaultValue={userData.user}/>
+                        <input name="user" onChange={handleChange} onBlur={editInputExit} type="text" id="input-username" className="form-control form-control-alternative " disabled placeholder="Username" defaultValue={userData.user}/>
                         
                       </div>
                     </div>
@@ -174,7 +196,69 @@ document.getElementById("input-"+e.target.value).focus();
                       </div>
                     </div>
                   </div>
-                  <div className="row">
+                  <div className="row mb-10 ">
+
+                  <span className='changePasswordButton'   data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a href="#"></a></span>
+            {/* MODAL BOOTSTRAP */}
+<div id="modal-container" >
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+<p id="verificationContent">This action will send you an authentication code to your email</p>
+<div id="verificationDiv" className=' mt-5 justify-content-around'style={{alignItems:"center",display:"none"}}>
+  <div className='d-flex' style={{alignItems:"center"}}>
+<b className='mr-5'>Verification Code:</b><input type="number" className="form-control form-control-alternative border border-dark w-25"  id="confirmationCode" />
+</div>
+<button type="button" className="btn btn-primary">Send</button>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" onClick={showPasswordFields} id="understoodButton" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+                  </div>
+                  <div className="row" id='passwordRow' style={{display:"none"}} >
+                    <div className="col-lg-6">
+                      <div className="form-group focused ">
+                        <label className="form-control-label"  for="input-password">New Password</label>
+                        <div className='d-flex'>
+                        <input id="input-password"  className="form-control form-control-alternative" placeholder="New Password"  disabled type="password"/>
+                        
+                      </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-6">
+                      <div className="form-group focused ">
+                        <label className="form-control-label" for="input-confirmPassword">Confirm Password</label>
+                        <div className='d-flex'>
+                        <input id="input-confirmPassword" className="form-control form-control-alternative" placeholder="Confirm Password"   type="password"/>
+                      
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr className="my-4"/>
+                <h6 className="heading-small text-muted mb-4">Contact information</h6>
+                <div className="pl-lg-4">
+                <div className="row">
                     <div className="col-lg-6">
                       <div className="form-group focused">
                         <label className="form-control-label" for="input-first-name">First name</label>
@@ -193,7 +277,7 @@ document.getElementById("input-"+e.target.value).focus();
                     </div>
                     <div className="col-lg-6">
                       <div className="form-group focused">
-                        <label className="form-control-label" for="input-last-name">Last name</label>
+                        <label className="form-control-label" for="input-last-name">Last Name</label>
                         <div className='d-flex'>
                         <input name="surname" onChange={handleChange} onBlur={editInputExit} type="text" id="input-last-name" className="form-control form-control-alternative" disabled placeholder="Last name" defaultValue={userData.surname}/>
                         <button onClick={editInputEnter} value="last-name" className='pl-3'>
@@ -207,47 +291,23 @@ document.getElementById("input-"+e.target.value).focus();
                       </div>
                     </div>
                   </div>
-                </div>
-                <hr className="my-4"/>
-                <h6 className="heading-small text-muted mb-4">Contact information</h6>
-                <div className="pl-lg-4">
                   <div className="row">
-                    <div className="col-md-12">
-                      <div className="form-group focused">
-                        <label className="form-control-label" for="input-address">Address</label>
-                        <input id="input-address" className="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text"/>
+                    <div className="col-lg-6">
+                      <div className="form-group focused ">
+                        <label className="form-control-label" for="input-phone">Phone Number</label>
+                        <div className='d-flex'>
+                        <input id="input-phone" className="form-control form-control-alternative" placeholder="Phone Number" defaultValue={userData.phone} disabled type="text"/>
+                        <button onClick={editInputEnter} value="phone" className='pl-3'>
+                      <FontAwesomeIcon
+                        icon={faPencil}
+                        style={{ fontSize: 17,color:"black"}}
+                      />
+                      </button>
+                      </div>
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <div className="form-group focused">
-                        <label className="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" className="form-control form-control-alternative" placeholder="City" value="New York"/>
-                      </div>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="form-group focused">
-                        <label className="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" className="form-control form-control-alternative" placeholder="Country" value="United States"/>
-                      </div>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="form-group">
-                        <label className="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" className="form-control form-control-alternative" placeholder="Postal code"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr className="my-4"/>
-                <h6 className="heading-small text-muted mb-4">About me</h6>
-                <div className="pl-lg-4">
-                  <div className="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" className="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                  </div>
-                </div>
+                 </div>
               </form>
             </div>
           </div>
