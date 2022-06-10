@@ -1,10 +1,26 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
+
+const Container=styled.div`
+@media only screen and (max-width: 850px) {
+  #form select{
+   width:53vw !important;
+    
+  }
+  #content{
+    height:30vh;
+    justify-content: flex-start !important;
+    flex-wrap:wrap;
+  }
+}
+`;
 
 const Filters = props => {
   return (
-    <div className="d-flex justify-content-center">
-      <div class="form-floating d-flex ml-7">
+    <Container>
+    <div id='content' className="d-flex justify-content-center">
+      <div id='form' class="form-floating d-flex ml-7">
         <select
           class="form-select "
           id="floatingSelectGrid"
@@ -25,7 +41,7 @@ const Filters = props => {
         </select>
         <label for="floatingSelectGrid">City</label>
       </div>
-      <div class="form-floating d-flex ml-7">
+      <div id='form' class="form-floating d-flex ml-7">
         <input
           type="email"
           class="form-control"
@@ -54,6 +70,7 @@ const Filters = props => {
         <label for="floatingSelectGrid">Prize</label>
       </div>
     </div>
+    </Container>
   );
 };
 

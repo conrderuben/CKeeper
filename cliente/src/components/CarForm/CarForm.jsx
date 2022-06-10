@@ -1,9 +1,9 @@
-import style from './style.css';
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Input';
+import style from './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -71,100 +71,108 @@ export const CarForm = () => {
   }
   return (
     
-      <section className="addCar">
-    
-        <div className="addCar_box">
-          <div className="leftPart">
-            <div className="topLink">
-              <a href="/places">
-              <FontAwesomeIcon icon={faArrowLeft } className="fontAwesomeLeft" />
-              </a>
-            </div>
-            <div className="contact">
-            <h2>ADD NEW CAR</h2>
-              <form onSubmit={handleSubmit} className="addCarForm">
+    <section className='editVehicleSection '>
+    <div id='vehicleContainer' className='editVehicleContainer '>
 
-               
-                <div className='carContainer'>
-               
-                <label htmlFor="type">
-                <b>Type</b>
-              </label>
-              <br />
-              <select name="type" onChange={handleChange}>
-               
-               
-                 <option
-                    value="car"
-                    selected>
-                      Car
-                 </option> 
-                 <option
-                    value="motorcycle">
-                      Motorcycle
-                 </option> 
-                 
-                 <option
-                    value="van">
-                      Van
-                 </option> 
-                
-              </select>
-              <label htmlFor="brand">
-                <b>Brand</b>
-              </label>
-              <br />
-              <select name="brand" onChange={handleChange}>
-               
-               {brands.map((brn) =>
-                 <option
-                    value={brn.id} key={brn.id}>{brn.name} 
-                 </option> 
-      )}
-
-              </select>
-
-
-
-
-              <label htmlFor="model">
-                <b>Model</b>
-              </label>
-              <br />
-              <select name="typeId" onChange={handleChange}>
-              <option>Selecciona...</option>
-              {types.map((typ) =>
-                 <option
-                    value={typ.id} key={typ.id}>{typ.name} 
-                 </option> 
-      )}
-              </select>
-
-            <br/>
-            <br/><br/>
-            <Input
-              type="date"
-              name="matriculationDate"
-              id="matriculationDate"
-              label="Matriculation date"
-              onChange={handleChange}
-            ></Input>
-
-
-              
- <button  className="submitCar">Create It!</button>
-              </div>
-              
-
-
-
-               
-              </form>
-            </div>
+        
+        <div className='titleContainer'>
+        
+          <h2 className='title'>EDIT VEHICLE</h2>
           </div>
+         
+            <form onSubmit={handleSubmit} className="editVehicleForm">
+            <div className={"mb-3 form-floating selectVehicleContainer" }>
+            <select name="type" className="form-control " id='type' onChange={handleChange}>
+              <option>Selecciona...</option>
+                  <option value="car">
+                    Car
+                  </option>
+                  <option
+                    value="motorcycle"
+                  >
+                    Motorcycle
+                  </option>
+
+                  <option value="van">
+                    Van
+                  </option>
+                </select>
+                <label htmlFor="type" className={"editInput form-label" }>
+               Type
+                </label>
+            </div>
+              
+
+
+
+
+            <div className={"mb-3 form-floating selectVehicleContainer" }>
+            <select name="brand" className="form-control " id='brand' onChange={handleChange}>
+            <option>Selecciona...</option>
+                  {brands.map(brn => (
+                    <option
+                      value={brn.id}
+                      key={brn.id}
+                    >
+                      {brn.name}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="brand" className={"editInput form-label" }>
+                Brand
+                </label>
+            </div>
+             
+        
+                
+            <div className={"mb-3 form-floating selectVehicleContainer" }>
+            <select name="typeId" className="form-control " id='model' onChange={handleChange}>
+                  <option>Selecciona...</option>
+                  {types.map(typ => (
+                    <option
+                      value={typ.id}
+                      key={typ.id}
+                     
+                    >
+                      {typ.name}
+                    </option>
+                  ))}
+                </select>
+
+                <label htmlFor="model" className={"editInput form-label" }>
+                Model
+                </label>
+            </div>
+              
+            <div className={"mb-3 form-floating selectVehicleContainer" }>
+                  <input
+                    className="dateCar form-control "
+                    type="date"
+                    min="1899-01-01"
+                    name="matriculationDate"
+                    id="matriculationDate"
+                    label="Matriculation date"
+                    onChange={handleChange}
+                  />
+       
+       <label htmlFor="matriculationDate" className={"editInput form-label" }>
+       Matriculation date
+                </label>
+                </div>
+      <a onClick={handleSubmit} className='submitVehicleButtonForm'>
+         <span></span>
+         <span></span>
+         <span></span>
+          <span></span>
+         Submit
+      </a>
+              
+              
+            </form>
           
         </div>
-      </section>
+      
+    </section>
     
   );
 };

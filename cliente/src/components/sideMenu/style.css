@@ -1,0 +1,58 @@
+#icono1{
+  color:#ffffff;
+}
+@media only screen and (min-width: 851px) {
+  .checkbtn1 {
+    font-size: 22px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #check1 {
+    display: none;
+  }
+}
+  @media only screen and (max-width: 850px) {
+    .checkbtn1 {
+      display: block;
+      font-size: 30px;
+      padding: 0.5em;
+    }
+    #container1{
+    
+      transition: 0.5s;
+    }
+    #menu1 {
+      position: fixed;
+     top:150px;
+      left: -100%;
+      transition: 0.5s;
+    }
+    #profile1 {
+      position: fixed;
+     top:75px;
+      left: -100%;
+      transition: 0.5s;
+    }
+  
+    a:hover, a.active {
+      background: none;
+    }
+    #check1:checked ~ #container1>#menu1 {
+     left:0;
+    }
+    #check1:checked ~ #container1>#profile1 {
+      left:0;
+     }
+    #check1:checked ~ #container1 {
+  
+      height: 100vh;
+      width: 70vw;
+  
+     }
+    #check1 {
+      display: none;
+    }
+  }

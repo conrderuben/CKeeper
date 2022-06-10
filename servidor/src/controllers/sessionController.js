@@ -42,7 +42,7 @@ exports.login = (req, res) => {
     const password = req.body.form.password;
 
     bd.query(
-        "SELECT * FROM People WHERE user = ?",
+        "SELECT * FROM People WHERE mail='"+user+"' OR user ='"+user+"'",
         [user],
         (err, result) =>{
             if(err){
@@ -73,7 +73,9 @@ exports.login = (req, res) => {
                     }
                 })
             }else{
-                console.log('ka pasao')
+                 res.json({
+                            error: 'invalid user or password'})
+                    
                 
             }
         }
