@@ -3,7 +3,6 @@ import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import Input from '../Input';
-import style from './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowLeft,
@@ -77,7 +76,7 @@ export const CarForm = () => {
         
         <div className='titleContainer'>
         
-          <h2 className='title'>EDIT VEHICLE</h2>
+          <h2 className='title'>ADD VEHICLE</h2>
           </div>
          
             <form onSubmit={handleSubmit} className="editVehicleForm">

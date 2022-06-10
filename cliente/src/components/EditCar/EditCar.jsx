@@ -1,4 +1,4 @@
-import style from './style.css';
+import style from './style.scss';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';

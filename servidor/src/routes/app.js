@@ -74,6 +74,7 @@ app.post ("/api/edit-parking/:placeId/:ubicationId",parking.editParking);
 app.post ("/api/delete-place/:placeId",parking.deletePlace);
 
 app.post ("/api/edit-user/",user.editUser);
+app.post ("/api/edit-userPassword/",user.editUserPassword);
 
 
 app.post("/api/reset-password/:verificationCode",mail.resetPasswordCode)
