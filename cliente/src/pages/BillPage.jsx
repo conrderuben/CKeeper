@@ -23,7 +23,7 @@ const BillPage = () => {
 
   useEffect(() => {
     async function getData() {
-      const invoices = await httpClient.get(`/get-rents`).then(x => x.data);
+      const invoices = await httpClient.get(`/get-bill-data`).then(x => x.data);
       console.log(invoices);
     }
 

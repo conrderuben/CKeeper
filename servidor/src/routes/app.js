@@ -58,7 +58,7 @@ app.post ("/api/add-vehicle",vehicle.addCar);
 
 app.post ("/api/create-rent",rent.createRent);
 
-app.get("/api/get-rents", rent.getRentsByUserId)
+app.get("/api/get-bill-data", bill.getBills)
 
 
 app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
