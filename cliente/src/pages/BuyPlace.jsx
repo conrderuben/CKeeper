@@ -79,7 +79,7 @@ const BuyPlace = () => {
           style={{ maxHeight: '300px' }}
         >
           <img
-            src={require(`../../../assets/users/Ruben/Parking/parking${i + 1}.jpg`)}
+            src={require(`../../../assets/users/1/Parking1/parking${i + 1}.jpg`)}
             className="d-block w-100"
             alt="..."
           />

@@ -72,6 +72,7 @@ app.post ("/api/edit-place/:placeId",parking.editPlace);
 app.post ("/api/edit-parking/:placeId/:ubicationId",parking.editParking);
 
 app.post ("/api/delete-place/:placeId",parking.deletePlace);
+app.get ("/api/parking-number/:userId",parking.parkingNumber);
 
 app.post ("/api/edit-user/",user.editUser);
 app.post ("/api/edit-userPassword/",user.editUserPassword);

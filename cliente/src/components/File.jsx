@@ -35,6 +35,7 @@ export default class File extends Component {
         this.setState({ file: this.fileArray });
         
         }
+        console.log(this.fileArray)
     }
     uploadFiles(e) {
         e.preventDefault();
@@ -55,7 +56,7 @@ export default class File extends Component {
      
     <div className="form-group multi-preview foto" >
          { this.fileArray.map( (url,index) => (
-             <img src={url} key={index} alt="..." width="50px" height="25px"/>
+             <img src={url} key={index}  width="50px" height="25px"/>
          ))}
        </div>
        </div>

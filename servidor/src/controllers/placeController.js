@@ -48,7 +48,9 @@ exports.getPlacesById = async (req, res) => {
 exports.getPlacesData = async (req, res) => {
   const ubi = await ubicationModel.findByPk(req.params.ubicationId)
   const city= await cityModel.findByPk(ubi.idCity)
+  // console.log(city)
   const user = await peopleModel.findByPk(req.params.userId)
+  
   const ownPlaceData={
     street: ubi.street,
     pc: ubi.postalCode,
@@ -60,6 +62,7 @@ exports.getPlacesData = async (req, res) => {
   }
  
   res.json(ownPlaceData);
+
 }
 
 exports.setPublished = async (req, res) => {
@@ -107,12 +110,23 @@ exports.addParking =  async (req,res) => {
         }
         //INSERT PARKING
         await parkingModel.create(dataParking)
-}
-exports.photos = function (req,res,next) {
 
-const usu="Ruben"
+
+
+}
+exports.photos = async (req,res,next)=> {
+  const token = req.cookies.jwt;
+  const data = jwt.decode(token, 'Ckeeper')
+const usu=data.data.id;
+
+
+const listPlaces =  await parkingModel.findAll({
+  where:{userId:usu}
+});
+
+console.log(listPlaces)
     const storage = multer.diskStorage({
-        destination:path.join( "../assets/users/"+usu+"/Parking/") ,
+        destination:path.join( "../assets/users/"+usu+"/Parking"+"/") ,
         filename: function (req, file, cb) {
           cb(
             null,
@@ -123,7 +137,7 @@ const usu="Ruben"
 
       const upload = multer({
         storage: storage,
-        limits:{fileSize: 1000000},
+        
      }).any("photos");
 
      upload(req, res, (err) => {
@@ -141,7 +155,7 @@ exports.editPlace = async (req, res)=>{
   
 
   const data = {place:place,ubication:ubication}
-  console.log(data)
+  // console.log(data)
   res.json(data);
 
 }
@@ -166,5 +180,15 @@ exports.deletePlace = async (req, res)=>{
   
    
 
+exports.parkingNumber  =async (req, res)=>{
+// console.log(req.params.userId)
+const idUser=req.params.userId
+  const listPlaces =  await parkingModel.findAll({
+     where:{userId:idUser}
+  });
+// const numberParking = 
+//    listPlaces.length
 
+res.json(listPlaces);
+}
 

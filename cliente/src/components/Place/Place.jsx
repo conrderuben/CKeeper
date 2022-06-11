@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './style.scss';
 import assets from '../../assets/img/fondo1.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Place = props => {
+  
   const navigate = useNavigate();
   const deletePlace = () => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
@@ -22,21 +23,64 @@ const Place = props => {
   const editPlace = () => {
     navigate(`/editPlace?${props.placeId}`);
   };
+  const [user, setUser] = useState({id:0});
+  const [parkingNumber, setParkingNumber] = useState({});
+  useEffect(() => {
+    async function getData() {
+      await httpClient.get('user').then(x => {
+        setUser(x.data);
+      });
+    }
 
+    getData();
+  }, []);
+  
+  useEffect(() => {
+    async function getData() {
+      await httpClient.get(`/parking-number/${props.idUser}`).then(x => {
+        setParkingNumber(x.data);
+      });
+    }
+
+    getData();
+  }, []);
+
+  console.log(parkingNumber.length);
+  const photos = () => {
+    var array = [];
+   
+// console.log(require(`../../../../assets/users/1/Parking1/1.jpg`))
+
+    
+    
+      array.push(
+      
+          
+          // <img
+          //   src={require(`../../../../assets/users/${props.idUser}/Parking1/parking1.jpg`) }
+            
+          //   alt="Image Title"
+            
+          //  style={{height:"100%"}}
+            
+          // />
+     
+      );
+    
+  
+    return array;
+  };
   var placeDate = props.date.split('T');
   return (
     <>
       <section class="dark">
         <div class="container py-4">
           <article class="postcard dark yellow">
-            <a class="postcard__img_link" href="#">
-              <img
-                class="postcard__img"
-                src={require('../../assets/img/img.jpg')}
-                alt="Image Title"
-              />
-            </a>
-            <div class="postcard__text">
+     
+                  <div class="postcard__img">{photos()}</div>
+                  
+                
+                     <div class="postcard__text">
               <h1 class="postcard__title yellow">
                 <Link
                   to="/buy-place"

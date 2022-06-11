@@ -38,7 +38,7 @@ export const Form = () => {
     });
   };
 
-  const send = e => {
+  const send =async () => {
     console.log('LLEGO');
     const data = new FormData();
     console.log(fileData);
@@ -51,14 +51,25 @@ export const Form = () => {
       form,
       cont
     };
+console.log(data)
+    
 
-    httpClient
+    await httpClient.post('/add-parking', { obj }).then( 
+      await httpClient
       .post('http://localhost:4000/api/photos', data)
       .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      );
 
-    httpClient.post('/add-parking', { obj }).then(navigate('/main'));
+
+   
+
+
+
   };
+
+
+  
   return (
     <section className='editParkingSection '>
     <div id='parkingContainer' className='editParkingContainer '>
