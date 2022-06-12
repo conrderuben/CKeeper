@@ -40,9 +40,8 @@ export const Form = () => {
   };
 
   const send =async () => {
-    console.log('LLEGO');
+
     const data = new FormData();
-    console.log(fileData);
     var cont = 0;
     for (var i in fileData) {
       data.append('photos', fileData[i]);
@@ -52,14 +51,11 @@ export const Form = () => {
       form,
       cont,
     };
-console.log(data)
     
 
     await httpClient.post('/add-parking', { obj }).then( x=>{
        httpClient
-      .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+      .post(`http://localhost:4000/api/photos/${x.data.id}`, data).then(navigate("/places"))
     }
       );
 
@@ -139,7 +135,7 @@ console.log(data)
                   name="price" 
                   className="editInput"
                   id="price" 
-                  label="Price" 
+                  label="Price(€) / Day" 
                   onChange={handleChange} 
                   divClass="inputDiv"
                 />
@@ -148,7 +144,7 @@ console.log(data)
                   name="height"
                   className="editInput"
                   id="height"
-                  label="Height"
+                  label="Height (cm)"
                   divClass="inputDiv"
                   onChange={handleChange}
                 />
@@ -157,7 +153,7 @@ console.log(data)
                   name="width"
                   id="width"
                   className="editInput"
-                  label="Width"
+                  label="Width (cm)"
                   divClass="inputDiv"
                   onChange={handleChange}
                 />
@@ -166,7 +162,7 @@ console.log(data)
                   name="long" 
                   className="editInput"
                   id="long" 
-                  label="Long" 
+                  label="Long (cm)" 
                   divClass="inputDivLong"
                   onChange={handleChange} 
                 />

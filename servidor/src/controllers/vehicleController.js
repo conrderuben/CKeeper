@@ -2,7 +2,9 @@ const bd = require("../settings/db")
 const vehicleModel = require('../../models').Vehicle;
 const brandModel = require('../../models').Brand;
 const typeModel = require('../../models').Type;
-
+const multer = require('multer');
+const path = require('path');
+const cors = require ("cors");
 const jwt = require('jsonwebtoken');
 
 
@@ -50,15 +52,7 @@ exports.getTypeById= async (req, res)=>{
 }
 
 exports.getBrandById = async (req, res)=>{
-    // const sql = "SELECT * FROM Brand WHERE id = ?";
-    // const brand = await bd.query(sql,[req.params.brandId], (err, result)=>{
-    //         if(err){
-    //             console.log(err);
-    //         }else{
-    //             return result
-    //         } 
-    //     } )
-    // console.log(req)
+
     console.log(req.params)
     const model= await typeModel.findByPk(req.params.typeId);
     
@@ -71,9 +65,10 @@ const data = {
 }
 
 exports.addCar = async (req, res)=>{
+
+    
         const token = req.cookies.jwt;
         const user = jwt.decode(token, 'Ckeeper')
-        console.log(req.body.form.type)
         const data={
         type:req.body.form.type,
         matriculationDate:req.body.form.matriculationDate,
@@ -81,11 +76,45 @@ exports.addCar = async (req, res)=>{
         typeId:req.body.form.typeId,
         
       }
-            vehicleModel.create(data)
+      var vehicleId=0
+
+         await  vehicleModel.create(data).then(result=>{vehicleId=result.dataValues.id})
+console.log(vehicleId)
+
+            res.json({id:vehicleId});
        
 }
 
+exports.photo = async (req,res,next)=> {
+    const token = req.cookies.jwt;
+    const data = jwt.decode(token, 'Ckeeper')
+  const usu=data.data.id;
+  
+  
+ console.log(req.params.vehicleId) 
+  
+      const storage = multer.diskStorage({
+          destination:path.join( "../assets/users/"+usu+"/Vehicles/Vehicle"+req.params.vehicleId+"/") ,
+          filename: function (req, file, cb) {
+            cb(
+              null,
+              "vehicle"+".png",
+            );
+          },
+        });
+  
+        const upload = multer({
+          storage: storage,
+          
+       }).single("photos");
+  
+       upload(req, res, (err) => {
+          if(!err)
+             return res.send(200).end();
+       });
 
+
+    }
 exports.editCar = async (req, res)=>{
     const car= await vehicleModel.findByPk(req.params.carId);
 
@@ -94,7 +123,6 @@ exports.editCar = async (req, res)=>{
     const brand = await brandModel.findByPk(model.idBrand);
 
     const data = {car:car,brand:brand}
-    console.log(data)
     res.json(data);
 
 }

@@ -24,7 +24,6 @@ app.post('/api/login', session.login);
 app.get('/api/logout', session.logout);
 
 app.post('/api/add-parking', parking.addParking);
-app.post('/api/photos/:parkingId', parking.photos);
 
 
 //app.post('/api/add-parking', parking.addParking);
@@ -61,6 +60,9 @@ app.get('/api/get-posts', place.getAllPublic);
 app.post ("/api/add-vehicle",vehicle.addCar);
 
 app.post ("/api/create-rent",rent.createRent);
+app.post('/api/photos/:parkingId', parking.photos);
+
+app.post('/api/car-photo/:vehicleId', vehicle.photo);
 
 app.get("/api/get-bill-data", bill.getBills)
 

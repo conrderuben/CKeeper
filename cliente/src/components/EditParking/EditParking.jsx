@@ -189,7 +189,7 @@ console.log(form)
                   name="price" 
                   className="editInput"
                   id="price" 
-                  label="Price" 
+                  label="Price(€) / Day" 
                   onChange={handleChange} 
                   value={parkingData.place.prize}
                   divClass="inputDiv"
@@ -200,7 +200,7 @@ console.log(form)
                   className="editInput"
                   value={parkingData.place.height}
                   id="height"
-                  label="Height"
+                  label="Height (cm)"
                   divClass="inputDiv"
                   onChange={handleChange}
                 />
@@ -210,7 +210,7 @@ console.log(form)
                   id="width"
                   className="editInput"
                   value={parkingData.place.width}
-                  label="Width"
+                  label="Width (cm)"
                   divClass="inputDiv"
                   onChange={handleChange}
                 />
@@ -220,7 +220,7 @@ console.log(form)
                   className="editInput"
                   id="long" 
                   value={parkingData.place.long} 
-                  label="Long" 
+                  label="Long (cm)" 
                   divClass="inputDivLong"
                   onChange={handleChange} 
                 />

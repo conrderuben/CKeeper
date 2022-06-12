@@ -105,7 +105,7 @@ exports.numberData = async (req, res) => {
         where:{tenant:idUser} 
     });
     const numberRents=(numberRenter.length) + (numberTenant.length)
-    const obj={places:numberPlaces,vehicles:numberVehicles,rents:numberRents}
+    const obj={places:numberPlaces.length,vehicles:numberVehicles.length,rents:numberRents}
     res.send(obj);
       
       

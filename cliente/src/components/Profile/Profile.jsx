@@ -20,6 +20,12 @@ export const ProfileEdit = () => {
     async function getData() {
       await httpClient.get(`/user`).then(x => {
         setUserData(x.data);
+          httpClient.get(`/number-data/${x.data.id}`).then(x => {
+          setNumberDataAll(x.data);
+        });
+
+
+        
       });
     }
     getData();
@@ -30,7 +36,7 @@ export const ProfileEdit = () => {
       [e.target.name]: e.target.value
     });
   };
-  console.log(userData);
+  console.log(numberDataAll);
   const editInputEnter = e => {
     e.preventDefault();
 
@@ -44,16 +50,7 @@ export const ProfileEdit = () => {
 
     httpClient.post(`/edit-user`, { userData });
   };
-
-  useEffect(() => {
-    async function getData() {
-      await httpClient.get(`/number-data/${userData.id}`).then(x => {
-        setNumberDataAll(x.data);
-      });
-    }
-    getData();
-  }, []);
-  console.log(numberDataAll);
+  
 
   const editPassword = e => {
     document.getElementById('resetPasswordContainer').style.display = 'none';
@@ -143,15 +140,15 @@ export const ProfileEdit = () => {
                     <div className="col">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <div>
-                          <span className="heading">22</span>
+                          <span className="heading">{numberDataAll.vehicles}</span>
                           <span className="description">Vehicles</span>
                         </div>
                         <div>
-                          <span className="heading">10</span>
+                          <span className="heading">{numberDataAll.places}</span>
                           <span className="description">Places</span>
                         </div>
                         <div>
-                          <span className="heading">89</span>
+                          <span className="heading">{numberDataAll.rents}</span>
                           <span className="description">Bills</span>
                         </div>
                       </div>
@@ -160,18 +157,9 @@ export const ProfileEdit = () => {
                   <div className="text-center">
                     <h3>
                       {userData.name} {userData.surname}
-                      <span className="font-weight-light">, 27</span>
                     </h3>
 
-                    <div className="h5 mt-4">
-                      <i className="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative
-                      Tim Officer
-                    </div>
-                    <div>
-                      <i className="ni education_hat mr-2"></i>University of Computer Science
-                    </div>
-                    <hr className="my-4" />
-                    <p></p>
+                  
                   </div>
                 </div>
               </div>
