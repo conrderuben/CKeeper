@@ -1,13 +1,9 @@
 const bd = require("../settings/db")
 const peopleModel = require('../../models').People;
 
-
-
-
 //Bcrytp for the hashing
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
-
 
 exports.register = (req, res) => {
 

@@ -31,15 +31,8 @@ exports.getByUserId = async (req, res) => {
 
 
 exports.getAllBrands= async (req, res)=>{
-
-
-
     const listBrands=  await brandModel.findAll();
-   
     res.json(listBrands);
-
-
-
 }
 exports.getTypeById= async (req, res)=>{
 
@@ -50,15 +43,6 @@ exports.getTypeById= async (req, res)=>{
 }
 
 exports.getBrandById = async (req, res)=>{
-    // const sql = "SELECT * FROM Brand WHERE id = ?";
-    // const brand = await bd.query(sql,[req.params.brandId], (err, result)=>{
-    //         if(err){
-    //             console.log(err);
-    //         }else{
-    //             return result
-    //         } 
-    //     } )
-    // console.log(req)
     console.log(req.params)
     const model= await typeModel.findByPk(req.params.typeId);
     
@@ -69,7 +53,6 @@ const data = {
 }
     res.json(data);
 }
-
 exports.addCar = async (req, res)=>{
         const token = req.cookies.jwt;
         const user = jwt.decode(token, 'Ckeeper')
@@ -81,37 +64,26 @@ exports.addCar = async (req, res)=>{
         typeId:req.body.form.typeId,
         
       }
-            vehicleModel.create(data)
-       
+            vehicleModel.create(data)   
 }
-
 
 exports.editCar = async (req, res)=>{
     const car= await vehicleModel.findByPk(req.params.carId);
-
     const model= await typeModel.findByPk(car.typeId);
-    
     const brand = await brandModel.findByPk(model.idBrand);
-
     const data = {car:car,brand:brand}
     console.log(data)
     res.json(data);
-
 }
-
-
 exports.updateVehicle = async (req, res)=>{
     
 await vehicleModel.update({type:req.body.form.type,matriculationDate:req.body.form.matriculationDate,typeId:req.body.form.typeId,},
     {where:{id:req.params.carId}})
 }
 
-
 exports.deleteVehicle = async (req, res)=>{
     
     return vehicleModel.destroy({
         where: { id: req.params.carId }
        })
-    
-
     }

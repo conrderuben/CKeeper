@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   max-width: 1120px;
-
+  border: 1px solid white;
   height: 300px;
   margin: auto;
   border-radius: 15px;
@@ -17,7 +17,6 @@ const Container = styled.div`
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
-
     cursor: pointer;
     transform: scale(1.03);
     transition: all 0.7s ease;

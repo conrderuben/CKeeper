@@ -25,6 +25,16 @@ export const AdminSearch = () => {
   const [prizeFilter, setPrizeFilter] = useState('0');
   const [help, setHelp] = useState([]);
   const array = [];
+  const [user, setUser] = useState();
+  useEffect(() => {
+    async function getData() {
+      await httpClient.get('user').then(x => {
+        setUser(x.data);
+      });
+    }
+
+    getData();
+  }, []);
   useEffect(() => {
     async function getData() {
       const publicPlaces = await httpClient
@@ -53,7 +63,7 @@ export const AdminSearch = () => {
 
     getData();
   }, []);
-
+  // console.log(x);
   useEffect(() => {
     async function getData() {
       const data = await httpClient
@@ -85,6 +95,7 @@ export const AdminSearch = () => {
           onChangeUser={handleUserChange}
           onChangePrize={handlePrizeChange}
         />
+
         {rentPosts
           .filter(valCity => {
             if (cityFilter == '') {
@@ -122,27 +133,29 @@ export const AdminSearch = () => {
               return 0;
             }
           })
-
           .map(value => {
-            return (
-              <Place
-                key={value.id}
-                placeId={value.id}
-                desc={value.description}
-                height={value.height}
-                long={value.long}
-                width={value.width}
-                photo={value.photo}
-                prize={value.prize}
-                user={value.user_name}
-                date={value.updatedAt}
-                city={value.city}
-                pc={value.pc}
-                street={value.street}
-                number={value.number}
-                admin={true}
-              ></Place>
-            );
+            if (value.userId != user.id) {
+              return (
+                <Place
+                  key={value.id}
+                  placeId={value.id}
+                  desc={value.description}
+                  height={value.height}
+                  long={value.long}
+                  width={value.width}
+                  photo={value.photo}
+                  prize={value.prize}
+                  idUser={value.userId}
+                  user={value.user_name}
+                  date={value.updatedAt}
+                  city={value.city}
+                  pc={value.pc}
+                  street={value.street}
+                  number={value.number}
+                  admin={true}
+                ></Place>
+              );
+            }
           })}
       </Content>
     </Container>

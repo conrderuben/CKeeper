@@ -57,7 +57,6 @@ export const SearchPage = () => {
             });
         })
       ).then(x => {
-        
         setRentPosts(x);
       });
     }
@@ -85,8 +84,6 @@ export const SearchPage = () => {
   const handlePrizeChange = e => {
     setPrizeFilter(e.target.value);
   };
-
-
 
   return (
     <Container>

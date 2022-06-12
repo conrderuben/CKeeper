@@ -12,8 +12,6 @@ function generateToken(obj, t) {
     const token = jwt.sign({data}, 'Ckeeper', {
         expiresIn: '1h'
     });
-    
-    
     return token;
 }
 
@@ -65,8 +63,6 @@ exports.login = (req, res) => {
                                 error: 'this user is not active'})
                         }
                         
-    
-
                     }else{
                         res.json({
                             error: 'invalid user or password'})

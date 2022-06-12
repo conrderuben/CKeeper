@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
+  border: 1px solid white;
   width: 270px;
   height: 450px;
   margin: 10px;

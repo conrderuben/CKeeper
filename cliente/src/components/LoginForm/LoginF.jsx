@@ -35,18 +35,17 @@ const Login = () => {
         <div className="login_box">
           <div className="left">
             <div className="top_link">
-              <a href="/">
-                {/* <img
-                  src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download"
-                  alt=""
-                /> */}
-                Return home
-              </a>
+              <a href="/">Return home</a>
             </div>
             <div className="contact">
               <form onSubmit={handleSubmit}>
                 <h3>SIGN IN</h3>
-                <input name="user" onChange={handleChange} type="text" placeholder="USERNAME OR EMAIL" />
+                <input
+                  name="user"
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="USERNAME OR EMAIL"
+                />
                 <input
                   name="password"
                   onChange={handleChange}

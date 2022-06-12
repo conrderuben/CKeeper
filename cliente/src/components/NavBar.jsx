@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './PrimaryButton';
-import logo from '../assets/img/Logo.png';
 import ckeeper from '../assets/Ckeeper.svg';
 import PrimaryButton from './PrimaryButton';
 import { useNavigate, Link } from 'react-router-dom';
@@ -137,8 +136,8 @@ const NavBar = () => {
           <Menu className="menu">
             <Item href="/#home">Home</Item>
             <Item href="/#sobre-nosotros">About&nbsp;us</Item>
-            <Item href="/contacto">Contacto</Item>
-            <Item href="/registro">Registrarse</Item>
+            <Item href="/contacto">Contact us</Item>
+            <Item href="/registro">Register</Item>
           </Menu>
         </Cen>
         <Der>

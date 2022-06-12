@@ -16,33 +16,32 @@ export const Edit = () => {
   const [fileData, setFileData] = useState();
   const [cities, setCities] = useState([]);
   const [parkingData, setParkingData] = useState({
-
-    place:{id:0,prize:0,rented:0,published:0,description:"",height:0,long:0,width:0,photo:0,ubicationId:0},
-    ubication:{id:0,street:0,postalCode:0,idCity:0}
-
+    place: {
+      id: 0,
+      prize: 0,
+      rented: 0,
+      published: 0,
+      description: '',
+      height: 0,
+      long: 0,
+      width: 0,
+      photo: 0,
+      ubicationId: 0
+    },
+    ubication: { id: 0, street: 0, postalCode: 0, idCity: 0 }
   });
 
-
-  var url=window.location.href;
-  url=url.split("?");
+  var url = window.location.href;
+  url = url.split('?');
 
   useEffect(() => {
     async function getData() {
-      await httpClient
-        .post(`/edit-place/${url[1]}`)
-        .then(x => {
-          setParkingData(x.data);
-        });
-
-
-
+      await httpClient.post(`/edit-place/${url[1]}`).then(x => {
+        setParkingData(x.data);
+      });
     }
-        getData();
-
-      },
-  
-       [])
-
+    getData();
+  }, []);
 
   useEffect(() => {
     async function getData() {
@@ -67,37 +66,35 @@ export const Edit = () => {
       [e.target.name]: e.target.value
     });
 
-    if (e.target.name=="street"){
-    parkingData.ubication.street=e.target.value
+    if (e.target.name == 'street') {
+      parkingData.ubication.street = e.target.value;
     }
-    if (e.target.name=="pc"){
-    parkingData.ubication.postalCode=e.target.value
+    if (e.target.name == 'pc') {
+      parkingData.ubication.postalCode = e.target.value;
     }
-    if (e.target.name=="description"){
-    parkingData.place.description=e.target.value
+    if (e.target.name == 'description') {
+      parkingData.place.description = e.target.value;
     }
-    if (e.target.name=="height"){
-    parkingData.place.height=e.target.value
+    if (e.target.name == 'height') {
+      parkingData.place.height = e.target.value;
     }
-    if (e.target.name=="width"){
-    parkingData.place.width=e.target.value
+    if (e.target.name == 'width') {
+      parkingData.place.width = e.target.value;
     }
-    if (e.target.name=="long"){
-    parkingData.place.long=e.target.value
+    if (e.target.name == 'long') {
+      parkingData.place.long = e.target.value;
     }
-    if (e.target.name=="number"){
-      parkingData.ubication.number=e.target.value
-      }
-    if (e.target.name=="price"){
-    parkingData.place.prize=e.target.value
+    if (e.target.name == 'number') {
+      parkingData.ubication.number = e.target.value;
+    }
+    if (e.target.name == 'price') {
+      parkingData.place.prize = e.target.value;
     }
 
-console.log(form)
-
+    console.log(form);
   };
 
   const send = e => {
-  
     console.log('LLEGO');
     const data = new FormData();
     console.log(fileData);
@@ -111,134 +108,130 @@ console.log(form)
       cont
     };
 
-    // httpClient
-    //   .post('http://localhost:4000/api/photos', data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
-
-    httpClient.post(`http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj }).then(navigate('/places'));
+    httpClient
+      .post(
+        `http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`,
+        { obj }
+      )
+      .then(navigate('/places'));
   };
   return (
-    <section className='editParkingSection '>
-    <div className='editParkingContainer '>
-
-        
-        <div className='titleContainer'>
-           
-         
-            <h2 className='title'>EDIT PARKING</h2>
+    <section className="editParkingSection ">
+      <div className="editParkingContainer ">
+        <div className="titleContainer">
+          <h2 className="title">EDIT PARKING</h2>
         </div>
-            <form onSubmit={send} className="editForm">
-                <Input
-                  type="text"
-                  name="street"
-                  className="editInput"
-                  id="street"
-                  label="Street"
-                  divClass="inputDiv"
-                  value={parkingData.ubication.street}
-                  onChange={handleChange}
-                />
-                <Input
-                  type="number"
-                  name="pc"
-                  id="pc"
-                  className="editInput"
-                  value={parkingData.ubication.postalCode}
-                  label="Postal Code"
-                  divClass="inputDiv"
-                  onChange={handleChange}
-                />
-                <Input
-                  type="number"
-                  name="number"
-                  id="number"
-                  className="editInput"
-                  value={parkingData.ubication.number}
-                  label="Number"
-                  divClass="inputDiv"
-                  onChange={handleChange}
-                />
-  
-             
-                <div className={"mb-3 form-floating selectContainer" }>
-                <select name="cities" className="form-control " id="cities" onChange={handleChange}>
-                  {cities.map(cit => (
-                    <option value={cit.id} key={cit.id} selected={parkingData.ubication.idCity==cit.id?"selected":''}>
-                      {cit.name}
-                    </option>
-                  ))}
-                </select>
-                <label htmlFor="cities" className={"editInput form-label" }>
-               Cities
-      </label>
-    </div>
-             
-                <TextArea
-                  className="textAreaDescription editInput"
-                  label="Description"
-                  name="description"
-                  id="description"
-                  placeholder="Description"
-                  value={parkingData.place.description}
-                  onChange={handleChange}
-                  divClass="textAreaContent"
-                />
-                <Input
-                  type="text" 
-                  name="price" 
-                  className="editInput"
-                  id="price" 
-                  label="Price" 
-                  onChange={handleChange} 
-                  value={parkingData.place.prize}
-                  divClass="inputDiv"
-                />
-                <Input
-                  type="number"
-                  name="height"
-                  className="editInput"
-                  value={parkingData.place.height}
-                  id="height"
-                  label="Height"
-                  divClass="inputDiv"
-                  onChange={handleChange}
-                />
-                <Input
-                  type="number"
-                  name="width"
-                  id="width"
-                  className="editInput"
-                  value={parkingData.place.width}
-                  label="Width"
-                  divClass="inputDiv"
-                  onChange={handleChange}
-                />
-                <Input 
-                  type="number" 
-                  name="long" 
-                  className="editInput"
-                  id="long" 
-                  value={parkingData.place.long} 
-                  label="Long" 
-                  divClass="inputDivLong"
-                  onChange={handleChange} 
-                />
-              
-                <File 
-                  onChange={handleInputChange} 
-                />
-                {/* <button className="">Send It!</button> */}
-                <a onClick={send} className='submitButtonForm'>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      Submit
-    </a>
-            </form>
-        
-    </div>
+        <form onSubmit={send} className="editForm">
+          <Input
+            type="text"
+            name="street"
+            className="editInput"
+            id="street"
+            label="Street"
+            divClass="inputDiv"
+            value={parkingData.ubication.street}
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="pc"
+            id="pc"
+            className="editInput"
+            value={parkingData.ubication.postalCode}
+            label="Postal Code"
+            divClass="inputDiv"
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="number"
+            id="number"
+            className="editInput"
+            value={parkingData.ubication.number}
+            label="Number"
+            divClass="inputDiv"
+            onChange={handleChange}
+          />
+
+          <div className={'mb-3 form-floating selectContainer'}>
+            <select name="cities" className="form-control " id="cities" onChange={handleChange}>
+              {cities.map(cit => (
+                <option
+                  value={cit.id}
+                  key={cit.id}
+                  defaultValue={parkingData.ubication.idCity == cit.id ? 'selected' : ''}
+                >
+                  {cit.name}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="cities" className={'editInput form-label'}>
+              Cities
+            </label>
+          </div>
+
+          <TextArea
+            className="textAreaDescription editInput"
+            label="Description"
+            name="description"
+            id="description"
+            placeholder="Description"
+            value={parkingData.place.description}
+            onChange={handleChange}
+            divClass="textAreaContent"
+          />
+          <Input
+            type="text"
+            name="price"
+            className="editInput"
+            id="price"
+            label="Price"
+            onChange={handleChange}
+            value={parkingData.place.prize}
+            divClass="inputDiv"
+          />
+          <Input
+            type="number"
+            name="height"
+            className="editInput"
+            value={parkingData.place.height}
+            id="height"
+            label="Height"
+            divClass="inputDiv"
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="width"
+            id="width"
+            className="editInput"
+            value={parkingData.place.width}
+            label="Width"
+            divClass="inputDiv"
+            onChange={handleChange}
+          />
+          <Input
+            type="number"
+            name="long"
+            className="editInput"
+            id="long"
+            value={parkingData.place.long}
+            label="Long"
+            divClass="inputDivLong"
+            onChange={handleChange}
+          />
+
+          <File onChange={handleInputChange} />
+          {/* <button className="">Send It!</button> */}
+          <a onClick={send} className="submitButtonForm">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+        </form>
+      </div>
     </section>
   );
 };
