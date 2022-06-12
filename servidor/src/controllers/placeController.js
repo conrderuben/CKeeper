@@ -48,7 +48,9 @@ exports.getPlacesById = async (req, res) => {
 exports.getPlacesData = async (req, res) => {
   const ubi = await ubicationModel.findByPk(req.params.ubicationId)
   const city= await cityModel.findByPk(ubi.idCity)
+  // console.log(city)
   const user = await peopleModel.findByPk(req.params.userId)
+  
   const ownPlaceData={
     street: ubi.street,
     pc: ubi.postalCode,
@@ -60,6 +62,7 @@ exports.getPlacesData = async (req, res) => {
   }
  
   res.json(ownPlaceData);
+
 }
 
 exports.setPublished = async (req, res) => {
@@ -85,12 +88,13 @@ exports.addParking =  async (req,res) => {
         number:form.number,
         idCity:form.cities,
 }  
-          //INSERT UBICATION
-             await ubicationModel.create(dataUbication)
-            const id= await ubicationModel.max('id');
+        //INSERT UBICATION
+        let id=0
+        await ubicationModel.create(dataUbication).then(result=>{id=result.id})
+        
 
-            //DATA PARKING
-          const dataParking={
+        //DATA PARKING
+        const dataParking={
           prize:form.price,
           rented:false,
           published:false,
@@ -106,24 +110,34 @@ exports.addParking =  async (req,res) => {
           
         }
         //INSERT PARKING
-        await parkingModel.create(dataParking)
-}
-exports.photos = function (req,res,next) {
+        var parkingId=0
+        await parkingModel.create(dataParking).then(result=>{parkingId=result.id})
 
-const usu="Ruben"
+        
+        res.json({id:parkingId});
+
+}
+exports.photos = async (req,res,next)=> {
+  const token = req.cookies.jwt;
+  const data = jwt.decode(token, 'Ckeeper')
+const usu=data.data.id;
+
+
+
+
     const storage = multer.diskStorage({
-        destination:path.join( "../assets/users/"+usu+"/Parking/") ,
+        destination:path.join( "../assets/users/"+usu+"/Parking"+req.params.parkingId+"/") ,
         filename: function (req, file, cb) {
           cb(
             null,
-            "parking"+req.files.length + path.extname(file.originalname),
+            "parking"+req.files.length + ".png",
           );
         },
       });
 
       const upload = multer({
         storage: storage,
-        limits:{fileSize: 1000000},
+        
      }).any("photos");
 
      upload(req, res, (err) => {
@@ -141,7 +155,7 @@ exports.editPlace = async (req, res)=>{
   
 
   const data = {place:place,ubication:ubication}
-  console.log(data)
+  // console.log(data)
   res.json(data);
 
 }
@@ -166,5 +180,15 @@ exports.deletePlace = async (req, res)=>{
   
    
 
+exports.parkingNumber  =async (req, res)=>{
+// console.log(req.params.userId)
+const idUser=req.params.userId
+  const listPlaces =  await parkingModel.findAll({
+     where:{userId:idUser}
+  });
+// const numberParking = 
+//    listPlaces.length
 
+res.json(listPlaces);
+}
 

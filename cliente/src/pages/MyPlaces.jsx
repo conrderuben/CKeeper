@@ -68,6 +68,7 @@ const MyPlaces = () => {
               city={value.city}
               pc={value.pc}
               street={value.street}
+              idUser={value.userId}
               number={value.number}
               rented={value.rented}
               placeId={value.id}

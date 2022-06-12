@@ -3,7 +3,7 @@
   height: 100%;
   /* background: linear-gradient(#141e30, #243b55); */
   background: rgba(34, 34, 36, 0.801);
-}
+
 .editVehicleContainer{
 width: 70%;
 
@@ -67,7 +67,7 @@ margin-top: 3%;
   }
 
   .form-control:focus {
-    background-color: #212025;
+    // background-color: #212025;
     color: white;
     border-color: white;
     outline: 0;
@@ -185,4 +185,5 @@ margin-top: 3%;
   50%,100% {
     bottom: 100%;
   }
+}
 }

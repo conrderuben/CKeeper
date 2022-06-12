@@ -39,7 +39,7 @@ export const Form = () => {
     });
   };
 
-  const send = e => {
+  const send =async () => {
     console.log('LLEGO');
     const data = new FormData();
     console.log(fileData);
@@ -50,16 +50,28 @@ export const Form = () => {
     }
     const obj = {
       form,
-      cont
+      cont,
     };
+console.log(data)
+    
 
-    httpClient
-      .post('http://localhost:4000/api/photos', data)
+    await httpClient.post('/add-parking', { obj }).then( x=>{
+       httpClient
+      .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
       .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+    }
+      );
 
-    httpClient.post('/add-parking', { obj }).then(navigate('/main'));
+
+   
+
+
+
   };
+
+
+  
   return (
     <section className='editParkingSection '>
     <div id='parkingContainer' className='editParkingContainer '>
@@ -68,7 +80,7 @@ export const Form = () => {
         <div className='titleContainer'>
            
          
-            <h2 className='title'>EDIT PARKING</h2>
+            <h2 className='title'>ADD PARKING</h2>
         </div>
             <form onSubmit={send} className="editForm">
                 <Input
