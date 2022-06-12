@@ -15,7 +15,7 @@ export const ProfileEdit = () => {
   const [userData, setUserData] = useState({});
   const fiveDigits = 10000 + Math.random() * 90000;
   const [random, setRandom] = useState({ random: Math.floor(fiveDigits) });
-
+  const [numberDataAll, setNumberDataAll] = useState({});
   useEffect(() => {
     async function getData() {
       await httpClient.get(`/user`).then(x => {
@@ -45,6 +45,20 @@ export const ProfileEdit = () => {
 
     httpClient.post(`/edit-user`, { userData });
   };
+
+
+
+  
+
+  useEffect(() => {
+    async function getData() {
+      await httpClient.get(`/number-data/${userData.id}`).then(x => {
+        setNumberDataAll(x.data);
+      });
+    }
+    getData();
+  }, []);
+  console.log(numberDataAll)
 
   const editPassword = e => {
     document.getElementById('resetPasswordContainer').style.display = 'none';
@@ -135,26 +149,24 @@ export const ProfileEdit = () => {
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <div>
                           <span className="heading">22</span>
-                          <span className="description">Friends</span>
+                          <span className="description">Vehicles</span>
                         </div>
                         <div>
                           <span className="heading">10</span>
-                          <span className="description">Photos</span>
+                          <span className="description">Places</span>
                         </div>
                         <div>
                           <span className="heading">89</span>
-                          <span className="description">Comments</span>
+                          <span className="description">Bills</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="text-center">
                     <h3>
-                      Jessica Jones<span className="font-weight-light">, 27</span>
+                      {userData.name} {userData.surname}<span className="font-weight-light">, 27</span>
                     </h3>
-                    <div className="h5 font-weight-300">
-                      <i className="ni location_pin mr-2"></i>Bucharest, Romania
-                    </div>
+                   
                     <div className="h5 mt-4">
                       <i className="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative
                       Tim Officer

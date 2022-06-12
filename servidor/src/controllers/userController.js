@@ -1,7 +1,10 @@
 
 const peopleModel = require('../../models').People;
+const vehicleModel = require('../../models').Vehicle;
+const billModel = require('../../models').Bill;
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { or } = require('sequelize/types');
 exports.getById = async (req, res) => {
     const user=  await peopleModel.findOne({
         where:{id: req.params.id}
@@ -84,3 +87,28 @@ exports.editUserPassword = async (req, res) => {
     }
     )
 }
+exports.numberData = async (req, res) => {
+        
+    const idUser=req.params.userId;
+
+    const numberPlaces =  await parkingModel.findAll({
+        where:{userId:idUser}
+    });
+    const numberVehicles =  await vehicleModel.findAll({
+        where:{userId:idUser} 
+    });
+    const numberTenant =  await billModel.findAll({
+        where:{renter:idUser} 
+    });
+    const numberRenter =  await billModel.findAll({
+        where:{tenant:idUser} 
+    });
+    const numberBills=(numberRenter.length) + (numberTenant.length)
+    const obj={places:numberPlaces.length,vehicles:numberVehicles.length,bills:numberBills}
+    res({obj});
+      
+      
+    
+            
+       
+    }
