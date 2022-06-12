@@ -58,7 +58,7 @@ const Place = props => {
               <ul class="postcard__tagbox">
                 <li class="tag__item">
                   <i class="fas fa-tag mr-2"></i>
-                  {props.prize}€
+                  {props.prize}€/day
                 </li>
                 <li class="tag__item">
                   <i class="fas fa-tag mr-2"></i>

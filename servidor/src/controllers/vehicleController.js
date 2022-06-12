@@ -21,6 +21,13 @@ exports.getById = async (req, res) => {
    
     res.json(listVehicles);
 }
+exports.getByUserId = async (req, res) => {
+    const listVehicles =  await vehicleModel.findAll({
+        where:{userId:req.params.user}
+    });
+   
+    res.json(listVehicles);
+}
 
 
 exports.getAllBrands= async (req, res)=>{
@@ -49,7 +56,7 @@ exports.getBrandById = async (req, res)=>{
     //             console.log(err);
     //         }else{
     //             return result
-    //         }
+    //         } 
     //     } )
     // console.log(req)
     console.log(req.params)

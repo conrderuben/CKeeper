@@ -1,13 +1,10 @@
+#invoice {
+  padding: 30px;
+  width: 80vw;
 
-@media only screen and (max-width: 850px) {
-  #invoice {
-    padding: 0;
-  margin-left: 0;
-    width: 80vw;
-    height: 40vh;
-  }
-  body{
-    overflow: scroll;
-    background-color: #110f16;;
-  }
+  max-width: 400px;
+}
+body {
+  overflow: scroll;
+  background-color: #110f16;
 }

@@ -44,6 +44,8 @@ app.get('/api/getAllCities', city.getAll)
 
 app.get('/api/get-vehicles',middleware.validateToken, vehicle.getById);
 
+app.get('/api/view-cars/:user', vehicle.getByUserId);
+
 app.get('/api/get-user-by-id:id', user.getById);
 
 app.get('/api/user', user.getUser); 

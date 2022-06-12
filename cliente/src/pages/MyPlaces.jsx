@@ -53,7 +53,6 @@ const MyPlaces = () => {
       <SideMenu />
       <Content className=" py-4 dark">
         {myPlaces.map(value => {
-          console.log(value);
           return (
             <Place
               key={value.id}

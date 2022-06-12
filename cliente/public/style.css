@@ -269,3 +269,23 @@ a {
 .fit-content {
   height: fit-content;
 }
+
+@media (min-width: 576px) {
+  div .modal-dialog {
+    max-width: 80%;
+    margin: 1.75rem auto;
+  }
+}
+
+div .modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #c2d0d5;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}

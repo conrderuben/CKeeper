@@ -39,7 +39,6 @@ exports.createRent = async (req, res) => {
              amount:days*(parseInt(req.body.place.prize)),
              
          }
-         console.log(billData)
             billModel.create(billData);
             res.status(200).json({msg : 'Purchase made'});
 }
