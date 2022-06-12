@@ -88,12 +88,13 @@ exports.addParking =  async (req,res) => {
         number:form.number,
         idCity:form.cities,
 }  
-          //INSERT UBICATION
-             await ubicationModel.create(dataUbication)
-            const id= await ubicationModel.max('id');
+        //INSERT UBICATION
+        let id=0
+        await ubicationModel.create(dataUbication).then(result=>{id=result.id})
+        
 
-            //DATA PARKING
-          const dataParking={
+        //DATA PARKING
+        const dataParking={
           prize:form.price,
           rented:false,
           published:false,
@@ -109,9 +110,11 @@ exports.addParking =  async (req,res) => {
           
         }
         //INSERT PARKING
-        await parkingModel.create(dataParking)
+        var parkingId=0
+        await parkingModel.create(dataParking).then(result=>{parkingId=result.id})
 
-
+        
+        res.json({id:parkingId});
 
 }
 exports.photos = async (req,res,next)=> {
@@ -120,17 +123,14 @@ exports.photos = async (req,res,next)=> {
 const usu=data.data.id;
 
 
-const listPlaces =  await parkingModel.findAll({
-  where:{userId:usu}
-});
 
-console.log(listPlaces)
+
     const storage = multer.diskStorage({
-        destination:path.join( "../assets/users/"+usu+"/Parking"+"/") ,
+        destination:path.join( "../assets/users/"+usu+"/Parking"+req.params.parkingId+"/") ,
         filename: function (req, file, cb) {
           cb(
             null,
-            "parking"+req.files.length + path.extname(file.originalname),
+            "parking"+req.files.length + ".png",
           );
         },
       });

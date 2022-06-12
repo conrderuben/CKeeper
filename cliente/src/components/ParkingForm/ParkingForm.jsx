@@ -50,16 +50,17 @@ export const Form = () => {
     }
     const obj = {
       form,
-      cont
+      cont,
     };
 console.log(data)
     
 
-    await httpClient.post('/add-parking', { obj }).then( 
-      await httpClient
-      .post('http://localhost:4000/api/photos', data)
+    await httpClient.post('/add-parking', { obj }).then( x=>{
+       httpClient
+      .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
       .then(res => console.log(res))
       .catch(err => console.log(err))
+    }
       );
 
 

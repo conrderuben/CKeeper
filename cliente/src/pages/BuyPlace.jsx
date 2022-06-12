@@ -70,16 +70,17 @@ const BuyPlace = () => {
       [e.target.name]: e.target.value
     });
   };
+  console.log(params)
   const photos = () => {
     var array = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < params.photo; i++) {
       array.push(
         <div
           className={i == 0 ? ' carousel-item active' : 'carousel-item'}
           style={{ maxHeight: '300px' }}
         >
           <img
-            src={require(`../../../assets/users/1/Parking1/parking${i + 1}.jpg`)}
+            src={require(`../../../assets/users/${params.idUser}/Parking${params.placeId}/parking${i + 1}.png`)}
             className="d-block w-100"
             alt="..."
           />

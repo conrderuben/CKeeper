@@ -45,25 +45,25 @@ const Place = props => {
     getData();
   }, []);
 
-  console.log(parkingNumber.length);
   const photos = () => {
     var array = [];
    
 // console.log(require(`../../../../assets/users/1/Parking1/1.jpg`))
 
-    
+    // console.log(props)
     
       array.push(
       
           
-          // <img
-          //   src={require(`../../../../assets/users/${props.idUser}/Parking1/parking1.jpg`) }
+          <img
+          
+            src={require(`../../../../assets/users/${props.idUser}/Parking${props.placeId}/parking1.png`) }
+           
+            alt="Image Title"
             
-          //   alt="Image Title"
+           style={{height:"100%",width:"100%"}}
             
-          //  style={{height:"100%"}}
-            
-          // />
+          />
      
       );
     

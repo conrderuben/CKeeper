@@ -54,7 +54,7 @@ export default class File extends Component {
      <input type="file" onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
         
      
-    <div className="form-group multi-preview foto" >
+    <div className="form-group multi-preview foto d-flex" >
          { this.fileArray.map( (url,index) => (
              <img src={url} key={index}  width="50px" height="25px"/>
          ))}

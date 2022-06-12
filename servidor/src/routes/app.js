@@ -24,7 +24,7 @@ app.post('/api/login', session.login);
 app.get('/api/logout', session.logout);
 
 app.post('/api/add-parking', parking.addParking);
-app.post('/api/photos', parking.photos);
+app.post('/api/photos/:parkingId', parking.photos);
 
 
 //app.post('/api/add-parking', parking.addParking);

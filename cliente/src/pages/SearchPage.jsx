@@ -57,14 +57,14 @@ export const SearchPage = () => {
             });
         })
       ).then(x => {
-        console.log(x);
+        
         setRentPosts(x);
       });
     }
 
     getData();
   }, []);
-
+  // console.log(x);
   useEffect(() => {
     async function getData() {
       const data = await httpClient
@@ -85,6 +85,9 @@ export const SearchPage = () => {
   const handlePrizeChange = e => {
     setPrizeFilter(e.target.value);
   };
+
+
+
   return (
     <Container>
       <SideMenu />
