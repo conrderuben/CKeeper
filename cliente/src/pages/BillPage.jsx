@@ -8,15 +8,24 @@ const Container = Styled.div`
   display: flex;
   background: #110f16;
   height:100%;
+  width:100%;
   margin: auto;
 `;
 
 const ContentContainer = Styled.div`
   display: flex;
+  flex:1;
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: scroll;
-  
+`;
+const Text = Styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; 
+  font-size: 30px;
+
 `;
 
 const BillPage = () => {
@@ -28,7 +37,6 @@ const BillPage = () => {
       const invoices = await httpClient.get(`/get-bill-data`).then(x => {
         setBills(x.data.data);
         setUserId(x.data.userId);
-        console.log(x.data.data);
       });
     }
 
@@ -38,6 +46,7 @@ const BillPage = () => {
     <Container>
       <SideMenu />
       <ContentContainer>
+        <Text>{bills.length == 0 ? 'You dont have any bills at this moment' : ''}</Text>
         {bills.map(bill => (
           <Invoice
             key={bill.billId}

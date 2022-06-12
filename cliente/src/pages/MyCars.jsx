@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CarCard } from '../components/CarCard';
-
 import { CardAdd } from '../components/CardAdd';
 import SideMenu from '../components/sideMenu/SideMenu';
-
 import { httpClient } from '../utils/httpClient';
 
 const Container = styled.div`

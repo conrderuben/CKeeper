@@ -1,5 +1,4 @@
 const bd = require("../settings/db")
-// const modeloPlaza = require('../../models').Plaza;
 const cityModel = require('../../models').City;
 const ubicationModel = require('../../models').Ubication;
 const parkingModel = require('../../models').Parking;

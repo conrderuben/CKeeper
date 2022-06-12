@@ -1,8 +1,7 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { httpClient } from '../utils/httpClient';
-
 
 const Card = styled.div`
   background-color: white;
@@ -45,14 +44,13 @@ const Text = styled.p`
   padding: 1px 10px;
   margin-bottom: 3px;
 `;
-const Date = styled.p`
+const Date = styled.span`
   margin-top: 0px;
   padding-bottom: 0px;
   line-height: 70%;
 `;
 
 const Button = styled.button`
-
   background-color: #4285f4;
   color: white;
   padding: 10px 20px;
@@ -64,50 +62,46 @@ const Button = styled.button`
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
-width:100px;
+  width: 100px;
   &:hover {
     color: white;
     background-color: #0d47a1;
   }
 `;
 const DeleteButton = styled.button`
-
-background-color: #e22e2e;
-color: white;
-padding: 10px 20px;
-display: block;
-text-align: center;
-margin-left: 20px;
-text-decoration: none;
-box-shadow: 2px 2px 5px #ac4343;
-border-radius: 5px;
-margin-bottom: 10px;
-margin-top: 10px;
-width:100px;
-&:hover {
+  background-color: #e22e2e;
   color: white;
-  background-color: #ac3d3d;
-}
+  padding: 10px 20px;
+  display: block;
+  text-align: center;
+  margin-left: 20px;
+  text-decoration: none;
+  box-shadow: 2px 2px 5px #ac4343;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100px;
+  &:hover {
+    color: white;
+    background-color: #ac3d3d;
+  }
 `;
 
 export const CarCard = props => {
-
   const navigate = useNavigate();
-
-
   const editCars = () => {
- 
-    (navigate(`/editCar?${props.id}`))
-  }
-  const deleteVehicle = () => {
-    let confirmAction = window.confirm("Are you sure to delete this vehicle?");
-    if (confirmAction) {
-      httpClient.post(`http://localhost:4000/api/delete-vehicle/${props.id}`).then(window.location.reload())
-    }
+    navigate(`/editCar?${props.id}`);
+  };
 
-    
-  }
-  var fec=props.date.split("-")
+  const deleteVehicle = () => {
+    let confirmAction = window.confirm('Are you sure to delete this vehicle?');
+    if (confirmAction) {
+      httpClient
+        .post(`http://localhost:4000/api/delete-vehicle/${props.id}`)
+        .then(window.location.reload());
+    }
+  };
+  var fec = props.date.split('-');
   return (
     <Card>
       <CardImg />
@@ -118,7 +112,7 @@ export const CarCard = props => {
       <DateGroup>
         <Title>Registration date:</Title>
         <Text>
-          <Date>{fec[2].substring(0,2)+ "/" + fec[1] + "/"+fec[0]  }</Date>
+          <Date>{fec[2].substring(0, 2) + '/' + fec[1] + '/' + fec[0]}</Date>
         </Text>
       </DateGroup>
       <Group>
@@ -130,8 +124,8 @@ export const CarCard = props => {
         <Text>{props.model}</Text>
       </Group>
       <Group>
-      <Button onClick={editCars}>Edit</Button>
-      <DeleteButton onClick={deleteVehicle} >Delete</DeleteButton>
+        <Button onClick={editCars}>Edit</Button>
+        <DeleteButton onClick={deleteVehicle}>Delete</DeleteButton>
       </Group>
     </Card>
   );

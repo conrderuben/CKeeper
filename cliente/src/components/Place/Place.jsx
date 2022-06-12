@@ -10,7 +10,6 @@ import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Place = props => {
-  
   const navigate = useNavigate();
   const deletePlace = () => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
@@ -23,7 +22,7 @@ const Place = props => {
   const editPlace = () => {
     navigate(`/editPlace?${props.placeId}`);
   };
-  const [user, setUser] = useState({id:0});
+  const [user, setUser] = useState({ id: 0 });
   const [parkingNumber, setParkingNumber] = useState({});
   useEffect(() => {
     async function getData() {
@@ -31,10 +30,9 @@ const Place = props => {
         setUser(x.data);
       });
     }
-
     getData();
   }, []);
-  
+
   useEffect(() => {
     async function getData() {
       await httpClient.get(`/parking-number/${props.idUser}`).then(x => {
@@ -47,41 +45,27 @@ const Place = props => {
 
   const photos = () => {
     var array = [];
-   
-// console.log(require(`../../../../assets/users/1/Parking1/1.jpg`))
+    array.push(
+      <img
+        src={require(`../../../../assets/users/${props.idUser}/Parking${props.placeId}/parking1.png`)}
+        alt="Image Title"
+        style={{ height: '100%', width: '100%' }}
+        key={props.placeId}
+      />
+    );
 
-    // console.log(props)
-    
-      array.push(
-      
-          
-          <img
-          
-            src={require(`../../../../assets/users/${props.idUser}/Parking${props.placeId}/parking1.png`) }
-           
-            alt="Image Title"
-            
-           style={{height:"100%",width:"100%"}}
-            
-          />
-     
-      );
-    
-  
     return array;
   };
   var placeDate = props.date.split('T');
   return (
     <>
-      <section class="dark">
-        <div class="container py-4">
-          <article class="postcard dark yellow">
-     
-                  <div class="postcard__img">{photos()}</div>
-                  
-                
-                     <div class="postcard__text">
-              <h1 class="postcard__title yellow">
+      <section className="dark">
+        <div className="container py-4">
+          <article className="postcard dark yellow">
+            <div className="postcard__img">{photos()}</div>
+
+            <div className="postcard__text">
+              <h1 className="postcard__title yellow">
                 <Link
                   to="/buy-place"
                   state={{
@@ -91,30 +75,30 @@ const Place = props => {
                   {props.street}, {props.number} ({props.pc})
                 </Link>
               </h1>
-              <div class="postcard__subtitle small">
-                <time datetime="2020-05-25 12:00:00">
-                  <i class="fas fa-calendar-alt mr-2"></i>
+              <div className="postcard__subtitle small">
+                <time dateTime="2020-05-25 12:00:00">
+                  <i className="fas fa-calendar-alt mr-2"></i>
                   {placeDate[0]}
                 </time>
               </div>
-              <div class="postcard__bar"></div>
-              <div class="postcard__preview-txt">{props.desc}</div>
-              <ul class="postcard__tagbox">
-                <li class="tag__item">
-                  <i class="fas fa-tag mr-2"></i>
+              <div className="postcard__bar"></div>
+              <div className="postcard__preview-txt">{props.desc}</div>
+              <ul className="postcard__tagbox">
+                <li className="tag__item">
+                  <i className="fas fa-tag mr-2"></i>
                   {props.prize}€/day
                 </li>
-                <li class="tag__item">
-                  <i class="fas fa-tag mr-2"></i>
+                <li className="tag__item">
+                  <i className="fas fa-tag mr-2"></i>
                   {props.height} x {props.width} x {props.long}
                 </li>
-                <li class="tag__item">
-                  <i class="fas fa-clock mr-2"></i>
+                <li className="tag__item">
+                  <i className="fas fa-clock mr-2"></i>
                   {props.user}
                 </li>
-                <li class="tag__item play yellow">
+                <li className="tag__item play yellow">
                   <a href="#">
-                    <i class="fas fa-play mr-2"></i>
+                    <i className="fas fa-play mr-2"></i>
                     {props.city}
                   </a>
                 </li>
@@ -143,7 +127,7 @@ const Place = props => {
                 )}
                 {props.published !== undefined && (
                   <li>
-                    <button onClick={editPlace} class="editButton">
+                    <button onClick={editPlace} className="editButton">
                       <FontAwesomeIcon
                         icon={faPencil}
                         className="delete"
@@ -154,7 +138,7 @@ const Place = props => {
                 )}
                 {props.published !== undefined && (
                   <li>
-                    <button onClick={deletePlace} class="deleteButton">
+                    <button onClick={deletePlace} className="deleteButton">
                       <FontAwesomeIcon icon={faTrash} className="delete" style={{ fontSize: 17 }} />
                     </button>
                   </li>
@@ -162,7 +146,7 @@ const Place = props => {
 
                 {props.admin === true && (
                   <li>
-                    <button onClick={deletePlace} class="deleteButton">
+                    <button onClick={deletePlace} className="deleteButton">
                       <FontAwesomeIcon icon={faTrash} className="delete" style={{ fontSize: 17 }} />
                     </button>
                   </li>

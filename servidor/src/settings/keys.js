@@ -5,6 +5,5 @@ module.exports = {
         user:'root',
         port:'3306',
         password:'Ckeeper123', 
-       
     }
 }

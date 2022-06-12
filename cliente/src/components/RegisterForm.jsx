@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import fondo2 from '../assets/img/fondo2.jpg';
@@ -18,11 +18,11 @@ const Container = styled.div`
   background-color: #ffffff;
   box-sizing: border-box;
   height: 100%;
-  @media only screen and (max-width:850px) {
-  .imgContainer{
-    display:none;
+  @media only screen and (max-width: 850px) {
+    .imgContainer {
+      display: none;
+    }
   }
-}
 `;
 
 const ImgContainer = styled.div`
@@ -54,44 +54,11 @@ const FormContainer = styled.div`
   height: 100%;
   margin: 1rem 2rem;
 `;
-const SubTitle = styled.h2`
-
- color: black;
- font-size:30px;
-
- `;
-const InputContainer = styled.div`
- 
-    display: inline-flex;
- 
-    justify-content: space-around;
-
-    
-    width: 100%;
-    
-    `;
 const validation = (e, exp) => {
   validator(exp, e.target);
 };
 
 export const Form = () => {
-
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    Axios({
-      url: "http://localhost:4000/api/parking/",
-    })
-      .then((response) => {
-        setList(response.data);
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [setList]);
-
-
-
   const [form, setForm] = useState({});
 
   const navigate = useNavigate();
@@ -110,7 +77,7 @@ export const Form = () => {
   };
   return (
     <Container>
-      <ImgContainer className='imgContainer'>
+      <ImgContainer className="imgContainer">
         <Image src={fondo3} />
       </ImgContainer>
       <DescriptionContainer>

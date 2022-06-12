@@ -1,4 +1,3 @@
-
 const peopleModel = require('../../models').People;
 const vehicleModel = require('../../models').Vehicle;
 const parkingModel = require('../../models').Parking;
@@ -10,21 +9,17 @@ exports.getById = async (req, res) => {
     const user=  await peopleModel.findOne({
         where:{id: req.params.id}
     });
-   
     res.json(user);
 }
 
 exports.getUser = async (req, res) => {
      const token = req.cookies.jwt;
-
      const data = jwt.decode(token, 'Ckeeper')
-
      const user=  await peopleModel.findOne({
         where:{id: data.data.id}
     });
      res.send(user)
-    
-    
+
 }
 exports.getAllUsers = async (req, res) => {
     const token = req.cookies.jwt;
@@ -35,9 +30,6 @@ exports.getAllUsers = async (req, res) => {
      }else{
         res.send({error: 'ForGiven'})
      }
-
-
-   
 }
 
 exports.validateToken = (req, res) => {
@@ -63,16 +55,9 @@ exports.validateToken = (req, res) => {
     }
 }
 
-   
-exports.editUser = async (req, res) => {
-        
+exports.editUser = async (req, res) => {    
 await peopleModel.update({user:req.body.userData.user,name:req.body.userData.name,surname:req.body.userData.surname,password:req.body.userData.password,bornDate:req.body.userData.bornDate,mail:req.body.userData.mail,phone:req.body.userData.phone,},
 {where:{id:req.body.userData.id}})
-  
-  
-
-        
-   
 }
 exports.editUserPassword = async (req, res) => {
     const saltRounds = 10;
@@ -82,16 +67,12 @@ exports.editUserPassword = async (req, res) => {
         }
          peopleModel.update({user:req.body.userData.user,name:req.body.userData.name,surname:req.body.userData.surname,password:hash,bornDate:req.body.userData.bornDate,mail:req.body.userData.mail,phone:req.body.userData.phone,},
             {where:{id:req.body.userData.id}})
-
-    
-    
     }
     )
 }
 exports.numberData = async (req, res) => {
         
     const idUser=req.params.userId;
-
     const numberPlaces =  await parkingModel.findAll({
         where:{userId:idUser}
     });
@@ -107,9 +88,5 @@ exports.numberData = async (req, res) => {
     const numberRents=(numberRenter.length) + (numberTenant.length)
     const obj={places:numberPlaces.length,vehicles:numberVehicles.length,rents:numberRents}
     res.send(obj);
-      
-      
-    
-            
-       
+
     }

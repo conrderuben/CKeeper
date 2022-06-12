@@ -36,21 +36,26 @@ export const ProfileEdit = () => {
       [e.target.name]: e.target.value
     });
   };
-  console.log(numberDataAll);
   const editInputEnter = e => {
     e.preventDefault();
 
     document.getElementById('input-' + e.target.value).disabled = false;
-
     document.getElementById('input-' + e.target.value).focus();
   };
 
   const editInputExit = e => {
     document.getElementById(e.target.id).disabled = true;
-
     httpClient.post(`/edit-user`, { userData });
   };
-  
+
+  useEffect(() => {
+    async function getData() {
+      await httpClient.get(`/number-data/${userData.id}`).then(x => {
+        setNumberDataAll(x.data);
+      });
+    }
+    getData();
+  }, []);
 
   const editPassword = e => {
     document.getElementById('resetPasswordContainer').style.display = 'none';
@@ -89,7 +94,6 @@ export const ProfileEdit = () => {
   };
   const confirmPasswordFunction = e => {
     e.preventDefault();
-    console.log(userData.password);
     var password = document.getElementById('newPassword').value;
 
     var confirmNewPassword = document.getElementById('confirmNewPassword').value;
@@ -180,7 +184,7 @@ export const ProfileEdit = () => {
                       <div className="row mb-7">
                         <div className="col-lg-6">
                           <div className="form-group focused">
-                            <label className="form-control-label" for="input-username">
+                            <label className="form-control-label" htmlFor="input-username">
                               Username
                             </label>
 
@@ -199,7 +203,7 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group">
-                            <label className="form-control-label" for="input-email">
+                            <label className="form-control-label" htmlFor="input-email">
                               Email address
                             </label>
                             <div className="d-flex">
@@ -237,7 +241,7 @@ export const ProfileEdit = () => {
                           <div className="row mb-7 w-100 justify-content-center">
                             <div className="col-lg-6">
                               <div className="form-group focused">
-                                <label className="form-control-label" for="newPassword">
+                                <label className="form-control-label" htmlFor="newPassword">
                                   New Password
                                 </label>
 
@@ -262,7 +266,7 @@ export const ProfileEdit = () => {
                             </div>
                             <div className="col-lg-6">
                               <div className="form-group">
-                                <label className="form-control-label" for="confirmNewPassword">
+                                <label className="form-control-label" htmlFor="confirmNewPassword">
                                   Confirm New Password
                                 </label>
                                 <div className="d-flex">
@@ -299,28 +303,28 @@ export const ProfileEdit = () => {
                         {/* MODAL BOOTSTRAP */}
                         <div id="modal-container">
                           <div
-                            class="modal fade"
+                            className="modal fade"
                             id="staticBackdrop"
                             data-bs-backdrop="static"
                             data-bs-keyboard="false"
-                            tabindex="-1"
+                            tabIndex="-1"
                             aria-labelledby="staticBackdropLabel"
                             aria-hidden="true"
                           >
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="staticBackdropLabel">
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h5 className="modal-title" id="staticBackdropLabel">
                                     Modal title
                                   </h5>
                                   <button
                                     type="button"
-                                    class="btn-close"
+                                    className="btn-close"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                   ></button>
                                 </div>
-                                <div class="modal-body">
+                                <div className="modal-body">
                                   <p id="verificationContent">
                                     This action will send you an authentication code to your email
                                   </p>
@@ -348,10 +352,10 @@ export const ProfileEdit = () => {
                                     </button>
                                   </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div className="modal-footer">
                                   <button
                                     type="button"
-                                    class="btn btn-secondary"
+                                    className="btn btn-secondary"
                                     data-bs-dismiss="modal"
                                     id="closeButtonModal"
                                   >
@@ -362,7 +366,7 @@ export const ProfileEdit = () => {
                                     onClick={showPasswordFields}
                                     id="understoodButton"
                                     name="showPasswordFields"
-                                    class="btn btn-primary"
+                                    className="btn btn-primary"
                                   >
                                     Understood
                                   </button>
@@ -375,7 +379,7 @@ export const ProfileEdit = () => {
                       <div className="row" id="passwordRow" style={{ display: 'none' }}>
                         <div className="col-lg-6">
                           <div className="form-group focused ">
-                            <label className="form-control-label" for="input-password">
+                            <label className="form-control-label" htmlFor="input-password">
                               New Password
                             </label>
                             <div className="d-flex">
@@ -391,7 +395,7 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group focused ">
-                            <label className="form-control-label" for="input-confirmPassword">
+                            <label className="form-control-label" htmlFor="input-confirmPassword">
                               Confirm Password
                             </label>
                             <div className="d-flex">
@@ -412,7 +416,7 @@ export const ProfileEdit = () => {
                       <div className="row">
                         <div className="col-lg-6">
                           <div className="form-group focused">
-                            <label className="form-control-label" for="input-first-name">
+                            <label className="form-control-label" htmlFor="input-first-name">
                               First name
                             </label>
                             <div className="d-flex">
@@ -439,7 +443,7 @@ export const ProfileEdit = () => {
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group focused">
-                            <label className="form-control-label" for="input-last-name">
+                            <label className="form-control-label" htmlFor="input-last-name">
                               Last Name
                             </label>
                             <div className="d-flex">
@@ -467,7 +471,7 @@ export const ProfileEdit = () => {
                       <div className="row">
                         <div className="col-lg-6">
                           <div className="form-group focused ">
-                            <label className="form-control-label" for="input-phone">
+                            <label className="form-control-label" htmlFor="input-phone">
                               Phone Number
                             </label>
                             <div className="d-flex">
