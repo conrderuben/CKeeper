@@ -15,7 +15,7 @@ const Place = props => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
       httpClient
-        .post(`http://localhost:4000/api/delete-place/${props.placeId}`)
+        .post(`/delete-place/${props.placeId}`)
         .then(window.location.reload());
     }
   };

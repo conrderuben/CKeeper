@@ -71,9 +71,10 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    httpClient.post('/registro', { form }).then(() => {
-      navigate('/login');
-    });
+    httpClient.post("/confirm-mail",{ form })
+    // httpClient.post('/registro', { form }).then(() => {
+    //   navigate('/login');
+    // });
   };
   return (
     <Container>

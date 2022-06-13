@@ -19,7 +19,7 @@ app.post('/api/login', session.login);
 app.post('/api/registro', register.register);
 app.get('/api/logout', session.logout);
 
-app.post('/api/add-parking', parking.addParking);
+app.post('/api/add-parking', place.addParking);
 
 
 //app.post('/api/add-parking', parking.addParking);
@@ -51,6 +51,7 @@ app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
 app.post ("/api/delete-vehicle/:carId",vehicle.deleteVehicle);
 app.get('/api/list-brands',vehicle.getAllBrands);
 app.get('/api/typeById/:brandId',vehicle.getTypeById);
+app.post('/api/car-photo/:vehicleId', vehicle.photo);
 
 //User endpoints
 app.get('/api/get-user-by-id:id', user.getById);
@@ -59,9 +60,7 @@ app.get('/api/isAuth', user.validateToken);
 
 //Rent endpoints
 app.post ("/api/create-rent",rent.createRent);
-app.post('/api/photos/:parkingId', parking.photos);
 
-app.post('/api/car-photo/:vehicleId', vehicle.photo);
 
 //Bills endoints
 app.get("/api/get-bill-data", bill.getBills)
@@ -73,6 +72,8 @@ app.post ("/api/edit-userPassword/",user.editUserPassword);
 
 //Mail endpoints
 app.post("/api/reset-password/:verificationCode",mail.resetPasswordCode)
+app.post("/api/confirm-mail/",mail.verifyUser)
+
 
 //Admin
 app.get('/api/getAllUsers', admin.getAllUsers);

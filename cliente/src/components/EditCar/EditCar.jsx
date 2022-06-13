@@ -19,6 +19,7 @@ export const EditCar = () => {
   const [brands, setBrands] = useState([]);
   const [types, setTypes] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState([52]);
+  const [fileData, setFileData] = useState();
 
   const [carData, setCarData] = useState({
     car: {
@@ -74,7 +75,11 @@ export const EditCar = () => {
       carData.car.matriculationDate = e.target.value;
     }
   };
-
+  const handleInputChange = e => {
+    setFileData({
+      photo: e.target.files[0]
+    });
+  };
   useEffect(() => {
     async function getData() {
       const carData = await httpClient
@@ -107,9 +112,13 @@ export const EditCar = () => {
     getData();
   }, [carData.brand.id]);
   const handleSubmit = e => {
+    const data = new FormData();
+    data.append('photos', fileData.photo);
     httpClient
       .post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`, { form })
-      .then(navigate('/cars'));
+      .then(x => {
+        httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
+      });
   };
   console.log(form);
   return (
@@ -204,6 +213,16 @@ export const EditCar = () => {
        Matriculation date
                 </label>
                 </div>
+                <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <input
+              className=" form-control "
+              type="file"
+              name="vehiclePhoto"
+              id="inputFile1"
+              onChange={handleInputChange}
+              style={{ backgroundColor: 'transparent', border: 'none', color: 'white' }}
+            />
+          </div>
       <a onClick={handleSubmit} className='submitVehicleButtonForm'>
          <span></span>
          <span></span>

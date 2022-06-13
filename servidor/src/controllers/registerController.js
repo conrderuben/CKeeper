@@ -7,52 +7,31 @@ const saltRounds = 10;
 
 exports.register = (req, res) => {
 
-    const form =req.body.form;
-    bcrypt.hash(form.password, saltRounds, (err, hash)=>{
+const data={
+    user:req.body.user,
+    password:req.body.password,
+    name:req.body.name,
+    surname:req.body.surname,
+    bornDate:req.body.bornDate,
+    mail:req.body.mail,
+    phone:req.body.phone,
+
+
+}
+
+    bcrypt.hash(data.password, saltRounds, (err, hash)=>{
         if(err){
             console.log('error with the hash')
         }
-            const data = {...form, password:hash,active:1 }
-            peopleModel.create(data)
+            const obj = {...data, password:hash,active:1 }
+            peopleModel.create(obj)
         .then((data)=>{
-            res.json({info:data})
-         }).catch((err)=>{
-             res.json({error:err})
+                        // res.json(document.write("SU USUARIO HA SIDO ACTIVADO"))
+        }).catch((err)=>{
          })
         
     }
+
     )
-    
-   
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const sql = `INSERT INTO persona(id_usuario, usuario, nombre, apellido, contraseña, fechaNacimiento, correo, telefono) VALUES (?,?,?,?,?,?,?,?)`
-//     bd.query(sql,[id,user,password,name,surname,date,email,telephone] ,(err, result)=>{
-//         if(err){
-            
-//             console.log(err);
-//         }else{
-//             console.log('Se ha registrado');
-            
-//         }
-        
-    // })
-    // res.send("K paisa")
-
-    
-
+    res.redirect("http://localhost:3000/login")
 }

@@ -11,7 +11,10 @@ export const CarForm = () => {
   const [brands, setBrands] = useState([]);
   const [types, setTypes] = useState([]);
   const [fileData, setFileData] = useState();
+  const [changeType, setChangeType] = useState({num:90,num2:0});
 
+  var num=90;
+  var num2=0;
   const [selectedBrand, setSelectedBrand] = useState([52]);
 
   const navigate = useNavigate();
@@ -25,8 +28,30 @@ export const CarForm = () => {
     if (e.target.name == 'brand') {
       setSelectedBrand(e.target.value);
     }
+    if (e.target.name=="type"){
+      if(e.target.value=="car"){
+        setChangeType({
+          num:90,
+          num2:0
+        })
+        setSelectedBrand(52);
+      }
+      if(e.target.value=="motorcycle"){
+        setChangeType({
+          num:168,
+          num2:91
+          
+        })
+        setSelectedBrand(130);
+        
+      }
+      
+    }
+
+
   };
 
+  
   const handleInputChange = e => {
     setFileData({
       photo: e.target.files[0]
@@ -68,11 +93,11 @@ export const CarForm = () => {
         <form onSubmit={handleSubmit} className="editVehicleForm">
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="type" className="form-control " id="type" onChange={handleChange}>
-              <option>Choose Any Option...</option>
+             
               <option value="car">Car</option>
               <option value="motorcycle">Motorcycle</option>
 
-              <option value="van">Van</option>
+            
             </select>
             <label htmlFor="type" className={'editInput form-label'}>
               Type
@@ -81,13 +106,14 @@ export const CarForm = () => {
 
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="brand" className="form-control " id="brand" onChange={handleChange}>
-              <option>Choose Any Option...</option>
               {brands.map(brn => (
-                <option value={brn.id} key={brn.id}>
-                  {brn.name}
-                </option>
+               
+
+                
+               (brn.id<=changeType.num && brn.id>=changeType.num2) ?<option value={brn.id} key={brn.id}>{brn.name}</option> : ""
               ))}
             </select>
+            
             <label htmlFor="brand" className={'editInput form-label'}>
               Brand
             </label>
