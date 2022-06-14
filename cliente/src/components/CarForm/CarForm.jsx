@@ -18,7 +18,21 @@ export const CarForm = () => {
   const [selectedBrand, setSelectedBrand] = useState([52]);
 
   const navigate = useNavigate();
+  
 
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1;
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd;
+  }
+
+  if (mm < 10) {
+    mm = '0' + mm;
+  }
+
+  today = yyyy + '-' + mm + '-' + dd;
   const handleChange = e => {
     setForm({
       ...form,
@@ -76,6 +90,7 @@ export const CarForm = () => {
     getData();
   }, [selectedBrand]);
   const handleSubmit = e => {
+    console.log("LLEGO")
     const data = new FormData();
     data.append('photos', fileData.photo);
 
@@ -121,7 +136,6 @@ export const CarForm = () => {
 
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="typeId" className="form-control " id="model" onChange={handleChange}>
-              <option>Choose Any Option...</option>
               {types.map(typ => (
                 <option value={typ.id} key={typ.id}>
                   {typ.name}
@@ -141,6 +155,7 @@ export const CarForm = () => {
               min="1899-01-01"
               name="matriculationDate"
               required
+              max={today}
               id="matriculationDate"
               onChange={handleChange}
             />
@@ -155,19 +170,20 @@ export const CarForm = () => {
               className=" form-control "
               type="file"
               name="vehiclePhoto"
+              required
               id="inputFile1"
               onChange={handleInputChange}
               style={{ backgroundColor: 'transparent', border: 'none', color: 'white' }}
             />
           </div>
 
-          <a onClick={handleSubmit} id="buttonForm" className="submitVehicleButtonForm">
+          <button id="buttonForm" className="submitVehicleButtonForm">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Submit
-          </a>
+          </button>
         </form>
       </div>
     </section>

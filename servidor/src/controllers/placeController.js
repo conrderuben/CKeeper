@@ -125,7 +125,7 @@ const usu=data.data.id;
 
 
     const storage = multer.diskStorage({
-        destination:path.join( "../assets/users/"+usu+"/Parking"+req.params.parkingId+"/") ,
+        destination:path.join( "../cliente/src/assets/users/"+usu+"/Parking"+req.params.parkingId+"/") ,
         filename: function (req, file, cb) {
           cb(
             null,

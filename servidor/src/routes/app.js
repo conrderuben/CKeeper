@@ -45,7 +45,7 @@ app.get('/api/getAllCities', city.getAll)
 app.get('/api/get-vehicles',middleware.validateToken, vehicle.getById);
 app.get('/api/view-cars/:user', vehicle.getByUserId);
 app.get('/api/edit-car/:carId', vehicle.editCar); 
-app.get('/api/get-brand-by-id/:typeId', vehicle.getBrandById);
+app.get('/api/get-brand-by-id/:typeId',vehicle.getBrandById);
 app.post ("/api/add-vehicle",vehicle.addCar);
 app.post ("/api/update-vehicle/:carId",vehicle.updateVehicle);
 app.post ("/api/delete-vehicle/:carId",vehicle.deleteVehicle);

@@ -47,7 +47,7 @@ const Place = props => {
     var array = [];
     array.push(
       <img
-        src={require(`../../../../assets/users/${props.idUser}/Parking${props.placeId}/parking1.png`)}
+        src={require(`../../assets/users/${props.idUser}/Parking${props.placeId}/parking1.png`)}
         alt="Image Title"
         style={{ height: '100%', width: '100%' }}
         key={props.placeId}
