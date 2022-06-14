@@ -4,10 +4,15 @@ import * as bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 
+const validation = (e, exp) => {
+  validator(exp, e.target);
+};
+
 const Input = props => {
   return (
     <div className={props.divClass!=undefined ? "mb-3 form-floating "+ props.divClass : "mb-3 form-floating" }>
       <input
+        onKeyUp={e => validation(e, props.exp)}
         onChange={e => {
           props.onChange(e);
         }}
@@ -22,6 +27,8 @@ const Input = props => {
       <label htmlFor={props.id} className={props.className!=undefined ? "form-label "+ props.className : "form-label" }>
         {props.label}
       </label>
+      <div className="valid-feedback" id='validacionText'>Looks good!</div>
+      <div className="invalid-feedback" id='validacionText'>Incorrect</div>
     </div>
   );
 };

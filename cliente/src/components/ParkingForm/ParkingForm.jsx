@@ -80,36 +80,42 @@ export const Form = () => {
         </div>
             <form onSubmit={send} className="editForm">
                 <Input
+                  exp={ /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
                   type="text"
                   name="street"
                   className="editInput"
                   id="street"
                   label="Street"
                   divClass="inputDiv"
+                  required
                   onChange={handleChange}
                 />
                 <Input
+                  exp={ /^\d{5}$/}
                   type="number"
                   name="pc"
                   id="pc"
                   className="editInput"
                   label="Postal Code"
                   divClass="inputDiv"
+                  required
                   onChange={handleChange}
                 />
                 <Input
+                  exp={ /^\d{1,2}$/}
                   type="number"
                   name="number"
                   id="number"
                   className="editInput"
                   label="Number"
                   divClass="inputDiv"
+                  required
                   onChange={handleChange}
                 />
   
              
                 <div className={"mb-3 form-floating selectContainer" }>
-                <select name="cities" className="form-control " id="cities" onChange={handleChange}>
+                <select name="cities" className="form-control " id="cities" required onChange={handleChange}>
                   {cities.map(cit => (
                     <option value={cit.id} key={cit.id}>
                       {cit.name}
@@ -131,43 +137,52 @@ export const Form = () => {
                   divClass="textAreaContent"
                 />
                 <Input
+                  exp={ /^[1-9]{1}\d{0,3}$/}
                   type="text" 
                   name="price" 
                   className="editInput"
                   id="price" 
                   label="Price(€) / Day" 
+                  required
                   onChange={handleChange} 
                   divClass="inputDiv"
                 />
                 <Input
+                  exp={ /^\d{1,3}$/}
                   type="number"
                   name="height"
                   className="editInput"
                   id="height"
                   label="Height (cm)"
                   divClass="inputDiv"
+                  required
                   onChange={handleChange}
                 />
                 <Input
+                  exp={ /^\d{1,3}$/}
                   type="number"
                   name="width"
                   id="width"
                   className="editInput"
                   label="Width (cm)"
                   divClass="inputDiv"
+                  required
                   onChange={handleChange}
                 />
                 <Input 
+                  exp={ /^\d{1,3}$/}
                   type="number" 
                   name="long" 
                   className="editInput"
                   id="long" 
                   label="Long (cm)" 
                   divClass="inputDivLong"
+                  required
                   onChange={handleChange} 
                 />
               
                 <File 
+                  required
                   onChange={handleInputChange} 
                 />
                 {/* <button className="">Send It!</button> */}

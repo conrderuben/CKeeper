@@ -27,7 +27,7 @@ const InputValidated = props => {
         {props.label}
       </label>
       <div className="valid-feedback">Looks good!</div>
-      <div className="invalid-feedback">Incorrecto</div>
+      <div className="invalid-feedback">Incorrect</div>
     </div>
   );
 };
