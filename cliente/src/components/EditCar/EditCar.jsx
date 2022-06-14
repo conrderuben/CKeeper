@@ -203,6 +203,7 @@ export const EditCar = () => {
                     value={carDate[0]}
                     min="1899-01-01"
                     max={today}
+                    required
                     name="matriculationDate"
                     id="matriculationDate"
                     label="Matriculation date"
@@ -217,19 +218,20 @@ export const EditCar = () => {
             <input
               className=" form-control "
               type="file"
+              required
               name="vehiclePhoto"
               id="inputFile1"
               onChange={handleInputChange}
               style={{ backgroundColor: 'transparent', border: 'none', color: 'white' }}
             />
           </div>
-      <a onClick={handleSubmit} className='submitVehicleButtonForm'>
+      <button className='submitVehicleButtonForm'>
          <span></span>
          <span></span>
          <span></span>
           <span></span>
          Submit
-      </a>
+      </button>
               
               
             </form>

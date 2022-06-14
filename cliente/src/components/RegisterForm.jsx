@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { Routes, Route, Link } from 'react-router-dom';
 import fondo2 from '../assets/img/fondo2.jpg';
 import fondo1 from '../assets/img/fondo1.jpg';
 import fondo3 from '../assets/img/fondo3.jpg';
@@ -72,6 +73,7 @@ export const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     httpClient.post("/confirm-mail",{ form })
+    navigate("/login")
     // httpClient.post('/registro', { form }).then(() => {
     //   navigate('/login');
     // });

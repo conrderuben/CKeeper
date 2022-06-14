@@ -86,7 +86,7 @@ const Invoice = props => {
         {/* MODAL  */}
         <div id="modal-container">
           <div
-            className="modal fade"
+            className="modal fade billsModal"
             id="staticBackdrop"
             data-bs-backdrop="static"
             data-bs-keyboard="false"

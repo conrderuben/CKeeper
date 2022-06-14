@@ -271,13 +271,13 @@ a {
 }
 
 @media (min-width: 576px) {
-  div .modal-dialog {
+  .billsModal .modal-dialog {
     max-width: 80%;
     margin: 1.75rem auto;
   }
 }
 
-div .modal-content {
+ .billsModal div .modal-content {
   position: relative;
   display: flex;
   flex-direction: column;

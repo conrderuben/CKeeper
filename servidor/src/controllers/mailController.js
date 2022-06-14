@@ -9,8 +9,8 @@ exports.resetPasswordCode = async (req, res) =>  {
   let transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-      user: "ckeeperorg@hotmail.com", // generated ethereal user
-      pass: "Ckeeper123", // generated ethereal password
+      user: "ckeeperorg@hotmail.com", // ckeeperorg@outlook.com
+      pass: "Ckeeper123", 
     },
     tls: {
         ciphers:'SSLv3'
@@ -38,8 +38,8 @@ const verifyMail= "<style>table, td, div, h1, p {font-family: Arial, sans-serif;
     
     service: "hotmail",
     auth: {
-      user: "ckeeperorg@hotmail.com", // generated ethereal user
-      pass: "Ckeeper123", // generated ethereal password
+      user: "ckeeperorg@hotmail.com", 
+      pass: "Ckeeper123", 
     },
     tls: {
         ciphers:'SSLv3'
@@ -57,6 +57,5 @@ const verifyMail= "<style>table, td, div, h1, p {font-family: Arial, sans-serif;
 
 
   console.log("Message sent: %s", info.messageId);
-
 
 }

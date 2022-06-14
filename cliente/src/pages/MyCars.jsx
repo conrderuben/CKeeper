@@ -26,10 +26,9 @@ const ContentContainer = styled.div`
 export const MyCars = () => {
   const [vehiclesWithBrand, setVehiclesWithBrand] = useState([]);
   const navigate = useNavigate();
-
   useEffect(() => {
     async function getData() {
-      const vehicles = await httpClient.get(`/get-vehicles`).then(x => x.data);
+      const vehicles = await httpClient.get(`/get-vehicles`).then(x => x.data,);
 
       let vehiclesWB = Promise.all(
         vehicles.map(vehicle => {
@@ -39,7 +38,8 @@ export const MyCars = () => {
               type: vehicle.type,
               matriculationDate: vehicle.matriculationDate,
               brand: data.data.brand,
-              model: data.data.model
+              model: data.data.model,
+              userId:vehicle.userId,
             };
             return obj;
           });
@@ -51,7 +51,7 @@ export const MyCars = () => {
 
     getData();
   }, []);
-
+console.log(vehiclesWithBrand)
   return (
     <Container>
       <SideMenu />
@@ -64,6 +64,7 @@ export const MyCars = () => {
               type={value.type}
               date={value.matriculationDate}
               brand={value.brand}
+              idUser={value.userId}
               model={value.model}
             ></CarCard>
           );
