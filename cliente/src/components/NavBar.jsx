@@ -33,6 +33,9 @@ const NavBar = () => {
       #check {
         display: none;
       }
+      #logo{
+        overflow:hidden;
+      }
     }
     @media only screen and (max-width: 850px) {
       .checkbtn {
