@@ -53,7 +53,7 @@ function SideMenu(props) {
         >
           <div className="flex items-center pl-6 h-20 border-b border-gray-800" id="profile1">
             <img
-              src="https://scontent.fmnl13-1.fna.fbcdn.net/v/t1.0-9/117334168_2606581056324669_4951020710334194218_o.jpg?_nc_cat=101&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeFo4bRKc5SfTQvzhwotnTaOfj1P6rO41HF-PU_qs7jUcU1pCerqu3HUsOB0yKyJQwnrgz8Au7GZADcpedo6WgM4&_nc_ohc=DWpkI3p4RSUAX_hKF_Y&_nc_ht=scontent.fmnl13-1.fna&oh=c13c63ee952123b14f0da72b99ccecc8&oe=6087FEC5"
+              src={require('../../assets/user.png')}
               alt=""
               className="rounded-full h-10 w-10 flex items-center justify-center mr-3 border-2 border-blue-500"
             />
