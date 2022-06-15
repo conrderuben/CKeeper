@@ -85,16 +85,11 @@ export const Edit = () => {
     if (e.target.name == 'price') {
       parkingData.place.prize = e.target.value;
     }
-
-    console.log(form);
   };
 
   const send = e => {
     e.preventDefault();
-
-    console.log('LLEGO');
     const data = new FormData();
-    console.log(fileData);
     var cont = 0;
     for (var i in fileData) {
       data.append('photos', fileData[i]);

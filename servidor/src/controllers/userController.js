@@ -43,7 +43,6 @@ exports.validateToken = (req, res) => {
             if (!err) {
                 res.send({isAuth: true})
             } else {
-                console.log(err)
                 // Token expirado
                 res.send({error: "Token expired or wrong",
                 isAuth: false});
@@ -66,7 +65,6 @@ exports.editUserPassword = async (req, res) => {
     const saltRounds = 10;
     bcrypt.hash(req.body.userData.password, saltRounds, (err, hash)=>{
         if(err){
-            console.log('error with the hash')
         }
          peopleModel.update({user:req.body.userData.user,name:req.body.userData.name,surname:req.body.userData.surname,password:hash,bornDate:req.body.userData.bornDate,mail:req.body.userData.mail,phone:req.body.userData.phone,},
             {where:{id:req.body.userData.id}}) 

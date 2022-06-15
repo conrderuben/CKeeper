@@ -70,7 +70,6 @@ const jwt = require('jsonwebtoken');
       var vehicleId=0
 
          await  vehicleModel.create(data).then(result=>{vehicleId=result.dataValues.id})
-
             res.json({id:vehicleId});
        
 }

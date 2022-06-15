@@ -23,11 +23,9 @@ export default class File extends Component {
       this.fileArray[i] = URL.createObjectURL(this.fileObj[i][0]);
       this.setState({ file: this.fileArray });
     }
-    console.log(this.fileArray);
   }
   uploadFiles(e) {
     e.preventDefault();
-    console.log(this.state.file);
   }
 
   render() {

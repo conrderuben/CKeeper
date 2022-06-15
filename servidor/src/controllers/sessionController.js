@@ -40,7 +40,6 @@ exports.login = (req, res) => {
         [user],
         (err, result) =>{
             if(err){
-                console.log(err)
               res.json({
                 error: 'invalid user or password'
               })

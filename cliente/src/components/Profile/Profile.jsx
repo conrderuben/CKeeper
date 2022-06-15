@@ -118,6 +118,13 @@ export const ProfileEdit = () => {
     e.preventDefault();
 
     a = a + 1;
+    if (a % 2 != 0) {
+      document.getElementById('newPassword').type = 'text';
+    } else {
+      document.getElementById('newPassword').type = 'password';
+    }
+
+    a = a + 1;
     console.log(a);
     if (a % 2 != 0) {
       document.getElementById('newPassword').type = 'text';
@@ -129,7 +136,6 @@ export const ProfileEdit = () => {
   const seeConfirmNewPassword = e => {
     e.preventDefault();
     b = b + 1;
-    console.log(a);
     if (b % 2 != 0) {
       document.getElementById('confirmNewPassword').type = 'text';
     } else {
@@ -161,7 +167,7 @@ export const ProfileEdit = () => {
                     <div className="card-profile-image">
                       <a href="#">
                         <img
-                          src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                          src={require('../../assets/img/avatar.png')}
                           className="rounded-circle"
                         />
                       </a>

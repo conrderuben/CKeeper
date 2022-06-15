@@ -33,7 +33,6 @@ exports.isAdmin = (req, res) => {
             if (!err && info.data.type ==='admin') {
                 res.send({isAdmin: true})
             } else {
-                console.log(err)
                 // Token expirado
                 res.send({error: "Token expired or wrong",
                 isAdmin: false});

@@ -144,7 +144,6 @@ exports.editPlace = async (req, res)=>{
 exports.editParking = async (req, res)=>{
   await parkingModel.update({prize:req.body.obj.form.price,description:req.body.obj.form.description,height:req.body.obj.form.height,long:req.body.obj.form.long,width:req.body.obj.form.width},
     {where:{id:req.params.placeId}})
-    console.log(req.params.ubicationId)
     await ubicationModel.update({street:req.body.obj.form.street,postalCode:req.body.obj.form.pc,number:req.body.obj.form.number,idCity:req.body.obj.form.cities},
       {where:{id:req.params.ubicationId}})
       res.json({id: req.params.placeId});
@@ -158,7 +157,6 @@ exports.deletePlace = async (req, res)=>{
   }
 
 exports.parkingNumber  =async (req, res)=>{
-// console.log(req.params.userId)
 const idUser=req.params.userId
   const listPlaces =  await parkingModel.findAll({
      where:{userId:idUser}

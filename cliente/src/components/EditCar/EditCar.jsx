@@ -114,7 +114,6 @@ export const EditCar = () => {
     httpClient
       .post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`, { form })
       .then(x => {
-        console.log('Lleo');
         httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
       });
   };
