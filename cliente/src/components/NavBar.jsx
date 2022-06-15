@@ -34,14 +34,10 @@ const NavBar = () => {
         display: none;
       }
     }
-
     @media only screen and (max-width: 850px) {
       .checkbtn {
         display: block;
         font-size: 22px;
-      }
-      #logo {
-        bottom: 4em;
       }
       .menu {
         position: fixed;
@@ -136,7 +132,7 @@ const NavBar = () => {
           <Menu className="menu">
             <Item href="/#home">Home</Item>
             <Item href="/#sobre-nosotros">About&nbsp;us</Item>
-            <Item href="/contacto">Contact us</Item>
+            <Item href="/contacto">Contact&nbsp;us</Item>
             <Item href="/registro">Register</Item>
           </Menu>
         </Cen>

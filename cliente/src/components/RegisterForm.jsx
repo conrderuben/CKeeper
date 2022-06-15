@@ -40,6 +40,7 @@ const DescriptionContainer = styled.div`
   flex-direction: column;
   flex: 1;
   box-sizing: border-box;
+  overflow: scroll;
 `;
 
 const Title = styled.h1`
@@ -68,15 +69,11 @@ export const Form = () => {
       ...form,
       [e.target.name]: e.target.value
     });
-    if(e.target.name=="user"){
-      
-      for (var i=0;i<users.length;i++){
-        if(users[i].user.toLowerCase()==e.target.value.toLowerCase()){
-
-
-document.getElementById("user").classList.remove('is-valid');
-document.getElementById("user").classList.remove('is-invalid');
-
+    if (e.target.name == 'user') {
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].user.toLowerCase() == e.target.value.toLowerCase()) {
+          document.getElementById('user').classList.remove('is-valid');
+          document.getElementById('user').classList.remove('is-invalid');
         }
       }
     }
@@ -84,9 +81,8 @@ document.getElementById("user").classList.remove('is-invalid');
 
   const handleSubmit = e => {
     e.preventDefault();
-    httpClient.post("/confirm-mail",{ form })
-    navigate("/login?verifyMessage=true")
-
+    httpClient.post('/confirm-mail', { form });
+    navigate('/login?verifyMessage=true');
   };
   useEffect(() => {
     async function getData() {

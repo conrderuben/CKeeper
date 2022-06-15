@@ -115,7 +115,11 @@ export const Edit = () => {
         `http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`,
         { obj }
       )
-      .then(navigate('/places'));
+      .then(x => {
+        httpClient
+          .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
+          .then(navigate('/places'));
+      });
   };
   return (
     <section className="editParkingSection ">
@@ -125,7 +129,7 @@ export const Edit = () => {
         </div>
         <form onSubmit={send} className="editForm">
           <Input
-            exp={ /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
+            exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
             type="text"
             name="street"
             className="editInput"
@@ -137,7 +141,7 @@ export const Edit = () => {
             onChange={handleChange}
           />
           <Input
-            exp={ /^\d{5}$/}
+            exp={/^\d{5}$/}
             type="number"
             name="pc"
             id="pc"
@@ -149,7 +153,7 @@ export const Edit = () => {
             onChange={handleChange}
           />
           <Input
-            exp={ /^\d{1,2}$/}
+            exp={/^\d{1,2}$/}
             type="number"
             name="number"
             id="number"
@@ -162,7 +166,13 @@ export const Edit = () => {
           />
 
           <div className={'mb-3 form-floating selectContainer'}>
-            <select name="cities" className="form-control " id="cities" required onChange={handleChange}>
+            <select
+              name="cities"
+              className="form-control "
+              id="cities"
+              required
+              onChange={handleChange}
+            >
               {cities.map(cit => (
                 <option
                   value={cit.id}
@@ -179,7 +189,9 @@ export const Edit = () => {
           </div>
 
           <TextArea
-            exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,98}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
+            exp={
+              /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,98}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/
+            }
             className="textAreaDescription editInput"
             label="Description"
             name="description"
@@ -190,7 +202,7 @@ export const Edit = () => {
             divClass="textAreaContent"
           />
           <Input
-            exp={ /^[1-9]{1}\d{0,3}$/}
+            exp={/^[1-9]{1}\d{0,3}$/}
             type="text"
             name="price"
             className="editInput"
@@ -202,7 +214,7 @@ export const Edit = () => {
             divClass="inputDiv"
           />
           <Input
-            exp={ /^\d{1,3}$/}
+            exp={/^\d{1,3}$/}
             type="number"
             name="height"
             className="editInput"
@@ -214,7 +226,7 @@ export const Edit = () => {
             onChange={handleChange}
           />
           <Input
-            exp={ /^\d{1,3}$/}
+            exp={/^\d{1,3}$/}
             type="number"
             name="width"
             id="width"
@@ -226,7 +238,7 @@ export const Edit = () => {
             onChange={handleChange}
           />
           <Input
-            exp={ /^\d{1,3}$/}
+            exp={/^\d{1,3}$/}
             type="number"
             name="long"
             className="editInput"

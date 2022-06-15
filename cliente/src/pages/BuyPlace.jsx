@@ -83,6 +83,7 @@ console.log(location)
             }.png`)}
             className="d-block w-100"
             alt="..."
+            style={{ maxHeight: 'inherit' }}
           />
         </div>
       );
