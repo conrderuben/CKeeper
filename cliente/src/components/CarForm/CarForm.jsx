@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 
@@ -64,7 +63,7 @@ export const CarForm = () => {
 
   useEffect(() => {
     async function getData() {
-      const brand = await axios.get(`http://localhost:4000/api/list-brands`).then(x => {
+      const brand = await httpClient.get(`/list-brands`).then(x => {
         setBrands(x.data);
       });
     }
@@ -73,7 +72,7 @@ export const CarForm = () => {
 
   useEffect(() => {
     async function getData() {
-      httpClient.get(`http://localhost:4000/api/typeById/${selectedBrand}`).then(x => {
+      httpClient.get(`/typeById/${selectedBrand}`).then(x => {
         setTypes(x.data);
       });
     }

@@ -49,10 +49,10 @@ exports.login = (req, res) => {
                     if(response){
                         if(result[0].user ==='Admin123'){
                             const token = generateToken(result[0], 'admin');
-                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'34.175.231.25', path:'/'  }).status(200).json({msg: 'hola'});
                         }else if(result[0].active == 1){
                             const token = generateToken(result[0], 'user');
-                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'localhost', path:'/'  }).status(200).json({msg: 'hola'});
+                            res.cookie('jwt', token, { httpOnly: true, secure : true, domain:'34.175.231.25', path:'/'  }).status(200).json({msg: 'hola'});
                         }else{
                             res.json({
                                 error: 'this user is not active'})

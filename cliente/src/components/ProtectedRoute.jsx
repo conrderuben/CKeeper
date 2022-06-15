@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     async function getData() {
-      await httpClient.get(`http://localhost:4000/api/isAuth`).then(x => {
+      await httpClient.get(`/isAuth`).then(x => {
         setAuth(x.data.isAuth);
       });
     }

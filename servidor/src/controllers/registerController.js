@@ -29,5 +29,5 @@ const data={
         
     }
     )
-    res.redirect("http://localhost:3000/login")
+    res.redirect("http://34.175.231.25:3000/login")
 }
