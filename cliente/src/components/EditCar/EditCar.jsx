@@ -17,6 +17,7 @@ export const EditCar = () => {
   const [types, setTypes] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState([52]);
   const [fileData, setFileData] = useState();
+  const [changeType, setChangeType] = useState({ num: 90, num2: 0 });
 
   const [carData, setCarData] = useState({
     car: {
@@ -70,6 +71,22 @@ export const EditCar = () => {
 
     if (e.target.name == 'matriculationDate') {
       carData.car.matriculationDate = e.target.value;
+    }
+    if (e.target.name == 'type') {
+      if (e.target.value == 'car') {
+        setChangeType({
+          num: 90,
+          num2: 0
+        });
+        setSelectedBrand(52);
+      }
+      if (e.target.value == 'motorcycle') {
+        setChangeType({
+          num: 168,
+          num2: 91
+        });
+        setSelectedBrand(130);
+      }
     }
   };
   const handleInputChange = e => {
@@ -137,9 +154,7 @@ export const EditCar = () => {
                 Motorcycle
               </option>
 
-              <option value="van" selected={carData.car.type == 'van' ? 'selected' : ''}>
-                Van
-              </option>
+             
             </select>
             <label htmlFor="type" className={'editInput form-label'}>
               Type
@@ -149,6 +164,7 @@ export const EditCar = () => {
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="brand" className="form-control " id="brand" onChange={handleChange}>
               {brands.map(brn => (
+                  brn.id <= changeType.num && brn.id >= changeType.num2 ? (
                 <option
                   value={brn.id}
                   key={brn.id}
@@ -156,6 +172,9 @@ export const EditCar = () => {
                 >
                   {brn.name}
                 </option>
+                ): (
+                  ''
+                )
               ))}
             </select>
             <label htmlFor="brand" className={'editInput form-label'}>

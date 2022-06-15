@@ -79,14 +79,20 @@ export const CarForm = () => {
     }
     getData();
   }, [selectedBrand]);
+
   const handleSubmit = e => {
     e.preventDefault();
+ console.log(document.getElementById("model").value)
+ if (document.getElementById("model").value=="choose"){
+  alert("Please choose a brand option");
+ }else{
     const data = new FormData();
     data.append('photos', fileData.photo);
 
     httpClient.post(`/add-vehicle`, { form }).then(x => {
       httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
     });
+  }
   };
   return (
     <section className="editVehicleSection ">
@@ -126,6 +132,8 @@ export const CarForm = () => {
 
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="typeId" className="form-control " id="model" onChange={handleChange}>
+            <option selected="selected" value="choose">Choose an Option...</option>
+
               {types.map(typ => (
                 <option value={typ.id} key={typ.id}>
                   {typ.name}
