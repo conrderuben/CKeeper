@@ -32,6 +32,9 @@ const NavBar = () => {
       #check {
         display: none;
       }
+      #logo{
+        overflow:hidden;
+      }
     }
     @media only screen and (max-width: 850px) {
       .checkbtn {
@@ -136,7 +139,7 @@ const NavBar = () => {
           </Menu>
         </Cen>
         <Der>
-          <PrimaryButton>Login</PrimaryButton>
+        <a href="/login"><PrimaryButton>Login</PrimaryButton></a>
         </Der>
       </Wrapper>
     </Contenedor>
