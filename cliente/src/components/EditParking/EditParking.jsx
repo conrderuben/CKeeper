@@ -95,6 +95,8 @@ export const Edit = () => {
   };
 
   const send = e => {
+    e.preventDefault();
+
     console.log('LLEGO');
     const data = new FormData();
     console.log(fileData);
@@ -237,13 +239,13 @@ export const Edit = () => {
 
           <File required onChange={handleInputChange} />
           {/* <button className="">Send It!</button> */}
-          <a onClick={send} className="submitButtonForm">
+          <button type="submit" onClick={send} className="submitButtonForm">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Submit
-          </a>
+          </button>
         </form>
       </div>
     </section>

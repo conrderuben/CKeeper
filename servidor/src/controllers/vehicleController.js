@@ -117,6 +117,9 @@ exports.updateVehicle = async (req, res)=>{
     
 await vehicleModel.update({type:req.body.form.type,matriculationDate:req.body.form.matriculationDate,typeId:req.body.form.typeId,},
     {where:{id:req.params.carId}})
+
+    res.json({id:req.params.carId});
+
 }
 
 exports.deleteVehicle = async (req, res)=>{

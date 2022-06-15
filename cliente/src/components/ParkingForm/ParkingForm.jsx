@@ -39,7 +39,8 @@ export const Form = () => {
     });
   };
 
-  const send =async () => {
+  const send = e => {
+    e.preventDefault();
 
     const data = new FormData();
     var cont = 0;
@@ -53,7 +54,7 @@ export const Form = () => {
     };
     
 
-    await httpClient.post('/add-parking', { obj }).then( x=>{
+     httpClient.post('/add-parking', { obj }).then( x=>{
        httpClient
       .post(`http://localhost:4000/api/photos/${x.data.id}`, data).then(navigate("/places"))
     }
@@ -186,13 +187,13 @@ export const Form = () => {
                   onChange={handleInputChange} 
                 />
                 {/* <button className="">Send It!</button> */}
-                <a onClick={send} className='submitButtonForm'>
+                <button type="submit" className='submitButtonForm'>
       <span></span>
       <span></span>
       <span></span>
       <span></span>
       Submit
-    </a>
+    </button>
             </form>
         
     </div>

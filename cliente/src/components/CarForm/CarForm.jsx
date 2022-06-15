@@ -90,7 +90,7 @@ export const CarForm = () => {
     getData();
   }, [selectedBrand]);
   const handleSubmit = e => {
-    console.log("LLEGO")
+    e.preventDefault();
     const data = new FormData();
     data.append('photos', fileData.photo);
 
@@ -177,7 +177,7 @@ export const CarForm = () => {
             />
           </div>
 
-          <button id="buttonForm" className="submitVehicleButtonForm">
+          <button type="submit" id="buttonForm" className="submitVehicleButtonForm">
             <span></span>
             <span></span>
             <span></span>
