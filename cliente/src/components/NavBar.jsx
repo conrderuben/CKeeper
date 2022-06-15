@@ -137,7 +137,7 @@ const NavBar = () => {
           </Menu>
         </Cen>
         <Der>
-          <PrimaryButton>Login</PrimaryButton>
+        <a href="/login"><PrimaryButton>Login</PrimaryButton></a>
         </Der>
       </Wrapper>
     </Contenedor>
