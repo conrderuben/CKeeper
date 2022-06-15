@@ -24,22 +24,23 @@ const Invoice = props => {
     let vehiclesWB = Promise.all(
       vehicles.map(vehicle => {
         return httpClient.get(`/get-brand-by-id/${vehicle.typeId}`).then(data => {
+          
           const obj = {
             id: vehicle.id,
             type: vehicle.type,
             matriculationDate: vehicle.matriculationDate,
             brand: data.data.brand,
-            model: data.data.model
+            model: data.data.model,
+            userId:vehicle.userId
           };
           return obj;
         });
       })
     ).then(x => {
-      console.log(cars);
       setCars(x);
     });
   };
-
+  console.log(cars)
   return (
     <div id="invoice" className=" p-10 mx-10 mt-10 bg-white rounded-lg fit-content ">
       <h2 className="mb-10 text-xl tracking-widest uppercase">
@@ -116,6 +117,7 @@ const Invoice = props => {
                       date={car.matriculationDate}
                       brand={car.brand}
                       model={car.model}
+                      idUser={car.userId}
                     ></ViewCar>
                   ))}
                 </div>
