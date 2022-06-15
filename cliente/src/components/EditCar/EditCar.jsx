@@ -219,6 +219,7 @@ export const EditCar = () => {
             <input
               className=" form-control "
               type="file"
+              accept="image/png, image/gif, image/jpeg"
               required
               name="vehiclePhoto"
               id="inputFile1"

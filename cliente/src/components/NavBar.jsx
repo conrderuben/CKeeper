@@ -34,14 +34,10 @@ const NavBar = () => {
         display: none;
       }
     }
-
     @media only screen and (max-width: 850px) {
       .checkbtn {
         display: block;
         font-size: 22px;
-      }
-      #logo {
-        bottom: 4em;
       }
       .menu {
         position: fixed;

@@ -51,7 +51,7 @@ export default class File extends Component {
      </div>
        <div className="fotoContainer">
        
-     <input type="file" required onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
+     <input type="file" accept="image/png, image/gif, image/jpeg" required onChange={this.uploadMultipleFiles} onInput={(e) => {this.props.onChange(e);}} multiple id="foto" name="foto" style={{display:"none",visibility:"none"}} />
         
      
     <div className="form-group multi-preview foto d-flex" >
