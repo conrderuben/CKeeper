@@ -106,8 +106,7 @@ export const CarCard = props => {
       <img
         src={require(`../assets/users/${props.idUser}/Vehicles/Vehicle${props.id}/vehicle.png`)}
         alt="Image Title"
-        style={{ height: '100%', width: '100%' }}
-        
+        style={{ height: '100%', width: '100%', borderRadius: '15px 15px 0 0' }}
       />
     );
 

@@ -70,7 +70,6 @@ const BuyPlace = () => {
       [e.target.name]: e.target.value
     });
   };
-  console.log(params)
   const photos = () => {
     var array = [];
     for (let i = 0; i < params.photo; i++) {
@@ -80,7 +79,9 @@ const BuyPlace = () => {
           style={{ maxHeight: '300px' }}
         >
           <img
-            src={require(`../assets/users/${params.idUser}/Parking${params.placeId}/parking${i + 1}.png`)}
+            src={require(`../assets/users/${params.idUser}/Parking${params.placeId}/parking${
+              i + 1
+            }.png`)}
             className="d-block w-100"
             alt="..."
           />

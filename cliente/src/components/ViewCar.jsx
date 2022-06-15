@@ -61,8 +61,7 @@ export const ViewCar = props => {
       <img
         src={require(`../assets/users/${props.idUser}/Vehicles/Vehicle${props.id}/vehicle.png`)}
         alt="Image Title"
-        style={{ height: '100%', width: '100%' }}
-        
+        style={{ height: '100%', width: '100%', borderRadius: '15px 15px 0 0' }}
       />
     );
 
@@ -71,7 +70,7 @@ export const ViewCar = props => {
   var fec = props.date.split('-');
   return (
     <Card>
-      <CardImg >{photos()}</CardImg>
+      <CardImg>{photos()}</CardImg>
       <Group>
         <Title>Type:</Title>
         <Text>{props.type}</Text>
