@@ -61,23 +61,41 @@ const validation = (e, exp) => {
 
 export const Form = () => {
   const [form, setForm] = useState({});
-
+  const [users, setAllUsers] = useState([]);
   const navigate = useNavigate();
   const handleChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
     });
+    if(e.target.name=="user"){
+      
+      for (var i=0;i<users.length;i++){
+        if(users[i].user.toLowerCase()==e.target.value.toLowerCase()){
+
+
+document.getElementById("user").classList.remove('is-valid');
+document.getElementById("user").classList.remove('is-invalid');
+
+        }
+      }
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     httpClient.post("/confirm-mail",{ form })
-    navigate("/login")
-    // httpClient.post('/registro', { form }).then(() => {
-    //   navigate('/login');
-    // });
+    navigate("/login?verifyMessage=true")
+
   };
+  useEffect(() => {
+    async function getData() {
+      await httpClient.post(`/get-users`).then(x => {
+        setAllUsers(x.data);
+      });
+    }
+    getData();
+  }, []);
   return (
     <Container>
       <ImgContainer className="imgContainer">
@@ -125,6 +143,8 @@ export const Form = () => {
               type="date"
               name="bornDate"
               id="date"
+              min="1899-01-01"
+              max="2003-01-01"
               label="Born date"
               onChange={handleChange}
             ></InputValidated>
