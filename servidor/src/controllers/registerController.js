@@ -14,9 +14,7 @@ const data={
     surname:req.body.surname,
     bornDate:req.body.bornDate,
     mail:req.body.mail,
-    phone:req.body.phone,
-
-
+    phone:req.body.phone, 
 }
 
     bcrypt.hash(data.password, saltRounds, (err, hash)=>{
@@ -31,7 +29,6 @@ const data={
          })
         
     }
-
     )
     res.redirect("http://localhost:3000/login")
 }

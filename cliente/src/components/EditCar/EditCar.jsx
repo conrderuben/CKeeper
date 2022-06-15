@@ -4,9 +4,6 @@ import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Input from '../Input';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 const DateContainer = styled.div`
   display: flex;
   align-items: center;
@@ -104,12 +101,11 @@ export const EditCar = () => {
     async function getData() {
       httpClient.get(`http://localhost:4000/api/typeById/${carData.brand.id}`).then(x => {
         setTypes(x.data);
-  
       });
     }
     getData();
   }, [carData.brand.id]);
- 
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -118,104 +114,94 @@ export const EditCar = () => {
     httpClient
       .post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`, { form })
       .then(x => {
-        console.log("Lleo")
+        console.log('Lleo');
         httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
       });
   };
   return (
-    
-    <section className='editVehicleSection '>
-    <div className='editVehicleContainer '>
+    <section className="editVehicleSection ">
+      <div className="editVehicleContainer ">
+        <div className="titleContainer">
+          <h2 className="title">EDIT VEHICLE</h2>
+        </div>
 
-        
-        <div className='titleContainer'>
-        
-          <h2 className='title'>EDIT VEHICLE</h2>
+        <form onSubmit={handleSubmit} className="editVehicleForm">
+          <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <select name="type" className="form-control " id="type" onChange={handleChange}>
+              <option value="car" selected={carData.car.type == 'car' ? 'selected' : ''}>
+                Car
+              </option>
+              <option
+                value="motorcycle"
+                selected={carData.car.type == 'motorcycle' ? 'selected' : ''}
+              >
+                Motorcycle
+              </option>
+
+              <option value="van" selected={carData.car.type == 'van' ? 'selected' : ''}>
+                Van
+              </option>
+            </select>
+            <label htmlFor="type" className={'editInput form-label'}>
+              Type
+            </label>
           </div>
-         
-            <form onSubmit={handleSubmit} className="editVehicleForm">
-            <div className={"mb-3 form-floating selectVehicleContainer" }>
-            <select name="type" className="form-control " id='type' onChange={handleChange}>
-                  <option value="car" selected={carData.car.type == 'car' ? 'selected' : ''}>
-                    Car
-                  </option>
-                  <option
-                    value="motorcycle"
-                    selected={carData.car.type == 'motorcycle' ? 'selected' : ''}
-                  >
-                    Motorcycle
-                  </option>
 
-                  <option value="van" selected={carData.car.type == 'van' ? 'selected' : ''}>
-                    Van
-                  </option>
-                </select>
-                <label htmlFor="type" className={"editInput form-label" }>
-               Type
-                </label>
-            </div>
-              
+          <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <select name="brand" className="form-control " id="brand" onChange={handleChange}>
+              {brands.map(brn => (
+                <option
+                  value={brn.id}
+                  key={brn.id}
+                  selected={carData.brand.id == brn.id ? 'selected' : ''}
+                >
+                  {brn.name}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="brand" className={'editInput form-label'}>
+              Brand
+            </label>
+          </div>
 
+          <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <select name="typeId" className="form-control " id="model" onChange={handleChange}>
+              <option>Selecciona...</option>
+              {types.map(typ => (
+                <option
+                  value={typ.id}
+                  key={typ.id}
+                  selected={carData.car.typeId == typ.id ? 'selected' : ''}
+                >
+                  {typ.name}
+                </option>
+              ))}
+            </select>
 
+            <label htmlFor="model" className={'editInput form-label'}>
+              Model
+            </label>
+          </div>
 
+          <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <input
+              className="dateCar form-control "
+              type="date"
+              value={carDate[0]}
+              min="1899-01-01"
+              max={today}
+              required
+              name="matriculationDate"
+              id="matriculationDate"
+              label="Matriculation date"
+              onChange={handleChange}
+            />
 
-            <div className={"mb-3 form-floating selectVehicleContainer" }>
-            <select name="brand" className="form-control " id='brand' onChange={handleChange}>
-                  {brands.map(brn => (
-                    <option
-                      value={brn.id}
-                      key={brn.id}
-                      selected={carData.brand.id == brn.id ? 'selected' : ''}
-                    >
-                      {brn.name}
-                    </option>
-                  ))}
-                </select>
-                <label htmlFor="brand" className={"editInput form-label" }>
-                Brand
-                </label>
-            </div>
-             
-        
-                
-            <div className={"mb-3 form-floating selectVehicleContainer" }>
-            <select name="typeId" className="form-control " id='model' onChange={handleChange}>
-                  <option>Selecciona...</option>
-                  {types.map(typ => (
-                    <option
-                      value={typ.id}
-                      key={typ.id}
-                      selected={carData.car.typeId == typ.id ? 'selected' : ''}
-                    >
-                      {typ.name}
-                    </option>
-                  ))}
-                </select>
-
-                <label htmlFor="model" className={"editInput form-label" }>
-                Model
-                </label>
-            </div>
-              
-            <div className={"mb-3 form-floating selectVehicleContainer" }>
-                  <input
-                    className="dateCar form-control "
-                    type="date"
-                    value={carDate[0]}
-                    min="1899-01-01"
-                    max={today}
-                    required
-                    name="matriculationDate"
-                    id="matriculationDate"
-                    label="Matriculation date"
-                    onChange={handleChange}
-                  />
-       
-       <label htmlFor="matriculationDate" className={"editInput form-label" }>
-       Matriculation date
-                </label>
-                </div>
-                <div className={'mb-3 form-floating selectVehicleContainer'}>
+            <label htmlFor="matriculationDate" className={'editInput form-label'}>
+              Matriculation date
+            </label>
+          </div>
+          <div className={'mb-3 form-floating selectVehicleContainer'}>
             <input
               className=" form-control "
               type="file"
@@ -227,19 +213,15 @@ export const EditCar = () => {
               style={{ backgroundColor: 'transparent', border: 'none', color: 'white' }}
             />
           </div>
-      <button type="submit" className='submitVehicleButtonForm'>
-         <span></span>
-         <span></span>
-         <span></span>
-          <span></span>
-         Submit
-      </button>
-              
-              
-            </form>
-          
-        </div>
-      
+          <button type="submit" className="submitVehicleButtonForm">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </button>
+        </form>
+      </div>
     </section>
   );
 };

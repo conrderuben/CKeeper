@@ -2,23 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
-import Input from '../Input';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export const CarForm = () => {
   const [form, setForm] = useState({ type: 'car', typeId: 1 });
   const [brands, setBrands] = useState([]);
   const [types, setTypes] = useState([]);
   const [fileData, setFileData] = useState();
-  const [changeType, setChangeType] = useState({num:90,num2:0});
+  const [changeType, setChangeType] = useState({ num: 90, num2: 0 });
 
-  var num=90;
-  var num2=0;
+  var num = 90;
+  var num2 = 0;
   const [selectedBrand, setSelectedBrand] = useState([52]);
 
   const navigate = useNavigate();
-  
 
   var today = new Date();
   var dd = today.getDate();
@@ -42,30 +38,24 @@ export const CarForm = () => {
     if (e.target.name == 'brand') {
       setSelectedBrand(e.target.value);
     }
-    if (e.target.name=="type"){
-      if(e.target.value=="car"){
+    if (e.target.name == 'type') {
+      if (e.target.value == 'car') {
         setChangeType({
-          num:90,
-          num2:0
-        })
+          num: 90,
+          num2: 0
+        });
         setSelectedBrand(52);
       }
-      if(e.target.value=="motorcycle"){
+      if (e.target.value == 'motorcycle') {
         setChangeType({
-          num:168,
-          num2:91
-          
-        })
+          num: 168,
+          num2: 91
+        });
         setSelectedBrand(130);
-        
       }
-      
     }
-
-
   };
 
-  
   const handleInputChange = e => {
     setFileData({
       photo: e.target.files[0]
@@ -108,11 +98,8 @@ export const CarForm = () => {
         <form onSubmit={handleSubmit} className="editVehicleForm">
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="type" className="form-control " id="type" onChange={handleChange}>
-             
               <option value="car">Car</option>
               <option value="motorcycle">Motorcycle</option>
-
-            
             </select>
             <label htmlFor="type" className={'editInput form-label'}>
               Type
@@ -121,14 +108,17 @@ export const CarForm = () => {
 
           <div className={'mb-3 form-floating selectVehicleContainer'}>
             <select name="brand" className="form-control " id="brand" onChange={handleChange}>
-              {brands.map(brn => (
-               
-
-                
-               (brn.id<=changeType.num && brn.id>=changeType.num2) ?<option value={brn.id} key={brn.id}>{brn.name}</option> : ""
-              ))}
+              {brands.map(brn =>
+                brn.id <= changeType.num && brn.id >= changeType.num2 ? (
+                  <option value={brn.id} key={brn.id}>
+                    {brn.name}
+                  </option>
+                ) : (
+                  ''
+                )
+              )}
             </select>
-            
+
             <label htmlFor="brand" className={'editInput form-label'}>
               Brand
             </label>

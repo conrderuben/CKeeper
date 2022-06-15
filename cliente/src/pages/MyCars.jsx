@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -28,7 +27,7 @@ export const MyCars = () => {
   const navigate = useNavigate();
   useEffect(() => {
     async function getData() {
-      const vehicles = await httpClient.get(`/get-vehicles`).then(x => x.data,);
+      const vehicles = await httpClient.get(`/get-vehicles`).then(x => x.data);
 
       let vehiclesWB = Promise.all(
         vehicles.map(vehicle => {
@@ -39,7 +38,7 @@ export const MyCars = () => {
               matriculationDate: vehicle.matriculationDate,
               brand: data.data.brand,
               model: data.data.model,
-              userId:vehicle.userId,
+              userId: vehicle.userId
             };
             return obj;
           });
@@ -51,7 +50,7 @@ export const MyCars = () => {
 
     getData();
   }, []);
-console.log(vehiclesWithBrand)
+  console.log(vehiclesWithBrand);
   return (
     <Container>
       <SideMenu />

@@ -1,16 +1,8 @@
-import { axios } from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
 import style from './profileCSS.scss';
-import ReactDOM from 'react-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import Input from '../Input';
-import File from '../File';
-import TextArea from '../TextArea';
-import { faPencil,faEye } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faEye } from '@fortawesome/free-solid-svg-icons';
 export const ProfileEdit = () => {
   const [userData, setUserData] = useState({});
   const fiveDigits = 10000 + Math.random() * 90000;
@@ -20,12 +12,9 @@ export const ProfileEdit = () => {
     async function getData() {
       await httpClient.get(`/user`).then(x => {
         setUserData(x.data);
-          httpClient.get(`/number-data/${x.data.id}`).then(x => {
+        httpClient.get(`/number-data/${x.data.id}`).then(x => {
           setNumberDataAll(x.data);
         });
-
-
-        
       });
     }
     getData();
@@ -98,49 +87,55 @@ export const ProfileEdit = () => {
 
     var confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
-    if (password == confirmNewPassword && password.length>=6 ) {
-      var num=0;
-      for (var i=0;i<password.length;i++){
-        
-        if (password.charAt(i)=="1" || password.charAt(i)=="2" || password.charAt(i)=="3" || password.charAt(i)=="4"|| password.charAt(i)=="5"|| password.charAt(i)=="6"|| password.charAt(i)=="7"|| password.charAt(i)=="8"|| password.charAt(i)=="9"|| password.charAt(i)=="0"){
-          num=num+1;
-                  }
+    if (password == confirmNewPassword && password.length >= 6) {
+      var num = 0;
+      for (var i = 0; i < password.length; i++) {
+        if (
+          password.charAt(i) == '1' ||
+          password.charAt(i) == '2' ||
+          password.charAt(i) == '3' ||
+          password.charAt(i) == '4' ||
+          password.charAt(i) == '5' ||
+          password.charAt(i) == '6' ||
+          password.charAt(i) == '7' ||
+          password.charAt(i) == '8' ||
+          password.charAt(i) == '9' ||
+          password.charAt(i) == '0'
+        ) {
+          num = num + 1;
+        }
       }
-      if (num>=1){
+      if (num >= 1) {
         document.getElementById('modifyPassword').style.display = 'block';
-
       }
     }
     if (password != confirmNewPassword) {
       document.getElementById('modifyPassword').style.display = 'none';
     }
   };
-  var a =0;
+  var a = 0;
   const seeNewPassword = e => {
-    e.preventDefault()
-    
-    a=a+1 
-    console.log(a)
-    if (a%2!=0){
-      document.getElementById("newPassword").type="text";
-    }
-    else{
-      document.getElementById("newPassword").type="password";
-    }
+    e.preventDefault();
 
-  }
-  var b =0;
+    a = a + 1;
+    console.log(a);
+    if (a % 2 != 0) {
+      document.getElementById('newPassword').type = 'text';
+    } else {
+      document.getElementById('newPassword').type = 'password';
+    }
+  };
+  var b = 0;
   const seeConfirmNewPassword = e => {
-    e.preventDefault()
-    b=b+1 
-    console.log(a)
-    if (b%2!=0){
-      document.getElementById("confirmNewPassword").type="text";    }
-    else{
-      document.getElementById("confirmNewPassword").type="password";
+    e.preventDefault();
+    b = b + 1;
+    console.log(a);
+    if (b % 2 != 0) {
+      document.getElementById('confirmNewPassword').type = 'text';
+    } else {
+      document.getElementById('confirmNewPassword').type = 'password';
     }
-
-  }
+  };
   return (
     <>
       <div className="main-content">
@@ -197,8 +192,6 @@ export const ProfileEdit = () => {
                     <h3>
                       {userData.name} {userData.surname}
                     </h3>
-
-                  
                   </div>
                 </div>
               </div>
@@ -290,10 +283,13 @@ export const ProfileEdit = () => {
                                     className="form-control form-control-alternative "
                                     placeholder="Put your new password"
                                   />
-                                  <button value="newPasswordButton" onClick={seeNewPassword} className="pl-3">
+                                  <button
+                                    value="newPasswordButton"
+                                    onClick={seeNewPassword}
+                                    className="pl-3"
+                                  >
                                     <FontAwesomeIcon
                                       icon={faEye}
-                                      
                                       style={{ fontSize: 17, color: 'black' }}
                                     />
                                   </button>
@@ -314,9 +310,12 @@ export const ProfileEdit = () => {
                                     className="form-control form-control-alternative"
                                     placeholder="Confirm your new password"
                                   />
-                                  <button value="confirmNewPasswordButton" onClick={seeConfirmNewPassword} className="pl-3">
+                                  <button
+                                    value="confirmNewPasswordButton"
+                                    onClick={seeConfirmNewPassword}
+                                    className="pl-3"
+                                  >
                                     <FontAwesomeIcon
-                                    
                                       icon={faEye}
                                       style={{ fontSize: 17, color: 'black' }}
                                     />

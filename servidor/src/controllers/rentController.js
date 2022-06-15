@@ -10,7 +10,7 @@ exports.createRent = async (req, res) => {
         {where:{id:req.body.place.placeId}})
 
         const renter =  await peopleModel.findOne({
-            where:{user:req.body.place.user}
+            where:{user:req.body.place.user} 
         })
 
         const rentData = {

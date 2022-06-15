@@ -8,19 +8,19 @@ const Container = styled.div`
   height: 100vh;
   @media only screen and (min-width: 851px) {
     #formContainer {
-     padding-top:25vh !important;
-     padding-right:10vw !important;
+      padding-top: 25vh !important;
+      padding-right: 10vw !important;
     }
-    #send{
-     padding-left:5vw !important;
-     padding-right:5vw !important;
-     color:white !important;
-     text-decoration:none;
+    #send {
+      padding-left: 5vw !important;
+      padding-right: 5vw !important;
+      color: white !important;
+      text-decoration: none;
     }
-}
+  }
   @media only screen and (max-width: 850px) {
     #iframe {
-      display:none;
+      display: none;
     }
     #formContainer {
       padding: 0 !important;
@@ -30,9 +30,9 @@ const Container = styled.div`
       width: 100vw !important;
       height: 60vh;
     }
-    #send{
-      color:white !important;
-      text-decoration:none;
+    #send {
+      color: white !important;
+      text-decoration: none;
     }
   }
 `;
@@ -52,10 +52,7 @@ const Contacto = () => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <div
-        className="container px-5 py-24 "
-        id="formContainer"
-      >
+      <div className="container px-5 py-24 " id="formContainer">
         <div
           className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md"
           id="form"
@@ -84,7 +81,12 @@ const Contacto = () => {
             ></textarea>
           </div>
           <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-            <a href="mailto:email1@email.com?body=Este%20es%20el%20cuerpo%20del%20mensaje" id='send'>Send </a>
+            <a
+              href="mailto:email1@email.com?body=Este%20es%20el%20cuerpo%20del%20mensaje"
+              id="send"
+            >
+              Send{' '}
+            </a>
           </button>
           <p className="text-xs text-gray-500 mt-3">We will help you as soon as possible</p>
         </div>

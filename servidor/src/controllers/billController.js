@@ -1,10 +1,7 @@
 const bd = require("../settings/db")
 const jwt = require ("jsonwebtoken");
-const Op = require('Sequelize').Op
 
 exports.getBills = async (req, res) => {
-
-
     const token = req.cookies.jwt;
      const data = jwt.decode(token, 'Ckeeper')
      userId = data.data.id;
@@ -17,7 +14,7 @@ exports.getBills = async (req, res) => {
         [userId],(err, result)=>{
             if(err){
               res.json({
-                error: 'Database error'
+                error: 'Database error' 
               })
             }else{
               const obj = {

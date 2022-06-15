@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from './PrimaryButton';
 import ckeeper from '../assets/Ckeeper.svg';
 import PrimaryButton from './PrimaryButton';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 

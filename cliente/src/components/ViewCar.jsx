@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { httpClient } from '../utils/httpClient';
 
 const Card = styled.div`
   background-color: white;

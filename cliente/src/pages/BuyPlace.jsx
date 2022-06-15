@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SideMenu from '../components/sideMenu/SideMenu';
 import { httpClient } from '../utils/httpClient';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Step from '../components/Steps/Step';
-import e from 'cors';
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;

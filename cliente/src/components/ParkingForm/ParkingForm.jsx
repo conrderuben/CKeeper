@@ -1,11 +1,7 @@
-import { axios } from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { httpClient } from '../../utils/httpClient';
-import ReactDOM from 'react-dom';
 import style from './style.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Input from '../Input';
 import File from '../File';
 import TextArea from '../TextArea';

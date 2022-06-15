@@ -15,7 +15,7 @@ const Container = Styled.div`
 const ContentContainer = Styled.div`
   display: flex;
   flex:1;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
   justify-content: center;
   overflow-y: scroll;
 `;
