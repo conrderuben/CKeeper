@@ -6,6 +6,7 @@ import { Edit } from '../components/EditParking/EditParking';
 const Contenedor = styled.div`
   padding: 0;
   height: 100%;
+  min-height: 800px;
   display: flex;
 `;
 const ContentContainer = styled.div`

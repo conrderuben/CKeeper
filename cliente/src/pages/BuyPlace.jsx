@@ -19,6 +19,7 @@ const Content = styled.div`
   margin-right: 0;
   overflow-y: scroll;
   width: 100%;
+  flex: 1;
 `;
 
 const BuyPlace = () => {
@@ -41,7 +42,7 @@ const BuyPlace = () => {
     mm = '0' + mm;
   }
   today = yyyy + '-' + mm + '-' + dd;
-console.log(location)
+  console.log(location);
   const handleBuy = () => {
     async function createRent() {
       const user = await httpClient.get('user').then(x => x.data);

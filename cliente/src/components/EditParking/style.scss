@@ -1,66 +1,63 @@
-.editParkingSection{
+.editParkingSection {
   width: 100%;
   height: 100%;
+  flex: 1;
   background: rgba(34, 34, 36, 0.801);
 
-.editParkingContainer{
-width: 70%;
+  .editParkingContainer {
+    width: 70%;
 
-position: relative;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-box-shadow: 0 15px 25px rgba(150, 105, 22, 0.6);
-  border-radius: 10px;
-  background: linear-gradient(45deg,  #be520a 20%, #3c3c3c 20% 50%, #3c3c3c 50% 80%,  #be520a  80%);
-}
-.titleContainer{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
- 
-}
-.title{
-  width: fit-content;
-  height: fit-content;
-  margin-top: 8%;
-  margin-bottom: 5%;
-  color: white;
-}
-
-.editForm{
-  width: 100%;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-}
-.inputDiv{
-width: 25%;
-min-width: 120px;
-margin-left: 3%;
-margin-top: 3%;
-
-}
-.editForm select{
-  width: 100%;
-  min-width: 220px;
-  position: relative;
- text-align: center;
-  background-color: #3c3c3c;
-  color: white;
-  border: none;
-  border-radius: inherit;
-  border-bottom: 1px solid white;
-  
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 15px 25px rgba(150, 105, 22, 0.6);
+    border-radius: 10px;
+    background: linear-gradient(45deg, #be520a 20%, #3c3c3c 20% 50%, #3c3c3c 50% 80%, #be520a 80%);
   }
-  .editInput{
+  .titleContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .title {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 8%;
+    margin-bottom: 5%;
+    color: white;
+  }
+
+  .editForm {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .inputDiv {
+    width: 25%;
+    min-width: 120px;
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+  .editForm select {
+    width: 100%;
+    min-width: 220px;
+    position: relative;
+    text-align: center;
+    background-color: #3c3c3c;
+    color: white;
+    border: none;
+    border-radius: inherit;
+    border-bottom: 1px solid white;
+  }
+  .editInput {
     border: none;
     color: white;
-  border-bottom: 1px solid white;
-  border-radius: inherit;
-  background: inherit;
+    border-bottom: 1px solid white;
+    border-radius: inherit;
+    background: inherit;
   }
 
   .form-control:focus {
@@ -68,40 +65,33 @@ margin-top: 3%;
     color: white;
     border-color: white;
     outline: 0;
-    box-shadow: 0 0 0 .25rem white;
+    box-shadow: 0 0 0 0.25rem white;
   }
-  .textAreaDescription{
+  .textAreaDescription {
     margin-top: 3%;
     width: 100%;
     height: 100px !important;
-
-
   }
-  .textAreaContent{
+  .textAreaContent {
     width: 80%;
     height: 100px !important;
   }
-  .selectContainer{
+  .selectContainer {
     width: 55%;
     min-width: 220px;
     height: 58px;
     margin-top: 3%;
   }
-  .inputDivLong{
+  .inputDivLong {
     width: 25%;
     margin-left: 1%;
     min-width: 171px;
   }
 
-
-
-.fileContainer{
-  width: 50%;
-  margin-left: 5%;
-}
-
-
-
+  .fileContainer {
+    width: 50%;
+    margin-left: 5%;
+  }
 
   .submitButtonForm {
     position: relative;
@@ -112,10 +102,10 @@ margin-top: 3%;
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
-    transition: .5s;
+    transition: 0.5s;
     margin-top: 40px;
     letter-spacing: 4px;
-    width:40%;
+    width: 40%;
     text-align: center;
     margin-bottom: 8%;
   }
@@ -125,7 +115,6 @@ margin-top: 3%;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-
   }
   .submitButtonForm span {
     position: absolute;
@@ -143,7 +132,8 @@ margin-top: 3%;
     0% {
       left: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
       left: 100%;
     }
   }
@@ -154,13 +144,14 @@ margin-top: 3%;
     height: 2px;
     background: linear-gradient(270deg, transparent, #ff6804);
     animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
+    animation-delay: 0.5s;
   }
   @keyframes btn-anim2 {
     0% {
       top: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
       top: 100%;
     }
   }
@@ -171,13 +162,14 @@ margin-top: 3%;
     height: 2px;
     background: linear-gradient(270deg, transparent, #ff6804);
     animation: btn-anim3 1s linear infinite;
-    animation-delay: .5s
+    animation-delay: 0.5s;
   }
   @keyframes btn-anim3 {
     0% {
       right: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
       right: 100%;
     }
   }
@@ -188,17 +180,18 @@ margin-top: 3%;
     height: 100%;
     background: linear-gradient(360deg, transparent, #ff6804);
     animation: btn-anim4 1s linear infinite;
-    animation-delay: .75s
+    animation-delay: 0.75s;
   }
   @keyframes btn-anim4 {
     0% {
       bottom: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
       bottom: 100%;
     }
   }
-  .form-label{
+  .form-label {
     border-bottom: none;
   }
 }
