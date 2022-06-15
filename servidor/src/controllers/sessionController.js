@@ -2,7 +2,6 @@ const db = require("../../models");
 const bd = require("../settings/db")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const peopleModel = require('../../models').People;
 
 function generateToken(obj, t) {
     const data = {
@@ -21,15 +20,12 @@ exports.validateToken = (req, res, next) => {
 
         jwt.verify(token, 'Ckeeper', (err, data) => {
             if (!err) {
-                // Token válido
                 next();
             } else {
-                // Token expirado
                 res.send("mal");
             }
         })
     } else {
-        // No hay token
         res.status(401).render("401");
     }
 }
@@ -66,7 +62,7 @@ exports.login = (req, res) => {
                         res.json({
                             error: 'invalid user or password'})
                     }
-                })
+                }) 
             }else{
                  res.json({
                             error: 'invalid user or password'})
@@ -75,9 +71,6 @@ exports.login = (req, res) => {
             }
         }
     )
-
-
-
 };
 
 exports.logout = (req, res) => {

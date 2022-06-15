@@ -12,17 +12,12 @@ const bill = require('../controllers/billController')
 const middleware = require('../middlewares/authMiddleware');
 const app = express.Router();
 
-
-
 // Página sign-in
 app.post('/api/login', session.login);
 app.post('/api/registro', register.register);
 app.get('/api/logout', session.logout);
 app.post('/api/add-parking', place.addParking);
 app.post('/api/get-users', user.getUsers);
-
-
-//app.post('/api/add-parking', parking.addParking);
 
 //Places endpoints
 app.get('/api/get-my-places', place.getPlacesByUserId);

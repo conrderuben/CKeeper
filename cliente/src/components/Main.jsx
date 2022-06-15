@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import fondo2 from '../assets/img/fondo2.jpg';
 import fondo1 from '../assets/img/fondo1.jpg';
-import fondo3 from '../assets/img/fondo3.jpg';
-import fondo4 from '../assets/img/fondo4.jpg';
-import fondo5 from '../assets/img/fondo5.jpg';
 
 const Container = styled.div`
   display: flex;

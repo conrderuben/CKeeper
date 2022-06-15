@@ -15,7 +15,6 @@ import AdminUsers from './pages/AdminUsers';
 import { Parking } from './pages/Parking';
 import { ModifyParking } from './pages/ModifyParking';
 import ContactPage from './pages/ContactPage';
-import SinglePlace from './components/SinglePlace';
 import BillPage from './pages/BillPage';
 import { AdminSearch } from './pages/AdminSearch';
 import Profile from './pages/Profile';

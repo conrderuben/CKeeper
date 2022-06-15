@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { ProfileEdit } from '../components/Profile/Profile';
 import SideMenu from '../components/sideMenu/SideMenu';
 
-
 const Container = styled.div`
   display: flex;
   background-color: #b5e5f8;
@@ -21,7 +20,7 @@ const Profile = () => {
     <Container>
       <SideMenu />
       <Content>
-      <ProfileEdit />
+        <ProfileEdit />
       </Content>
     </Container>
   );

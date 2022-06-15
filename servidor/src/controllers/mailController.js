@@ -13,7 +13,7 @@ exports.resetPasswordCode = async (req, res) =>  {
       pass: "Ckeeper123", 
     },
     tls: {
-        ciphers:'SSLv3'
+        ciphers:'SSLv3' 
     }
   });
 
@@ -26,7 +26,7 @@ exports.resetPasswordCode = async (req, res) =>  {
   });
 
   console.log("Message sent: %s", info.messageId);
-  
+
 }
 
 exports.verifyUser =async (req, res) =>  {

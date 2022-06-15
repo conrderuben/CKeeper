@@ -21,7 +21,7 @@ exports.setActive = async (req, res) => {
             
         }
         res.send('Actualizado');
-        
+         
        
 }
 exports.isAdmin = (req, res) => {

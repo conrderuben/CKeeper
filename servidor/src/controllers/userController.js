@@ -67,7 +67,7 @@ exports.editUserPassword = async (req, res) => {
         if(err){
         }
          peopleModel.update({user:req.body.userData.user,name:req.body.userData.name,surname:req.body.userData.surname,password:hash,bornDate:req.body.userData.bornDate,mail:req.body.userData.mail,phone:req.body.userData.phone,},
-            {where:{id:req.body.userData.id}})
+            {where:{id:req.body.userData.id}}) 
     }
     )
 }

@@ -8,13 +8,13 @@ const cors = require ("cors");
 const jwt = require('jsonwebtoken');
 
 
-exports.getAll = async (req, res) => {
+        exports.getAll = async (req, res) => {
     const listVehicles =  await vehicleModel.findAll();
    
-    res.json(listVehicles);
+    res.json(listVehicles); 
 }
 
-exports.getById = async (req, res) => {
+    exports.getById = async (req, res) => {
     const token = req.cookies.jwt;
     const data = jwt.decode(token, 'Ckeeper')
     const listVehicles =  await vehicleModel.findAll({
@@ -23,7 +23,7 @@ exports.getById = async (req, res) => {
    
     res.json(listVehicles);
 }
-exports.getByUserId = async (req, res) => {
+    exports.getByUserId = async (req, res) => {
     const listVehicles =  await vehicleModel.findAll({
         where:{userId:req.params.user}
     });
@@ -32,11 +32,11 @@ exports.getByUserId = async (req, res) => {
 }
 
 
-exports.getAllBrands= async (req, res)=>{
+    exports.getAllBrands= async (req, res)=>{
     const listBrands=  await brandModel.findAll();
     res.json(listBrands);
 }
-exports.getTypeById= async (req, res)=>{
+    exports.getTypeById= async (req, res)=>{
 
     const type = await typeModel.findAll({
         where: {idBrand:req.params.brandId}
@@ -44,18 +44,18 @@ exports.getTypeById= async (req, res)=>{
       res.json(type);
 }
 
-exports.getBrandById = async (req, res)=>{
+    exports.getBrandById = async (req, res)=>{
     const model= await typeModel.findByPk(req.params.typeId);
     
     const brand = await brandModel.findByPk(model.idBrand);
-const data = {
+    const data = {
     model : model.name,
     brand : brand.name
     
 }
     res.json(data);
 }
-exports.addCar = async (req, res)=>{
+    exports.addCar = async (req, res)=>{
 
     
         const token = req.cookies.jwt;

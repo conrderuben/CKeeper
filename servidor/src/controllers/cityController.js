@@ -4,4 +4,4 @@ exports.getAll = async (req, res) => {
         const cities=  await cityModel.findAll();
         res.json(cities);
      
-}
+}  

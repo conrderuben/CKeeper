@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import style from './style.scss';
-import assets from '../../assets/img/fondo1.jpg';
 import { useNavigate } from 'react-router-dom';
-
 import { httpClient } from '../../utils/httpClient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
