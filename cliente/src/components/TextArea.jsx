@@ -27,11 +27,14 @@ const TextArea = props => {
         value={props.value}
         defaultValue={props.defaultValue}
         placeholder={props.placeholder}
+        onKeyUp={e => validation(e, props.exp)}
         onChange={(e) => {props.onChange(e);}}
       />
       <label htmlFor={props.id} className={props.className!=undefined ? "form-label "+ props.className : "form-label" }>
         {props.label}
       </label>
+      <div className="valid-feedback" id='validacionText'>Looks good!</div>
+      <div className="invalid-feedback" id='validacionText'>Incorrect</div>
     </div>
    
   );
