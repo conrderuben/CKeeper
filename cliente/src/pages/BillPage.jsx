@@ -37,6 +37,7 @@ const BillPage = () => {
       const invoices = await httpClient.get(`/get-bill-data`).then(x => {
         setBills(x.data.data);
         setUserId(x.data.userId);
+        console.log(bills);
       });
     }
 
@@ -61,6 +62,10 @@ const BillPage = () => {
             tenant={bill.tenant}
             renterId={bill.renterId}
             tenantId={bill.tenantId}
+            renterPhone={bill.renterPhone}
+            tenantPhone={bill.tenantPhone}
+            renterEmail={bill.renterEmail}
+            tenantEmail={bill.tenantEmail}
             long={bill.long}
             width={bill.width}
             height={bill.height}

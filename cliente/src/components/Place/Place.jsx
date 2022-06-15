@@ -14,9 +14,7 @@ const Place = props => {
   const deletePlace = () => {
     let confirmAction = window.confirm('Are you sure to delete this Place?');
     if (confirmAction) {
-      httpClient
-        .post(`/delete-place/${props.placeId}`)
-        .then(window.location.reload());
+      httpClient.post(`/delete-place/${props.placeId}`).then(window.location.reload());
     }
   };
   const editPlace = () => {
@@ -63,7 +61,6 @@ const Place = props => {
         <div className="container py-4">
           <article className="postcard dark yellow">
             <div className="postcard__img">{photos()}</div>
-
             <div className="postcard__text">
               <h1 className="postcard__title yellow">
                 <Link
@@ -81,6 +78,9 @@ const Place = props => {
                   {placeDate[0]}
                 </time>
               </div>
+              {props.rented === true && (
+                <img className="rented" src={require('../../assets/img/rented.png')} alt="rented" />
+              )}
               <div className="postcard__bar"></div>
               <div className="postcard__preview-txt">{props.desc}</div>
               <ul className="postcard__tagbox">

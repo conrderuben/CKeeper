@@ -24,14 +24,13 @@ const Invoice = props => {
     let vehiclesWB = Promise.all(
       vehicles.map(vehicle => {
         return httpClient.get(`/get-brand-by-id/${vehicle.typeId}`).then(data => {
-          
           const obj = {
             id: vehicle.id,
             type: vehicle.type,
             matriculationDate: vehicle.matriculationDate,
             brand: data.data.brand,
             model: data.data.model,
-            userId:vehicle.userId
+            userId: vehicle.userId
           };
           return obj;
         });
@@ -45,8 +44,14 @@ const Invoice = props => {
       <h2 className="mb-10 text-xl tracking-widest uppercase">
         {props.renterId == props.userId ? props.tenant : props.renter}
       </h2>
+      <div className="mb-2 text-sm text-gray-400 ">
+        Email: {props.renterId == props.userId ? props.tenantEmail : props.renterEmail}
+      </div>
+      <div className="mb-2 text-sm text-gray-400 ">
+        Tlf. {props.renterId == props.userId ? props.tenantPhone : props.renterPhone}
+      </div>
       <span className="ml-2 font-mono text-base text-gray-400">#{props.id}</span>
-      <span className="block w-16 mt-4 bg-blue-500" style={style}></span>
+      <span className="block w-16 mt-1 bg-blue-500" style={style}></span>
 
       <div className="mb-6">
         <div>{props.title}</div>
