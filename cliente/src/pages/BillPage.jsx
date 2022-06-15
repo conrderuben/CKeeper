@@ -37,7 +37,6 @@ const BillPage = () => {
       const invoices = await httpClient.get(`/get-bill-data`).then(x => {
         setBills(x.data.data);
         setUserId(x.data.userId);
-        console.log(bills);
       });
     }
 

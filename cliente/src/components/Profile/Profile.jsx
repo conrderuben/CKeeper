@@ -120,7 +120,6 @@ export const ProfileEdit = () => {
     e.preventDefault()
     
     a=a+1 
-    console.log(a)
     if (a%2!=0){
       document.getElementById("newPassword").type="text";
     }
@@ -133,7 +132,6 @@ export const ProfileEdit = () => {
   const seeConfirmNewPassword = e => {
     e.preventDefault()
     b=b+1 
-    console.log(a)
     if (b%2!=0){
       document.getElementById("confirmNewPassword").type="text";    }
     else{

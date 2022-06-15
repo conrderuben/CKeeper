@@ -71,7 +71,6 @@ export const Form = () => {
     });
     if (e.target.name == 'user') {
       for (var i = 0; i < users.length; i++) {
-        console.log();
         if (users[i].user.toLowerCase() == e.target.value.toLowerCase()) {
           setTimeout(() => {
             document.getElementById('user').classList.remove('is-valid');
@@ -92,7 +91,6 @@ export const Form = () => {
     async function getData() {
       await httpClient.post(`/get-users`).then(x => {
         setAllUsers(x.data);
-        console.log(users);
       });
     }
     getData();

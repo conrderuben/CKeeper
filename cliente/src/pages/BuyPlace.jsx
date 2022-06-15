@@ -42,7 +42,6 @@ const BuyPlace = () => {
     mm = '0' + mm;
   }
   today = yyyy + '-' + mm + '-' + dd;
-  console.log(location);
   const handleBuy = () => {
     async function createRent() {
       const user = await httpClient.get('user').then(x => x.data);
