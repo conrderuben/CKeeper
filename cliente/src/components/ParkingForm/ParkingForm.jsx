@@ -129,6 +129,7 @@ export const Form = () => {
     </div>
              
                 <TextArea
+                  exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,98}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
                   className="textAreaDescription editInput"
                   label="Description"
                   name="description"
