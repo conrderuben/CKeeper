@@ -101,9 +101,9 @@ export const Edit = () => {
     };
 
     httpClient
-      .post(` /edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj })
+      .post(`/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj })
       .then(x => {
-        httpClient.post(` /photos/${x.data.id}`, data).then(navigate('/places'));
+        httpClient.post(`/photos/${x.data.id}`, data).then(navigate('/places'));
       });
   };
   return (

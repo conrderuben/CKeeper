@@ -63,7 +63,7 @@ export const CarForm = () => {
 
   useEffect(() => {
     async function getData() {
-      const brand = await httpClient.get(` /list-brands`).then(x => {
+      const brand = await httpClient.get(`/list-brands`).then(x => {
         setBrands(x.data);
       });
     }
@@ -72,7 +72,7 @@ export const CarForm = () => {
 
   useEffect(() => {
     async function getData() {
-      httpClient.get(` /typeById/${selectedBrand}`).then(x => {
+      httpClient.get(`/typeById/${selectedBrand}`).then(x => {
         setTypes(x.data);
       });
     }

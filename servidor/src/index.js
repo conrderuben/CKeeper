@@ -29,7 +29,7 @@ app.set('views', __dirname + '/views');
 
 // middleware
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://34.175.231.25:3000"],
     methods: ["GET", "POST"],
     credentials : true
 }));

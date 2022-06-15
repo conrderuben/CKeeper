@@ -7,7 +7,7 @@ const AdminRoute = ({ children }) => {
 
   useEffect(() => {
     async function getData() {
-      await httpClient.get(` /isAdmin`).then(x => {
+      await httpClient.get(`/isAdmin`).then(x => {
         setAdmin(x.data.isAdmin);
       });
     }

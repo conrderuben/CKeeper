@@ -22,12 +22,12 @@ const MyPlaces = () => {
 
   useEffect(() => {
     async function getData() {
-      const places = await httpClient.get(` /get-my-places`).then(x => x.data);
+      const places = await httpClient.get(`/get-my-places`).then(x => x.data);
 
       let placesWithData = Promise.all(
         places.map(place => {
           return httpClient
-            .get(` /get-place-with-data/${place.ubicationId}/${place.userId}`)
+            .get(`/get-place-with-data/${place.ubicationId}/${place.userId}`)
             .then(data => {
               const info = data.data;
               const obj = {

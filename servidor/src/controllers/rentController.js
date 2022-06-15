@@ -3,7 +3,6 @@ const rentModel = require('../../models').Rent;
 const peopleModel = require('../../models').People;
 const billModel = require('../../models').Bill;
 const jwt = require ("jsonwebtoken");
-const Op = require('Sequelize').Op
 
 exports.createRent = async (req, res) => {
     parkingModel.update({rented:1},

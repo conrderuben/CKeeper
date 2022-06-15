@@ -95,7 +95,7 @@ export const CarCard = props => {
   const deleteVehicle = () => {
     let confirmAction = window.confirm('Are you sure to delete this vehicle?');
     if (confirmAction) {
-      httpClient.post(` /delete-vehicle/${props.id}`).then(window.location.reload());
+      httpClient.post(`/delete-vehicle/${props.id}`).then(window.location.reload());
     }
   };
   const photos = () => {

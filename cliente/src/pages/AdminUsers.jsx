@@ -78,7 +78,7 @@ const AdminUsers = () => {
                           <button
                             onClick={() => {
                               httpClient
-                                .get(` /setActive/${value.id}/${value.active ? '0' : '1'}`)
+                                .get(`/setActive/${value.id}/${value.active ? '0' : '1'}`)
                                 .then(window.location.reload());
                             }}
                           >
