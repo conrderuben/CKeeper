@@ -29,7 +29,6 @@ const BuyPlace = () => {
   const [minDate, setMinDate] = useState();
   const params = location.state;
   const navigate = useNavigate();
-
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
@@ -42,7 +41,7 @@ const BuyPlace = () => {
     mm = '0' + mm;
   }
   today = yyyy + '-' + mm + '-' + dd;
-
+console.log(location)
   const handleBuy = () => {
     async function createRent() {
       const user = await httpClient.get('user').then(x => x.data);

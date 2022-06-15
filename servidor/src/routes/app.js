@@ -18,8 +18,8 @@ const app = express.Router();
 app.post('/api/login', session.login);
 app.post('/api/registro', register.register);
 app.get('/api/logout', session.logout);
-
 app.post('/api/add-parking', place.addParking);
+app.post('/api/get-users', user.getUsers);
 
 
 //app.post('/api/add-parking', parking.addParking);

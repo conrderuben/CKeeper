@@ -20,14 +20,17 @@ const InputValidated = props => {
         className="form-control "
         name={props.name}
         id={props.id}
+        max={props.max}
+        min={props.min}
+
         placeholder="name@example.com"
         required
       />
       <label htmlFor={props.id} className="form-label">
         {props.label}
       </label>
-      <div className="valid-feedback">Looks good!</div>
-      <div className="invalid-feedback">Incorrect</div>
+      <div id="valid-feedback" className="valid-feedback">Looks good!</div>
+      <div id="invalid-feedback"className="invalid-feedback">Incorrect</div>
     </div>
   );
 };

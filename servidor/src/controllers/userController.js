@@ -31,7 +31,10 @@ exports.getAllUsers = async (req, res) => {
         res.send({error: 'ForGiven'})
      }
 }
-
+exports.getUsers = async (req, res) => {
+    const users=  await peopleModel.findAll();
+    res.send(users);
+}
 exports.validateToken = (req, res) => {
     const token = req.cookies.jwt;
     if (typeof token != "undefined") {

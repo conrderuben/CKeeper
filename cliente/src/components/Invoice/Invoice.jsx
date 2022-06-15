@@ -39,7 +39,6 @@ const Invoice = props => {
       setCars(x);
     });
   };
-  console.log(props);
   return (
     <div id="invoice" className=" p-10 mx-10 mt-10 bg-white rounded-lg fit-content ">
       <h2 className="mb-10 text-xl tracking-widest uppercase">
