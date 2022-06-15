@@ -35,11 +35,11 @@ export default class File extends Component {
         this.setState({ file: this.fileArray });
         
         }
-        console.log(this.fileArray)
+       
     }
     uploadFiles(e) {
         e.preventDefault();
-        console.log(this.state.file);
+        
     }
 
    render(){

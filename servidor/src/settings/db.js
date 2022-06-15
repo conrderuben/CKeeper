@@ -16,7 +16,6 @@
      }
     }
     if(conn) conn.release();
-    console.log('Se ha conectado a Google Cloud');
     return;
  });
 

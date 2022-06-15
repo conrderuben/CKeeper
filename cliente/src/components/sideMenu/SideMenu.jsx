@@ -33,7 +33,6 @@ function SideMenu(props) {
   const handleLogOut = () => {
     httpClient.get('logout').then(res => {
       if (!res.data.error) {
-        console.log(res.data.error);
       } else {
         navigate('/');
       }

@@ -18,16 +18,16 @@ import ContactPage from './pages/ContactPage';
 import SinglePlace from './components/SinglePlace';
 import BillPage from './pages/BillPage';
 import { AdminSearch } from './pages/AdminSearch';
-import  Profile  from './pages/Profile';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/registro" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route
           path="/main"
           element={
@@ -116,7 +116,7 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-          <Route
+        <Route
           path="/profile"
           element={
             <ProtectedRoute>

@@ -72,8 +72,11 @@ export const Form = () => {
     if (e.target.name == 'user') {
       for (var i = 0; i < users.length; i++) {
         if (users[i].user.toLowerCase() == e.target.value.toLowerCase()) {
-          document.getElementById('user').classList.remove('is-valid');
-          document.getElementById('user').classList.remove('is-invalid');
+          setTimeout(() => {
+            document.getElementById('user').classList.remove('is-valid');
+            document.getElementById('user').classList.remove('is-invalid');
+            document.getElementById('user').classList.add('is-invalid');
+          }, 100);
         }
       }
     }

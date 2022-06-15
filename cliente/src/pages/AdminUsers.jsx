@@ -18,7 +18,6 @@ const Content = styled.div`
 
 const handleActive = (value, id) => {
   // httpClient.get(`http://localhost:4000/api/setActive/${id}/${value}`);
-  console.log('hola');
 };
 
 const AdminUsers = () => {
@@ -79,7 +78,6 @@ const AdminUsers = () => {
                       <td>
                         <button
                           onClick={() => {
-                            console.log('hola');
                             httpClient
                               .get(
                                 `http://localhost:4000/api/setActive/${value.id}/${

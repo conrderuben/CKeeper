@@ -63,7 +63,6 @@ export const SearchPage = () => {
 
     getData();
   }, []);
-  // console.log(x);
   useEffect(() => {
     async function getData() {
       const data = await httpClient

@@ -132,8 +132,8 @@ const NavBar = () => {
           <Menu className="menu">
             <Item href="/#home">Home</Item>
             <Item href="/#sobre-nosotros">About&nbsp;us</Item>
-            <Item href="/contacto">Contact&nbsp;us</Item>
-            <Item href="/registro">Register</Item>
+            <Item href="/contact">Contact&nbsp;us</Item>
+            <Item href="/register">Register</Item>
           </Menu>
         </Cen>
         <Der>

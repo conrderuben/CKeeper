@@ -70,8 +70,6 @@ exports.addCar = async (req, res)=>{
       var vehicleId=0
 
          await  vehicleModel.create(data).then(result=>{vehicleId=result.dataValues.id})
-console.log(vehicleId)
-
             res.json({id:vehicleId});
        
 }

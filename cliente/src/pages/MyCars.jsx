@@ -51,7 +51,6 @@ export const MyCars = () => {
 
     getData();
   }, []);
-console.log(vehiclesWithBrand)
   return (
     <Container>
       <SideMenu />

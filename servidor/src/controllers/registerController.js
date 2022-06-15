@@ -21,12 +21,11 @@ const data={
 
     bcrypt.hash(data.password, saltRounds, (err, hash)=>{
         if(err){
-            console.log('error with the hash')
         }
             const obj = {...data, password:hash,active:1 }
             peopleModel.create(obj)
         .then((data)=>{
-                        // res.json(document.write("SU USUARIO HA SIDO ACTIVADO"))
+
         }).catch((err)=>{
          })
         
