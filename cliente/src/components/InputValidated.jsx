@@ -30,8 +30,9 @@ const InputValidated = props => {
       <div id="valid-feedback" className="valid-feedback">
         Looks good!
       </div>
+
       <div id="invalid-feedback" className="invalid-feedback">
-        Incorrect or username already exists
+        {props.name === 'user' ? 'Incorrect or username already exists' : 'Incorrect'}
       </div>
     </div>
   );
