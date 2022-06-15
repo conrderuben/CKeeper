@@ -40,6 +40,7 @@ const DescriptionContainer = styled.div`
   flex-direction: column;
   flex: 1;
   box-sizing: border-box;
+  overflow: scroll;
 `;
 
 const Title = styled.h1`
@@ -72,11 +73,8 @@ export const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    httpClient.post("/confirm-mail",{ form })
-    navigate("/login")
-    // httpClient.post('/registro', { form }).then(() => {
-    //   navigate('/login');
-    // });
+    httpClient.post('/confirm-mail', { form });
+    navigate('/login');
   };
   return (
     <Container>
