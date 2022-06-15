@@ -6,20 +6,33 @@ const Container = styled.div`
   padding: 0;
   width: 100vw;
   height: 100vh;
+  @media only screen and (min-width: 851px) {
+    #formContainer {
+     padding-top:25vh !important;
+     padding-right:10vw !important;
+    }
+    #send{
+     padding-left:5vw !important;
+     padding-right:5vw !important;
+     color:white !important;
+     text-decoration:none;
+    }
+}
   @media only screen and (max-width: 850px) {
     #iframe {
-      margin-left: 0 !important;
-      width: 100%;
-      height: 40%;
-      margin-top: 60vh !important;
+      display:none;
     }
     #formContainer {
       padding: 0 !important;
-      padding-top: 6vh !important;
+      padding-top: 12vh !important;
     }
     #form {
       width: 100vw !important;
       height: 60vh;
+    }
+    #send{
+      color:white !important;
+      text-decoration:none;
     }
   }
 `;
@@ -41,7 +54,6 @@ const Contacto = () => {
       </div>
       <div
         className="container px-5 py-24 "
-        style={{ marginTop: 15, marginRight: 160 }}
         id="formContainer"
       >
         <div
@@ -72,7 +84,7 @@ const Contacto = () => {
             ></textarea>
           </div>
           <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-            Send
+            <a href="mailto:email1@email.com?body=Este%20es%20el%20cuerpo%20del%20mensaje" id='send'>Send </a>
           </button>
           <p className="text-xs text-gray-500 mt-3">We will help you as soon as possible</p>
         </div>

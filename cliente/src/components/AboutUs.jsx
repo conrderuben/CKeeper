@@ -53,11 +53,13 @@ const SobreNosotros = () => {
         <Imagen src={fondo4} />
       </ImagenContainer>
       <DescripcionContainer>
-        <Titulo>Sobre Nosotros</Titulo>
+        <Titulo>About us</Titulo>
         <Descripcion>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur velit ea illum laborum!
-          Nesciunt, amet at dolorum enim atque quod vitae accusantium, deleniti facere quidem
-          asperiores est perferendis. Ipsum, voluptatum.
+          We are a company which helps people with their parking places' problems. On one hand, if you want a safe and economic place to park your vehicles, we can help you to find one. 
+          On the other hand, if you are a person who has a parking place but does not use it and want to rent it, we can help you to rent your place.
+          In our application you can find publications of other people's parking places for rent. Once you find the perfect parking place for you, we provide you a safe and easy rent.
+          Also, you can publicate your parking place for rent at the price you want and check who has rented your place in the invoice.
+          In this way we provide you a safe rental operation.    
         </Descripcion>
       </DescripcionContainer>
     </Container>

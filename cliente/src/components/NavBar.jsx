@@ -62,7 +62,7 @@ const NavBar = () => {
         color: inherit;
       }
       .menu a {
-        font-size: 15px;
+        font-size: 14px;
       }
       a:hover,
       a.active {
