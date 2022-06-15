@@ -22,7 +22,7 @@ const AdminUsers = () => {
 
   useEffect(() => {
     async function getData() {
-      await httpClient.get(`http://localhost:4000/api/getAllUsers`).then(x => setListUsers(x.data));
+      await httpClient.get(` /getAllUsers`).then(x => setListUsers(x.data));
     }
 
     getData();
@@ -78,11 +78,7 @@ const AdminUsers = () => {
                           <button
                             onClick={() => {
                               httpClient
-                                .get(
-                                  `http://localhost:4000/api/setActive/${value.id}/${
-                                    value.active ? '0' : '1'
-                                  }`
-                                )
+                                .get(` /setActive/${value.id}/${value.active ? '0' : '1'}`)
                                 .then(window.location.reload());
                             }}
                           >

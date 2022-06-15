@@ -111,11 +111,7 @@ const Place = props => {
                     <div
                       onClick={() => {
                         httpClient
-                          .get(
-                            `http://localhost:4000/api/setPublish/${props.placeId}/${
-                              props.published ? '0' : '1'
-                            }`
-                          )
+                          .get(` /setPublish/${props.placeId}/${props.published ? '0' : '1'}`)
                           .then(window.location.reload());
                       }}
                     >

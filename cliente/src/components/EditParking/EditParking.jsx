@@ -101,14 +101,9 @@ export const Edit = () => {
     };
 
     httpClient
-      .post(
-        `http://localhost:4000/api/edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`,
-        { obj }
-      )
+      .post(` /edit-parking/${parkingData.place.id}/${parkingData.place.ubicationId}`, { obj })
       .then(x => {
-        httpClient
-          .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
-          .then(navigate('/places'));
+        httpClient.post(` /photos/${x.data.id}`, data).then(navigate('/places'));
       });
   };
   return (

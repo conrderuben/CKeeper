@@ -13,7 +13,7 @@ export const Form = () => {
 
   useEffect(() => {
     async function getData() {
-      const city = await httpClient.get(`http://localhost:4000/api/list-cities`).then(x => {
+      const city = await httpClient.get(` /list-cities`).then(x => {
         setCities(x.data);
       });
     }
@@ -50,9 +50,7 @@ export const Form = () => {
     };
 
     httpClient.post('/add-parking', { obj }).then(x => {
-      httpClient
-        .post(`http://localhost:4000/api/photos/${x.data.id}`, data)
-        .then(navigate('/places'));
+      httpClient.post(` /photos/${x.data.id}`, data).then(navigate('/places'));
     });
   };
 

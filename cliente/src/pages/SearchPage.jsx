@@ -37,16 +37,12 @@ export const SearchPage = () => {
   }, []);
   useEffect(() => {
     async function getData() {
-      const publicPlaces = await httpClient
-        .get(`http://localhost:4000/api/get-posts`)
-        .then(x => x.data);
+      const publicPlaces = await httpClient.get(` /get-posts`).then(x => x.data);
 
       let publicPlacesWithData = Promise.all(
         publicPlaces.map(place => {
           return httpClient
-            .get(
-              `http://localhost:4000/api/get-place-with-data/${place.ubicationId}/${place.userId}`
-            )
+            .get(` /get-place-with-data/${place.ubicationId}/${place.userId}`)
             .then(data => {
               const info = data.data;
               const obj = {
@@ -65,9 +61,7 @@ export const SearchPage = () => {
   }, []);
   useEffect(() => {
     async function getData() {
-      const data = await httpClient
-        .get(`http://localhost:4000/api/getAllCities`)
-        .then(x => setCities(x.data));
+      const data = await httpClient.get(` /getAllCities`).then(x => setCities(x.data));
     }
     getData();
   }, []);

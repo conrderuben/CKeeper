@@ -65,7 +65,7 @@ export const Form = () => {
             document.getElementById('user').classList.remove('is-valid');
             document.getElementById('user').classList.remove('is-invalid');
             document.getElementById('user').classList.add('is-invalid');
-          }, 100);
+          }, 120);
         }
       }
     }

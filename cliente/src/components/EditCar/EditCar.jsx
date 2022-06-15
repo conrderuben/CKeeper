@@ -1,6 +1,5 @@
 import style from './style.scss';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { httpClient } from '../../utils/httpClient';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -79,18 +78,16 @@ export const EditCar = () => {
   };
   useEffect(() => {
     async function getData() {
-      const carData = await httpClient
-        .get(`http://localhost:4000/api/edit-car/${url[1]}`)
-        .then(x => {
-          setCarData(x.data);
-        });
+      const carData = await httpClient.get(` /edit-car/${url[1]}`).then(x => {
+        setCarData(x.data);
+      });
     }
     getData();
   }, []);
 
   useEffect(() => {
     async function getData() {
-      const brand = await axios.get(`http://localhost:4000/api/list-brands`).then(x => {
+      const brand = await httpClient.get(` /list-brands`).then(x => {
         setBrands(x.data);
       });
     }
@@ -99,7 +96,7 @@ export const EditCar = () => {
 
   useEffect(() => {
     async function getData() {
-      httpClient.get(`http://localhost:4000/api/typeById/${carData.brand.id}`).then(x => {
+      httpClient.get(` /typeById/${carData.brand.id}`).then(x => {
         setTypes(x.data);
       });
     }
@@ -111,11 +108,9 @@ export const EditCar = () => {
 
     const data = new FormData();
     data.append('photos', fileData.photo);
-    httpClient
-      .post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`, { form })
-      .then(x => {
-        httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
-      });
+    httpClient.post(` /update-vehicle/${carData.car.id}`, { form }).then(x => {
+      httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
+    });
   };
   return (
     <section className="editVehicleSection ">
