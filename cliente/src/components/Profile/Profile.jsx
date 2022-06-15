@@ -166,7 +166,7 @@ export const ProfileEdit = () => {
                     <div className="card-profile-image">
                       <a href="#">
                         <img
-                          src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg"
+                          src={require("../../assets/img/avatar.png")}
                           className="rounded-circle"
                         />
                       </a>

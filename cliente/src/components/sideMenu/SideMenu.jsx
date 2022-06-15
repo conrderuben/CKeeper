@@ -53,7 +53,7 @@ function SideMenu(props) {
         >
           <div className="flex items-center pl-6 h-20 border-b border-gray-800" id="profile1">
             <img
-              src={require('../../assets/user.png')}
+              src={require('../../assets/img/avatar.png')}
               alt=""
               className="rounded-full h-10 w-10 flex items-center justify-center mr-3 border-2 border-blue-500"
             />
@@ -135,7 +135,7 @@ function SideMenu(props) {
         >
           <div className="flex items-center pl-6 h-20 border-b border-gray-800" id="profile1">
             <img
-              src={require('../../assets/user.png')}
+              src={require('../../assets/img/avatar.png')}
               alt=""
               className="rounded-full h-10 w-10 flex items-center justify-center mr-3 border-2 border-blue-500"
             />
