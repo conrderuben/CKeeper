@@ -170,6 +170,7 @@ export const CarForm = () => {
               className=" form-control "
               type="file"
               name="vehiclePhoto"
+              accept="image/png, image/gif, image/jpeg"
               required
               id="inputFile1"
               onChange={handleInputChange}
