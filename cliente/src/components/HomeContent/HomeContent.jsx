@@ -23,7 +23,7 @@ const HomeContent = () => {
               Add your vehicles so that the owner can make sure that it is you who parks in his
               space
             </p>
-            <a href="/mycars">Look at it!</a>
+            <a href="/cars">Look at it!</a>
           </div>
         </div>
       </div>

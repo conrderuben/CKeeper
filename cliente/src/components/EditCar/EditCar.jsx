@@ -104,23 +104,24 @@ export const EditCar = () => {
     async function getData() {
       httpClient.get(`http://localhost:4000/api/typeById/${carData.brand.id}`).then(x => {
         setTypes(x.data);
-        setForm({
-          typeId: types[0].id
-        });
+  
       });
     }
     getData();
   }, [carData.brand.id]);
+ 
   const handleSubmit = e => {
+    e.preventDefault();
+
     const data = new FormData();
     data.append('photos', fileData.photo);
     httpClient
       .post(`http://localhost:4000/api/update-vehicle/${carData.car.id}`, { form })
       .then(x => {
+        console.log("Lleo")
         httpClient.post(`/car-photo/${x.data.id}`, data).then(navigate('/cars'));
       });
   };
-  console.log(form);
   return (
     
     <section className='editVehicleSection '>
@@ -203,6 +204,7 @@ export const EditCar = () => {
                     value={carDate[0]}
                     min="1899-01-01"
                     max={today}
+                    required
                     name="matriculationDate"
                     id="matriculationDate"
                     label="Matriculation date"
@@ -217,19 +219,20 @@ export const EditCar = () => {
             <input
               className=" form-control "
               type="file"
+              required
               name="vehiclePhoto"
               id="inputFile1"
               onChange={handleInputChange}
               style={{ backgroundColor: 'transparent', border: 'none', color: 'white' }}
             />
           </div>
-      <a onClick={handleSubmit} className='submitVehicleButtonForm'>
+      <button type="submit" className='submitVehicleButtonForm'>
          <span></span>
          <span></span>
          <span></span>
           <span></span>
          Submit
-      </a>
+      </button>
               
               
             </form>

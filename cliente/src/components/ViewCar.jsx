@@ -21,7 +21,6 @@ const Card = styled.div`
 
 const CardImg = styled.div`
   background-color: aqua;
-  background-image: url('https://c4.wallpaperflare.com/wallpaper/179/817/188/lamborghini-coche-azul-deportivo-wallpaper-preview.jpg');
   height: 200px;
   margin-bottom: 15px;
   background-size: cover;
@@ -56,10 +55,23 @@ export const ViewCar = props => {
   const editCars = () => {
     navigate(`/editCar?${props.id}`);
   };
+  const photos = () => {
+    var array = [];
+    array.push(
+      <img
+        src={require(`../assets/users/${props.idUser}/Vehicles/Vehicle${props.id}/vehicle.png`)}
+        alt="Image Title"
+        style={{ height: '100%', width: '100%' }}
+        
+      />
+    );
+
+    return array;
+  };
   var fec = props.date.split('-');
   return (
     <Card>
-      <CardImg />
+      <CardImg >{photos()}</CardImg>
       <Group>
         <Title>Type:</Title>
         <Text>{props.type}</Text>

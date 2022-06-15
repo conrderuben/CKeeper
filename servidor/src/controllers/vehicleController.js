@@ -51,6 +51,7 @@ exports.getBrandById = async (req, res)=>{
 const data = {
     model : model.name,
     brand : brand.name
+    
 }
     res.json(data);
 }
@@ -84,7 +85,7 @@ exports.photo = async (req,res,next)=> {
  console.log(req.params.vehicleId) 
   
       const storage = multer.diskStorage({
-          destination:path.join( "../assets/users/"+usu+"/Vehicles/Vehicle"+req.params.vehicleId+"/") ,
+          destination:path.join( "../cliente/src/assets/users/"+usu+"/Vehicles/Vehicle"+req.params.vehicleId+"/") ,
           filename: function (req, file, cb) {
             cb(
               null,
@@ -116,6 +117,9 @@ exports.updateVehicle = async (req, res)=>{
     
 await vehicleModel.update({type:req.body.form.type,matriculationDate:req.body.form.matriculationDate,typeId:req.body.form.typeId,},
     {where:{id:req.params.carId}})
+
+    res.json({id:req.params.carId});
+
 }
 
 exports.deleteVehicle = async (req, res)=>{

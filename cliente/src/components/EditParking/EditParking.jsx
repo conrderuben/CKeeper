@@ -95,6 +95,8 @@ export const Edit = () => {
   };
 
   const send = e => {
+    e.preventDefault();
+
     console.log('LLEGO');
     const data = new FormData();
     console.log(fileData);
@@ -123,16 +125,19 @@ export const Edit = () => {
         </div>
         <form onSubmit={send} className="editForm">
           <Input
+            exp={ /^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{2}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
             type="text"
             name="street"
             className="editInput"
             id="street"
             label="Street"
             divClass="inputDiv"
+            required
             value={parkingData.ubication.street}
             onChange={handleChange}
           />
           <Input
+            exp={ /^\d{5}$/}
             type="number"
             name="pc"
             id="pc"
@@ -140,9 +145,11 @@ export const Edit = () => {
             value={parkingData.ubication.postalCode}
             label="Postal Code"
             divClass="inputDiv"
+            required
             onChange={handleChange}
           />
           <Input
+            exp={ /^\d{1,2}$/}
             type="number"
             name="number"
             id="number"
@@ -150,11 +157,12 @@ export const Edit = () => {
             value={parkingData.ubication.number}
             label="Number"
             divClass="inputDiv"
+            required
             onChange={handleChange}
           />
 
           <div className={'mb-3 form-floating selectContainer'}>
-            <select name="cities" className="form-control " id="cities" onChange={handleChange}>
+            <select name="cities" className="form-control " id="cities" required onChange={handleChange}>
               {cities.map(cit => (
                 <option
                   value={cit.id}
@@ -171,6 +179,7 @@ export const Edit = () => {
           </div>
 
           <TextArea
+            exp={/^[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ -]{0,98}[A-Za-zñáéíóúÁÉÓÍÚÑçÇ]{1}$/}
             className="textAreaDescription editInput"
             label="Description"
             name="description"
@@ -181,16 +190,19 @@ export const Edit = () => {
             divClass="textAreaContent"
           />
           <Input
+            exp={ /^[1-9]{1}\d{0,3}$/}
             type="text"
             name="price"
             className="editInput"
             id="price"
             label="Price"
+            required
             onChange={handleChange}
             value={parkingData.place.prize}
             divClass="inputDiv"
           />
           <Input
+            exp={ /^\d{1,3}$/}
             type="number"
             name="height"
             className="editInput"
@@ -198,9 +210,11 @@ export const Edit = () => {
             id="height"
             label="Height"
             divClass="inputDiv"
+            required
             onChange={handleChange}
           />
           <Input
+            exp={ /^\d{1,3}$/}
             type="number"
             name="width"
             id="width"
@@ -208,9 +222,11 @@ export const Edit = () => {
             value={parkingData.place.width}
             label="Width"
             divClass="inputDiv"
+            required
             onChange={handleChange}
           />
           <Input
+            exp={ /^\d{1,3}$/}
             type="number"
             name="long"
             className="editInput"
@@ -218,18 +234,19 @@ export const Edit = () => {
             value={parkingData.place.long}
             label="Long"
             divClass="inputDivLong"
+            required
             onChange={handleChange}
           />
 
-          <File onChange={handleInputChange} />
+          <File required onChange={handleInputChange} />
           {/* <button className="">Send It!</button> */}
-          <a onClick={send} className="submitButtonForm">
+          <button type="submit" onClick={send} className="submitButtonForm">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Submit
-          </a>
+          </button>
         </form>
       </div>
     </section>
