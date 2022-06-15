@@ -79,11 +79,7 @@ console.log(vehicleId)
 exports.photo = async (req,res,next)=> {
     const token = req.cookies.jwt;
     const data = jwt.decode(token, 'Ckeeper')
-  const usu=data.data.id;
-  
-  
- console.log(req.params.vehicleId) 
-  
+  const usu=data.data.id;  
       const storage = multer.diskStorage({
           destination:path.join( "../cliente/src/assets/users/"+usu+"/Vehicles/Vehicle"+req.params.vehicleId+"/") ,
           filename: function (req, file, cb) {

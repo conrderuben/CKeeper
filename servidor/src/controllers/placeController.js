@@ -148,11 +148,7 @@ const usu=data.data.id;
 }
 exports.editPlace = async (req, res)=>{
   const place= await parkingModel.findByPk(req.params.placeId);
-
   const ubication= await ubicationModel.findByPk(place.ubicationId);
-  
-  
-
   const data = {place:place,ubication:ubication}
   // console.log(data)
   res.json(data);
@@ -165,6 +161,8 @@ exports.editParking = async (req, res)=>{
     await ubicationModel.update({street:req.body.obj.form.street,postalCode:req.body.obj.form.pc,number:req.body.obj.form.number,idCity:req.body.obj.form.cities},
       {where:{id:req.params.ubicationId}})
    
+      res.json({id: req.params.placeId});
+
 
 }
 

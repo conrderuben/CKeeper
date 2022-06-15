@@ -1,7 +1,7 @@
 import { Axios } from 'axios';
-import { React, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { React, useState,useEffect } from 'react';
 import { httpClient } from '../../utils/httpClient';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import style from './style.css';
 import fondo from '../../assets/img/fondo5.jpg';
@@ -9,6 +9,8 @@ import fondo from '../../assets/img/fondo5.jpg';
 const Login = () => {
   const [form, setForm] = useState({});
   const [msg, setMsg] = useState('');
+  const location = useLocation();
+
 
   const navigate = useNavigate();
   const handleChange = e => {
@@ -18,6 +20,14 @@ const Login = () => {
     });
   };
 
+
+
+    useEffect(() => {
+      if(location.search=="?verifyMessage=true"){
+document.getElementById("verifyMailDiv").style.display="block";
+      }
+
+    }, []);
   const handleSubmit = e => {
     e.preventDefault();
     httpClient.post('/login', { form }).then(res => {
@@ -64,6 +74,15 @@ const Login = () => {
             <div className="right-inductor"></div>
           </div>
         </div>
+        <div class="alert alert-warning alert-dismissible fade show custom-alert" id='verifyMailDiv' style={{display:"none"}} role="alert">
+        A Message has sent to your mail
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
         {msg != '' && (
           <div class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
             {msg}
