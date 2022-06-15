@@ -8,7 +8,7 @@ const Step = () => {
         <div class="card">
           <div class="face face1">
             <div class="content">
-              <img src="http://assets.stickpng.com/thumbs/59cfc4d2d3b1936210a5ddc7.png" />
+              <img src="http://assets.stickpng.com/thumbs/585e4adacb11b227491c3392.png" />
               <h3>Choose</h3>
             </div>
           </div>
