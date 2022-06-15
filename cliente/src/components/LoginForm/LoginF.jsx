@@ -68,7 +68,7 @@ const Login = () => {
           </div>
         </div>
         <div
-          class="alert alert-warning alert-dismissible fade show custom-alert"
+          className="alert alert-warning alert-dismissible fade show custom-alert"
           id="verifyMailDiv"
           style={{ display: 'none' }}
           role="alert"
@@ -76,17 +76,20 @@ const Login = () => {
           A Message has sent to your mail
           <button
             type="button"
-            class="btn-close"
+            className="btn-close"
             data-bs-dismiss="alert"
             aria-label="Close"
           ></button>
         </div>
         {msg != '' && (
-          <div class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
+          <div
+            className="alert alert-warning alert-dismissible fade show custom-alert"
+            role="alert"
+          >
             {msg}
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="alert"
               aria-label="Close"
             ></button>

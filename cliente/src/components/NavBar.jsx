@@ -125,7 +125,7 @@ const NavBar = () => {
         </Izq>
         <Cen>
           <input type="checkbox" id="check" />
-          <label for="check" className="checkbtn">
+          <label htmlFor="check" className="checkbtn">
             <FontAwesomeIcon icon={faBars} id="icono" />
           </label>
           <Menu className="menu">
